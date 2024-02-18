@@ -1,68 +1,68 @@
 ---
-title: Key Bindings
+title: キーバインディング
 hide_title: true
 ---
 
-# Key Bindings
+# キーバインディング
 
-At the moment it is not possible to change the Shortcuts. The feature is on the roadmap to allow rebinding and potentially add shortcuts which we are not on by default.
+現時点ではショートカットを変更することはできません。リバインディングを許可し、デフォルトではオンになっていないショートカットを追加する機能はロードマップに含まれています。
 
 :::info
 
-Some of these shortcuts might change in future versions.
+これらのショートカットは将来のバージョンで変更される可能性があります。
 
 :::
 
-## Keyboard Shortcuts Reference
+## キーボードショートカットリファレンス
 
 <div className="ndl-table-35-65">
 
-### Editor
+### エディター
 
-| Key                             | Description                                                                                                          |
-| ------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| CtrlCmd + F                     | Focus the search panel allowing you to search in the project.                                                        |
-| CtrlCmd + Shift + X             | (Advanced) Refresh the viewer and node library, this is useful when working with modules.                            |
-| CtrlCmd + Shift + E             | (Advanced) Export Component.                                                                                         |
-| CtrlCmd + Shift + P             | Open Parse Dashboard for the active Cloud Service.                                                                   |
-| CtrlCmd + P                     | Open Parse Dashboard in the default browser for the active Cloud Service.                                            |
-| CtrlCmd + Shift + R             | Open the DevTools for the cloud functions.                                                                           |
-| CtrlCmd + L                     | Focus the preview address bar.                                                                                       |
+| キー                             | 説明                                                                                                             |
+| ------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| CtrlCmd + F                     | プロジェクト内を検索するために検索パネルにフォーカスします。                                                         |
+| CtrlCmd + Shift + X             | (上級者向け) ビューアーとノードライブラリを更新します。これはモジュールを使用して作業しているときに便利です。          |
+| CtrlCmd + Shift + E             | (上級者向け) コンポーネントをエクスポートします。                                                                   |
+| CtrlCmd + Shift + P             | アクティブなCloud ServiceのParseダッシュボードを開きます。                                                         |
+| CtrlCmd + P                     | アクティブなCloud ServiceのParseダッシュボードをデフォルトブラウザで開きます。                                      |
+| CtrlCmd + Shift + R             | クラウド関数のDevToolsを開きます。                                                                                  |
+| CtrlCmd + L                     | プレビューアドレスバーにフォーカスします。                                                                          |
 
-### Preview
+### プレビュー
 
-| Key                             | Description                                                                                                          |
-| ------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| CtrlCmd + R                     | Refresh the preview window.                                                                                          |
-| CtrlCmd + D                     | Open the DevTools for the preview window.                                                                            |
-| CtrlCmd + T                     | Toggle between Design and Preview mode for the preview window.                                                       |
+| キー                             | 説明                                                                                                             |
+| ------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| CtrlCmd + R                     | プレビューウィンドウを更新します。                                                                                 |
+| CtrlCmd + D                     | プレビューウィンドウのDevToolsを開きます。                                                                         |
+| CtrlCmd + T                     | プレビューウィンドウのデザインモードとプレビューモードを切り替えます。                                             |
 
-### Node Graph
+### ノードグラフ
 
-| Key                             | Description                                                                                                          |
-| ------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| Space                           | Enter pan mode when down.                                                                                            |
-| Arrow Up                        | Nudge the selected nodes up.                                                                                         |
-| Arrow Down                      | Nudge the selected nodes down.                                                                                       |
-| Arrow Left                      | Nudge the selected nodes left.                                                                                       |
-| Arrow Right                     | Nudge the selected nodes right.                                                                                      |
-| CtrlCmd + C                     | Copy the selected nodes.                                                                                             |
-| CtrlCmd + V                     | Paste the selected nodes.                                                                                            |
-| CtrlCmd + X                     | Cut the selected nodes.                                                                                              |
-| CtrlCmd + Backspace             | Delete the selected nodes.                                                                                           |
-| CtrlCmd + Delete                | Delete the selected nodes.                                                                                           |
-| CtrlCmd + Z                     | Undo the last change.                                                                                                |
-| CtrlCmd + Shift + Z             | Redo the last change.                                                                                                |
-| CtrlCmd + US_OPEN_SQUARE_BRACKET | Navigate back.                                                                                                      |
-| CtrlCmd + US_CLOSE_SQUARE_BRACKET | Navigate forward.                                                                                                  |
-| CtrlCmd + US_SLASH              | Add a comment.                                                                                                       |
-| F1                              | Open documentation for the currently selected node name.                                                             |
-| Enter or F2                     | Rename the currently selected node name.                                                                             |
+| キー                             | 説明                                                                                                             |
+| ------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| Space                           | ダウン時にパンモードに入ります。                                                                                   |
+| 矢印上                          | 選択されたノードを上に移動します。                                                                                 |
+| 矢印下                          | 選択されたノードを下に移動します。                                                                                 |
+| 矢印左                          | 選択されたノードを左に移動します。                                                                                 |
+| 矢印右                          | 選択されたノードを右に移動します。                                                                                 |
+| CtrlCmd + C                     | 選択されたノードをコピーします。                                                                                   |
+| CtrlCmd + V                     | 選択されたノードを貼り付けます。                                                                                   |
+| CtrlCmd + X                     | 選択されたノードを切り取ります。                                                                                   |
+| CtrlCmd + Backspace             | 選択されたノードを削除します。                                                                                     |
+| CtrlCmd + Delete                | 選択されたノードを削除します。                                                                                     |
+| CtrlCmd + Z                     | 最後の変更を元に戻します。                                                                                         |
+| CtrlCmd + Shift + Z             | 最後の変更をやり直します。                                                                                         |
+| CtrlCmd + US_OPEN_SQUARE_BRACKET | 戻るをナビゲートします。                                                                                           |
+| CtrlCmd + US_CLOSE_SQUARE_BRACKET | 進むをナビゲートします。                                                                                         |
+| CtrlCmd + US_SLASH              | コメントを追加します。                                                                                             |
+| F1                              | 現在選択されているノード名のドキュメントを開きます。                                                               |
+| Enter または F2                 | 現在選択されているノード名をリネームします。                                                                       |
 
-### Code Editor
+### コードエディター
 
-| Key                             | Description                                                                                                          |
-| ------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| CtrlCmd + S                     | Save the code. (In some senarios this will also run the code)                                                        |
+| キー                             | 説明                                                                                                             |
+| ------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| CtrlCmd + S                     | コードを保存します。(いくつかのシナリオでは、これによりコードが実行されることもあります)                           |
 
 </div>

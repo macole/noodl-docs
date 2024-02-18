@@ -1,13 +1,13 @@
 ---
-title: Noodl SDK Input and Output Types
+title: Noodl SDK 入力と出力のタイプ
 hide_title: true
 ---
 
-# Noodl SDK Input and Output Types
+# Noodl SDK 入力と出力のタイプ
 
-Here are some Typescript typings to fill in all the types, in the future this will be included directly with the SDK.
+将来的には、これらのタイプはSDKに直接含まれる予定ですが、ここではすべてのタイプを補完するためのTypescriptの型定義があります。
 
-There are two ways to set the type on a Input or Output, either with the shortcut like this:
+入力または出力にタイプを設定する方法は2つあります。1つはこのようなショートカットを使用する方法です：
 
 ```ts
 {
@@ -22,7 +22,7 @@ There are two ways to set the type on a Input or Output, either with the shortcu
 }
 ```
 
-Or with the full type where you can apply more options, like this:
+もう1つは、より多くのオプションを適用できる完全なタイプを使用する方法です：
 
 ```ts
 {
@@ -41,9 +41,9 @@ Or with the full type where you can apply more options, like this:
 }
 ```
 
-## Types
+## タイプ
 
-The type can also be `*` (star) to be any type, removing all connection type restrictions in the editor.
+タイプは `*`（星）も使用でき、エディター内のすべての接続タイプの制限を取り除く任意のタイプになります。
 
 ```ts
 type TypeEditor = "javascript" | "plaintext" | "graphql" | "css" | "html";
@@ -51,7 +51,7 @@ type TypeEditor = "javascript" | "plaintext" | "graphql" | "css" | "html";
 interface BuiltInType {
   name: string;
   codeeditor?: TypeEditor;
-  /** Allow the Input to only be edited via the property panel */
+  /** プロパティパネルを介してのみ入力を編集できるようにする */
   allowEditOnly?: boolean;
 }
 

@@ -1,6 +1,6 @@
 export const FrontpageBlocks = {
     SearchBar: 'searchbar',
-    Hero: 'hero', // ONLY ONE HERO BLOCK TO MAINTAIN GOOD SEO PLEASE!
+    Hero: 'hero', // 必ず1つのHEROブロックを維持してください。SEOを良くするためです！
     FeaturedModules: 'featuredmodules',
     FeaturedGuides: 'featuredguides',
     FeaturedProjects: 'featuredprojects',
@@ -12,8 +12,8 @@ export const frontpageData = [
     { type: FrontpageBlocks.SearchBar },
     {
         type: FrontpageBlocks.Hero,
-        title: 'Get started with Noodl',
-        text: "Noodl is a low code web app builder that will have you creating applications faster and smarter. It's a visual development environment that you don't need any previous coding skills to start learning. It's also great for developers who already know how to code as you can easily mix in JavaScript when appropriate, and Noodl is great for designers too, as it gives full control over the look and feel of your App. In Noodl everything is live and you edit you app while its live. This site contains all you need to get started!",
+        title: 'Noodlを始めよう',
+        text: "Noodlはアプリケーションをより速く、より賢く作成できるローコードのウェブアプリビルダーです。これはコーディングスキルがなくても学び始めることができる視覚的な開発環境です。適切な場合にJavaScriptを簡単に混ぜることができるため、すでにコードを知っている開発者にとっても素晴らしいですし、Noodlはデザイナーにとっても、アプリのルックアンドフィールを完全に制御できるため素晴らしいです。Noodlではすべてがライブであり、アプリをライブで編集します。このサイトにはNoodlを始めるために必要なすべてが含まれています！",
         gridItems: [
             {
                 type: 'youtube',
@@ -24,7 +24,7 @@ export const frontpageData = [
                 colorVariable: '--doc-color-noodl-orange-20',
                 backgroundImage:
                     '/img/featured-content-images/noodl-basics.png',
-                label: 'Noodl basics',
+                label: 'Noodlの基本',
                 href: '/docs/getting-started/workflow',
                 playIcon:false,
             },
@@ -33,7 +33,7 @@ export const frontpageData = [
                 colorVariable: '--doc-color-noodl-blue-20',
                 backgroundImage:
                     '/img/featured-content-images/build-first-app.png',
-                label: 'Intro to cloud services',
+                label: 'クラウドサービス入門',
                 href: 'https://www.youtube.com/watch?v=ecas2QPbr0g',
             },
         ],

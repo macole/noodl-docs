@@ -5,22 +5,22 @@ hide_title: true
 
 # Stripe
 
-Accepting payments and managing subscriptions is an important part of many digital products and when building in Noodl this is best done using **Stripe**, to go-to service for integrating payment into apps. This prefab and this guide will cover some of the key aspects of enabling you to accept payments from your users.
+支払いの受け入れやサブスクリプションの管理は、多くのデジタル製品において重要な部分であり、Noodlで構築する場合は、アプリに支払いを統合するためのサービスである**Stripe**を使用するのが最適です。このプリファブとこのガイドでは、ユーザーからの支払いを受け入れるためのいくつかの重要な側面をカバーします。
 
-First you need to create an account and make sure you have access to the [Stripe Dashboard](https://dashboard.stripe.com), you don't need a fully approved account to complete this guide, it's actually preferable that you start with the test version of your account.
+まず、アカウントを作成し、[Stripe Dashboard](https://dashboard.stripe.com)にアクセスできることを確認する必要があります。このガイドを完了するために完全に承認されたアカウントは必要ありません。実際、テストバージョンのアカウントで開始することが望ましいです。
 
-To be able to follow this guide properly we recommend that you are well versed in a few Noodl concepts already.
+このガイドに適切に従うためには、いくつかのNoodlの概念を既によく理解していることが推奨されます。
 
-- **Cloud Data**. You know how to set up cloud services and work with cloud data, start [here](/docs/guides/cloud-data/creating-a-backend).
-- **Cloud Functions**, how to create logic that run in the cloud, take a look [here](/docs/guides/cloud-logic/introduction).
-- **Pages and Navigation**, how to create pages and navigation, start [here](/docs/guides/navigation/basic-navigation).
-- **User Management**, you need to have an app where you can create new users and log them in, start [here](/nodes/data/user/sign-up)
+- **クラウドデータ**。クラウドサービスの設定とクラウドデータの操作方法を知っています。[こちら](/docs/guides/cloud-data/creating-a-backend)から始めてください。
+- **クラウド関数**、クラウドで実行されるロジックの作成方法。[こちら](/docs/guides/cloud-logic/introduction)をご覧ください。
+- **ページとナビゲーション**、ページとナビゲーションの作成方法。[こちら](/docs/guides/navigation/basic-navigation)から始めてください。
+- **ユーザー管理**、新しいユーザーを作成し、ログインさせるアプリが必要です。[こちら](/nodes/data/user/sign-up)から始めてください。
 
-## Setup
+## セットアップ
 
-After installing the prefab you will find a folder of components both on your frontend and in your cloud functions called **Stripe**, in these folders you will find the good stuff we will use in this guide. But first you must complete the setup.
+プリファブをインストールした後、**Stripe**という名前のコンポーネントのフォルダーがフロントエンドとクラウド関数の両方に表示されます。このガイドで使用する良いものがこれらのフォルダーに見つかります。しかし、最初にセットアップを完了する必要があります。
 
-Launch the cloud services dashboard for your project and find your way to the **Config** tab, here you will need to create a new config parameter called `StripeAPIKey` (case sensitive) where you need to put the **Secret Key** from your [Stripe Dashboard](https://dashboard.stripe.com). Look for this section in **Stripe**, important it's the **Secret Key** that you need.
+プロジェクトのクラウドサービスダッシュボードを起動し、**Config**タブを探します。ここで、`StripeAPIKey`（大文字と小文字に注意）という新しい設定パラメータを作成する必要があります。これには、[Stripe Dashboard](https://dashboard.stripe.com)からの**Secret Key**を入力する必要があります。**Stripe**のこのセクションを探し、**Secret Key**が必要であることを重要視してください。
 
 <div className="ndl-image-with-background l">
 
@@ -28,7 +28,7 @@ Launch the cloud services dashboard for your project and find your way to the **
 
 </div>
 
-Then create the config in your cloud service, and make sure that access is restricted to **Master Key Only**. This will keep the API key safe in your cloud service.
+次に、クラウドサービスで設定を作成し、アクセスを**Master Key Only**に制限することを確認します。これにより、APIキーはクラウドサービス内で安全に保持されます。
 
 <div className="ndl-image-with-background xl">
 
@@ -36,9 +36,9 @@ Then create the config in your cloud service, and make sure that access is restr
 
 </div>
 
-## Accepting a one time payment
+## 一回限りの支払いの受け入れ
 
-Let's start with the basic example of your user buying a product from your application with a one time payment. First you need to make sure you have [created the product in stripe](https://support.stripe.com/questions/how-to-create-products-and-prices) and that it has a one time price. Find the `Price Id` in your dashboard, it will look like this.
+ユーザーがアプリケーションから製品を購入し、一回限りの支払いを行う基本的な例から始めましょう。まず、[Stripeで製品を作成し](https://support.stripe.com/questions/how-to-create-products-and-prices)、一回限りの価格があることを確認する必要があります。ダッシュボードで`Price Id`を見つけ、これは次のようになります。
 
 <div className="ndl-image-with-background xl">
 
@@ -46,7 +46,7 @@ Let's start with the basic example of your user buying a product from your appli
 
 </div>
 
-Copy it for we will use it in a bit. Let's say you are creating a game where you can buy virtual products, and you have a checkout screen that looks something like this:
+これをコピーします。これからすぐに使用します。例えば、仮想製品を購入できるゲームを作成していて、チェックアウト画面が次のようになっているとします：
 
 <div className="ndl-image-with-background ">
 
@@ -54,7 +54,7 @@ Copy it for we will use it in a bit. Let's say you are creating a game where you
 
 </div>
 
-When the user clicks the **Checkout** button you will use the **Buy Products** logic component that is part of the prefab. It will redirect the user to a checkout page that is hosted by stripe where the user can provide credit card details and complete the purchase.
+ユーザーが**Checkout**ボタンをクリックすると、プリファブの一部である**Buy Products**ロジックコンポーネントを使用します。これにより、ユーザーはStripeがホストするチェックアウトページにリダイレクトされ、そこでクレジットカードの詳細を提供し、購入を完了することができます。
 
 <div className="ndl-image-with-background xl">
 
@@ -62,7 +62,7 @@ When the user clicks the **Checkout** button you will use the **Buy Products** l
 
 </div>
 
-You need to send a signal to **Do** when you want the redirect to happen and you need to provide an array of **Items** that Stripe should prompt the user to pay for. This is an array of objects, one for each product type to purchase (kind of like a checkout cart). The function node in the graph above have the following short code:
+リダイレクトを行いたいときに**Do**にシグナルを送信する必要があります。また、Stripeがユーザーに支払いを促す**Items**の配列を提供する必要があります。これは、購入する製品タイプごとに1つのオブジェクトを含む配列です（チェックアウトカートのようなもの）。上記のグラフの関数ノードには、次の短いコードがあります：
 
 ```javascript
 Outputs.Items = [
@@ -73,7 +73,9 @@ Outputs.Items = [
 ];
 ```
 
-You also need to provide a payment **Owner Id**, this is simply an **Id** that you will need later to fulfill the purchase. In this case we are going to assign a magic sword item to our user so we need to pass in the user as the owner of the payment. More on this later under the fulfilment topic.
+また、支払いの**Owner Id**も提供する必要があります。これは、後で購入を履
+
+行するために必要な**Id**です。この場合、魔法の剣アイテムをユーザーに割り当てるので、所有者としてユーザーを渡す必要があります。履行トピックの下でこれについて詳しく説明します。
 
 <div className="ndl-image-with-background xl">
 
@@ -81,7 +83,7 @@ You also need to provide a payment **Owner Id**, this is simply an **Id** that y
 
 </div>
 
-This will open a new tab with the stripe checkout page where the user can complete the purchase. When the user succeeds, or if the payment is cancelled **Stripe** will redirect back to your application. This is done using two redirect urls. You will need to add these to the **Config** of your application, the exact values should match your domain when you have deployed the app, but for now you can just put in any value:
+これにより、新しいタブが開き、Stripeのチェックアウトページが表示され、ユーザーは購入を完了することができます。ユーザーが成功するか、支払いがキャンセルされると、**Stripe**はあなたのアプリケーションにリダイレクトされます。これは、2つのリダイレクトURLを使用して行われます。これらをアプリケーションの**Config**に追加する必要があります。正確な値は、アプリをデプロイしたときのドメインと一致する必要がありますが、今のところ任意の値を入れることができます：
 
 <div className="ndl-image-with-background xl">
 
@@ -89,7 +91,7 @@ This will open a new tab with the stripe checkout page where the user can comple
 
 </div>
 
-Actually when running locally (while developing your app in the editor) they will get a different value, to customize this value look in the **Stripe / Settings** component among your cloud functions.
+実際には、ローカルで実行している間（エディターでアプリを開発している間）に異なる値が得られます。この値をカスタマイズするには、クラウド関数の中にある**Stripe / Settings**コンポーネントを見てください。
 
 <div className="ndl-image-with-background xl">
 
@@ -97,26 +99,26 @@ Actually when running locally (while developing your app in the editor) they wil
 
 </div>
 
-- The `Checkout Success Url` is overridden when working locally and set to `http://localhost:8574/checkout-success`
-- The `Checkout Cancel Url` is overridden when working locally and set to `http://localhost:8574/checkout-cancel`
+- `Checkout Success Url`はローカルで作業しているときに上書きされ、`http://localhost:8574/checkout-success`に設定されます
+- `Checkout Cancel Url`はローカルで作業しているときに上書きされ、`http://localhost:8574/checkout-cancel`に設定されます
 
-You need to create pages that map to these urls, or update the two urls to match your application. To learn more about how to use configurations in your app check out the [Config](/nodes/data/cloud-data/config) node.
+これらのURLにマッピングされるページを作成する必要があります。または、2つのURLをアプリケーションに合わせて更新する必要があります。アプリで設定を使用する方法について詳しくは、[Config](/nodes/data/cloud-data/config)ノードをチェックしてください。
 
 :::note
-If things don't work as expected (there are many things that can go wrong), the **Developer** part of the **Stripe Dashboard** is a good place to start looking. Here you can see all latest requests made and it will show you errors and might give you clues to what went wrong.
+予想通りに動作しない場合（間違っている可能性のある多くのことがあります）、**Stripe Dashboard**の**Developer**部分は調べ始めるのに良い場所です。ここでは、最新のリクエストがすべて表示され、エラーが表示され、何が間違っているのか手がかりを得ることができます。
 :::
 
-## Fulfillment and webhooks
+## 履行とWebhook
 
-Now when the user has completed the checkout flow **Stripe** will notify your application that you can fulfill the request (in this case, give the user the magic sword). This is done using something called **Webhooks**, for us this means that **Stripe** will call a **Cloud Functions** of our choosing to let us know that the payment was successful. First you need to set up the webhook, and when developing **Stripe** has a neat tool that will let you test the entire flow in the Noodl editor before deploying.
+ユーザーがチェックアウトフローを完了すると、**Stripe**はアプリケーションにリクエストを履行できること（この場合は、ユーザーに魔法の剣を与えること）を通知します。これは**Webhook**を使用して行われます。私たちにとっては、これは**Stripe**がチェックアウトセッションが完了したことを知らせるために選択した**Cloud Functions**を呼び出すことを意味します。まず、Webhookを設定する必要があります。開発中には、**Stripe**にはNoodlエディタで完全なフローをテストできる便利なツールがあります。
 
-Visit [this page](https://dashboard.stripe.com/test/webhooks/create?endpoint_location=local) of your **Stripe Dashboard** to install the tools needed on your computer and perform the setup. Now when starting the tool you should use the following command:
+**Stripe Dashboard**の[このページ](https://dashboard.stripe.com/test/webhooks/create?endpoint_location=local)にアクセスして、コンピュータに必要なツールをインストールし、セットアップを行ってください。ツールを起動するときは、次のコマンドを使用してください：
 
 ```bash
 $ stripe listen --forward-to localhost:8577/functions/stripe-webhook
 ```
 
-Next you will need to create a cloud function called `stripe-webhook` (small case), this is the function that will be called when the checkout session is completed. Start by adding a **Stripe / Events / Process Stripe Payment Event** logic component to your function like this:
+次に、`stripe-webhook`（小文字）という名前のクラウド関数を作成する必要があります。これが、チェックアウトセッションが完了したときに呼び出される関数です。**Stripe / Events / Process Stripe Payment Event**ロジックコンポーネントを関数に追加して、次のように接続します：
 
 <div className="ndl-image-with-background xl">
 
@@ -124,7 +126,7 @@ Next you will need to create a cloud function called `stripe-webhook` (small cas
 
 </div>
 
-Make sure your cloud function can be called without authorization since it will be called by **Stripe** and not be a logged in user in your app, edit the properties of the **Request** node.
+クラウド関数が認証なしで呼び出せるように、**Request**ノードのプロパティを編集してください。
 
 <div className="ndl-image-with-background l">
 
@@ -133,25 +135,27 @@ Make sure your cloud function can be called without authorization since it will 
 </div>
 
 :::note
-It's good practice to return a response to Stripe as quickly as possible. A few database updates or API calls are fine, but complex long running tasks can cause Stripe to fail with a ["timed out" error](https://support.stripe.com/questions/webhooks-how-to-investigate-and-fix-timed-out).
+Stripeにできるだけ早くレスポンスを返すことが良い慣行です。いくつかのデータベースの更新やAPIコールは問題ありませんが、複雑な長時間実行されるタスクはStripeが["タイムアウト"エラー](https://support.stripe.com/questions/webhooks-how-to-investigate-and-fix-timed-out)で失敗する原因となることがあります。
 :::
 
-When the payment is completed successfully a **Payment Completed** signal will be sent from the **Process Stripe Payment Event** node. We can use this to create our virtual magic sword and give it to our user. Here are a few important outputs that we get with the signal.
+支払いが成功すると、**Process Stripe Payment Event**ノードから**Payment Completed**シグナルが送信されます。これを使用して、仮想の魔法の剣を作成し、ユーザーに与えることができます。ここで重要ないくつかの出力がシグナルと共に送信されます。
 
-- `Payment Owner Id` This is the **Id** that we provided when starting the checkout session above with the **Buy Products** action. In this case it will point to the user making the purchase so we can use it when creating the sword.
-- `Items` is an array with objects containing the items that was purchased (same as was sent into the **Buy Products** action) but augmented with some important data, this is what they look like:
+- `Payment Owner Id` これは
+
+、上記の**Buy Products**アクションでチェックアウトセッションを開始するときに提供した**Id**です。この場合、購入を行うユーザーを指すので、剣を作成するときに使用できます。
+- `Items` は、購入されたアイテムを含むオブジェクトの配列です（**Buy Products**アクションに送信されたものと同じですが、重要なデータで拡張されています）。これがそのように見えるものです：
 
 ```javascript
 [
   {
-    Quantity, // The number of this item
-    PriceId, // The price it was puchased at
-    ProductId, // The Id of the product from your stripe dashboard
+    Quantity, // このアイテムの数
+    PriceId, // 購入時の価格
+    ProductId, // Stripeダッシュボードからの製品のId
   },
 ];
 ```
 
-Let's say that we have a class of record in our cloud service called **Product**, here we will create items that have a **productId** that we get from stripe (this will tell us what was purchased), and a pointer to a user called **ownerId** so that later we can query all products that a user has purchased. We can hook it up like this:
+クラウドサービスダッシュボードで**Product**という名前のレコードクラスを持っているとしましょう。ここでは、Stripeから取得した**productId**を持つアイテムを作成します（これにより、何が購入されたかがわかります）。そして、**ownerId**というユーザーへのポインタを持ちます。これにより、後でユーザーが購入した製品をすべてクエリすることができます。次のように接続できます：
 
 <div className="ndl-image-with-background xl">
 
@@ -159,15 +163,15 @@ Let's say that we have a class of record in our cloud service called **Product**
 
 </div>
 
-The little function node is used to extract the first product id from the **Items** array with the following little snippet:
+小さな関数ノードは、**Items**配列から最初の製品IDを抽出するために次の小さなスニペットを使用しています：
 
 ```javascript
 if (Inputs.Items) Outputs.ProductId = Inputs.Items[0].ProductId;
 ```
 
-That's it, now we can sell virtual magic swords to our users. You can test out the payment flow in your application when running on your desktop by opening a browser and navigating to `http://localhost:8574` where Noodl serves your application while running locally.
+これで、ユーザーに仮想の魔法の剣を販売することができます。デスクトップでアプリケーションを実行しているときに、ブラウザを開いて`http://localhost:8574`に移動することで、アプリケーションでの支払いフローをテストできます。Noodlは、ローカルで実行している間にアプリケーションを提供します。
 
-When you complete the payment flow you should see the cloud function light up as the signals is triggered and the data flows through the graph. You can also use this to find any problems by inspecting the data on the connections.
+支払いフローを完了すると、シグナルがトリガーされ、データがグラフを通って流れるため、クラウド関数がアクティブになるのが見えるはずです。接続上のデータを検査することで、問題を見つけることもできます。
 
 <div className="ndl-image-with-background xl">
 
@@ -176,10 +180,10 @@ When you complete the payment flow you should see the cloud function light up as
 </div>
 
 :::note
-The **Product Id** from stripe (that you can find in your [Stripe Dashboard](https://dashboard.stripe.com)) is a unique identifier for the product, it's good to use this same **Id** in your app to identify items of purchase.
+Stripeの**Product Id**（[Stripe Dashboard](https://dashboard.stripe.com)で見つけることができます）は、製品の一意の識別子です。アプリ内で購入アイテムを識別するために、この**Id**を使用することが良いです。
 :::
 
-When you deploy your application you need to make sure that the two redirect urls in your config above points to the correct domain, customer or sandbox. And most important you need to provide the deployed webhook function url to **Stripe**. First, you need to find the endpoint of your cloud services that you will use for your deployed app, go to the **Cloud Services** sidebar tab and then **Manage cloud service**.
+アプリケーションをデプロイするときは、上記の設定の2つのリダイレクトURLが正しいドメイン、顧客、またはサンドボックスを指していることを確認する必要があります。そして最も重要なことは、デプロイされたWebhook関数URLを**Stripe**に提供する必要があります。まず、デプロイされたアプリのクラウドサービスのエンドポイントを見つける必要があります。**Cloud Services**サイドバータブに移動し、**Manage cloud service**を選択します。
 
 <div className="ndl-image-with-background l">
 
@@ -187,7 +191,7 @@ When you deploy your application you need to make sure that the two redirect url
 
 </div>
 
-This will show the follow popup, here you are looking for the **Endpoint** url.
+これにより、次のポップアップが表示されます。ここで探しているのは**Endpoint** URLです。
 
 <div className="ndl-image-with-background xl">
 
@@ -195,21 +199,23 @@ This will show the follow popup, here you are looking for the **Endpoint** url.
 
 </div>
 
-Now the endpoint for your **Webhook** function will be (replacing `xyz` and `123` with the values from your endpoint in the dialog above):
+次に、エンドポイントURL（上記のダイアログでエンドポイントの値を置き換える）を使用して、**Webhook**関数のエンドポイントが次のようになります：
 
 ```bash
 https://backend.noodl.cloud/xyz/123/functions/stripe-webhook
 ```
 
-With that url in hand go to the [Stripe Dashboard](https://dashboard.stripe.com/test/webhooks/create) to add a new webhook endpoint. You also need to tell stripe what events you are interested in receiving. For one time payments you only need:
+このURLを手に入れたら、[Stripe Dashboard](https://dashboard.stripe.com/test/webhooks/create)にアクセスして、新しいWebhookエンドポイントを追加してください。また、関心のあるイベントをStripeに伝える必要があります。一回限りの支払いの場合は、次のイベントのみが必要です：
 
-- `checkout.session.completed` you will find it under the **Checkout** tab.
+- `checkout.session.completed` これは**Checkout**タブの下にあります。
 
-## Storing the Customer Id
+## 顧客IDの保存
 
-The way we have set it up now **Stripe** will create a new customer for every checkout session, although this works it will create a lot of customers in your stripe dashboard and the user will have to fill out credit card details every time they make a new purchase. To avoid this we can store the **Customer Id** from **Stripe** in our app database and in later checkouts, let **Stripe** know it's the same customer. In this case, a customer maps to a **User** in our database, so let's create a new property on our user record called **stripeCustomerId** make sure it has the **String** type.
+今のところ、**Stripe**はチェックアウトセッションごとに新しい顧客を作成しますが、これは機能しますが、Stripeダッシュボードに多くの顧客が作成され、ユーザーが新しい購入を行うたびにクレジットカードの詳細を入力する必要があります。これを避けるために、**Stripe**からの**Customer Id**をアプリデータベースに保存し、後のチェックアウトで同じ顧客であることを**Stripe**に知らせることができます。この場合、顧客は**User**にマッピングされるため、**User**レコードに**stripeCustomerId**という新しいプロパティを作成し、**String**タイプ
 
-Then in your **stripe-webhook** cloud function, hook it up so the `Customer Id`received along with the **Payment Completed** signal is stored in the user record (remember we used the **Payment Owner Id** to keep the user when starting the checkout process).
+を持たせます。
+
+その後、**stripe-webhook**クラウド関数で、**Payment Completed**シグナルと共に受信した`Customer Id`をユーザーレコード（**Payment Owner Id**を使用してチェックアウトプロセスを開始したときに使用したユーザーを指す）に保存するように接続します。
 
 <div className="ndl-image-with-background xl">
 
@@ -217,7 +223,7 @@ Then in your **stripe-webhook** cloud function, hook it up so the `Customer Id`r
 
 </div>
 
-Now after the user has made one purchase we can use the **stripeCustomerId** property when initiating new checkout sessions. Add these connections to where you initiate the session with the **Buy Products** action.
+これで、新しいチェックアウトセッションを開始するときに、ユーザーが1回購入を行った後に**stripeCustomerId**プロパティを使用できるようになりました。**Buy Products**アクションを開始するところにこれらの接続を追加してください。
 
 <div className="ndl-image-with-background xl">
 
@@ -225,13 +231,13 @@ Now after the user has made one purchase we can use the **stripeCustomerId** pro
 
 </div>
 
-You can also provide a `Customer Name`and a `Customer Email` if you have them, in that case they will be prefilled in the form of the checkout session. With this hooked up, try the new flow two times and the second time you should see that it retains your details.
+`Customer Name`と`Customer Email`も提供することができます。その場合、それらはチェックアウトセッションのフォームに事前に入力されます。これを接続した後、新しいフローを2回試して、2回目には詳細が保持されていることがわかります。
 
-## Subscriptions
+## サブスクリプション
 
-With this prefab you can also build applications that offer subscriptions or plans for your users. It works much similar to above so make sure you have completed all the steps for one time payments as we won't go into as much more detail here.
+このプリファブを使用して、ユーザーにサブスクリプションまたはプランを提供するアプリケーションを構築することもできます。これは上記の一回限りの支払いと非常に似ているため、ここでは詳細には触れませんので、一回限りの支払いのすべてのステップを完了していることを確認してください。
 
-Like for one time payments you need products set up and you need prices for your products. A product with a recurring price corresponds to a plan type (so maybe one for Basic, Pro etc), and a product can have several prices and billing periods. If there is no plan, we assume that your are on the `free` plan initially. So to get the prefabs working properly you need to start by initializing the `Plans` array that should contain all your plans, this can be done e.g. in your home `App` component.
+一回限りの支払いと同様に、製品を設定し、製品に価格を設定する必要があります。定期的な価格を持つ製品は、プランタイプ（たとえば、Basic、Proなど）に対応し、製品にはいくつかの価格と請求期間があります。プランがない場合は、初期に`free`プランにいると想定します。したがって、プリファブを適切に機能させるためには、すべてのプランを含む`Plans`配列を初期化する必要があります。これは、例えばホームの`App`コンポーネントで行うことができます。
 
 <div className="ndl-image-with-background xl">
 
@@ -239,7 +245,7 @@ Like for one time payments you need products set up and you need prices for your
 
 </div>
 
-You need the array to follow a certain schema, this is an example of what you could put in a function node as above:
+配列は特定のスキーマに従う必要があります。これは、上記の関数ノードに入れることができる例です：
 
 ```javascript
 Outputs.Items = [
@@ -251,39 +257,41 @@ Outputs.Items = [
   {
     ProductId: "xyz",
     Name: "Basic",
-    Desc: "With the basic plan you get features A,B,C. Its billed monthly.",
-    id: "the-price-id-from-stripe-for-this-plan",
+    Desc: "基本プランでは、A、B、Cの機能が提供されます。月額課金です。",
+    id: "stripeからのこのプランの価格ID",
     Period: "month",
     Price: "$99",
     Details: [
       {
-        Text: "Sharing Tools",
+        Text: "共有ツール",
         InPlan: true,
       },
       {
-        Text: "Design Tools",
+        Text: "デザインツール",
         InPlan: true,
       },
       {
-        Text: "Private Messages",
+        Text: "プライベートメッセージ",
         InPlan: false,
       },
-      // ... more details
+      // ... その他の詳細
     ],
   },
-  // .... more plans
+  // .... その他のプラン
 ];
 ```
 
-You need the `free` product in there (as this will be the default displayed if there is no current subscription) and then one entry for each subscription product and price. The prefabs supports filtering on `month` and `year` billing periods so you can tag your entries in the array. Some notes:
+`free`プロダクトが必要です（これが現在のサブスクリプションがない場合にデフォルトで表示されるプランです）。そして、各サブスクリプション製品と価格ごとに1つのエントリが必要です。プリファブは`month`と`year`の請求期間のフィルタリングをサポートしているので、配列のエントリにタグを付けることができます。いくつかの注意点：
 
-- `Details` is an array of features for your plan. You can supply this and it will be shown in the `Plan Picker` visual component that you can use if you like. You can provide a **Text** and **IsPlan** which is a boolean indicating if this specific feature is in the plan or not.
+- `Details`はプランの機能の配列です。これを提供すると、好きなように使用できる`Plan Picker`ビジュアルコンポーネントに表示されます。**Text**と**IsPlan**を提供できます。**IsPlan**は、この特定の機能がプランに含まれているかどうかを示すブール値です。
 
 :::note
-In the example below we are going to assume that the current **User** is the subscription owner, but in many cases maybe it will be a different record, such an **Orginization** or a **Team**. You would use the same pattern as below just with a different record class. In that case the **Orginization** or **Team** would be the customer so that is where you would store the **stripeCustomerId** and **plan**.
+以下の例では、現在の**User**がサブスクリプションの所有者であると仮
+
+定しますが、多くの場合、**Orginization**や**Team**など、別のレコードが該当する場合があります。以下と同じパターンを使用して別のレコードクラスを使用します。その場合、**Orginization**または**Team**が顧客となるため、そこに**stripeCustomerId**と**plan**を保存します。
 :::
 
-First let's use a handy little visual component to show the current plan, it's called `Current Plan Badge` and can be found in the `Stripe/Subscriptions` folder on your frontend. You can put the badge on a page where you will show the current plan and hook it up as below, as an example.
+まず、現在のプランを表示するための便利な小さなビジュアルコンポーネントを使用しましょう。それは`Current Plan Badge`と呼ばれ、フロントエンドの`Stripe/Subscriptions`フォルダにあります。現在のプランを表示するページにこのバッジを配置し、以下に示すように接続します。
 
 <div className="ndl-image-with-background xl">
 
@@ -291,14 +299,14 @@ First let's use a handy little visual component to show the current plan, it's c
 
 </div>
 
-The most important thing is to hook up the **stripeCustomerId** from your user (or whatever record you use as subscription owner). This is needed to fetch the current plan and show it. There are a few good to know signals sent from this component.
+このコンポーネントから送信されるいくつかの重要なシグナルがあります。
 
-- **Upgrade** This is sent if the user clicks the upgrade button. In this case we navigate to new page where we will show all the plans you can upgrade to. More on that later.
-- **Plan Canceled** A signal is sent here if the plan was canceled.
-- **Plan Renewed** A signal is sent here if the plan was renewed.
-- **Failure** A signal is sent here if an operation failed, the error can be found on the **Error** output.
+- **Upgrade** ユーザーがアップグレードボタンをクリックすると、このシグナルが送信されます。この場合、アップグレードできるすべてのプランを表示する新しいページにナビゲートします。後で詳しく説明します。
+- **Plan Canceled** プランがキャンセルされた場合、このシグナルが送信されます。
+- **Plan Renewed** プランが更新された場合、このシグナルが送信されます。
+- **Failure** 操作が失敗した場合、このシグナルが送信されます。エラーは**Error**出力で見つけることができます。
 
-This is what it looks like:
+これがその見た目です：
 
 <div className="ndl-image-with-background l">
 
@@ -306,11 +314,11 @@ This is what it looks like:
 
 </div>
 
-However when you have a new user they will not have a plan, so it will display the free plan and ask to upgrade, in this example we navigate to a new page to show all options.
+しかし、新しいユーザーの場合、プランがないため、無料プランが表示され、アップグレードを求められます。この例では、すべてのオプションを表示する新しいページにナビゲートします。
 
-## Buying a plan
+## プランの購入
 
-When buying a plan we can use another handy visual component on your frontend called `Stripe/Subscriptions/Plan Picker`. Simply put that on a page and hook it up as shown below:
+プランの購入には、フロントエンドにある`Stripe/Subscriptions/Plan Picker`という便利なビジュアルコンポーネントを使用することができます。それをページに配置し、以下に示すように接続します：
 
 <div className="ndl-image-with-background l">
 
@@ -318,7 +326,7 @@ When buying a plan we can use another handy visual component on your frontend ca
 
 </div>
 
-A few important notes on this. First we connect the **stripeCustomerId** like before, this allows the component to fetch the current plan and also to simply checkout by allowing **Stripe** to save customer info in the checkout process. Furthermore we need to provide a subscription owner id via the **Owner Id** input, just like above this will be used in the **Webhook** to assign the plan to the correct record. In this case we are using the **User** record as the subscription owner. This will result in something like this:
+重要なのは、以前と同様に**stripeCustomerId**を接続することです。これにより、コンポーネントは現在のプランを取得し、チェックアウトプロセスで**Stripe**に顧客情報を保存することを許可します。さらに、**Owner Id**入力を介してサブスクリプションの所有者IDを提供する必要があります。この場合、**User**レコードをサブスクリプションの所有者として使用しています。これにより、次のような結果が得られます：
 
 <div className="ndl-image-with-background l">
 
@@ -326,13 +334,15 @@ A few important notes on this. First we connect the **stripeCustomerId** like be
 
 </div>
 
-When the **Upgrade** button is clicked, the user will be redirected to the **Stripe** checkout flow just like for one time payments, and redirected back to your application using the same process.
+**Upgrade**ボタンがクリックされると、ユーザーは一回限りの支払いと同様に**Stripe**のチェックアウトフローにリダイレクトされ、同じプロセスを使用してアプリケーションにリダイレクトされます。
 
-## Subscription fulfillment
+## サブスクリプションの履行
 
-Just like for one time payments stripe will alert us using the **Webhook** when we receive changes in subscriptions. This time we are going to use the `Stripe/Events/Process Stripe Subscription Event` component. This will emit signals on important events, namely when a subscriptions is started, updated or deleted.
+一回限りの支払いと同様に、サブスクリプションに変更があると、**Stripe**は**Webhook**を使用して私たちに警告します。今回は、`Stripe/Events/Process Stripe Subscription Event`コンポーネントを使用します。このコンポーネントは、重要なイベント、つまりサブスクリプションが開始されたとき、更新されたとき、または削除されたときにシグナルを発します。
 
-First we create a new property on our **User** record in the cloud services dashboard. We call it `plan` and give it the **String** type, in this property we will store the current plan so we can use it to determine which features should be available in our application. Here is a simple way to hook it up so that we keep track of the current plan the user is subscribed to.
+まず、**User**レコードに新しいプロパティを作成します。それを`plan`
+
+と呼び、**String**タイプを与えます。このプロパティには、現在のプランを保存します。これにより、アプリケーションでどの機能が利用可能かを決定することができます。現在のプランを購読しているユーザーに対応する機能を提供するために、現在のプランを追跡するために必要なすべてを次のように接続します。
 
 <div className="ndl-image-with-background xl">
 
@@ -340,11 +350,11 @@ First we create a new property on our **User** record in the cloud services dash
 
 </div>
 
-Let's review the three signals a bit:
+3つのシグナルを少し詳しく見てみましょう：
 
-- **Subscription Created** This is emited when a subscription is successfully bought, here we store the **Customer Id** with the record pointed to by **Subscription Owner Id**, which in this case is a **User** record. We also store the **Product Id** of the plan. We can use this **Id** in our user to determine which features should be available in our application.
-- **Subscription Updated** A signal is emitted here if the user updates a plan, so we do the same as when created. We store the **Product Id** of the plan, so we can serve the corresponding features in our application.
-- **Subscription Deleted** Finally, a signal is sent here if the subscription ends. Here we should revert back to the free plan. We do this using the **Set Record Properties** node on the subscription owner (the user) and by specifying `free` for the plan.
+- **Subscription Created** これは、サブスクリプションが正常に購入されたときに発行されます。ここでは、**Subscription Owner Id**で指されるレコード（この場合は**User**レコード）に**Customer Id**を保存します。また、プランの**Product Id**も保存します。この**Id**をアプリのユーザーに使用して、アプリケーションでどの機能が利用可能かを決定することができます。
+- **Subscription Updated** ユーザーがプランを更新した場合、ここで同じシグナルが発行されます。作成時と同じように、プランの**Product Id**を保存します。これにより、アプリケーションで対応する機能を提供することができます。
+- **Subscription Deleted** 最後に、サブスクリプションが終了した場合、ここでシグナルが送信されます。ここでは、無料プランに戻す必要があります。これは、サブスクリプションの所有者（ユーザー）に対して**Set Record Properties**ノードを使用し、プランに`free`を指定することで行います。
 
 <div className="ndl-image-with-background l">
 
@@ -352,9 +362,9 @@ Let's review the three signals a bit:
 
 </div>
 
-There you go, that is all needed to build a subscription purchase and management flow.
+これで、サブスクリプションの購入と管理フローを構築するために必要なすべてが揃いました。
 
-One final notice, when you register your deployed webhook with stripe (as described above, in the [Stripe Dashboard](https://dashboard.stripe.com/test/webhooks/create)), make sure to listen to these events, you find the under the **Customer** section:
+最後に注意しておきたいのは、デプロイされたWebhookをStripeに登録するとき（上記で説明したように、[Stripe Dashboard](https://dashboard.stripe.com/test/webhooks/create)で行います）、これらのイベントをリッスンするようにStripeに指定することです。これらは**Customer**セクションの下にあります：
 
 - `customer.subscription.created`
 
@@ -362,9 +372,9 @@ One final notice, when you register your deployed webhook with stripe (as descri
 
 - `customer.subscription.deleted`
 
-## Invoices
+## 請求書
 
-When your users are subscribed to plans and hopefully paying their bills they might need to viewer invoices and collect receipts. You can have **Stripe** email your customers when an invoice is successfully paid, but it might also be good to show a list in the billing part of your application. You can do this with the `Stripe/List Invoices` cloud function as shown below:
+ユーザーがプランにサブスクライブし、請求を支払っている場合、請求書を表示し、領収書を収集する必要がある場合があります。**Stripe**に成功した請求書の支払い時に顧客にメールを送信させることができますが、アプリケーションの請求部分にリストを表示することも良いでしょう。これは、以下に示すように`Stripe/List Invoices`クラウド関数を使用して行うことができます：
 
 <div className="ndl-image-with-background xl">
 
@@ -372,20 +382,20 @@ When your users are subscribed to plans and hopefully paying their bills they mi
 
 </div>
 
-Make sure you provide the **Stripe Cusomter Id** that you should have stored in the previous steps. The array returned will have the following schema:
+前の手順で保存したはずの**Stripe Customer Id**を提供することを確認してください。返される配列には次のスキーマがあります：
 
 ```javascript
 {
   id: "...";
-  Status: "paid"; // Check the stripe documentation for possible invoice statuses
-  ManageUrl: "https://..."; // An url where you can redirect the user to manage the invoice
-  PdfUrl: "https://..."; // An url where you can redirect the user to download the invoice as PDF
-  PeriodStart: "2022-12-08T14:38:50.000Z"; // Start of the invoice period
-  PeriodEnd: "2022-12-08T14:38:50.000Z"; // End of period
+  Status: "paid"; // 可能な請求書のステータスについてはStripeのドキュメントを確認してください
+  ManageUrl: "https://..."; // 請求書を管理するためにユーザーをリダイレクトできるURL
+  PdfUrl: "https://..."; // 請求書をPDFとしてダウンロードするためにユーザーをリダイレクトできるURL
+  PeriodStart: "2022-12-08T14:38:50.000Z"; // 請求期間の開始
+  PeriodEnd: "2022-12-08T14:38:50.000Z"; // 期間の終了
   AmountDue: 3500;
   AmountPaid: 3500;
   Currency: "usd";
 }
 ```
 
-I hope you have enjoyed this guide and thay you have some tools to start building great payment capabilities to your apps using **Stripe**.
+このガイドを楽しんでいただけたことを願っています。そして、**Stripe**を使用してアプリに素晴らしい支払い機能を構築するためのツールがいくつか手に入ったことを願っています。

@@ -1,35 +1,35 @@
 ---
-title: Grouping & Layout
+title: グルーピングとレイアウト
 hide_title: true
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl'
 import CopyToClipboardButton from '../../../src/components/copytoclipboardbutton';
 
-# Grouping & Layout
+# グルーピングとレイアウト
 
-## What you will learn in this guide
+## このガイドで学べること
 
-This guide will cover how to lay out visual elements. It's an important concept for creating responsive, dynamic interfaces for your apps.
+このガイドでは、視覚要素をレイアウトする方法について学びます。これは、アプリのためのレスポンシブでダイナミックなインターフェイスを作成するための重要な概念です。
 
-The central node for defining a layout in Noodl is the [Group](/nodes/basic-elements/group/) node. This guide will walk through the most important Group properties for defining a layout.
+Noodlでレイアウトを定義するための中心的なノードは、[Group](/nodes/basic-elements/group/)ノードです。このガイドでは、レイアウトを定義するためのGroupプロパティの中で最も重要なものを説明します。
 
-### Overview
+### 概要
 
-We will cover the following topics in this guide:
+このガイドでは、以下のトピックを扱います：
 
-- The Group Node
-- Layout Direction and position
-- Size and Dimensions
-- Alignment
-- Margin and Padding
-- Multi Line Layout
+- Groupノード
+- レイアウト方向と位置
+- サイズと寸法
+- アライメント
+- マージンとパディング
+- 複数行レイアウト
 
-## The Group Node
+## Groupノード
 
-The **Group** node is the most central node for doing a layout. It's the fundamental way of building visual hierarchies and structures in Noodl.
+**Group**ノードは、レイアウトを行うための最も中心的なノードです。これは、Noodlで視覚的階層と構造を構築するための基本的な方法です。
 
-**Group** nodes are arranged in a hierarchy and can have other nodes as children. It controls the layout of its children and there are a number of properties that can be used to specify how the children of a **Group** node will be laid out. You can copy the various node examples used in this guide by clicking "Copy nodes" and then pasting into a Noodl project.
+**Group**ノードは階層構造で配置され、他のノードを子として持つことができます。それは、その子のレイアウトを制御し、**Group**ノードの子がどのようにレイアウトされるかを指定するために使用できる多数のプロパティがあります。このガイドで使用される様々なノードの例をコピーするには、「ノードをコピー」をクリックしてから、Noodlプロジェクトに貼り付けます。
 
 <div className="ndl-image-with-background xl">
   <img src={useBaseUrl("/docs/guides/user-interfaces/layout/groups.png")} />
@@ -84,7 +84,7 @@ The **Group** node is the most central node for doing a layout. It's the fundame
 
 :::tip
 
-Hovering on a node in Noodl with the mouse cursor will highlight the corresponding visual element in the preview window. This is a great way to debug your layout. For example you hover over a node and you cannot see it in the preview window, it's likely that it has a zero size or lies outside the screen.
+Noodlでマウスカーソルをノードにホバーすると、プレビューウィンドウで対応する視覚要素がハイライト表示されます。これは、レイアウトをデバッグするのに最適な方法です。例えば、ノードにホバーしてもプレビューウィンドウで見えない場合は、そのノードがゼロサイズであるか、画面外にある可能性が高いです。
 
 :::
 
@@ -94,9 +94,9 @@ Hovering on a node in Noodl with the mouse cursor will highlight the correspondi
     <video width="100%" autoPlay muted loop src={useBaseUrl("/docs/guides/user-interfaces/layout/hover.mp4")}/>
 </div>
 
-## Layout direction
+## レイアウト方向
 
-By default the **Group** node will stack its children vertically. You can change the layout direction by editing the **Layout** property:
+デフォルトでは、**Group**ノードはその子を垂直に積み重ねます。**レイアウト**プロパティを編集することでレイアウト方向を変更できます：
 
 <div className="ndl-image-with-background">
 
@@ -104,19 +104,21 @@ By default the **Group** node will stack its children vertically. You can change
 
 </div>
 
-- `Vertical` Children are stacked vertically.
-- `Horizontal` Children are stacked horizontally.
-- `None` Children are _not_ stacked. You will have to position them yourselves, for example by using margins, x/y positions or various alginments (see below).
+- `Vertical` 子は垂直に積み重ねられます。
+- `Horizontal` 子は水平に積み重ねられます。
+- `None` 子は積み重ねられません。マージン、x/y位置、または様々なアラインメント（以下参照）を使用して自分で配置する必要があります。
 
-Here's an example you can copy into Noodl. Click the "Copy nodes" button next to the image and press Ctrl+V (Windows) or Cmd+V (macOS) to paste them into Noodl. Make sure you have a project open.
+Noodlにコピーして使用できる例をこちらに示します。画像の隣にある「ノードをコピー」ボタンをクリックし、Ctrl+V（Windows）またはCmd+V（macOS）を押してNoodlに貼り付けます。プロジェクトが開いていることを確認してください。
 
-Change the **Layout** of the top level node to see how the direction of the child nodes change.
+最上位ノードの**レイアウト**を変更して、子ノードの方向がどのように変わるかを確認してください。
 
 <div className="ndl-image-with-background xl">
   <img src={useBaseUrl("/docs/guides/user-interfaces/layout/layout-dir.png")}></img>
   <CopyToClipboardButton
     json={{
       nodes: [
+
+
         {
           id: '9f88e7d6-959c-7946-f66d-3db6257d522b',
           type: 'Group',
@@ -188,13 +190,13 @@ Change the **Layout** of the top level node to see how the direction of the chil
   />
 </div>
 
-## Layout Position
+## レイアウト位置
 
-As a child of a group you can also control how you will be layouted by setting the **Position** property:
+グループの子として、**位置**プロパティを設定することで、レイアウトされる方法を制御することもできます：
 
-- `In Layout` - This node is part of the parent node's layout. It will be stacked with its siblings depending on the parent node's layout settings as explained above.
-- `Absolute` - Removes a node from the flow of a layout. Use margins and alignment to set the position.
-- `Sticky` - Behaves like `In Layout`, except when the node is about the be scrolled outside the parent. It'll stick to an edge of the parent instead of scrolling away. Which edge can be controlled with the _Alignment_ input.
+- `In Layout` - このノードは親ノードのレイアウトの一部です。上記で説明したように、兄弟と共に積み重ねられます。
+- `Absolute` - ノードをレイアウトの流れから削除します。マージンとアライメントを使用して位置を設定します。
+- `Sticky` - `In Layout`と同じように振る舞いますが、ノードが親からスクロールされようとするときに異なります。代わりに親の端に固定され、スクロールから離れません。どの端に固定されるかは、_Alignment_入力で制御できます。
 
 <div className="ndl-image-with-background">
 
@@ -202,9 +204,9 @@ As a child of a group you can also control how you will be layouted by setting t
 
 </div>
 
-## Dimensions
+## 寸法
 
-The dimensions section control how the size of a **Group** will be calculated.
+寸法セクションでは、**Group**のサイズがどのように計算されるかを制御します。
 
 <div className="ndl-image-with-background">
 
@@ -212,14 +214,14 @@ The dimensions section control how the size of a **Group** will be calculated.
 
 </div>
 
-A **Group** can also get its dimensions from the size of its children. You use the icons at the top to change between the four modes (from right):
+**Group**は、その子供たちのサイズから寸法を取得することもできます。上部のアイコンを使用して、四つのモード（右から）を切り替えます：
 
-- **Explicit width & height** Specify both width and height explicitly in pixels (`px`), percentage of parent (`%`), or as a percentage of the viewport size (`vw` and `vh`).
-- **Explicit width & content height** Specify the width explicitly but the height will be the total of the children heights and margins.
-- **Explicit height & content width** Specify the height explicitly but the width will be the total of the children widths and margins.
-- **Content width & height** The size of this group will be the total width and height of the children based on the layout.
+- **明示的な幅と高さ** 幅と高さをピクセル（`px`）、親のパーセンテージ（`%`）、またはビューポートサイズのパーセンテージ（`vw`と`vh`）で明示的に指定します。
+- **明示的な幅とコンテンツの高さ** 幅を明示的に指定しますが、高さは子供たちの高さとマージンの合計になります。
+- **明示的な高さとコンテンツの幅** 高さを明示的に指定しますが、幅は子供たちの幅とマージンの合計になります。
+- **コンテンツの幅と高さ** このグループのサイズは、レイアウトに基づいて子供たちの合計幅と高さになります。
 
-You can copy the nodes below to an empty component in Noodl. The result is shown to the right. These nodes each use a different setting for the **Dimensions** icons.
+Noodlの空のコンポーネントに以下のノードをコピーできます。右に結果が表示されます。これらのノードはそれぞれ、**寸法**アイコンの異なる設定を使用しています。
 
 <div className="ndl-image-with-background">
   <img
@@ -250,7 +252,9 @@ You can copy the nodes below to an empty component in Noodl. The result is shown
               parameters: {
                 sizeMode: 'contentHeight',
                 backgroundColor: '#D6D6D6',
-                marginBottom: { value: 20, unit: 'px' },
+               
+
+ marginBottom: { value: 20, unit: 'px' },
                 width: { value: 100, unit: 'px' },
               },
               ports: [],
@@ -331,18 +335,18 @@ You can copy the nodes below to an empty component in Noodl. The result is shown
   />
 </div>
 
-### Fixed dimension
+### 固定寸法
 
-Sizes specified in `%` enables an additional set of dynamic size rules.
+`%`で指定されたサイズには、追加の動的サイズルールセットが有効になります。
 
-- The group will expand to fill the parent. Space is shared with siblings and the `%` value controls how much of the remaining space each node will get.
-- If the content of a Group is larger than the Group itself, it'll expand to contain the children.
+- グループは親を埋めるように拡大します。空間は兄弟と共有され、`%`の値は各ノードが残りの空間をどの程度得るかを制御します。
+- グループのコンテンツがグループ自体よりも大きい場合、子を含むように拡大します。
 
-This dynamic sizing can be disabled by enabling _Fixed_.
+この動的サイズは、_Fixed_を有効にすることで無効にできます。
 
-Here's an example with two Groups, both set to 100% height. With _Fixed_ disabled they will both try to grow to the same size as the parent. As the rules above implied, the Groups final size will be 50% to make sure that both Groups have equal space and are shown on the screen.
+ここでは、2つのグループの例を示します。それぞれが100%の高さに設定されています。_Fixed_が無効になっていると、それぞれが親と同じサイズに成長しようとします。上述のルールが示唆するように、最終的なグループのサイズは50%になり、両方のグループが画面に表示され、同等のスペースを持つようになります。
 
-Enabling _Fixed_ will force a Group to be exactly the size that's specified and disable dynamic sizing. With _Fixed_ enabled the first Group will cover the entire screen, and there will be no space left for the second Group that'll be pushed outside the screen.
+_Fixed_を有効にすると、グループが指定されたサイズに正確になり、動的サイズが無効になります。_Fixed_が有効になっている場合、最初のグループは画面全体を覆い、2番目のグループにはスペースが残らず、画面外に押し出されます。
 
 <div className="ndl-image-with-background">
 
@@ -350,10 +354,10 @@ Enabling _Fixed_ will force a Group to be exactly the size that's specified and 
 
 </div>
 
-### Clip content
+### コンテンツのクリップ
 
-A Group with dimensions set in `%` will expand to make sure it at least the same size as all of its content.
-This can be changed be either enabling `Fixed` or as in this example, enable `Clip content`.
+`%`で設定された寸法のグループは、少なくともそのコンテンツと同じサイズに拡大します。
+これは、`Fixed`を有効にするか、この例のように、`Clip content`を有効にすることで変更できます。
 
 <div className="ndl-image-with-background">
 
@@ -361,53 +365,11 @@ This can be changed be either enabling `Fixed` or as in this example, enable `Cl
 
 </div>
 
-## Alignment
+## アライメント
 
-You can use the alignment controls to pin the children to a specific edge, or how the remaining space should be distributed among the children. The padding of a group determines where that edge is.
+親ノードのアライメント設定を上書きするために、子はア
 
-A Group can control the alignment of its children using the _Align and justify content_ property.
-
-<div className="ndl-image-with-background l">
-  <img src={useBaseUrl("/docs/guides/user-interfaces/layout/alignment.gif")}></img>
-  <CopyToClipboardButton
-    json={{
-      nodes: [
-        {
-          id: '6bede195-ea0c-d5ca-a315-500079267560',
-          type: 'Group',
-          x: 198.0,
-          y: 196,
-          parameters: { backgroundColor: '#D6D6D6' },
-          children: [
-            {
-              id: 'b5beb893-c7ae-9467-da03-0032b8221ab6',
-              type: 'Circle',
-              x: 218.0,
-              y: 242,
-              parameters: { fillColor: '#858585' },
-            },
-            {
-              id: '0404c68a-525c-f975-60d3-8d0f7143abb7',
-              type: 'Circle',
-              x: 218.0,
-              y: 288,
-              parameters: { fillColor: '#858585' },
-            },
-            {
-              id: 'b2b85213-f75e-7d0b-050e-dbee3c312fd7',
-              type: 'Circle',
-              x: 218.0,
-              y: 334,
-              parameters: { fillColor: '#858585' },
-            },
-          ],
-        },
-      ],
-    }}
-  />
-</div>
-
-Children can use the _alignment_ controls to override the parent's alignment settings.
+ライメントコントロールを使用できます。
 
 <div className="ndl-image-with-background">
 
@@ -415,7 +377,7 @@ Children can use the _alignment_ controls to override the parent's alignment set
 
 </div>
 
-Children can use margins to offset the position from how it's aligned.
+子は、マージンを使用して、アライメントされた位置からオフセットすることができます。
 
 <div className="ndl-image-with-background l">
   <img src={useBaseUrl("/docs/guides/user-interfaces/layout/align.gif")}></img>
@@ -455,9 +417,9 @@ Children can use margins to offset the position from how it's aligned.
   />
 </div>
 
-## Margin and padding
+## マージンとパディング
 
-Clicking on a node will select it and open the property panel. This panel has controls for setting the margin and padding.
+ノードをクリックすると、選択されてプロパティパネルが開きます。このパネルには、マージンとパディングを設定するためのコントロールがあります。
 
 <div className="ndl-image-with-background">
 
@@ -465,15 +427,15 @@ Clicking on a node will select it and open the property panel. This panel has co
 
 </div>
 
-Here you can specify the _margin_, i.e. the distance between this node and its siblings in the layout. You can specify the margins in all four directions. You can also specify the _padding_, which is the distance from the borders of the **Group** to its children.
+ここでは、_マージン_を指定できます。これは、このノードとその兄弟との間の距離です。すべての方向でマージンを指定できます。また、_パディング_も指定できます。これは、**Group**の境界からその子供たちまでの距離です。
 
-A good way to learn these concepts is to adjust and tweak the three nodes in this simple hierarchy. Try modifying the padding and margins and note the difference between them.
+この単純な階層の3つのノードを調整して調べることで、これらの概念を学ぶことができます。パディングとマージンを変更してみて、それらの違いを確認してください。
 
-## Multiple lines
+## 複数行
 
-If the child nodes extend beyond the border of the parent you have a couple of options to control the behavior, wrapping or scrolling. This section will explain the wrapping options that are available.
+子ノードが親の境界を超える場合、折り返しまたはスクロールによって挙動を制御するオプションがいくつかあります。このセクションでは、使用可能な折り返しオプションについて説明します。
 
-Wrapping is controlled by the **Multi Line Wrap** option in the properties.
+折り返しは、プロパティの**Multi Line Wrap**オプションで制御されます。
 
 <div className="ndl-image-with-background">
 
@@ -481,13 +443,13 @@ Wrapping is controlled by the **Multi Line Wrap** option in the properties.
 
 </div>
 
-You can choose any of these options:
+これらのオプションから選択できます：
 
-- `Off` Children will extend beyond the borders of the parent node (default).
-- `On` Children will be placed on multiple lines
-- `On Reverse` The children will wrap but in the reverse direction.
+- `Off` 子は親ノードの境界を超えて拡張されます（デフォルト）。
+- `On` 子は複数行に配置されます。
+- `On Reverse` 子は逆方向に折り返されます。
 
-Here's an example of a horizontal layout with **Multi Line Wrap** set to `On`.
+ここでは、**Multi Line Wrap**が`On`に設定された水平レイアウトの例を示します。
 
 <div className="ndl-image-with-background l">
   <img src={useBaseUrl("/docs/guides/user-interfaces/layout/multi-line.gif")}></img>
@@ -524,7 +486,9 @@ Here's an example of a horizontal layout with **Multi Line Wrap** set to `On`.
               type: 'Circle',
               x: 218.0,
               y: 334.0,
-              parameters: { fillColor: '#858585' },
+              parameters: { fillColor:
+
+ '#858585' },
             },
             {
               id: '37441ff4-81ac-47ac-2882-8d3f5a4151b4',

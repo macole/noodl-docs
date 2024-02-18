@@ -8,44 +8,44 @@ const NodeType = {
 
 const nodeData = [
   {
-    label: 'UI Elements',
-    description: `These nodes make up all of the visuals of your app. Put them in your node tree whenever you want to render an element on the screen. These nodes also support <a href="/2.7/docs/guides/user-interfaces/style-variants">Variants</a> and <a href="/2.7/docs/guides/user-interfaces/visual-states">States</a>.`,
+    label: 'UI要素',
+    description: `これらのノードは、アプリのビジュアルを構成します。画面に要素をレンダリングしたい場合は、ノードツリーに追加してください。これらのノードは<a href="/2.7/docs/guides/user-interfaces/style-variants">バリアント</a>と<a href="/2.7/docs/guides/user-interfaces/visual-states">ステート</a>もサポートしています。`,
     items: [
       {
-        label: 'Basic Elements',
+        label: '基本要素',
         items: [
           {
-            label: 'Group',
+            label: 'グループ',
             id: 'basic-elements/group',
             nodeType: NodeType.Visual,
           },
           {
-            label: 'Columns',
+            label: '列',
             id: 'basic-elements/columns',
             nodeType: NodeType.Visual,
           },
           {
-            label: 'Text',
+            label: 'テキスト',
             id: 'basic-elements/text',
             nodeType: NodeType.Visual,
           },
           {
-            label: 'Image',
+            label: 'イメージ',
             id: 'basic-elements/image',
             nodeType: NodeType.Visual,
           },
           {
-            label: 'Video',
+            label: 'ビデオ',
             id: 'basic-elements/video',
             nodeType: NodeType.Visual,
           },
           {
-            label: 'Circle',
+            label: '円',
             id: 'basic-elements/circle',
             nodeType: NodeType.Visual,
           },
           {
-            label: 'Icon',
+            label: 'アイコン',
             id: 'basic-elements/icon',
             nodeType: NodeType.Visual,
           },
@@ -53,40 +53,40 @@ const nodeData = [
       },
 
       {
-        label: 'UI Controls',
+        label: 'UIコントロール',
         items: [
           {
-            label: 'Button',
+            label: 'ボタン',
             id: 'ui-controls/button',
             nodeType: NodeType.Visual,
           },
           {
-            label: 'Checkbox',
+            label: 'チェックボックス',
             id: 'ui-controls/checkbox',
             nodeType: NodeType.Visual,
           },
           {
-            label: 'Dropdown',
+            label: 'ドロップダウン',
             id: 'ui-controls/dropdown',
             nodeType: NodeType.Visual,
           },
           {
-            label: 'Radio Button',
+            label: 'ラジオボタン',
             id: 'ui-controls/radio-button',
             nodeType: NodeType.Visual,
           },
           {
-            label: 'Radio Button Group',
+            label: 'ラジオボタングループ',
             id: 'ui-controls/radio-button-group',
             nodeType: NodeType.Visual,
           },
           {
-            label: 'Slider',
+            label: 'スライダー',
             id: 'ui-controls/slider',
             nodeType: NodeType.Visual,
           },
           {
-            label: 'Text Input',
+            label: 'テキスト入力',
             id: 'ui-controls/text-input',
             nodeType: NodeType.Visual,
           },
@@ -96,40 +96,40 @@ const nodeData = [
   },
 
   {
-    label: 'Navigation & Popups',
+    label: 'ナビゲーション & ポップアップ',
     description:
-      'These nodes cover all your navigation needs, everyting from URL and hash based navigation to component replacement. You can either use them to reroute the user to a different views or render content on top of the current view in modals.',
+      'これらのノードは、URLやハッシュベースのナビゲーションからコンポーネントの置き換えまで、あらゆるナビゲーションニーズをカバーします。異なるビューへのユーザーのルーティングや、現在のビューの上にモーダルでコンテンツをレンダリングするために使用できます。',
     items: [
       {
-        label: 'Navigation',
+        label: 'ナビゲーション',
         items: [
           {
-            label: 'Page Router',
+            label: 'ページルーター',
             id: 'navigation/page-router',
             nodeType: NodeType.Visual,
           },
           {
-            label: 'Navigate',
+            label: 'ナビゲート',
             id: 'navigation/navigate',
             nodeType: NodeType.Logic,
           },
           {
-            label: 'Page Inputs',
+            label: 'ページ入力',
             id: 'navigation/page-inputs',
             nodeType: NodeType.Connection,
           },
           {
-            label: 'External Link',
+            label: '外部リンク',
             id: 'navigation/external-link',
             nodeType: NodeType.Logic,
           },
           {
-            label: 'Navigate To Path',
+            label: 'パスへナビゲート',
             id: 'navigation/navigate-to-path',
             nodeType: NodeType.Logic,
           },
           {
-            label: 'Page',
+            label: 'ページ',
             id: 'navigation/page',
             nodeType: NodeType.Visual,
           },
@@ -137,20 +137,20 @@ const nodeData = [
       },
 
       {
-        label: 'Component Stack',
+        label: 'コンポーネントスタック',
         items: [
           {
-            label: 'Component Stack',
+            label: 'コンポーネントスタック',
             id: 'component-stack/component-stack-node',
             nodeType: NodeType.Visual,
           },
           {
-            label: 'Push Component To Stack',
+            label: 'コンポーネントをスタックにプッシュ',
             id: 'component-stack/push-component',
             nodeType: NodeType.Logic,
           },
           {
-            label: 'Pop Component Stack',
+            label: 'コンポーネントスタックをポップ',
             id: 'component-stack/pop-component',
             nodeType: NodeType.Logic,
           },
@@ -158,15 +158,15 @@ const nodeData = [
       },
 
       {
-        label: 'Popups',
+        label: 'ポップアップ',
         items: [
           {
-            label: 'Show Popup',
+            label: 'ポップアップを表示',
             id: 'popups/show-popup',
             nodeType: NodeType.Logic,
           },
           {
-            label: 'Close Popup',
+            label: 'ポップアップを閉じる',
             id: 'popups/close-popup',
             nodeType: NodeType.Logic,
           },
@@ -176,50 +176,50 @@ const nodeData = [
   },
 
   {
-    label: 'Logic & Utilities',
+    label: 'ロジック & ユーティリティ',
     description:
-      'Most of the meat in an app comes from logic and data processing. This is your toolbox for working with most logic, data and user interactions, big and small.',
+      'アプリの大部分はロジックとデータ処理から構成されます。これは、大きなものから小さなものまで、ほとんどのロジック、データ、およびユーザーとのやり取りを処理するためのツールボックスです。',
     items: [
       {
-        label: 'General Utils',
+        label: '一般的なユーティリティ',
         items: [
           {
-            label: 'States',
+            label: 'ステート',
             id: 'utilities/logic/states',
             nodeType: NodeType.Logic,
           },
           {
-            label: 'Value Changed',
+            label: '値が変更された',
             id: 'logic/value-changed',
             nodeType: NodeType.Logic,
           },
           {
-            label: 'Delay',
+            label: '遅延',
             id: 'utilities/delay',
             nodeType: NodeType.Logic,
           },
           {
-            label: 'Color Blend',
+            label: '色のブレンド',
             id: 'utilities/color-blend',
             nodeType: NodeType.Logic,
           },
           {
-            label: 'Number Remapper',
+            label: '数値リマッパー',
             id: 'math/number-remapper',
             nodeType: NodeType.Logic,
           },
           {
-            label: 'Counter',
+            label: 'カウンター',
             id: 'math/counter',
             nodeType: NodeType.Logic,
           },
           {
-            label: 'Drag',
+            label: 'ドラッグ',
             id: 'utilities/drag',
             nodeType: NodeType.Visual,
           },
           {
-            label: 'Animate To Value',
+            label: '値へアニメート',
             id: 'logic/animate-to-value',
             nodeType: NodeType.Logic,
           },
@@ -227,27 +227,27 @@ const nodeData = [
       },
 
       {
-        label: 'Logic',
+        label: 'ロジック',
         items: [
           {
-            label: 'Boolean To String',
+            label: 'ブール値を文字列に',
             id: 'utilities/boolean-to-string',
             nodeType: NodeType.Logic,
           },
           {
-            label: 'Switch',
+            label: 'スイッチ',
             id: 'logic/switch',
             nodeType: NodeType.Logic,
           },
-          { label: 'And', id: 'logic/and', nodeType: NodeType.Logic },
-          { label: 'Or', id: 'logic/or', nodeType: NodeType.Logic },
+          { label: 'アンド', id: 'logic/and', nodeType: NodeType.Logic },
+          { label: 'オア', id: 'logic/or', nodeType: NodeType.Logic },
           {
-            label: 'Condition',
+            label: '条件',
             id: 'utilities/logic/condition',
             nodeType: NodeType.Logic,
           },
           {
-            label: 'Inverter',
+            label: 'インバーター',
             id: 'logic/inverter',
             nodeType: NodeType.Logic,
           },
@@ -255,15 +255,15 @@ const nodeData = [
       },
 
       {
-        label: 'Events',
+        label: 'イベント',
         items: [
           {
-            label: 'Send Event',
+            label: 'イベントを送信',
             id: 'events/send-event',
             nodeType: NodeType.Connection,
           },
           {
-            label: 'Receive Event',
+            label: 'イベントを受信',
             id: 'events/receive-event',
             nodeType: NodeType.Connection,
           },
@@ -271,30 +271,30 @@ const nodeData = [
       },
 
       {
-        label: 'String Manipulation',
+        label: '文字列操作',
         items: [
           {
-            label: 'Substring',
+            label: '部分文字列',
             id: 'string-manipulation/substring',
             nodeType: NodeType.Logic,
           },
           {
-            label: 'String Mapper',
+            label: '文字列マッパー',
             id: 'string-manipulation/string-mapper',
             nodeType: NodeType.Logic,
           },
           {
-            label: 'String Format',
+            label: '文字列フォーマット',
             id: 'string-manipulation/string-format',
             nodeType: NodeType.Logic,
           },
           {
-            label: 'Date To String',
+            label: '日付を文字列に',
             id: 'utilities/date-to-string',
             nodeType: NodeType.Logic,
           },
           {
-            label: 'Unique Id',
+            label: '一意のID',
             id: 'utilities/unique-id',
             nodeType: NodeType.Logic,
           },
@@ -302,15 +302,15 @@ const nodeData = [
       },
 
       {
-        label: 'System',
+        label: 'システム',
         items: [
           {
-            label: 'Open File Picker',
+            label: 'ファイルピッカーを開く',
             id: 'utilities/open-file-picker',
             nodeType: NodeType.Logic,
           },
           {
-            label: 'Screen Resolution',
+            label: '画面解像度',
             id: 'utilities/screen-resolution',
             nodeType: NodeType.Logic,
           },
@@ -318,25 +318,25 @@ const nodeData = [
       },
 
       {
-        label: 'Variables',
+        label: '変数',
         items: [
           {
-            label: 'String',
+            label: '文字列',
             id: 'data/string',
             nodeType: NodeType.Logic,
           },
           {
-            label: 'Boolean',
+            label: 'ブール値',
             id: 'data/boolean',
             nodeType: NodeType.Logic,
           },
           {
-            label: 'Color',
+            label: '色',
             id: 'data/color',
             nodeType: NodeType.Logic,
           },
           {
-            label: 'Number',
+            label: '数値',
             id: 'data/number',
             nodeType: NodeType.Logic,
           },
@@ -346,42 +346,42 @@ const nodeData = [
   },
 
   {
-    label: 'Component Utilities',
+    label: 'コンポーネントユーティリティ',
     description:
-      'One of the core concepts in Noodl is the ability to create your own reusable components. Here are nodes that help you manage how data passes through them.',
+      'Noodlのコアコンセプトの1つは、再利用可能なコンポーネントを自分で作成する能力です。これらは、データがそれらを通過する方法を管理するのに役立つノードです。',
     items: [
       {
-        label: 'Component Inputs',
+        label: 'コンポーネント入力',
         id: 'component-utilities/component-inputs',
         nodeType: NodeType.Connection,
       },
       {
-        label: 'Component Outputs',
+        label: 'コンポーネント出力',
         id: 'component-utilities/component-outputs',
         nodeType: NodeType.Connection,
       },
       {
-        label: 'Component Children',
+        label: 'コンポーネントチルドレン',
         id: 'component-utilities/component-children',
         nodeType: NodeType.Connection,
       },
       {
-        label: 'Component Object',
+        label: 'コンポーネントオブジェクト',
         id: 'component-utilities/component-object',
         nodeType: NodeType.Connection,
       },
       {
-        label: 'Parent Component Object',
+        label: '親コンポーネントオブジェクト',
         id: 'component-utilities/parent-component-object',
         nodeType: NodeType.Connection,
       },
       {
-        label: 'Set Component Object Properties',
+        label: 'コンポーネントオブジェクトプロパティを設定',
         id: 'component-utilities/set-component-object-properties',
         nodeType: NodeType.Connection,
       },
       {
-        label: 'Set Parent Component Object Properties',
+        label: '親コンポーネントオブジェクトプロパティを設定',
         id: 'component-utilities/set-parent-component-object-properties',
         nodeType: NodeType.Connection,
       },
@@ -389,50 +389,50 @@ const nodeData = [
   },
 
   {
-    label: 'Read & Write Data',
+    label: 'データの読み書き',
     description:
-      'No app is complete without content. These are nodes that help you work with dynamic data defined in the app, a Noodl Cloud Service or from any backend of your choice.',
+      'コンテンツなしにはアプリが完全ではありません。これらは、アプリ内で定義された動的データ、Noodlクラウドサービス、またはお好みのバックエンドからデータを扱うのに役立つノードです。',
     items: [
       {
-        label: 'Variables & Objects',
+        label: '変数 & オブジェクト',
         items: [
           {
-            label: 'Repeater',
+            label: 'リピーター',
             id: 'ui-controls/repeater',
             nodeType: NodeType.Visual,
           },
           {
-            label: 'Repeater Item',
+            label: 'リピーターアイテム',
             id: 'ui-controls/repeater-item',
             nodeType: NodeType.Data,
           },
           {
-            label: 'Object',
+            label: 'オブジェクト',
             id: 'data/object/object-node',
             nodeType: NodeType.Data,
           },
           {
-            label: 'Set Object Properties',
+            label: 'オブジェクトプロパティを設定',
             id: 'data/object/set-object-properties',
             nodeType: NodeType.Data,
           },
           {
-            label: 'Create New Object',
+            label: '新規オブジェクトを作成',
             id: 'data/object/create-new-object',
             nodeType: NodeType.Data,
           },
           {
-            label: 'Set Variable',
+            label: '変数を設定',
             id: 'data/variable/set-variable',
             nodeType: NodeType.Data,
           },
           {
-            label: 'Variable',
+            label: '変数',
             id: 'data/variable/variable-node',
             nodeType: NodeType.Data,
           },
           {
-            label: 'Run Tasks',
+            label: 'タスクを実行',
             id: 'data/run-tasks',
             nodeType: NodeType.Data,
           },
@@ -440,45 +440,45 @@ const nodeData = [
       },
 
       {
-        label: 'Arrays',
+        label: '配列',
         items: [
           {
-            label: 'Array',
+            label: '配列',
             id: 'data/array/array-node',
             nodeType: NodeType.Data,
           },
           {
-            label: 'Create New Array',
+            label: '新規配列を作成',
             id: 'data/array/create-new-array',
             nodeType: NodeType.Data,
           },
           {
-            label: 'Remove Object From Array',
+            label: '配列からオブジェクトを削除',
             id: 'data/array/remove-from-array',
             nodeType: NodeType.Data,
           },
           {
-            label: 'Clear Array',
+            label: '配列をクリア',
             id: 'data/array/clear-array',
             nodeType: NodeType.Data,
           },
           {
-            label: 'Insert Object Into Array',
+            label: 'オブジェクトを配列に挿入',
             id: 'data/array/insert-into-array',
             nodeType: NodeType.Data,
           },
           {
-            label: 'Array Filter',
+            label: '配列フィルター',
             id: 'data/array/array-filter',
             nodeType: NodeType.Data,
           },
           {
-            label: 'Array Map',
+            label: '配列マップ',
             id: 'data/array/array-map',
             nodeType: NodeType.Data,
           },
           {
-            label: 'Static Array',
+            label: '静的配列',
             id: 'data/array/static-array',
             nodeType: NodeType.Data,
           },
@@ -486,65 +486,65 @@ const nodeData = [
       },
 
       {
-        label: 'Cloud Data',
+        label: 'クラウドデータ',
         items: [
           {
-            label: 'Record',
+            label: 'レコード',
             id: 'data/cloud-data/record',
             nodeType: NodeType.Data,
           },
           {
-            label: 'Create New Record',
+            label: '新規レコードを作成',
             id: 'data/cloud-data/create-new-record',
             nodeType: NodeType.Data,
           },
           {
-            label: 'Filter Records',
+            label: 'レコードをフィルター',
             id: 'data/cloud-data/filter-records',
             nodeType: NodeType.Data,
           },
           {
-            label: 'Set Record Properties',
+            label: 'レコードプロパティを設定',
             id: 'data/cloud-data/set-record-properties',
             nodeType: NodeType.Data,
           },
           {
-            label: 'Query Records',
+            label: 'レコードをクエリ',
             id: 'data/cloud-data/query-records',
             nodeType: NodeType.Data,
           },
           {
-            label: 'Delete Record',
+            label: 'レコードを削除',
             id: 'data/cloud-data/delete-record',
             nodeType: NodeType.Data,
           },
           {
-            label: 'Add Record Relation',
+            label: 'レコード関係を追加',
             id: 'data/cloud-data/add-record-relation',
             nodeType: NodeType.Data,
           },
           {
-            label: 'Remove Record Relation',
+            label: 'レコード関係を削除',
             id: 'data/cloud-data/remove-record-relation',
             nodeType: NodeType.Data,
           },
           {
-            label: 'Cloud File',
+            label: 'クラウドファイル',
             id: 'data/cloud-data/cloud-file',
             nodeType: NodeType.Data,
           },
           {
-            label: 'Upload File',
+            label: 'ファイルをアップロード',
             id: 'data/cloud-data/upload-file',
             nodeType: NodeType.Data,
           },
           {
-            label: 'Cloud Function',
+            label: 'クラウド関数',
             id: 'data/cloud-data/cloud-function',
             nodeType: NodeType.Data,
           },
           {
-            label: 'Config',
+            label: '設定',
             id: 'data/cloud-data/config',
             nodeType: NodeType.Data,
           },
@@ -552,30 +552,30 @@ const nodeData = [
       },
 
       {
-        label: 'User',
+        label: 'ユーザー',
         items: [
           {
-            label: 'Log In',
+            label: 'ログイン',
             id: 'data/user/log-in',
             nodeType: NodeType.Data,
           },
           {
-            label: 'Log Out',
+            label: 'ログアウト',
             id: 'data/user/log-out',
             nodeType: NodeType.Data,
           },
           {
-            label: 'Sign Up',
+            label: 'サインアップ',
             id: 'data/user/sign-up',
             nodeType: NodeType.Data,
           },
           {
-            label: 'User',
+            label: 'ユーザー',
             id: 'data/user/user-node',
             nodeType: NodeType.Data,
           },
           {
-            label: 'Set User Properties',
+            label: 'ユーザープロパティを設定',
             id: 'data/user/set-user-properties',
             nodeType: NodeType.Data,
           },
@@ -583,34 +583,34 @@ const nodeData = [
       },
 
       {
-        label: 'External Data',
+        label: '外部データ',
         items: [{ label: 'REST', id: 'data/rest', nodeType: NodeType.Data }],
       },
     ],
   },
 
   {
-    label: 'Custom Code',
+    label: 'カスタムコード',
     description:
-      "Even though most problems can be solved with Noodl's built in base nodes, it's nice to have options for those specific situations that require code. After all, text based coding is quite fun too.",
+      "ほとんどの問題はNoodlの組み込みの基本ノードで解決できますが、コードが必要な特定の状況に対しても選択肢を持つことは良いことです。結局のところ、テキストベースのコーディングもかなり楽しいものです。",
     items: [
       {
-        label: 'Expression',
+        label: '式',
         id: 'math/expression',
         nodeType: NodeType.Custom,
       },
       {
-        label: 'Function',
+        label: '関数',
         id: 'javascript/function',
         nodeType: NodeType.Custom,
       },
       {
-        label: 'Script',
+        label: 'スクリプト',
         id: 'javascript/script',
         nodeType: NodeType.Custom,
       },
       {
-        label: 'CSS Definition',
+        label: 'CSS定義',
         id: 'utilities/css-definition',
         nodeType: NodeType.Custom,
       },
@@ -618,23 +618,23 @@ const nodeData = [
   },
 
   {
-    label: 'Cloud Functions',
+    label: 'クラウド関数',
     items: [
       {
-        label: 'Request',
+        label: 'リクエスト',
         id: 'cloud-functions/request',
         nodeType: NodeType.Data,
       },
       {
-        label: 'Response',
+        label: 'レスポンス',
         id: 'cloud-functions/response',
         nodeType: NodeType.Data,
       },
       {
-        label: 'Cloud Data',
+        label: 'クラウドデータ',
         items: [
           {
-            label: 'Aggregate Records',
+            label: 'レコードを集約',
             id: 'cloud-functions/cloud-data/aggregate-records',
             nodeType: NodeType.Data,
           },
@@ -646,7 +646,7 @@ const nodeData = [
 
 function recursiveBuildNodeOverviewData(item) {
   if ('items' in item) {
-    // is a category
+    // カテゴリーである
     return {
       title: item.label,
       description: item.description,
@@ -679,9 +679,11 @@ exports.getNodePageData = function () {
 
 function recursiveBuildSidebarData(item) {
   if ('items' in item) {
-      // is a category
+      // カテゴリーである
       return {
           type: 'category',
+
+
           label: item.label,
           items: item.items.map(recursiveBuildSidebarData),
       }

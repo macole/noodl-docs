@@ -1,87 +1,89 @@
 ---
-title: Develop with ChatGPT
+title: ChatGPTで開発する
 hide_title: true
 ---
 
-# Develop with ChatGPT
+# ChatGPTで開発する
 
-ChatGPT is a great tool that is used daily to generate code by developers all over the world. However (being a language model and not a programming engine) it does come with its own set of quirks and limitations. In this guide we will look at tips, tricks and strategies for how to get around them, and see why ChatGPT is a great pairing with Noodl.
+ChatGPTは、世界中の開発者が日常的にコード生成に使用している素晴らしいツールです。しかし（言語モデルであり、プログラミングエンジンではないため）、独自の癖や制限があります。このガイドでは、それらをどのように回避するか、そしてChatGPTがNoodlと素晴らしいペアリングである理由を見ていきます。
 
-> This guide is about how to use [http://chat.openai.com](http://chat.openai.com) as part of the development process.
+> このガイドは、開発プロセスの一部として[http://chat.openai.com](http://chat.openai.com)を使用する方法についてです。
 
-## When to ChatGPT
+## ChatGPTを使うタイミング
 
-One of the lesser known limitations of ChatGPT is that it works with a tiny token memory. The details are technical, and not too interesting in the context of this guide, so we won't go in on it too much. Really, the only thing you need to know is that ChatGPT has the memory of a goldfish, and will start forgetting things (including its own train of thought) pretty quickly if you feed it too much information.
+ChatGPTのあまり知られていない制限の一つに、非常に小さいトークンメモリを持っていることがあります。詳細は技術的で、このガイドの文脈ではあまり興味深くありませんので、あまり詳しくは触れません。本当に知っておくべき唯一のことは、ChatGPTは金魚の記憶を持っており、あまりにも多くの情報を与えると、かなり早く物事を忘れ始める（自分の考えを含む）ということです。
 
-This makes ChatGPT bad at handling large scale application code with many different moving parts. Using ChatGPT to code an application from scratch requires you to know how to program an application from scratch so that you can make up for all the mistakes the AI makes.
+これは、ChatGPTが多くの異なる動きのある大規模なアプリケーションコードを扱うのが苦手であることを意味します。ChatGPTを使ってゼロからアプリケーションをコーディングするには、AIが作るすべての間違いを補うために、ゼロからアプリケーションをプログラムする方法を知っている必要があります。
 
-Another implication of the tiny memory is that it limits the amount of instructions we can provide. ChatGPT gives the best solutions when you are very descriptive with what you want to achieve, and a full application requires a lot of describing.
+小さいメモリのもう一つの影響は、提供できる指示の量に制限があることです。ChatGPTは、達成したいことを非常に詳細に説明するときに最適な解決策を提供しますが、完全なアプリケーションには多くの説明が必要です。
 
-The best way to get good code from ChatGPT is really to break up your application into smaller modular pieces, generating those with AI, and gluing them together yourself.
+ChatGPTから良いコードを得る最良の方法は、実際にはアプリケーションをより小さなモジュール式の部品に分割し、AIでそれらを生成し、自分でそれらを組み合わせることです。
 
-This is where Noodl shines. Since one of the base concepts of Noodl is to break your application into smaller reusable components, we dont have to ask ChatGPT to generate a whole app for us. We can just ask it to do the boring, tedious or more complicated functions. This still requires a little bit of programming know-how, but thanks to Noodls seamless combination of visual and text-based programming you don't have to know how to write complex apps at scale and can instead focus on understanding the functionality at hand.
+ここでNoodlが輝きます。Noodlの基本概念の一つが、アプリケーションをより小さな再利用可能なコンポーネントに分割することであるため、私たちはChatGPTに全アプリを生成してもらう必要はありません。私たちは、単にそれに退屈で、面倒で、あるいはもっと複雑な機能を行ってもらうだけです。これには少しのプログラミングの知識が必要ですが、Noodlの視覚的およびテキストベースのプログラミングのシームレスな組み合わせのおかげで、大規模な複雑なアプリを書く方法を知る必要はなく、代わりに手元の機能を理解することに集中できます。
 
 :::note
 
-While this guide is generally about ChatGPT you will get a lot more out of it if you already have some experience with Noodl. It might be a good idea to check out the [Fundamentals](/docs/getting-started/fundamentals) guide, or do the interactive tutorials in the Noodl editor first.
+このガイドは一般的にChatGPTについてですが、Noodlの経験があるとより多くのことを得ることができます。[基本](/docs/getting-started/fundamentals)ガイドをチェックするか、Noodlエディターでインタラクティブチュートリアルを最初に行うことをお勧めします。
 
 :::
 
 ### TL;DR:
 
-ChatGPT is great at generating code for Function and Script nodes, helping you connect to API's, work with external libraries, aggregating data or figuring out chunks of your app.
+ChatGPTは、FunctionノードとScriptノード用のコードを生成するのに適しており、APIへの接続、外部ライブラリの使用、データの集約、アプリのチャンクの解決に役立ちます。
 
-It's a good idea to modularize your functions into separate Function nodes, or combine multiple Function nodes in series in a component. This allows ChatGPT to shine in a smaller scope while allowing for great reusability within Noodl.
+関数を別々のFunctionノードにモジュール化するか、コンポーネント内で複数のFunctionノードをシリーズで組み合わせることが良いアイデアです。これにより、ChatGPTはより小さい範囲で輝くことができ、Noodl内での再利用性が大きく向上します。
 
-ChatGPT is also great as a search engine that you can have a conversation with. The ChatGPT model is trained on data up until 2021, so while it's not good for researching current events, it is very powerful with more general development patterns that can easily be translated into Noodl graphs.
+ChatGPTはまた、会話を持つことができる検索エンジンとしても素晴らしいです。ChatGPTモデルは2021年までのデータでトレーニングされているため、現在のイベントを調査するのには向いていませんが、Noodlグラフに簡単に翻訳できるより一般的な開発パターンには非常に強力です。
 
-Sidenote: We have been experimenting with generating full Noodl Node graphs, but due to the limited memory it's not too good at memorizing current documentation.
+余談ですが、私たちは完全なNoodlノードグラフを生成する実験を行ってきましたが、限られたメモリのために現在のドキュメントを記憶するのはあまり得意ではありません。
 
-## Priming for code generation
+## コード生成のためのプライミング
 
-If we want to use ChatGPT for code generation we have to be prepared to modify the code it gives us. That is just the current state of the AI. However, we can minimize the need for modifications if we start the chat with some instructions, giving ChatGPT a bit of context so that it understands what a Noodl function looks like, some rules for what it can/can't do and how to create inputs and outputs to the node. This is called a _primer_, and here is one that we have been experimenting with:
+ChatGPTをコード生成に使用したい場合、与えられた
+
+コードを修正する準備が必要です。それが現在のAIの状態です。しかし、いくつかの指示を最初にチャットで送ることで、修正の必要性を最小限に抑えることができます。これにより、ChatGPTに少しの文脈を与えて、Noodl関数がどのように見えるか、できること/できないことのルール、およびノードへの入力と出力の作成方法を理解させることができます。これを_プライマー_と呼び、ここに私たちが実験しているものがあります：
 
 ````markdown
-Hi ChatGPT. Here are your instructions. You must follow all of them.
+こんにちはChatGPT。こちらがあなたの指示です。すべてに従ってください。
 
-- You will be writing Noodl functions.
-- An input in a Noodl function must follow the format "Inputs.InputName".
-- An input in a Noodl function is only read, never written to.
-- An output in a Noodl function must follow the format "Outputs.OutputName = value".
-- A variable in a Noodl function never stores an output.
-- Sending a signal from a Noodl function must follow the format "Outputs.SignalName()".
-- Signals can not be passed values. All output values must be set as a Noodl function output.
-- Inputs and Outputs in a Noodl function are global.
-- Noodl functions do not use import statements.
-- Noodl functions do not use export statements.
-- Noodl functions can use recources from a CDN.
-- Noodl functions can access API endpoints with "fetch".
-- Define constants as Noodl function inputs.
-- A Noodl function follows this format:
+- Noodl関数を書いていきます。
+- Noodl関数の入力は"Inputs.InputName"の形式に従います。
+- Noodl関数の入力は読み取りのみで、書き込まれることはありません。
+- Noodl関数の出力は"Outputs.OutputName = value"の形式に従います。
+- Noodl関数の変数は出力を格納しません。
+- Noodl関数からの信号送信は"Outputs.SignalName()"の形式に従います。
+- 信号には値を渡すことができません。すべての出力値はNoodl関数の出力として設定されなければなりません。
+- Noodl関数の入力と出力はグローバルです。
+- Noodl関数はimport文を使用しません。
+- Noodl関数はexport文を使用しません。
+- Noodl関数はCDNからのリソースを使用できます。
+- Noodl関数は"fetch"でAPIエンドポイントにアクセスできます。
+- 定数をNoodl関数の入力として定義します。
+- Noodl関数は以下の形式に従います：
 
 ```js
 const inputName = Inputs.InputName;
 
-// Check if the input has a value, otherwise return
+// 入力に値があるかチェックし、そうでなければリターン
 if (!inputName) return;
 
-// Perform the function logic
+// 関数ロジックを実行
 ```
 
-Reply "Okidoki" if the instructions are clear, otherwise ask me to clarify
+指示が明確であれば"Okidoki"と返信し、そうでなければ明確にしてください。
 ````
 
-This primer has given us great results so far - in many cases the snippets have worked with no modifications at all. Don't shy away from modifying it or trying a different approach though. ChatGPT is a complex technology, and new techniques and strategies are constantly being discovered. If you find something interesting, please don't shy away from sharing it with the community over at our [Discord server](https://discord.com/invite/23xU2hYrSJ).
+このプライマーはこれまでのところ素晴らしい結果をもたらしています - 多くの場合、スニペットはまったく修正せずに機能しました。しかし、それを修正したり、別のアプローチを試したりすることをためらわないでください。ChatGPTは複雑な技術であり、新しい技術や戦略が常に発見されています。何か興味深いことを見つけたら、是非[Discordサーバー](https://discord.com/invite/23xU2hYrSJ)のコミュニティと共有してください。
 
-## Tips and tricks for prompting code
+## コードのプロンプトに関するヒントとコツ
 
-### Benefits of a primer
+### プライマーの利点
 
-Using the primer above lets us use very sloppy prompts, while still getting a useful result:
+上記のプライマーを使用すると、非常に雑なプロンプトを使用しても、依然として有用な結果を得ることができます：
 
 ![](/docs/getting-started/ai-assisted-dev/chat-gpt/sloppy-prompt.png)
 
-Due to the primer, this result can be copied stright into a Function node without any modifications. Here is how it looks in a node graph with all the inputs and outputs:
+プライマーのおかげで、この結果はFunctionノードに修正せずにそのままコピーできます。ここでは、すべての入力と出力を持つノードグラフでの見た目です：
 
 <div class="ndl-image-with-background xl">
 
@@ -89,35 +91,37 @@ Due to the primer, this result can be copied stright into a Function node withou
 
 </div>
 
-All we needed to provide was an API key. Amazing!
+必要なのはAPIキーのみでした。素晴らしいです！
 
-### Adding detail
+### 詳細の追加
 
-The example above is very simple. The more complex functionality we want, the more specific we need to be. ChatGPT has a lot of imagination, and it's a good idea to leave it as little room for interpretation as possible.
+上記の例は非常にシンプルです。求める機能が複雑になるほど、より具体的である必要があります。ChatGPTは想像力豊かであり、できるだけ解釈の余地を少なくすることが良いアイデアです。
 
 ![](/docs/getting-started/ai-assisted-dev/chat-gpt/detailed-prompt.png)
 
-This was my third attempt. In the first one I asked it to _prompt the user for their location_. It then gave me a soultion using the `Window.prompt()` method. This opens up a system dialog with a text input where the user can type in the `latitude` and `longitude` themselves. It bears noting that the last time `Window.prompt()` was used in a serious project, the smartphone was still a new and revolutionary invention.
+これは私の3回目の試みです。最初の試みでは、それにユーザーにその位置を_prompt_するように頼みました。それから、`Window.prompt()`メソッドを使用するソリューションを私に与えました。これは、ユーザーが自分で`latitude`と`longitude`を入力できるテキスト入力を持つシステムダイアログを開きます。`Window.prompt()`が真剣にプロジェクトで使用された最後の時は、スマートフォンがまだ新しく革新的な発明でした。
 
-In the second attempt I asked it to _get the users location_. Then it just assumed that the `latitude` and `longitude` was a part of the `user` object. Not specific enough.
+2回目の試みでは、それに_ユーザーの位置を取得する_ように頼みました。それから、`latitude`と`longitude`が`user`オブジェクトの一部であると仮定しました。十分に具体的ではありませんでした。
 
-The third attempt looks perfect, at least at a first glance. The users location is now gotten automatically.
+3回目の試みは、少なくとも一見すると、完璧に見えます。ユーザーの位置は今自動的に取得されます。
 
-The location was not the only issue though. If we take a closer look at the code we see that there are some places where ChatGPT didn't follow the prompt. We asked it to send an `Outputs.UserFailed()` if `user.firstName` or `user.lastName` where missing. Instead it sends the `UserFailed` signal if it cant find a user of the right ID. It also sends `MapboxData` and `FullName` separately. It _almost_ does what we told it. Discrepancies like this can happen anywhere in the generated code, so it's always a good idea to look over the code you get.
+位置だけが問題ではありませんでした。もう少し詳しくコードを見ると、ChatGPTがプロンプトに従わ
 
-These off-prompt moments are not only a bad thing though. As an example, we didn't ask ChatGPT to exit the function using `return` when after sending the `UserFailed` signal, but it was clever enough to assume that we didn't want the function to continue running without a user.
+なかった場所がいくつかあります。`user.firstName`や`user.lastName`が欠けている場合に`Outputs.UserFailed()`を送信するように頼みました。代わりに、正しいIDのユーザーを見つけることができない場合に`UserFailed`信号を送信します。また、`MapboxData`と`FullName`を別々に送信します。_ほとんど_私たちが言ったことを行います。このような不一致は、生成されたコードのどこにでも発生する可能性がありますので、得たコードを常に見直すことが良いアイデアです。
 
-### Partial rewrites
+これらのオフプロンプトの瞬間は、必ずしも悪いことではありません。例として、`UserFailed`信号を送った後に関数から`return`を使って退出するようにChatGPTに頼まなかったにもかかわらず、関数を続けて実行したくないと仮定してくれたことが賢明でした。
 
-If we find that parts of the code doesn't fit us, we can always ask ChatGPT to iterate on it.
+### 部分的な書き直し
+
+コードの一部が私たちに合わないと感じた場合は、いつでもChatGPTにそれを反復してもらうように頼むことができます。
 
 ![](/docs/getting-started/ai-assisted-dev/chat-gpt/iterate-prompt.png)
 
-It now exits the function when it should, and outputs the data properly. There are still unnecessary checks made for `firstName` and `lastName` when building the `fullName`. They will not throw any errors, or mess up the function in any other way, and the performance hit is so small that it can be ignored, but if we want to keep the code clean we can just manually remove those two lines.
+これで、関数が適切なタイミングで終了し、データを適切に出力しています。`fullName`を構築するときに`firstName`と`lastName`の不必要なチェックがまだあります。これらはエラーを投げたり、他の方法で関数を台無しにしたりすることはありませんし、パフォーマンスへの影響も無視できるほど小さいですが、コードをきれいに保ちたい場合は、これら2行を手動で削除することができます。
 
-### Iterative prompting
+### 反復的なプロンプト
 
-If we want even more control we can prompt our function in smaller steps. Let's generate a function that does a device generalisation based on the viewport width.
+さらに多くの制御を望む場合は、より小さなステップで関数をプロンプトすることができます。ビューポートの幅に基づいてデバイスの一般化を行う関数を生成しましょう。
 
 ![](/docs/getting-started/ai-assisted-dev/chat-gpt/chain-prompt-1.png)
 
@@ -125,38 +129,40 @@ If we want even more control we can prompt our function in smaller steps. Let's 
 
 ![](/docs/getting-started/ai-assisted-dev/chat-gpt/chain-prompt-3.png)
 
-Note that I asked for `widths` but it gave me heights as well! Let's clear that up.
+私が`widths`を求めたのに、高さも与えられたことに注意してください！これをはっきりさせましょう。
 
 ![](/docs/getting-started/ai-assisted-dev/chat-gpt/chain-prompt-4.png)
 
 ![](/docs/getting-started/ai-assisted-dev/chat-gpt/chain-prompt-5.png)
 
-Here I realize that I made two mistakes. First of all, I was hoping for ChatGPT to be a bit clever and assume that I meant to check for a value inside of the desktop range. Instead it tries to match an exact width, which will fail if the browser is resized. The second error was to output a `IsDesktop` boolean. If we check for ranges with the given sizes, there will be a gap between desktop and mobile. Let's make a lazy fix.
+ここで、私は2つの間違いを犯したことに気づきます。まず、ChatGPTが少し賢くなって、デスクトップ範囲内の値をチェックしようとすると仮定していました。代わりに、ブラウザがリサイズされた場合に失敗する特定の幅に一致しようとします。2つ目のエラーは、`IsDesktop`ブール値を出力することでした。与えられたサイズで範囲をチェックする場合、デスクトップとモバイルの間にギャップがあります。怠惰な修正をしましょう。
 
 ![](/docs/getting-started/ai-assisted-dev/chat-gpt/chain-prompt-6.png)
 
-Now, this is not a perfect function by far. Good thing is that this prompting could go on and on, until we have a function that gives us perfect detection. Just remember the goldfish token memory, and that you might need to reprime the AI after a while.
+これは、遠くから完璧な関数ではありません。良いことに、このプロンプトは、完璧な検出を提供する関数を持つまで延々と続けることができます。金魚のトークンメモリを覚えておいて、しばらくするとAIを再プライムする必要があるかもしれないということを忘れないでください。
 
-## Refreshing ChatGPT's memory
+## ChatGPTのメモリをリフレッシュする
 
-If you notice that you start getting answers that stray too far off from things you have told ChatGPT earlier, it is a good idea to reprime the memory. This can be easily done by starting a new chat and sending the primer again. After that you can paste in the function you are working with, together with new instructions on how how you want the function to be modified.
+以前にChatGPTに伝えたことからあまりにも遠くに逸れる答えを得始めた場合、メモリをリフレッシュすることが良いアイデアです。これは、新しいチャットを開始してプライマーを再送することで簡単に行うことができます。その後、作業中の関数を貼り付け、関数をどのように変更したいかについての新しい指示と一緒に送ることができます。
 
-## Research assistant
+## 研究アシスタント
 
-Another interesting use apart from generating code is to use it for research. Finding relevant information can be complicated, especially for more abstract concepts. ChatGPT is great for giving you a kickstart:
+コードを生成する以外の興味深い使用法として、研究に使用することがあります。関連する情報を見つけることは複雑になることがあり、特により抽象的な概念についてはそうです。ChatGPTは、キックスタートを与えるのに適しています：
 
 ![](/docs/getting-started/ai-assisted-dev/chat-gpt/research-4.png)
 
-In the same way we can easily ask follow-up questions:
+同様に、簡単にフォローアップの質問をすることができます：
 
 ![](/docs/getting-started/ai-assisted-dev/chat-gpt/research-1.png)
 
-![](/docs/getting-started/ai-assisted-dev/chat-gpt/research-2.png)
+![]
+
+(/docs/getting-started/ai-assisted-dev/chat-gpt/research-2.png)
 
 ![](/docs/getting-started/ai-assisted-dev/chat-gpt/research-3.png)
 
-(This might not be the best example if there are any newer API's than 2021, or if anyone of them updated ther pricing, etc. It works for the most part though!)
+（これは2021年以降に新しいAPIがある場合、またはそれらのいずれかが価格を更新した場合には最良の例ではないかもしれませんが、ほとんどの場合うまく機能します！）
 
-## Age of exploration
+## 探検の時代
 
-While a lot is known about ChatGPT, there are still a lot of dark spots on the AI-map. New strategies, primers, tips and tricks are invented and uncovered every day. If you have found something that we havent touched upon here and feel like sharing it, please hop on in to the #chat-gpt channel on the [Discord server](https://discord.com/invite/23xU2hYrSJ). Exploration is more fun together, and we all stand on the shoulders of each other in this exciting new step within technology.
+ChatGPTについて多くが知られていますが、AIマップ上にはまだ多くの暗いスポットがあります。新しい戦略、プライマー、ヒント、コツは毎日発明され、発見されています。ここで触れていない何かを見つけ、共有したいと思うなら、是非[Discordサーバー](https://discord.com/invite/23xU2hYrSJ)の#chat-gptチャンネルに参加してください。探検は一緒にする方が楽しいですし、この技術の新しい段階では、私たちは皆、お互いの肩の上に立っています。

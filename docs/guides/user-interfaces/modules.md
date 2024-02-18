@@ -1,19 +1,19 @@
 ---
-title: Modules and Prefabs
+title: モジュールとプレファブ
 hide_title: true
 ---
 
-# Modules and Prefabs in Noodl
+# Noodlのモジュールとプレファブ
 
-Noodl has a lot of nodes available out of the box, but it can never include a node for everything. For that reason you can extend your project with specific modules or prefabs containing nodes and components to capture specfic functionality or UI controls.
+Noodlには多くのノードが最初から利用可能ですが、すべてに対応するノードを含めることはできません。そのため、特定の機能やUIコントロールを捉えるノードやコンポーネントを含むモジュールやプレファブを追加して、プロジェクトを拡張することができます。
 
-The main difference between **Modules** and **Prefabs** is that **Modules** install new nodes to the editor, while **Prefabs** clones components built with the core nodes, and stores them as if you created them yourself. Prefabs can be imported as many times as you want, and each clone can be modified how you see fit.
+**モジュール**と**プレファブ**の主な違いは、**モジュール**がエディターに新しいノードをインストールするのに対し、**プレファブ**はコアノードで構築されたコンポーネントを複製し、あなたが自分で作成したかのように保存することです。プレファブは何度でもインポートでき、各複製は好きなように変更できます。
 
-You can see the list of modules [here](/library/modules/overview), and prefabs [here](/library/prefabs/overview). Make sure to check in often as the library keeps growing quickly.
+モジュールのリストは[こちら](/library/modules/overview)で、プレファブは[こちら](/library/prefabs/overview)で確認できます。ライブラリはすぐに成長し続けるので、頻繁にチェックすることをお勧めします。
 
-## How to add modules and prefabs to your project
+## プロジェクトにモジュールとプレファブを追加する方法
 
-You add modules to your project by opening the project you want to use the module in and the bring up the **Node Picker**. You can do this either by **Right Clicking** in the node canvas or by clicking the `+` icon at the top left.
+プロジェクトにモジュールを追加するには、使用したいプロジェクトを開いて**ノードピッカー**を表示します。これは、ノードキャンバスで**右クリック**するか、左上の`+`アイコンをクリックすることで行えます。
 
 <div className="ndl-image-with-background">
 
@@ -21,7 +21,7 @@ You add modules to your project by opening the project you want to use the modul
 
 </div>
 
-In the node picker, the find the tab **Modules** and then click **Import** on the module you want to use. The module is added to your project.
+ノードピッカーで、**モジュール**タブを見つけてから、使用したいモジュール上で**インポート**をクリックします。モジュールがプロジェクトに追加されます。
 
 <div className="ndl-image-with-background l">
 
@@ -29,7 +29,7 @@ In the node picker, the find the tab **Modules** and then click **Import** on th
 
 </div>
 
-After importing the module you new nodes and components are now available under **External Libraries**.
+モジュールをインポートした後、新しいノードとコンポーネントが**外部ライブラリ**の下で利用可能になります。
 
 <div className="ndl-image-with-background l">
 
@@ -37,7 +37,7 @@ After importing the module you new nodes and components are now available under 
 
 </div>
 
-Adding a prefab is done via the **Prefabs** tab in the same way, click **Import**. Prefabs will add a component to your library of components. If you already have components with that name (maybe you have included the prefab before), you will be asked to overwrite.
+プレファブの追加は、同じ方法で**プレファブ**タブを介して行われ、**インポート**をクリックします。プレファブはコンポーネントライブラリにコンポーネントを追加します。以前にその名前のコンポーネント（以前にプレファブを含めた場合など）を持っている場合、上書きするかどうか尋ねられます。
 
 <div className="ndl-image-with-background l">
 
@@ -45,7 +45,7 @@ Adding a prefab is done via the **Prefabs** tab in the same way, click **Import*
 
 </div>
 
-When the prefab is imported you will get one or more new components in your **default sheet**.
+プレファブをインポートすると、**デフォルトシート**に一つまたは複数の新しいコンポーネントが追加されます。
 
 <div className="ndl-image-with-background l">
 
@@ -53,4 +53,4 @@ When the prefab is imported you will get one or more new components in your **de
 
 </div>
 
-Don't forget to read the documentation for the prefabs you intend to use, there you will find how to use them but also useful guides on how to customize and build upon them to your liking.
+使用するプレファブのドキュメントを読むことを忘れないでください。そこでは、それらを使用する方法だけでなく、好みに合わせてカスタマイズして構築する方法についても役立つガイドが見つかります。

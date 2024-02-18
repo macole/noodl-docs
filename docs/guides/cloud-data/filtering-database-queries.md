@@ -1,57 +1,60 @@
 ---
-title: Filtering Database Queries
+title: データベースクエリのフィルタリング
 hide_title: true
 ---
-# Filtering Database Queries
 
-## What you will learn in this guide
+# データベースクエリのフィルタリング
 
-In this guide you will learn how to let your database make a filtered query of your **Records**. This is a very common task in apps. For example if you want to see all comments related only to one specific post, or all messages that are unread. This is achieved by querying the database and ask it to filter out only the selected results.
+## このガイドで学べること
 
-In Noodl you use the [Query Records](/nodes/data/cloud-data/query-records) node to make a filtered query.
+このガイドでは、**レコード**のフィルタリングされたクエリをデータベースにさせる方法を学びます。これはアプリで一般的に行われるタスクです。たとえば、特定の投稿に関連するコメントのみを表示したい場合や、未読のメッセージをすべて表示したい場合などです。これは、データベースにクエリを実行して、選択された結果のみをフィルタリングするように依頼することで実現されます。
 
-## Overview
+Noodlでは、フィルタリングされたクエリを作成するために[クエリレコード](/nodes/data/cloud-data/query-records)ノードを使用します。
 
-We will go through the following steps in this guide
+## 概要
 
--   Query the Database for **Records** with a property equal to a specified value
--   Make a dynamic filter, i.e. where the Qurey filter can change dynamically
+このガイドでは、以下のステップを説明します：
 
-To get most out of this guide, it's best that you are already familiar with how to set up a cloud backend, create **Classes** and **Records** and make basic queries. You can quickly learn that by going through the following guides:
+-   特定の値に等しいプロパティを持つ**レコード**のデータベースクエリ
+-   動的フィルタリングを行う、つまりクエリフィルターを動的に変更する
 
--   [Creating a Backend](/docs/guides/cloud-data/creating-a-backend)
--   [Creating a Class](/docs/guides/cloud-data/creating-a-class)
--   [Creating Records](/docs/guides/cloud-data/creating-new-database-records)
--   [Query Records](/docs/guides/cloud-data/quering-records-from-database)
--   [Update Records](/docs/guides/cloud-data/updating-records)
+このガイドを最大限に活用するには、クラウドバックエンドの設定、**クラス**と**レコード**の作成、基本的なクエリの実行方法に既に慣れていることが最適です。以下のガイドを通じて、それをすばやく学ぶことができます：
 
-## Filtering Records in the Cloud vs Locally
+-   [バックエンドの作成](/docs/guides/cloud-data/creating-a-backend)
+-   [クラスの作成](/docs/guides/cloud-data/creating-a-class)
+-   [レコードの作成](/docs/guides/cloud-data/creating-new-database-records)
+-   [レコードのクエリ](/docs/guides/cloud-data/quering-records-from-database)
+-   [レコードの更新](/docs/guides/cloud-data/updating-records)
 
-This guide is focusing in on filtering Queries in the Cloud Database. This means that **Records** and filtered before they are sent to your app over the network. This is what the [Query Records](/nodes/data/cloud-data/query-records) node does.
+## クラウド内のレコードのフィルタリング vs ローカルでのフィルタリング
 
-There is also another node, [Filter Records](/nodes/data/cloud-data/filter-records), that filters data _that is already in the app_, i.e. it filters locally.
+このガイドでは、クラウドデータベース内のクエリをフィルタリングすることに焦点を当てています。つまり、**レコード**はアプリにネットワーク経由で送信される前にフィルタリングされます。これが[クエリレコード](/nodes/data/cloud-data/query-records)ノードが行うことです。
 
-Both of these have their advantages and disadvantages and in a good app you often mix them.
+また、すでにアプリ内にあるデータをフィルタリングする別のノード、[フィルタレコード](/nodes/data/cloud-data/filter-records)もあります。つまり、ローカルでフィルタリングします。
 
-Filtering in a Query in the Database (using **Query Records**) have the following advantages
+これらの方法はそれぞれ利点と欠点があり、良いアプリではしばしばこれらを組み合わせて使用します。
 
--   You only send the filtered out **Records** over the network. This is incredibly important if you are working with large data sets. If you have thousands of products in a database, you only want to send the products that the user is searching for or your app will be slow.
+データベース内でクエリをフィルタリングする（**クエリレコード**を使用する）利点は次のとおりです：
 
--   You can make use of optimized indexes in the Database if you for example are sorting or filtering out only certain objects. Again, if you work with large data sets with thousands or millions of **Records** this is key to make your app fast.
+-   ネットワークを介してフィルタリングされた**レコード**のみが送信されます。これは、大量のデータを扱う場合に非常に重要です。データベースに数千の製品がある場合、ユーザーが検索している製品のみを送信したいですし、そうでなければアプリが遅くなります。
 
-Filtering a Query locally (using **Filter Records**) have these main advantages
+-   例えば、特定のオブジェクトのみをソートまたはフィルタリングする場合に、データベースの最適化されたインデックスを利用できます。再び、数千または数百万の**レコード**を扱う大量のデータセットで作業する場合、これはアプリを高速にする鍵となります。
 
--   Once the **Records** are in the app, you don't need to send **Records** over the network which makes your app much faster.
+クエリをローカルでフィルタリングする（**フィルタレコード**を使用する）主な利点は次のとおりです：
 
--   If you have many users of your app your Backend and Database may be congested. By avoiding Querying the Cloud Database too often, for example by handling data locally, you put less stress on it.
+-   **レコード**がアプリに一度入ると、ネットワーク経由で**レコード**を送信する必要がなくなり、アプリがはるかに高速になります。
 
-Often, the most optimal solution is to combine the two methods. Make a Filtered Query towards the database that filters down the amount of **Records** to be sent to the app to a reasonable number, then use **Filter Records** for additional filtering and sorting locally.
+-   アプリのユーザーが多い場合、バックエンドとデータベースが混雑する可能性があります。たとえば、データをローカルで処理することによって、クラウドデータベースへのクエリを頻繁に避けることで、それにかかる負荷を減らすことができます。
 
-In this guide, we will specifically look at filtering using the **Query Records** node. The **Filter Records** node works in a very similar fashion but only works on **Arrays** of **Records** that are already in the App, typically coming from a **Query Records** node.
+最適なソリューションは、しばしばこれら2つの方法を組み合わせることです。データベースに対してフィルタリングされたクエリを行い、アプリに送信される**レコード**の量を合理的な数に絞り込み、その後で**フィルタレコード**を使用してローカルで追加のフィルタリングとソートを行います。
 
-## Using the Query Records node for filtering
+このガイドでは、**クエリレコード**ノードを使用したフィル
 
-This guide assumes that you already have a Backend up and running, with at least one Class containing a number of **Records**. You can follow the previous "Working With Cloud Data" guides if you need help with that. As an example we will use a simple Task app created in the previous guides. It has one **Class** called `Task`. It has two properties, `task` which is a description of the task, and `isDone` a boolean that keeps track of if the task is completed or not.
+タリングに特に焦点を当てています。**フィルタレコード**ノードは非常に類似した方法で動作しますが、**クエリレコード**ノードからの**レコード**の**配列**など、すでにアプリにある**レコード**の**配列**にのみ作用します。
+
+## フィルタリングのためのクエリレコードノードの使用
+
+このガイドでは、少なくとも1つのクラスがあり、いくつかの**レコード**を含むバックエンドがすでに稼働していることを前提としています。それに関するヘルプが必要な場合は、以前の「クラウドデータの操作」ガイドを参照してください。例として、以前のガイドで作成されたシンプルなタスクアプリを使用します。`Task`という1つの**クラス**があります。これには、タスクの説明である`task`プロパティと、タスクが完了したかどうかを追跡するブール値`isDone`プロパティがあります。
 
 <div className="ndl-image-with-background l">
 
@@ -59,7 +62,7 @@ This guide assumes that you already have a Backend up and running, with at least
 
 </div>
 
-The App consists of a main screen as below:
+アプリのメイン画面は以下のようになります：
 
 <div className="ndl-image-with-background l">
 
@@ -67,7 +70,7 @@ The App consists of a main screen as below:
 
 </div>
 
-Each todo **Record** is represented by a list item constructed as below:
+各todo**レコード**は以下のように構成されたリストアイテムによって表されます：
 
 <div className="ndl-image-with-background l">
 
@@ -75,7 +78,7 @@ Each todo **Record** is represented by a list item constructed as below:
 
 </div>
 
-Now we want to add a filter to only see the uncompleted tasks. Click on the **Query Records** node in the main screen. Then click the `Add Filter Rule` button.
+これで、未完了のタスクのみを表示するフィルターを追加したいと考えています。メイン画面の**クエリレコード**ノードをクリックしてから、`フィルタールールを追加`ボタンをクリックします。
 
 <div className="ndl-image-with-background">
 
@@ -83,7 +86,7 @@ Now we want to add a filter to only see the uncompleted tasks. Click on the **Qu
 
 </div>
 
-A new popup will appear where you can construct your filter. Feel free to play around a little with it.
+フィルターを構築できる新しいポップアップが表示されます。少し試してみてください。
 
 <div className="ndl-image-with-background">
 
@@ -91,22 +94,22 @@ A new popup will appear where you can construct your filter. Feel free to play a
 
 </div>
 
-It basically has three parts:
+基本的に3つの部分があります：
 
-`<property> <operator> <value or input>`
+`<プロパティ> <演算子> <値または入力>`
 
-The `<property>` is a property of your **Record**, for example `isDone` in our Task example.
+`<プロパティ>`は、例えば私たちのタスク例の`isDone`のように、**レコード**のプロパティです。
 
-The `<operator>` is a logical operator for the condition. There are a number of different operators and not all operators are available for all types of properties.
-For the case of `isDone` - a **boolean** there are for operators available: `equal to`, `not equal to`, `exists` and `not exists`. While the `equal to` / `not equal to` are pretty self explanatory, the `exists` / `not exists` operators work in the following way: They check whether there is a value set at all for the property, or if it's undefined.
+`<演算子>`は、条件の論理演算子です。さまざまな演算子があり、すべてのプロパティタイプですべての演算子が使用可能というわけではありません。
+`isDone` - **ブール値**の場合、使用可能な演算子は`等しい`、`等しくない`、`存在する`、`存在しない`の4つです。`等しい` / `等しくない`は自明ですが、`存在する` / `存在しない`演算子は次のように機能します：プロパティに値が設定されているか、または未定義かどうかをチェックします。
 
-Finally the `<value or input>` is the value that the operator should be applied to. The `<input>` option we will look at later, so let's use `<value>` for now.
+最後に、`<値または入力>`は、演算子を適用する値です。`<入力>`オプションは後で見るので、今のところは`<値>`を使用しましょう。
 
-In our case we want to filter out only the tasks that are not yet completed, i.e with `isDone = false`. So our filter will be:
+このケースでは、`isDone = false`である、つまりまだ完了していないタスクのみをフィルタリングしたいと考えています。したがって、私たちのフィルターは次のようになります：
 
-`<isDone> <equal to> <false>`
+`<isDone> <等しい> <false>`
 
-Let's select that. You can see that the somewhat cryptic format of the filter is spelled out in natural language below the filter.
+それを選択しましょう。フィルターのやや難解な形式が、フィルターの下に自然言語で書き出されているのを見ることができます。
 
 <div className="ndl-image-with-background">
 
@@ -114,7 +117,7 @@ Let's select that. You can see that the somewhat cryptic format of the filter is
 
 </div>
 
-You should already now see the list in your app changing to only show tasks that are uncompleted (if you have any). If you check the tasks they will start disappearing one by one as they are being filtered out. If you want them back, you will have to go into the **Dashboard** and change the `isDone` value to false again, and refresh your app.
+あなたのアプリのリストが未完了のタスクのみを表示するように変更されているのがすでに見えるはずです（あなたがそれを持っている場合）。タスクをチェックすると、それらが1つずつ消えていくのが見えるはずです。それらを戻したい場合は、**ダッシュボード**に行って`isDone`値を再び`false`に変更し、アプリをリフレッシュする必要があります。
 
 <div className="ndl-image-with-background l">
 
@@ -122,11 +125,13 @@ You should already now see the list in your app changing to only show tasks that
 
 </div>
 
-## Dynamic filtering
+## 動的フィルタリング
 
-The current state of the app is obviously flawed - when you finish all your tasks you see nothing. We need to be able to switch views between the completed and the uncompleted tasks.
+アプリの現在の状態は明らかに欠陥があります - すべてのタスクを完了すると何も表示されません。完了したタスクと未完了のタスクのビューを切り替えることができる必要があります。
 
-Lets add a [Radio Button Group](/nodes/ui-controls/radio-button-group) with two [Radio Buttons](/nodes/ui-controls/radio-button). With this, we can control wether we want to show the uncomplete tasks or the completed tasks.
+[ラジオボタングループ](/nodes/ui-controls/radio-button-group)と2つの[ラジオボタン](/nodes/ui-controls/radio-button)を追加しましょう。これにより、未完了のタスクを表示するか、完了
+
+したタスクを表示するかを制御できます。
 
 <div className="ndl-image-with-background l">
 
@@ -140,9 +145,9 @@ Lets add a [Radio Button Group](/nodes/ui-controls/radio-button-group) with two 
 
 </div>
 
-Make sure the label for the buttons are set correctly ("Show Uncompleted"/"Show Completed") and that their value is set to "Uncompleted"/"Completed" respectively. Also, the **Value** of the **Radio Button Group** should be "Uncompleted". That will be the default state. We will use the **Value** output of the **Radio Button Group** to control the filter settings of the **Query Records**.
+ボタンのラベルが正しく設定されていること（"未完了を表示" / "完了を表示"）、それぞれの値が"未完了" / "完了"に設定されていることを確認してください。また、**ラジオボタングループ**の**値**は"未完了"になっています。これがデフォルトの状態になります。**ラジオボタングループ**の**値**の出力を使用して、**クエリレコード**のフィルタ設定を制御します。
 
-Now lets update the **Query Records** node so we can control its filter using inputs. Click the **Query Records** node and change the last part of the filter to not take a value, but an **input**.
+**クエリレコード**ノードのフィルターを入力を使用して制御できるように更新しましょう。**クエリレコード**ノードをクリックして、フィルターの最後の部分を値ではなく**入力**に変更します。
 
 <div className="ndl-image-with-background l">
 
@@ -150,13 +155,13 @@ Now lets update the **Query Records** node so we can control its filter using in
 
 </div>
 
-Name the input "isDoneFilter". Now the **Query Records** have a new input that we can use! If the input is set to `true` we will filter out all completed tasks (`isDone = true`) and vice versa for `false`.
+入力に"isDoneFilter"という名前を付けます。これで、**クエリレコード**に新しい入力が使用できるようになりました！入力が`true`に設定されている場合、完了したタスク（`isDone = true`）のみがフィルタリングされ、`false`の場合はその逆になります。
 
-Finally we need to convert the two Radio Button values "Uncompleted" and "Completed" to `true` or `false`. We do that by creating an [Expression](/nodes/math/expression) node and setting the expression to
+最後に、2つのラジオボタンの値"未完了"と"完了"を`true`または`false`に変換する必要があります。これは、[式](/nodes/math/expression)ノードを作成し、式を
 
 `filterState === "Completed"`
 
-The **Expression** node will output `true` if the input is "Completed", otherwise `false`. Finally connect the output of the **Expression** to the **Query Records** and - voila! - our filtering will change when clicking the radio buttons.
+と設定することで行います。**式**ノードの出力は、入力が"完了"の場合は`true`、それ以外の場合は`false`になります。最後に、**式**の出力を**クエリレコード**に接続します - そして、ラジオボタンをクリックするとフィルタリングが切り替わります。
 
 <div className="ndl-image-with-background l">
 

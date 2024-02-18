@@ -1,28 +1,28 @@
 ---
-title: Library Overview
+title: ライブラリ概要
 hide_title: true
 ---
 
 import { ModuleListing } from '../src/blocks/ModuleListing.tsx';
 import { PrefabListing } from '../src/blocks/PrefabListing.tsx';
 
-# Library overview
+# ライブラリの概要
 
-Noodl has a lot of nodes available out of the box, but it can never include a node for everything. For that reason you can extend your project with specific modules or prefabs containing nodes and components to capture specfic functionality or UI controls.
+Noodlには箱から出してすぐに利用可能な多くのノードがありますが、すべてのものに対してノードを含めることはできません。そのため、特定の機能やUIコントロールをキャプチャするノードやコンポーネントを含むモジュールやプリファブでプロジェクトを拡張できます。
 
-The main difference between **Modules** and **Prefabs** is that modules install new nodes to the editor, while prefabs clones components built with the core nodes, and stores them as if you created them yourself. Prefabs can be imported as many times as you want, and each clone can be modified how you see fit.
+**モジュール**と**プリファブ**の主な違いは、モジュールがエディターに新しいノードをインストールするのに対し、プリファブはコアノードで構築されたコンポーネントをクローンし、自分で作成したかのように保存することです。プリファブは何度でもインポートでき、各クローンは好きなように変更できます。
 
-## Prefabs
+## プリファブ
 
-Noodl's library of prefabs is optimized for quickly building great data rich applications. Use them as is, or make them your own by customizing their internal building blocks.
+Noodlのプリファブライブラリは、データリッチなアプリケーションを迅速に構築するために最適化されています。そのまま使用するか、内部の構築ブロックをカスタマイズして独自のものにします。
 
 <PrefabListing
-  title="Popular prefabs"
+  title="人気のプリファブ"
   isFeaturedOnly
 />
 
-## Modules
+## モジュール
 
-Modules extend your project in some way, most commonly by adding new **core nodes** to your project. These nodes are added to the Node Picker and work like any other core node in Noodl.
+モジュールは、最も一般的にはプロジェクトに新しい**コアノード**を追加することによって、プロジェクトを何らかの形で拡張します。これらのノードはノードピッカーに追加され、Noodlの他のコアノードと同様に機能します。
 
-<ModuleListing title="Popular modules" isFeaturedOnly />
+<ModuleListing title="人気のモジュール" isFeaturedOnly />

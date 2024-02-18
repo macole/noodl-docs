@@ -2,6 +2,6 @@
 hide_title: true
 ---
 
-# AI Assisted Development
+# AIアシスト開発
 
-Noodl is a low code web app builder that will have you creating applications faster and smarter. Even though Noodl is technically a low code tool you can reduce the majority of coding using ChatGPT, making it much more accessible to no coders. Here is a collection of guides that target the different parts of Noodl where code is required and shows you how to use ChatGPT to fill in the blanks.
+Noodlは、アプリケーションの作成をより迅速かつ賢く行うことができるローコードのウェブアプリビルダーです。Noodlは技術的にはローコードツールですが、ChatGPTを使用してコーディングの大部分を削減することで、ノーコーダーにとってもずっとアクセスしやすくなります。ここでは、Noodlのコードが必要な異なる部分を対象としたガイドのコレクションを紹介し、ChatGPTを使用して空白を埋める方法を示します。

@@ -1,9 +1,9 @@
 ---
-title: Creating a Cloud Service
+title: クラウドサービスの作成
 hide_title: true
 ---
 
-# Creating a Cloud Service for your project
+# プロジェクトのためのクラウドサービスの作成
 
 <div className="ndl-image-with-background xl">
 
@@ -11,30 +11,30 @@ hide_title: true
 
 </div>
 
-## What you will learn in this guide
+## このガイドで学べること
 
-This guide will take you through the process of creating a **Cloud Service** for your Noodl project. A **Cloud Service** is needed if you want to fetch and store data for you application in a cloud **Database** and if you want to run and deploy **Cloud Functions**.
+このガイドでは、Noodlプロジェクトのための**クラウドサービス**を作成するプロセスを説明します。クラウド**データベース**でアプリケーションのデータを取得および保存したい場合、または**クラウドファンクション**を実行およびデプロイしたい場合に**クラウドサービス**が必要になります。
 
-### Overview
+### 概要
 
-We will go through the following steps in this guide:
+このガイドでは、以下のステップを説明します：
 
-- Creating a Cloud Services
-- Selecting a Cloud Services for you project
-- Inspect the **Cloud Services Database** using the **Dashboard**
-- Create and switch to a new **Cloud Service**
+- クラウドサービスの作成
+- プロジェクトのためのクラウドサービスの選択
+- **ダッシュボード**を使用して**クラウドサービスデータベース**の調査
+- 新しい**クラウドサービス**の作成と切り替え
 
-## What is a Cloud Service and when do you need it?
+## クラウドサービスとは何か、そしていつ必要か？
 
-A **Cloud Service** is a piece of software running in the cloud that helps serving your Noodl app with data and cloud functionality. The main reason for using a **Cloud Service** in your project is to use its **Database**. For example the nodes [Record](/nodes/data/cloud-data/record) and [Query Records](/nodes/data/cloud-data/query-records) can only be used if you have a **Cloud Service** active for you project. Also you need them for running [Cloud Functions](/docs/guides/cloud-logic/introduction).
+**クラウドサービス**は、Noodlアプリにデータとクラウド機能を提供するためにクラウドで実行されるソフトウェアの一部です。プロジェクトで**クラウドサービス**を使用する主な理由は、その**データベース**を使用することです。例えば、[Record](/nodes/data/cloud-data/record)や[Query Records](/nodes/data/cloud-data/query-records)ノードは、プロジェクトにアクティブな**クラウドサービス**がある場合にのみ使用できます。また、[クラウドファンクション](/docs/guides/cloud-logic/introduction)を実行するためにも必要です。
 
-Each **Cloud Service** has a dedicated database which means you might want to have multiple **Cloud Services** available for your project, for example one for your test data and one for your production data. Only one **Cloud Service** can be active for your project at one time, but when you deploy your project you can choose which service to use for the deploy.
+各**クラウドサービス**には専用のデータベースがあり、プロジェクトに複数の**クラウドサービス**を利用可能にしたい場合があります。例えば、テストデータ用と本番データ用に一つずつです。一度にアクティブにできる**クラウドサービス**は一つだけですが、プロジェクトをデプロイする際に使用するサービスを選択できます。
 
-Also note that **Cloud Services** are accessible by all your Noodl projects.
+また、**クラウドサービス**はすべてのNoodlプロジェクトからアクセスできることに注意してください。
 
-### Creating a cloud service
+### クラウドサービスの作成
 
-To add a new Cloud Service click the **Cloud Services** tab icon in the side bar.
+新しいクラウドサービスを追加するには、サイドバーの**クラウドサービス**タブアイコンをクリックします。
 
 <div className="ndl-image-with-background">
 
@@ -42,7 +42,7 @@ To add a new Cloud Service click the **Cloud Services** tab icon in the side bar
 
 </div>
 
-Then click the **Plus** icon at the top of the sidebar.
+次に、サイドバーの上部にある**プラス**アイコンをクリックします。
 
 <div className="ndl-image-with-background">
 
@@ -50,7 +50,7 @@ Then click the **Plus** icon at the top of the sidebar.
 
 </div>
 
-Go to the **Add Cloud Service** tab.
+**Add Cloud Service**タブに移動します。
 
 <div className="ndl-image-with-background xl">
 
@@ -58,11 +58,11 @@ Go to the **Add Cloud Service** tab.
 
 </div>
 
-Give the Cloud Service a name, for example "My Cloud Service" and a description "My cloud service for development". It could be a good idea to have multiple cloud services for the same project, since each cloud service will have its own database. This means that you can have one cloud service for development - where it doesnt matter if you mess up your data - and one for production.
+クラウドサービスに名前を付けます。例えば「My Cloud Service」とし、説明に「My cloud service for development」と入力します。各クラウドサービスが独自のデータベースを持つため、同じプロジェクトに複数のクラウドサービスを持つと良いかもしれません。これにより、データを混乱させても問題ない開発用のクラウドサービスと、本番用のクラウドサービスを持つことができます。
 
-## Select active cloud service
+## アクティブなクラウドサービスの選択
 
-Now you can select the newly created cloud service as the active for your project. In the sidebar, click `Use in editor`.
+これで、新しく作成したクラウドサービスをプロジェクトのアクティブなサービスとして選択できます。サイドバーで`Use in editor`をクリックします。
 
 <div className="ndl-image-with-background l">
 
@@ -70,11 +70,11 @@ Now you can select the newly created cloud service as the active for your projec
 
 </div>
 
-This means that any data requests, for example from a [Query Records](/nodes/data/cloud-data/query-records), when running in the editor will use this cloud service.
+これは、エディタで実行される際に、例えば[Query Records](/nodes/data/cloud-data/query-records)からのデータリクエストがこのクラウドサービスを使用することを意味します。
 
-## Inspect the Cloud Service using the Dashboard
+## ダッシュボードを使用してクラウドサービスの調査
 
-Now your project is connected to a **Cloud Service** with a **Database**. The best way to get an overview of the database is to open the **Dashboard**. You open it by clicking the `Open dashboard` button on your Cloud Service.
+これで、プロジェクトは**データベース**を持つ**クラウドサービス**に接続されました。データベースの概要を把握する最良の方法は、**ダッシュボード**を開くことです。クラウドサービスの`Open dashboard`ボタンをクリックして開きます。
 
 <div className="ndl-image-with-background xl">
 
@@ -82,15 +82,17 @@ Now your project is connected to a **Cloud Service** with a **Database**. The be
 
 </div>
 
-No you can see the contents of your **Database** in the menu to the left, under `Browser`. Right now, the Database contains two _classes_: `User` and `Role`. These two classes are created automatically. These classes are used to manage login and credentials in your app but we will not care about them in this guide.
+これで、`Browser`の下にあるメニューから**データベース**の内容を見ることができます。現在、データベースには`User`と`Role`の2つの_クラス_が含まれています。これらのクラ
 
-### Classes
+スは自動的に作成されます。これらのクラスは、アプリ内でのログインと認証を管理するために使用されますが、このガイドではそれらについては扱いません。
 
-A **Class** in the database is a collection of **Records** of the same type. In other databases these are often referred to as **Tables** or **Collections**. In the case of the `User` class, it contains **User Records** where each record have data properties such as User Name, Email, etc. A typical app will have many different classes but we will not create any new classes in this guide. Instead you can close the **Dashboard** window for now.
+### クラス
 
-## Creating and switching to a new cloud service
+データベースの**クラス**は、同じタイプの**レコード**のコレクションです。他のデータベースでは、これらはしばしば**テーブル**や**コレクション**として参照されます。`User`クラスの場合、それにはユーザー名、メールアドレスなどのデータプロパティを持つ**ユーザーレコード**が含まれています。典型的なアプリには多くの異なるクラスがありますが、このガイドでは新しいクラスを作成しません。代わりに、今のところ**ダッシュボード**ウィンドウを閉じても構いません。
 
-Now you can create a second cloud service, be following the same process as above. Give it a name, for example `Second cloud service` and a short description: `My production service`. You now have a second cloud service in the list, that you can make it the active backend for the editor by clicking `Use in editor`.
+## 新しいクラウドサービスの作成と切り替え
+
+上記と同じプロセスに従って2つ目のクラウドサービスを作成できます。例えば`Second cloud service`という名前と`My production service`という短い説明を付けます。これで、リストに2つ目のクラウドサービスがあり、`Use in editor`をクリックすることでエディタのアクティブなバックエンドにすることができます。
 
 <div className="ndl-image-with-background xl">
 
@@ -104,8 +106,8 @@ Now you can create a second cloud service, be following the same process as abov
 
 </div>
 
-Now you can switch back and forth between your two cloud services. But most often you use one for development and the other when you deploy.
+これで、2つのクラウドサービス間を自由に切り替えることができます。しかし、通常は一方を開発用、もう一方をデプロイ時に使用します。
 
-## Deploying with a cloud service
+## クラウドサービスを使用したデプロイ
 
-When you deploy you application you pick which cloud service to use for the deploy. So you can for instance have one test deploy to sandbox that is using your development or testing cloud service, and another using your custom domain that use your production cloud service.
+アプリケーションをデプロイするときには、デプロイに使用するクラウドサービスを選択します。たとえば、開発またはテスト用のクラウドサービスを使用しているサンドボックスにテストデプロイを行い、本番用のクラウドサービスを使用してカスタムドメインに別のデプロイを行うことができます。

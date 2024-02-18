@@ -1,12 +1,12 @@
 /**
- * Creating a sidebar enables you to:
- - create an ordered group of docs
- - render a sidebar for each doc of that group
- - provide next/previous navigation
+ * サイドバーを作成することで、以下を行うことができます：
+ - 文書の順序付けられたグループを作成する
+ - そのグループの各文書に対してサイドバーをレンダリングする
+ - 次/前のナビゲーションを提供する
 
- The sidebars can be generated from the filesystem, or explicitly defined here.
+ サイドバーはファイルシステムから生成することも、ここで明示的に定義することもできます。
 
- Create as many sidebars as you want.
+ 望むだけ多くのサイドバーを作成してください。
  */
 
 const { getGuidesSidebarData } = require('./static/data/guides');

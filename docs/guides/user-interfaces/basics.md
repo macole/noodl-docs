@@ -1,49 +1,49 @@
 ---
-title: Building User Interfaces Basics
+title: ユーザーインターフェイスの基本を構築する
 hide_title: true
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl'
 
-# Building User Interfaces Basics
+# ユーザーインターフェイスの基本を構築する
 
-## What you will learn in this guide
+## このガイドで学べること
 
-In this guide you will learn how to place and group components in the visual canvas.
+このガイドでは、ビジュアルキャンバス内でコンポーネントを配置し、グループ化する方法を学びます。
 
-## Adding UI elements
-To add UI controls and other UI elements, such as Texts, to the currently selected visual component you click the **[+]** icon at the top of the visual canvas. This brings up the **Node Picker**, here you can find yourself to the **UI Elements** section. Click the element you want to add and it is added to the currently selected component.
+## UI要素の追加
+現在選択されているビジュアルコンポーネントにUIコントロールや他のUI要素（テキストなど）を追加するには、ビジュアルキャンバスの上部にある**[+]**アイコンをクリックします。これにより**ノードピッカー**が表示され、**UI要素**セクションに進むことができます。追加したい要素をクリックすると、現在選択されているコンポーネントに追加されます。
 
 <div className="ndl-image-with-background xl">
     <video width="100%" autoPlay muted loop src={useBaseUrl("/docs/guides/user-interfaces/basics/add-ui-control.mp4")}/>
 </div>
 
-## Editing properties
-To edit the properties of a UI element, you click the element in the visual canvas (or more commonly in the node graph editor) which will bring up the properties panel. Here you can edit all properties of the UI element.
+## プロパティの編集
+UI要素のプロパティを編集するには、ビジュアルキャンバス（または一般的にはノードグラフエディター）内の要素をクリックすると、プロパティパネルが表示されます。ここでは、UI要素のすべてのプロパティを編集できます。
 
 <div className="ndl-image-with-background xl">
     <video width="100%" autoPlay muted loop src={useBaseUrl("/docs/guides/user-interfaces/basics/edit-properties.mp4")}/>
 </div>
 
-## The visual hierarchy
-As you add UI elements to your component you will see the visual hierarchy being built in the node graph editor. All UI elements are depicted as blue nodes. Here are some nifty things to know about the visual hierarchy in the node editor.
+## ビジュアル階層
+コンポーネントにUI要素を追加すると、ノードグラフエディターにビジュアル階層が構築されていくのが見られます。すべてのUI要素は青いノードとして表されます。ノードエディターのビジュアル階層について知っておくと便利なことがいくつかあります。
 
-- All components must have a **single root** UI Element, most ofthen this is a **Group** node.
+- すべてのコンポーネントには、**単一のルート**UI要素が必要です。これは、ほとんどの場合**グループ**ノードです。
 
-- You can hover the UI elements in the node graph editor to reveal them in the visual canvas.
+- ノードグラフエディター内のUI要素をホバーすると、ビジュアルキャンバス内でそれらを明らかにすることができます。
 
-- You can manipulate the hierarchy much like you would a layer panel in other design tools.
+- 他のデザインツールのレイヤーパネルのように、階層を操作できます。
 
-- You can bring up the **Node picker** by **right clicking** in the node graph editor. If you want the newly created UI element to be placed as a child to another UI element simply right click the parent element to bring up the **Node Picker**.
+- **ノードピッカー**を表示するには、ノードグラフエディターで**右クリック**します。新しく作成されたUI要素を他のUI要素の子として配置したい場合は、親要素を右クリックして**ノードピッカー**を表示します。
 
 <div className="ndl-image-with-background xl">
     <video width="100%" autoPlay muted loop src={useBaseUrl("/docs/guides/user-interfaces/basics/ui-heirarchy.mp4")}/>
 </div>
 
-## Grouping and Layouts
-Now that you know how to place new components it's time to learn another important concept, grouping. This is how you group UI elements together and control the layout of the elements under a group. Use the **Node Picker** to create a new group, place it where you want it in the hierarchy, select, drag and drop the UI elements that you want under the group.
+## グルーピングとレイアウト
+新しいコンポーネントの配置方法を学んだので、次に重要な概念であるグルーピングを学びましょう。これは、UI要素をグループ化し、グループ下の要素のレイアウトを制御する方法です。**ノードピッカー**を使用して新しいグループを作成し、階層内の望む位置に配置し、グループの下に配置したいUI要素を選択してドラッグアンドドロップします。
 
-The **Group** node gives you a bunch of options for layouting user interfaces, learn more about the details of layouting and the group node in this [guide](/docs/guides/user-interfaces/layout)
+**グループ**ノードには、ユーザーインターフェイスのレイアウトに関する多くのオプションが用意されています。レイアウトとグループノードの詳細については、この[ガイド](/docs/guides/user-interfaces/layout)でさらに学ぶことができます。
 
 <div className="ndl-image-with-background xl">
     <video width="100%" autoPlay muted loop src={useBaseUrl("/docs/guides/user-interfaces/basics/grouping.mp4")}/>

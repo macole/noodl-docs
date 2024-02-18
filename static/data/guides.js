@@ -3,7 +3,7 @@ const { recursiveBuildSidebarData } = require('./dataHelpers');
 const guides = [
   {
     type: 'category',
-    label: 'Building User Interfaces',
+    label: 'ユーザーインターフェースの構築',
     link: {
       type: 'doc',
       id: 'guides/user-interfaces/overview',
@@ -11,476 +11,457 @@ const guides = [
     items: [
       {
         type: 'doc',
-        label: 'Visual nodes',
+        label: 'ビジュアルノード',
         id: 'guides/user-interfaces/basics',
         imageUrl: '/img/featured-content-images/basic.png',
         description:
-          'Learn how to to place and edit visual elements using Noodls node model',
+          'Noodlのノードモデルを使用してビジュアルエレメントを配置し編集する方法を学びます',
       },
       {
         type: 'doc',
-        label: 'Components',
+        label: 'コンポーネント',
         id: 'guides/user-interfaces/components',
         imageUrl: '/img/featured-content-images/basic.png',
-        description: 'Learn how to create visual components that are reusable ',
+        description: '再利用可能なビジュアルコンポーネントの作成方法を学びます',
       },
       {
         type: 'doc',
-        label: 'Layout',
+        label: 'レイアウト',
         id: 'guides/user-interfaces/layout',
         imageUrl: '/img/featured-content-images/layout.png',
         description:
-          'Learn how to create layouts and group content using visual nodes',
+          'ビジュアルノードを使用してレイアウトを作成し、コンテンツをグループ化する方法を学びます',
       },
       {
         type: 'doc',
-        label: 'Responsive Design',
+        label: 'レスポンシブデザイン',
         id: 'guides/user-interfaces/responsive-design',
         imageUrl: '/img/featured-content-images/basic.png',
-        description: 'Learn how to to build responsive layouts and components',
+        description: 'レスポンシブなレイアウトとコンポーネントの構築方法を学びます',
       },
       {
         type: 'doc',
-        label: 'Style Variants',
+        label: 'スタイルバリアント',
         id: 'guides/user-interfaces/style-variants',
         imageUrl: '/img/featured-content-images/layout.png',
-        description: 'Learn how to define style variants for visual elements',
+        description: 'ビジュアルエレメントのスタイルバリアントを定義する方法を学びます',
       },
       {
         type: 'doc',
-        label: 'Visual States',
+        label: 'ビジュアルステート',
         id: 'guides/user-interfaces/visual-states',
         imageUrl: '/img/featured-content-images/layout.png',
         description:
-          'Learn how to style hover, focused, and other visual states on UI elements',
+          'UIエレメントのホバー、フォーカスなどのビジュアルステートをスタイリングする方法を学びます',
       },
       {
         type: 'doc',
-        label: 'States Node',
+        label: 'ステートノード',
         id: 'guides/user-interfaces/states',
         imageUrl: '/img/featured-content-images/logic.png',
         description:
-          'Learn how to use the States node to create UI states, animations and more',
+          'UIステート、アニメーションなどを作成するためのステートノードの使用方法を学びます',
       },
       {
         type: 'doc',
-        label: 'Scrolling Content',
+        label: 'スクロールコンテンツ',
         id: 'guides/user-interfaces/scrolling-content',
         imageUrl: '/img/featured-content-images/layout.png',
-        description: 'Learn how to set up scrolling containers and pages',
+        description: 'スクロールコンテナとページの設定方法を学びます',
       },
       {
         type: 'doc',
-        label: 'Modules and Prefabs',
+        label: 'モジュールとプリファブ',
         id: 'guides/user-interfaces/modules',
         imageUrl: '/img/featured-content-images/basic.png',
         description:
-          'Get pre-made components, third-party-services, and new capabilities with modules',
+          'プリメイドコンポーネント、サードパーティサービス、新しい機能をモジュールで取得します',
       },
       {
         type: 'doc',
-        label: 'Figma Plugin',
+        label: 'Figmaプラグイン',
         id: 'guides/user-interfaces/figma-plugin',
         imageUrl: '/img/featured-content-images/basic.png',
-        description: 'Turn designs in Figma into Noodl nodes',
+        description: 'FigmaのデザインをNoodlノードに変換します',
       },
     ],
   },
 
   {
     type: 'category',
-    label: 'Working with data',
+    label: 'データの操作',
     link: { type: 'doc', id: 'guides/data/overview' },
     items: [
       {
         type: 'doc',
-        label: 'Making Connections',
+        label: 'コネクションの作成',
         id: 'guides/data/making-connections',
         imageUrl: '/img/featured-content-images/logic.png',
-        description: 'Learn how to make data connections between nodes.',
+        description: 'ノード間でデータコネクションを作成する方法を学びます。',
       },
       {
         type: 'doc',
-        label: 'Variables',
+        label: '変数',
         id: 'guides/data/variables',
         imageUrl: '/img/featured-content-images/logic.png',
         description:
-          'Learn how to store data locally in your app using variables',
+          'アプリ内でデータをローカルに保存するための変数の使用方法を学びます',
       },
       {
         type: 'doc',
-        label: 'Objects',
+        label: 'オブジェクト',
         id: 'guides/data/objects',
         imageUrl: '/img/featured-content-images/logic.png',
-        description: 'Learn how to store objects of data locally in your app',
+        description: 'アプリ内でデータのオブジェクトをローカルに保存する方法を学びます',
       },
       {
         type: 'doc',
-        label: 'Arrays',
+        label: '配列',
         id: 'guides/data/arrays',
         imageUrl: '/img/featured-content-images/list.png',
-        description: 'Learn how to store multiple objects of data using arrays',
+        description: '複数のデータオブジェクトを配列で保存する方法を学びます',
       },
       {
         type: 'doc',
-        label: 'Lists Basics',
+        label: 'リストの基本',
         id: 'guides/data/list-basics',
         imageUrl: '/img/featured-content-images/list.png',
-        description: 'Learn how to generate lists of UI elements from data',
+        description: 'データからUIエレメントのリストを生成する方法を学びます',
       },
       {
         type: 'doc',
-        label: 'UI Controls and data',
+        label: 'UIコントロールとデータ',
         id: 'guides/data/ui-controls-and-data',
         imageUrl: '/img/featured-content-images/list.png',
         description:
-          'Learn how connect UI Controls to data nodes to create forms and more',
+          'UIコントロールをデータノードに接続してフォームなどを作成する方法を学びます',
       },
 
       {
         type: 'doc',
-        label: 'External Data',
+        label: '外部データ',
         id: 'guides/data/external-data',
         imageUrl: '/img/featured-content-images/data.png',
-        description: 'Learn how to work with external data using REST APIs',
+        description: 'REST APIを使用して外部データを操作する方法を学びます',
       },
     ],
   },
 
   {
     type: 'category',
-    label: 'Navigation',
+    label: 'ナビゲーション',
     link: { type: 'doc', id: 'guides/navigation/overview' },
     items: [
       {
         type: 'doc',
-        label: 'Basic Navigation',
+        label: '基本的なナビゲーション',
         id: 'guides/navigation/basic-navigation',
         imageUrl: '/img/featured-content-images/navigation.png',
         description:
-          'Learn how to create pages and how to navigate between them',
+          'ページの作成とページ間のナビゲーション方法を学びます',
       },
       {
         type: 'doc',
-        label: 'Multi Level Navigation',
+        label: 'マルチレベルナビゲーション',
         id: 'guides/navigation/multi-level-navigation',
         imageUrl: '/img/featured-content-images/navigation.png',
-        description: 'Learn how to set up a multi-level-navigation system',
+        description: 'マルチレベルナビゲーションシステムの設定方法を学びます',
       },
       {
         type: 'doc',
-        label: 'Encoding Parameters in URLs',
+        label: 'URL内のパラメータのエンコーディング',
         id: 'guides/navigation/encoding-parameters-in-urls',
         imageUrl: '/img/featured-content-images/logic.png',
         description:
-          'Learn how to pass parameters in the URL when navigating between page',
+          'ページ間のナビゲーション時にURL内にパラメータを渡す方法を学びます',
       },
       {
         type: 'doc',
-        label: 'Popups',
+        label: 'ポップアップ',
         id: 'guides/navigation/popups',
         imageUrl: '/img/featured-content-images/navigation.png',
-        description: 'Learn how to display popups on user interactions',
+        description: 'ユーザーの操作に応じてポップアップを表示する方法を学びます',
       },
       {
         type: 'doc',
-        label: 'Component Stack',
+        label: 'コンポーネントスタック',
         id: 'guides/navigation/component-stack',
         imageUrl: '/img/featured-content-images/navigation.png',
         description:
-          'Learn how to create a wizard flow using a Component Stack',
+          'コンポーネントスタックを使用してウィザードフローを作成する方法を学びます',
       },
     ],
   },
 
   {
     type: 'category',
-    label: 'Working with cloud data',
+    label: 'クラウドデータの操作',
     link: { type: 'doc', id: 'guides/cloud-data/overview' },
     items: [
       {
         type: 'doc',
-        label: 'Creating a cloud service',
+        label: 'クラウドサービスの作成',
         id: 'guides/cloud-data/creating-a-backend',
         imageUrl: '/img/featured-content-images/data.png',
         description:
-          'Learn how to set up a cloud service for your App, to store and read persistant data',
+          'アプリ用のクラウドサービスを設定し、永続的なデータを保存および読み取る方法を学びます',
       },
       {
         type: 'doc',
-        label: 'Creating a class',
+        label: 'クラスの作成',
         id: 'guides/cloud-data/creating-a-class',
         imageUrl: '/img/featured-content-images/data.png',
         description:
-          'Learn how to create a class for storing data records in a cloud service.',
+          'クラウドサービス内でデータレコードを保存するためのクラスを作成する方法を学びます。',
       },
       {
         type: 'doc',
-        label: 'Creating new database records',
+        label: '新しいデータベースレコードの作成',
         id: 'guides/cloud-data/creating-new-database-records',
         imageUrl: '/img/featured-content-images/data.png',
-        description: 'Learn how to store a data Record in a cloud service.',
+        description: 'クラウドサービスにデータレコードを保存する方法を学びます。',
       },
       {
         type: 'doc',
-        label: 'Quering records from a database',
+        label: 'データベースからレコードをクエリ',
         id: 'guides/cloud-data/quering-records-from-database',
         imageUrl: '/img/featured-content-images/data.png',
-        description: 'Learn how to query record from a database to your app',
+        description: 'データベースからレコードをアプリにクエリする方法を学びます',
       },
       {
         type: 'doc',
-        label: 'Updating records',
+        label: 'レコードの更新',
         id: 'guides/cloud-data/updating-records',
         imageUrl: '/img/featured-content-images/data.png',
-        description: 'Learn how to update existing records in a database',
+        description: 'データベース内の既存のレコードを更新する方法を学びます',
       },
       {
         type: 'doc',
-        label: 'Filter database queries',
+        label: 'データベースクエリのフィルタリング',
         id: 'guides/cloud-data/filtering-database-queries',
         imageUrl: '/img/featured-content-images/data.png',
-        description: 'Learn how to filter database queries',
+        description: 'データベースクエリをフィルタリングする方法を学びます',
       },
       {
         type: 'doc',
-        label: 'Record relations',
+        label: 'レコード関係',
         id: 'guides/cloud-data/record-relations',
         imageUrl: '/img/featured-content-images/data.png',
         description:
-          'Learn how to create relations between records in a database',
+          'データベース内のレコード間の関係を作成する方法を学びます',
       },
       {
         type: 'doc',
-        label: 'Access Control',
+        label: 'アクセス制御',
         id: 'guides/cloud-data/access-control',
         imageUrl: '/img/featured-content-images/data.png',
         description:
-          'learn how to limit access control to records to certain users.',
+          '特定のユーザーにレコードへのアクセス制御を制限する方法を学びます。',
       },
       {
         type: 'doc',
-        label: 'Importing and exporting data',
+        label: 'データのインポートとエクスポート',
         id: 'guides/cloud-data/import-export-csv',
         imageUrl: '/img/featured-content-images/data.png',
         description:
-          'learn how to import and export data to/from your cloud services database.',
+          'クラウドサービスのデータベースからデータをインポートおよびエクスポートする方法を学びます。',
       },
     ],
   },
 
   {
     type: 'category',
-    label: 'Visualizing Data',
+    label: 'データの可視化',
     link: { type: 'doc', id: 'guides/visualizing-data/overview' },
     items: [
       {
         type: 'doc',
-        label: 'Using the Table component to visualize data',
+        label: 'データを可視化するためのテーブルコンポーネントの使用',
         id: 'guides/visualizing-data/table-to-visualize-data',
         imageUrl: '/img/featured-content-images/data.png',
         description:
-          'Learn how to use the Table node and Query Records to display data in a table.',
+          'テーブルノードとクエリレコードを使用してデータをテーブルに表示する方法を学びます。',
       },
       {
         type: 'doc',
-        label: 'Adding pagination to the Table component',
+        label: 'テーブルコンポーネントへのページネーションの追加',
         id: 'guides/visualizing-data/table-pagination',
         imageUrl: '/img/featured-content-images/data.png',
         description:
-          'Learn how to use the Pages And Rows component to paginate the data in your Table.',
+          'Pages And Rowsコンポーネントを使用してテーブルのデータをページネーションする方法を学びます。',
       },
       {
         type: 'doc',
-        label: 'Filter your Table data',
+        label: 'テーブルデータのフィルタリング',
         id: 'guides/visualizing-data/filter-table-data',
         imageUrl: '/img/featured-content-images/data.png',
         description:
-          'Learn how to use the Filter prefab to filter out data from a Query Node and display it in a Table.',
+          'フィルタープリファブを使用してクエリノードからのデータをフィルタリングし、テーブルに表示する方法を学びます。',
       },
       {
         type: 'doc',
-        label: 'Styling the Table',
+        label: 'テーブルのスタイリング',
         id: 'guides/visualizing-data/styling-table',
         imageUrl: '/img/featured-content-images/data.png',
-        description: 'Learn how to make style changes to the Table prefab.',
+        description: 'テーブルプリファブにスタイル変更を加える方法を学びます。',
       },
     ],
   },
 
   {
     type: 'category',
-    label: 'Building business logic',
+    label: 'ビジネスロジックの構築',
     link: { type: 'doc', id: 'guides/business-logic/overview' },
     items: [
       {
         type: 'doc',
-        label: 'Client Side Business Logic with Nodes',
+        label: 'ノードを使用したクライアントサイドビジネスロジック',
         id: 'guides/business-logic/client-side-biz-logic-nodes',
         imageUrl: '/img/featured-content-images/logic.png',
-        description: 'Learn how to work with logic nodes for your frontend',
+        description: 'フロントエンド用のロジックノードの使用方法を学びます',
       },
       {
         type: 'doc',
-        label: 'Javascript in Noodl',
+        label: 'NoodlでのJavascript',
         id: 'guides/business-logic/javascript',
         imageUrl: '/img/featured-content-images/code.png',
         description:
-          'Learn how to use Javascript in Noodl and combine nodes with code',
+          'NoodlでJavascriptを使用し、ノードとコードを組み合わせる方法を学びます',
       },
       {
         type: 'doc',
-        label: 'Client Side Business Logic with Javascript',
+        label: 'クライアントサイドビジネスロジックでのJavascriptの使用',
         id: 'guides/business-logic/client-side-biz-logic-js',
         imageUrl: '/img/featured-content-images/code.png',
-        description: 'Learn how to use Javascript for custom logic',
+        description: 'カスタムロジックのためのJavascriptの使用方法を学びます',
       },
       {
         type: 'doc',
-        label: 'Custom UI Components',
+        label: 'カスタムUIコンポーネント',
         id: 'guides/business-logic/custom-ui-components',
         imageUrl: '/img/featured-content-images/list.png',
-        description: 'Learn how to create your own re-usable components',
+        description: '独自の再利用可能なコンポーネントを作成する方法を学びます',
       },
       {
         type: 'doc',
-        label: 'Events',
+        label: 'イベント',
         id: 'guides/business-logic/events',
         imageUrl: '/img/featured-content-images/logic.png',
-        description: 'Learn how to work with events in Noodl',
+        description: 'Noodlでイベントを扱う方法を学びます',
       },
-      /*  {
-                type: 'doc',
-                label: 'Zapier',
-                id: 'guides/business-logic/zapier',
-                imageUrl: '/img/featured-content-images/logic.png',
-                description:
-                    'Learn how to connect Noodl to Zapier for task automation more',
-            },*/
-      /*{
-                            type: 'doc',
-                            label: 'Webhooks',
-                            id: 'guides/business-logic/webhooks',
-                        },*/
-      /*  {
-                type: 'doc',
-                label: 'User Management',
-                id: 'guides/business-logic/user-management',
-                imageUrl: '/img/featured-content-images/data.png',
-                description:
-                    'Learn how to use Noodls built in User Management nodes to create signup flows and more',
-            },*/
     ],
   },
 
   {
     type: 'category',
-    label: 'User Management',
+    label: 'ユーザー管理',
     link: { type: 'doc', id: 'guides/user-management/overview' },
     items: [
       {
         type: 'doc',
-        label: 'Creating users in Noodl',
+        label: 'Noodlでのユーザー作成',
         id: 'guides/user-management/creating-users-in-noodl',
         imageUrl: '/',
-        description: 'Learn how to create user accounts in your app',
+        description: 'アプリ内でユーザーアカウントを作成する方法を学びます',
       },
     ],
   },
 
   {
     type: 'category',
-    label: 'Cloud Functions',
+    label: 'クラウド関数',
     link: { type: 'doc', id: 'guides/cloud-logic/overview' },
     items: [
       {
         type: 'doc',
-        label: 'Introduction',
+        label: '導入',
         id: 'guides/cloud-logic/introduction',
         imageUrl: '/img/featured-content-images/logic.png',
         description:
-          'Start learning how to build logic that runs in the cloud.',
+          'クラウドで実行されるロジックの構築を始める方法を学びます。',
       },
       {
         type: 'doc',
-        label: 'Email Verification',
+        label: 'メール確認',
         id: 'guides/cloud-logic/email-verification',
         imageUrl: '/img/featured-content-images/data.png',
-        description: 'Learn how create signup flows and more.',
+        description: 'サインアップフローなどを作成する方法を学びます。',
       },
       {
         type: 'doc',
-        label: 'Scheduled Jobs',
+        label: 'スケジュールされたジョブ',
         id: 'guides/cloud-logic/scheduled-jobs',
         imageUrl: '/img/featured-content-images/logic.png',
-        description: 'How to do scheduled jobs using cloud functions.',
+        description: 'クラウド関数を使用したスケジュールされたジョブの方法を学びます。',
       },
       {
         type: 'doc',
-        label: 'Logging and Debugging',
+        label: 'ログとデバッグ',
         id: 'guides/cloud-logic/logging',
         imageUrl: '/img/featured-content-images/logic.png',
-        description: 'How to log and debug your cloud functions.',
+        description: 'クラウド関数のログとデバッグ方法を学びます。',
       },
       {
         type: 'doc',
         label: 'Javascript',
         id: 'guides/cloud-logic/javascript',
         imageUrl: '/img/featured-content-images/logic.png',
-        description: 'How to write Javascript in cloud functions.',
+        description: 'クラウド関数でJavascriptを書く方法を学びます。',
       },
     ],
   },
   {
     type: 'category',
-    label: 'Collaboration',
+    label: 'コラボレーション',
     link: { type: 'doc', id: 'guides/collaboration/overview' },
     items: [
       {
         type: 'doc',
-        label: 'Version Control',
+        label: 'バージョン管理',
         id: 'guides/collaboration/version-control',
         imageUrl: '/img/featured-content-images/basic.png',
         description:
-          'Learn how to use Noodls powerful version control features based on Git',
+          'Gitに基づいたNoodlの強力なバージョン管理機能の使用方法を学びます',
       },
       {
         type: 'doc',
-        label: 'Migrating from Noodl hosted Git',
+        label: 'Noodlホスト型Gitからの移行',
         id: 'guides/collaboration/migrating-from-noodl-hosted-git',
         imageUrl: '/img/featured-content-images/basic.png',
         description:
-          'Projects created with closed source Noodl need to be migrated for collaboration to work',
+          'クローズドソースのNoodlで作成されたプロジェクトは、コラボレーションを機能させるために移行する必要があります',
       },
     ],
   },
   {
     type: 'category',
-    label: 'Deploying and hosting apps',
+    label: 'アプリのデプロイとホスティング',
     link: { type: 'doc', id: 'guides/deploy/overview' },
     items: [
       {
         type: 'doc',
-        label: 'Using a self hosted cloud service',
+        label: 'セルフホスト型クラウドサービスの使用',
         id: 'guides/deploy/using-an-external-backend',
-        imageUrl: '/img/featured-content-images/data.png',
+       
+
+ imageUrl: '/img/featured-content-images/data.png',
         description:
-          'Learn how to create a self hosted cloud service through a Docker Container',
+          'Dockerコンテナを通じてセルフホスト型クラウドサービスを作成する方法を学びます',
       },
       {
         type: 'doc',
-        label: 'Deploying to iOS and Android',
+        label: 'iOSとAndroidへのデプロイ',
         id: 'guides/deploy/deploying-to-ios-and-android',
         imageUrl: '/img/featured-content-images/hosting.png',
-        description: 'Learn how to deploy your project as a native app',
+        description: 'プロジェクトをネイティブアプリとしてデプロイする方法を学びます',
       },
       {
         type: 'doc',
-        label: 'Self hosting your Noodl Frontend',
+        label: 'Noodlフロントエンドのセルフホスティング',
         id: 'guides/deploy/hosting-frontend',
         imageUrl: '/img/featured-content-images/hosting.png',
         description:
-          'Learn how to deploy your project to a local folder for Self Hosting',
+          'プロジェクトをローカルフォルダにデプロイしてセルフホスティングする方法を学びます',
       },
     ],
   },
@@ -492,7 +473,7 @@ exports.getGuidesSidebarData = function () {
 
 function recursiveBuildGuideListingData(item) {
   if ('items' in item) {
-    // is a category
+    // カテゴリーである
     return {
       key: item.label,
       title: item.label,

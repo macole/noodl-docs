@@ -1,12 +1,12 @@
 /**
- * Creating a sidebar enables you to:
- - create an ordered group of docs
- - render a sidebar for each doc of that group
- - provide next/previous navigation
+ * サイドバーを作成することで、以下を実現できます：
+ - ドキュメントの順序付けられたグループを作成する
+ - そのグループの各ドキュメントにサイドバーをレンダリングする
+ - 次へ/前へのナビゲーションを提供する
 
- The sidebars can be generated from the filesystem, or explicitly defined here.
+ サイドバーは、ファイルシステムから生成することも、ここで明示的に定義することもできます。
 
- Create as many sidebars as you want.
+ 任意の数のサイドバーを作成できます。
  */
 
 const { getGuidesSidebarData } = require('./static/data/guides');
@@ -18,24 +18,24 @@ const sidebars = {
   docsSidebar: [
     {
       type: 'doc',
-      label: 'Learn',
+      label: '学習',
       id: 'learn',
     },
     {
       type: 'category',
-      label: 'Getting Started',
+      label: 'はじめに',
       collapsible: true,
       collapsed: false,
       link: { type: 'doc', id: 'getting-started/overview' },
       items: [
         {
           type: 'doc',
-          label: 'Workflow Overview',
+          label: 'ワークフローの概要',
           id: 'getting-started/workflow',
         },
         {
           type: 'doc',
-          label: 'Fundamentals',
+          label: '基礎',
           id: 'getting-started/fundamentals',
         },
         {
@@ -52,12 +52,12 @@ const sidebars = {
           items: [
             {
               type: 'doc',
-              label: 'Develop with ChatGPT',
+              label: 'ChatGPTを使った開発',
               id: 'getting-started/ai-assisted-dev/chat-gpt',
             },
             {
               type: 'doc',
-              label: 'REST API calls',
+              label: 'REST APIコール',
               id: 'getting-started/ai-assisted-dev/rest',
             },
           ],
@@ -66,36 +66,36 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'Guides',
+      label: 'ガイド',
       collapsible: true,
       collapsed: false,
       items: [...getGuidesSidebarData()],
     },
     {
       type: 'category',
-      label: 'Build Along Videos',
+      label: 'ビルドアロングビデオ',
       collapsible: true,
       collapsed: false,
       link: { type: 'doc', id: 'build-alongs/overview' },
       items: [
         {
           type: 'doc',
-          label: 'Task List app',
+          label: 'タスクリストアプリ',
           id: 'build-alongs/task-list-app',
         },
         {
           type: 'doc',
-          label: 'Custom Survey app',
+          label: 'カスタムサーベイアプリ',
           id: 'build-alongs/survey-app',
         },
         {
           type: 'doc',
-          label: 'Star Rating component',
+          label: 'スターレーティングコンポーネント',
           id: 'build-alongs/star-rating-component',
         },
         {
           type: 'doc',
-          label: 'Horizontal snapping list',
+          label: 'スナッピング機能付き水平リスト',
           id: 'build-alongs/horizontal-list-with-snapping',
         },
       ],

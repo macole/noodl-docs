@@ -1,11 +1,11 @@
 ---
-title: REST API calls
+title: REST APIコール
 hide_title: true
 ---
 
-# Create REST API calls with Chat GPT
+# Chat GPTを使ったREST APIコールの作成
 
-In Noodl you typically use the [REST](/nodes/data/rest) node to make REST API requests to access external services. This requires a little bit of coding to set up the request and to parse the response. It also requires a bit of knowlege to figure out how the API you want to use work and to read the documentaion.
+Noodlでは、外部サービスにアクセスするためにREST APIリクエストを行うために通常[REST](/nodes/data/rest)ノードを使用します。これにはリクエストの設定とレスポンスの解析に少しコーディングが必要です。また、使用したいAPIの動作を理解し、文書を読むための知識も少し必要です。
 
 <div class="ndl-image-with-background xl">
 
@@ -13,12 +13,12 @@ In Noodl you typically use the [REST](/nodes/data/rest) node to make REST API re
 
 </div>
 
-The example above is a non-trival REST API request. It takes the name of a wikipedia page and retrieves the main image of that page in a given size. This would certainly take me a few minutes to figure out how to do and it's quite tedious and non-interesting work. A [REST](/nodes/data/rest) node requires four important parts:
+上記の例は、非自明なREST APIリクエストです。Wikipediaのページ名を取り、指定されたサイズでそのページのメインイメージを取得します。これを理解するのには私も少し時間がかかりますし、かなり退屈で興味のない作業です。[REST](/nodes/data/rest)ノードには4つの重要な部分が必要です：
 
-* **Endpoint** The HTTP endpoint of the REST API.
-* **Method** The method of the API call, e.g. `POST` or `GET`.
-* **Request script** This is a piece of javascript code that, given the node inputs, sets up all the parameters and content to be passed to the REST API call.
-* **Response script** This is another javascript snippet that parses the received response and turns it into node outputs.
+* **エンドポイント** REST APIのHTTPエンドポイント。
+* **メソッド** APIコールのメソッド、例えば`POST`や`GET`。
+* **リクエストスクリプト** ノードの入力を元に、REST APIコールに渡すすべてのパラメーターと内容を設定するJavaScriptコードの一部です。
+* **レスポンススクリプト** 受け取ったレスポンスを解析し、それをノードの出力に変換する別のJavaScriptスニペットです。
 
 <div class="ndl-image-with-background l">
 
@@ -26,66 +26,68 @@ The example above is a non-trival REST API request. It takes the name of a wikip
 
 </div>
 
-Let's see how we can use AI assisted development in Noodl to achieve this.
+NoodlでAIアシスト開発を使ってこれを達成する方法を見てみましょう。
 
-## Priming for REST node scripts
+## RESTノードスクリプトのためのプライミング
 
-We will be using ChatGPT with GPT-4. The key is getting it to generate all the content we need for the REST node to work from just a single prompt. To do this we need to first provide the AI with the context, this is really the key to get it to work nicely with Noodl. This is called a _primer_, and here is one that we have been experimenting with for [REST](/nodes/data/rest) nodes:
+GPT-4を搭載したChatGPTを使用します。鍵となるのは、単一のプロンプトからRESTノードが動作するために必要なすべての内容を生成させることです。これを行うためには、まずAIにコンテキストを提供する必要があります。これがNoodlと上手く連携する鍵です。これを_プライマー_と呼び、[REST](/nodes/data/rest)ノード用に実験しているものがこちらです：
 
 ````markdown
-Hi ChatGPT. Here are your instructions. You must follow all of them.
+こんにちはChatGPT。こちらがあなたの指示です。すべてに従ってください。
 
-- You will be writing Noodl in javascript functions for Noodl REST API calls.
-- An input in a Noodl function must follow the format "Inputs.InputName".
-- An input in a Noodl function is only read, never written to.
-- An output in a Noodl function must follow the format "Outputs.OutputName = value".
-- A variable in a Noodl function never stores an output.
-- Inputs and Outputs in a Noodl function are global.
-- Noodl functions do not use import statements.
-- Noodl functions do not use export statements.
-- Define constants as Noodl function inputs.
-- You need to create two functions, one to prepare the REST API request and one to process the response.
-- The function to prepare the request have the following format. It is called the "Request script". You don't need to wrap it in a function, just the javascript code. 
+- NoodlのREST APIコールのためのJavaScript関数をNoodlで書いていきます。
+- Noodl関数の入力は"Inputs.InputName"の形式に従います。
+- Noodl関数の入力は読み取りのみで、書き込まれることはありません。
+- Noodl関数の出力は"Outputs.OutputName = value"の形式に従います。
+- Noodl関数の変数は出力を格納しません。
+- Noodl関数の入力と出力はグローバルです。
+- Noodl関数はimport文を使用しません。
+- Noodl関数はexport文を使用しません。
+- 定数をNoodl関数の入力として定義します。
+- REST APIリクエストを準備する関数と、レスポンスを処理する関数の2つを作成する必要があります。
+- リクエストを準備する関数には次の形式があります。これは"リクエストスクリプト"と呼ばれます。関数にラップする必要はなく、JavaScriptコードだけです。
 
 ```js
-// All REST options should be set on the Request object as follows
-// Put the headers needed for the API call in the headers object
-// You don't need to set the content-type to application/json this is done automatically
+// すべてのRESTオプションは次のようにRequestオブジェクトに設定されるべきです
+// APIコールに必要なヘッダーをheadersオブジェクトに入れます
+// content-typeをapplication/jsonに設定する必要はありません。これは自動的に行われます
 Request.headers['authorization'] = "Bearer " + Inputs.APIKey;
 
-// Put any query parameters needed for the API call in the parameters object
+// APIコールに必要なクエリパラメーターをparametersオブジェクトに入れます
 Request.parameters['limit'] = Inputs.NumberOfItems;
 
-// If you are doing a POST method request, but the content in the content object
-// No need to stringify, only a standard JSON object
+// POSTメソッドリクエストを行う場合、内容をcontentオブジェクトに入れます
+// 文字列化する必要はありません。標準のJSONオブジェクトのみ
 Request.content = {
     'param' : 'something'
 }
 ```
 
-- The function to parse the result of the REST API request have the following format.  It is called the "Response script". You don't need to wrap it in a function, just the javascript code.
+- REST APIリクエストの結果を解析する関数には次の形式があります。これは"レスポンススクリプト"と呼ばれます。関数にラップする必要はなく、JavaScriptコードだけです。
 
 ```js
-// The content of the response is in the Response.content object
+// レスポンスの内容はResponse.contentオブジェクトにあります
 Outputs.Results = Response.content.results;
 
 ```
 
-- Finally list the endpoint and the HTTP method in the following format. The endpoint can contain parameters using the {paramName} syntax.
+- 最後に、次の形式でエンドポイントとHTTPメソッドをリストします。エンドポイントには{paramName}構文を使用してパラメーターを含めることができます。
 
-Endpoint: https://example-endpoint.com/{userId}/fetch
-Method: POST
+エンドポイント: https://example-endpoint.com/{userId}/fetch
+メソッド: POST
 
-Reply "Okidoki" if the instructions are clear, otherwise ask me to clarify
+指示が明確であれば"Okidoki"と返信し、そうでなければ明確にしてください
 ````
 
-Copy and pasting this primer into ChatGPT GPT-4 and then following up with this prompt:
+このプライマーをChatGPT GPT-4にコピー＆ペーストし、次のプロンプトに続けて：
 
 ```
-given a wikipedia page name, get the main image of that page
+Wikipediaのページ
+
+名を与えて、そのページのメイン画像を取得する
 ```
 
-The nice little robot now gives us everything we need to prepare the REST node. After a quick description we get the request and response scripts we need:
+小さなロボットは、RESTノードを準備するために必要なすべてのものを提供してくれます。簡単な説明の後に、必要なリクエストとレスポンススクリプトを得ます：
 
 <div class="ndl-image-with-background xl">
 
@@ -93,7 +95,7 @@ The nice little robot now gives us everything we need to prepare the REST node. 
 
 </div>
 
-We can simply copy and paste those into the corresponding properties of the REST node. Next we get the **Endpoint** and **Method** nicely listed for us. We also copy these parameters into REST node properties. It even provides us with a little bit of explaination of how to set up the inputs and how to use the outputs of the node.
+これらを単純にRESTノードの対応するプロパティにコピー＆ペーストします。次に、**エンドポイント**と**メソッド**がきちんとリストされています。これらのパラメータもRESTノードのプロパティにコピーします。ノードの入力の設定方法や出力の使用方法についても少し説明してくれます。
 
 <div class="ndl-image-with-background xl">
 
@@ -101,17 +103,17 @@ We can simply copy and paste those into the corresponding properties of the REST
 
 </div>
 
-We can now hook up the REST node as shown in the example above and simply put in a Wikipedia page name and provide a size of the image and we get the resulting URL back that we can connect to an image node.
+これで、上記の例に示されたようにRESTノードを接続し、Wikipediaのページ名と画像のサイズを入力するだけで、画像ノードに接続できる結果のURLを取得できます。
 
-## Refining your answer
+## あなたの答えを洗練する
 
-Sometimes you will get an answer back that may be correct but you don't know exactly what the result is. You can always hook it up in Noodl and just test it, view the outputs and see if the result matches your expectations. Or you can simply ask Chat GPT. In this example I asked it to create a spotify API integration, the prompt was:
+時には、正しい答えが返ってくるかもしれませんが、結果が正確に何であるかわからない場合があります。Noodlで接続してテストし、出力を表示して結果が期待に合っているかを確認することができます。または、単にChat GPTに尋ねることもできます。この例では、spotify APIの統合を作成するように依頼しました。プロンプトは：
 
 ```
-get the songs of a playlist using the spotify API
+spotify APIを使用してプレイリストの曲を取得する
 ```
 
-It provided me with everything I needed to copy and paste into the REST node.
+RESTノードにコピー＆ペーストするために必要なすべてを提供してくれました。
 
 <div class="ndl-image-with-background xl">
 
@@ -119,22 +121,22 @@ It provided me with everything I needed to copy and paste into the REST node.
 
 </div>
 
-But I wasn't sure about what the content of the output was, so I asked:
+しかし、出力の内容が何であるか確信が持てなかったので、尋ねました：
 
 ```
-What is the format of an object in the songs output?
+songs出力のオブジェクトの形式は何ですか？
 ```
 
-And it give me a rought outline of the object along with a few examples. 
+そして、いくつかの例とともに、オブジェクトの大まかな概要を教えてくれました。
 
-If you find that the inputs and outputs are not to your liking, or that it did not exactly do what you were asking for simply try providing it more context and ask it to change the code.
+入力や出力が気に入らなかったり、求めていたことを正確に行っていなかったりする場合は、より多くのコンテキストを提供して、コードの変更を依頼してみてください。
 
-## Providing context
+## コンテキストを提供する
 
-The ChatGPT models were trained on data up to 2021 so it's clearly missing some more recent APIs, such as actually it's own API. But you can provide context when asking it to generate code for you.
+ChatGPTモデルは2021年までのデータでトレーニングされているため、実際には自分自身のAPIなど、いくつかの最近のAPIが欠けています。しかし、コードを生成するように依頼するときにコンテキストを提供することができます。
 
 ```
-using this api https://platform.openai.com/docs/api-reference/chat/create I want to provide messages as an array of string and get the response back
+このAPIを使用して https://platform.openai.com/docs/api-reference/chat/create 文字列の配列としてメッセージを提供し、レスポンスを取得したい
 ```
 
 <div class="ndl-image-with-background xl">
@@ -143,13 +145,13 @@ using this api https://platform.openai.com/docs/api-reference/chat/create I want
 
 </div>
 
-It gives you a nice piece of code, but after copy&pasting it into my REST node and testing it on an exampt, it does not give the expected result. In this case I just get an array of `undefined`, thats weird. Lets see what ChatGPT thinks about that.
+素敵なコードを提供してくれますが、RESTノードにコピー＆ペーストしてテストすると、期待される結果が得られません。このケースでは、`undefined`の配列だけが返ってきます。それは奇妙です。ChatGPTはそれについてどう思うでしょうか。
 
 ```
-I just got an array of undefined back 
+undefinedの配列が返ってきました
 ```
 
-It fixes the problem and gives you a new updated function. This works much better. That is pretty astounding!
+問題を修正し、新しい更新された関数を提供してくれます。これはずっと良い動作をします。それはかなり驚異的です！
 
 <div class="ndl-image-with-background xl">
 
@@ -157,7 +159,7 @@ It fixes the problem and gives you a new updated function. This works much bette
 
 </div>
 
-Sometimes the REST call will fail and generate an HTTP error. If the error is not shown on the REST node you can find the error in the web debugger. If you are on the frontend click on the debug icon at the top bar:
+時にはRESTコールが失敗してHTTPエラーを生成することがあります。エラーがRESTノードに表示されない場合は、ウェブデバッガーでエラーを見つけることができます。フロントエンドにいる場合は、トップバーのデバッグアイコンをクリックします：
 
 <div class="ndl-image-with-background m">
 
@@ -165,7 +167,7 @@ Sometimes the REST call will fail and generate an HTTP error. If the error is no
 
 </div>
 
-If you are in a cloud function, open the debugger for the cloud function runtime:
+クラウド関数にいる場合は、クラウド関数ランタイムのデバッガーを開きます：
 
 <div class="ndl-image-with-background m">
 
@@ -173,7 +175,7 @@ If you are in a cloud function, open the debugger for the cloud function runtime
 
 </div>
 
-In the debugger look for the **Network** tab:
+デバッガーで**ネットワーク**タブを探します：
 
 <div class="ndl-image-with-background m">
 
@@ -181,14 +183,6 @@ In the debugger look for the **Network** tab:
 
 </div>
 
-Any failed calls will generally be highlighted in red, you can find your endpoint and look at the response from the request. See if you can find an error message and let ChatGPT know about the error and try to have it fix it.
+失敗したコールは一般的に赤でハイライト表示されます。エンドポイントを見つけて、リクエストからのレスポンスを見ます。エラーメッセージを見つけて、ChatGPTにエラーを知らせて、それを修正してもらうように試みてください。
 
-Have fun playing with Noodl and AI assisted development and let us know of your discoveries in the Discord community!
-
-
-
-
-
-
-
-
+NoodlとAIアシスト開発で遊んで、Discordコミュニティで発見を教えてください！

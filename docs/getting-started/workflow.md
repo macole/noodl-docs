@@ -49,9 +49,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl'
 
 - **ページ**、**ページルーター**、および**ナビゲート**ノードは、ナビゲーションシステムの本質です。基本的なページナビゲーションの構築方法については、この[ガイド](/docs/guides/navigation/basic-navigation)で学び、より高度なマルチレベルナビゲーションについては[ここ](/docs/guides/navigation/multi-level-navigation)で学びましょう。
 
-- ナビゲーションの別の機能は**ポップアップ**で、これは一時的な情報を表示または収集するために使用できます。ポップアップについての詳細は[ここ](/docs
-
-/guides/navigation/popups)で学びましょう。
+- ナビゲーションの別の機能は**ポップアップ**で、これは一時的な情報を表示または収集するために使用できます。ポップアップについての詳細は[ここ](/docs/guides/navigation/popups)で学びましょう。
 
 ## アクション
 

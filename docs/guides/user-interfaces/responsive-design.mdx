@@ -1,24 +1,24 @@
 ---
-title: Responsive Design
+title: レスポンシブデザイン
 hide_title: true
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import CopyToClipboardButton from '/src/components/copytoclipboardbutton';
 
-# Responsive Design
+# レスポンシブデザイン
 
-## What you will learn in this guide
+## このガイドで学べること
 
-In this guide we will take a look at a couple of different techiques you can use to build responsive UIs in your Noodl app.
+このガイドでは、NoodlアプリでレスポンシブUIを構築するために使用できるいくつかの異なる技術について見ていきます。
 
-## Simple grids with the Columns node
+## Columnsノードを使ったシンプルなグリッド
 
-One of the most common situations where responsiveness is needed is in grids of items. The easiest way to create responsive grids is through the **Min Column Width** input on the **Columns** node. This approach works best when dealing with grids where the items should have the same width, like cards or images. Let's focus on the two key inputs for this technique:
+レスポンシブが必要とされる最も一般的な状況の1つは、アイテムのグリッドです。レスポンシブなグリッドを作成する最も簡単な方法は、**Columns**ノードの**Min Column Width**入力を使用することです。このアプローチは、カードや画像のように、アイテムが同じ幅であるべきグリッドを扱う場合に最適です。この技術のための2つの主要な入力に焦点を当てましょう：
 
-### Layout String
+### レイアウト文字列
 
-A layout string is simply a string of numbers with spaces between them. Every number represents a fraction of the full container width and is converted to a column. A **Columns** node with the layout string `1 2 1` that contains 5 children will be rendered like this:
+レイアウト文字列とは、単に数字の間にスペースがある文字列です。各数字はコンテナーの全幅の一部を表し、列に変換されます。レイアウト文字列`1 2 1`を持つ**Columns**ノードに5つの子がある場合、次のようにレンダリングされます：
 
 <div className="ndl-image-with-background l">
 
@@ -26,15 +26,15 @@ A layout string is simply a string of numbers with spaces between them. Every nu
 
 </div>
 
-### Min Column Width
+### 最小列幅
 
-The **Min Column Width** sets the minimum width for each column. It first checks if the columns can fit based on the provided **Layout String**. If the container cannot hold the columns at their minimum width, the layout will automatically fold into a grid with fewer columns.
+**最小列幅**は、各列の最小幅を設定します。まず、提供された**レイアウト文字列**に基づいて列が収まるかどうかを確認します。コンテナーが最小幅で列を保持できない場合、レイアウトは自動的に列が少ないグリッドに折りたたまれます。
 
-> Make sure the children you pass are set to a width of `100%` of their parent.
+> 渡された子要素が親の`100%`の幅に設定されていることを確認してください。
 
-### Strategy
+### 戦略
 
-The most common way of using this method is to set the **Layout String** to the maximum amount of columns we want the layout to have. Then set the **Min Column Width** to the value where the grid items starts looking broken. This will produce a result like this:
+この方法を使用する最も一般的な方法は、レイアウトが持つことを望む最大の列数に**レイアウト文字列**を設定し、グリッドアイテムが壊れ始める値に**最小列幅**を設定することです。これにより、次のような結果が得られます：
 
 <div className="ndl-image-with-background xl">
   <video
@@ -48,17 +48,17 @@ The most common way of using this method is to set the **Layout String** to the 
   />
 </div>
 
-## Media Query prefab and States node
+## メディアクエリプレファブとStatesノード
 
-The techique above works great for grids that are even, but what if we have a more advanced layout? Maybe we need to add more padding, change the font size or even change the **Layout String** altogether?
+上記の技術は、均一なグリッドにはうまく機能しますが、もっと高度なレイアウトが必要な場合はどうでしょうか？もっとパディングを追加したり、フォントサイズを変更したり、あるいは**レイアウト文字列**をまったく変更したい場合があります。
 
-For this we can use the **[Media Query](/library/prefabs/media-query/)** prefab, together with the **[States](/nodes/utilities/logic/states/)** node. It's a good idea to read the documentation for these, but for now you'll get a quick introduction. Let's begin by understanding the **States** node.
+これには、**[メディアクエリ](/library/prefabs/media-query/)**プレファブと**[States](/nodes/utilities/logic/states/)**ノードを使用できます。これらのドキュメントを読むことは良い考えですが、今のところは簡単な紹介を行います。**States**ノードから始めましょう。
 
-The **States** node is a really useful and flexible tool in Noodl. In this guide however, we'll only need to focus on its most basic features. In essence, it allows us to set up different `Values` that hold different data depending on the `State` of the node. This can be found in the three main sections of the **States** node's property panel. Let's look at an example.
+**States**ノードはNoodlで非常に便利で柔軟なツールです。しかし、このガイドでは、その最も基本的な機能にのみ焦点を当てます。本質的に、これはノードの`State`に応じて異なるデータを保持する異なる`Values`を設定することを可能にします。これは、**States**ノードのプロパティパネルの3つの主要なセクションで見ることができます。例を見てみましょう。
 
-### With properties
+### プロパティ付き
 
-First we setup the different `States` we want. These can be named anything, but since we are working with screen size responsiveness, let's make it descriptive:
+まず、使用したい異なる`States`を設定します。これらは何でも名付けることができますが、画面サイズのレスポンシビリティに取り組んでいるので、記述的にしましょう：
 
 <div className="ndl-image-with-background">
 
@@ -66,7 +66,7 @@ First we setup the different `States` we want. These can be named anything, but 
 
 </div>
 
-Now we can create the `Values` we want this node to output. In this example we will be working with a bottom margin for a header, so let's name it that:
+次に、このノードが出力したい`Values`を作成します。この例では、ヘッダーの下部マージンを扱っているので、それに名前を付けましょう：
 
 <div className="ndl-image-with-background">
 
@@ -74,7 +74,7 @@ Now we can create the `Values` we want this node to output. In this example we w
 
 </div>
 
-Now we can fill in what data we want the `Value` to output for the different states:
+次に、異なる状態に対して`Value`が出力したいデータを入力します：
 
 <div className="ndl-image-with-background">
 
@@ -82,7 +82,9 @@ Now we can fill in what data we want the `Value` to output for the different sta
 
 </div>
 
-Now that we have the states set up, we need to determine when a specific state is active. The **Media Query** prefab's **Match Media Query** component checks the active screen size breakpoint and outputs `true` or `false` based on matches. We can use these outputs to trigger our defined states:
+状態を設定したら、特定の状態がアクティブになるタイミングを決定する必要があります。**メディアクエリ**プレファブの**Match Media Query**コンポーネントは、アクティブな画面サイズのブレークポイントをチェックし、
+
+一致に基づいて`true`または`false`を出力します。これらの出力を使用して、定義された状態をトリガーできます：
 
 <div className="ndl-image-with-background xl">
   <CopyToClipboardButton
@@ -93,11 +95,11 @@ Now that we have the states set up, we need to determine when a specific state i
 
 </div>
 
-> This method can be used with any trigger, to set any value - even text in buttons!
+> この方法は、任意のトリガーで任意の値を設定するために使用できます - ボタン内のテキストでさえも！
 
-### With Columns
+### Columnsとともに
 
-This technique becomes really powerful when we use it to send different **Layout Strings** to the **Columns** node. Here's an example where we change the layout between `1 1 2 1`, `2 1 1` and `1 2` depending on viewport size:
+この技術は、**Columns**ノードに異なる**レイアウト文字列**を送信するときに非常に強力になります。ここでは、ビューポートサイズに応じて`1 1 2 1`、`2 1 1`、`1 2`のレイアウトを変更する例を示します：
 
 <div className="ndl-image-with-background xl">
   <CopyToClipboardButton
@@ -363,9 +365,9 @@ This technique becomes really powerful when we use it to send different **Layout
   />
 </div>
 
-### With Mounted
+### Mountedを使用して
 
-Responsive layouts can vary a lot at different screen sizes. For example, header menus can look _totally_ different on desktop and mobile, making it hard (or messy) to use the above technique. For this we can use the breakpoint outputs on **Match Media Query** and send them to the `Mounted` input on any visual node, to show/hide different parts of our visual tree:
+異なる画面サイズでレスポンシブレイアウトが大きく異なることがあります。たとえば、ヘッダーメニューはデスクトップとモバイルで_まったく_異なる見た目になることがあり、上記の技術を使用するのが難しい（または煩雑な）場合があります。これには、**Match Media Query**のブレークポイント出力を使用して、ビジュアルノードの`Mounted`入力に送信し、ビジュアルツリーの異なる部分を表示/非表示にすることができます：
 
 <div className="ndl-image-with-background xl">
 
@@ -453,7 +455,7 @@ Responsive layouts can vary a lot at different screen sizes. For example, header
 
 </div>
 
-In the case above, we have created two components that have a `Mounted` in their **Comonent Inputs** node. That value is being passed to the `Mounted` input on the root node of the component:
+上記のケースでは、`Mounted`を**コンポーネント入力**ノードに持つ2つのコンポーネントを作成しました。その値は、コンポーネントのルートノードの`Mounted`入力に渡されます：
 
 <div className="ndl-image-with-background l">
 
@@ -461,13 +463,13 @@ In the case above, we have created two components that have a `Mounted` in their
 
 </div>
 
-## Container queries
+## コンテナクエリ
 
-So far we've been making our UI responsive by checking the size of the screen. This is the most traditional approach, and it still works well. However, as app architecture and design has evolved, the industry has found a need for more hands-off component systems that work well in any context.
+これまでのところ、UIを画面のサイズに応じてレスポンシブにするために、画面のサイズをチェックしてきました。これは最も伝統的なアプローチであり、まだうまく機能しています。しかし、アプリのアーキテクチャとデザインが進化するにつれて、業界は任意のコンテキストでうまく機能するより自動的なコンポーネントシステムの必要性を見出しました。
 
-One solution to this is a concept called **Container Queries**. Here we check for the size of the component in question, and set the responsiveness based on that (instead of the viewport).
+この解決策の1つは、**コンテナクエリ**と呼ばれる概念です。ここでは、問題のコンポーネントのサイズをチェックし、それに基づいてレスポンシブ性を設定します（ビューポートではなく）。
 
-Here's a very basic example using a **Function** node to check a components witdth and set different `Layout Strings`:
+これが、**Function**ノードを使用してコンポーネントの幅をチェックし、異なる`Layout Strings`を設定する非常に基本的な例です：
 
 <div className="ndl-image-with-background l">
 
@@ -479,7 +481,7 @@ Here's a very basic example using a **Function** node to check a components witd
 
 </div>
 
-Here's the code running in the function node:
+関数ノードで実行されるコードは次のとおりです：
 
 ```js
 if (Inputs.Width > 300) {
@@ -489,7 +491,7 @@ if (Inputs.Width > 300) {
 }
 ```
 
-We can now use this item grid everywhere, without caring if it's in a page-wide or column-narrow container. It will always render in a layout we know works.
+これで、どんなページ幅のコンテナーでも、常にうまく機能するレイアウトでアイテムグリッドをどこにでも使用できます。
 
 <div className="ndl-image-with-background xl">
   <video
@@ -503,7 +505,9 @@ We can now use this item grid everywhere, without caring if it's in a page-wide 
   />
 </div>
 
-This is great for both responsivity and reusability. Here's an example of a profile card in two different sized containers. It can be placed in any context and still look good:
+これは、レスポンシビリティと再利用性の両方にとって素晴らしいことです。ここでは、2
+
+つの異なるサイズのコンテナーに配置されたプロファイルカードの例を示します。どんなコンテキストに置いても、常に良い見た目になります：
 
 <div className="ndl-image-with-background l">
   <CopyToClipboardButton
@@ -514,11 +518,13 @@ This is great for both responsivity and reusability. Here's an example of a prof
 
 </div>
 
-### Generating checks with AI
+### AIによるチェックの生成
 
-In the container query example, we used a simple if-statement in a **Function** node to check the size. It worked great because we only needed to switch between two states when the container was larger or smaller than 300px.
+コンテナクエリの例では、コンポーネントが300pxより大きいか小さいかを切り替えるときに2つの状態の間で切り替えるために、単純なif文を**Function**ノードで使用しました。
 
-This if-statement can be extended to output different signals. This can either be written by hand, or generated by the AI assistant, using the `/Function` command:
+このif文は、異なるシグナルを出力するように拡張されることがあります。これは手作業で書くこともできますし、`/Function
+
+`コマンドを使用してAIアシスタントによって生成されることもあります：
 
 <div className="ndl-image-with-background l">
 
@@ -526,11 +532,11 @@ This if-statement can be extended to output different signals. This can either b
 
 </div>
 
-(Note that the AI assumed that we wanted to use this function with a screen width. Since we asked for a `Width` input, that doesn't matter. It will work with any number sent to it.)
+（AIは、幅の入力でこの関数を使用したいと仮定しました。`Width`入力を要求したので、それは問題ありません。それに送られるどんな数字でも機能します。）
 
-## Limiter component
+## リミッターコンポーネント
 
-So far we've mainly talked about making content fit smaller screens. But it's also important to limit the content when the screen gets bigger. To do this, we can use a Limiter component. The basic version uses two **Group** nodes: one for centering and padding, and another with a `max-width` to hold the content:
+これまでのところ、主に内容を小さい画面に適合させることについて話してきました。しかし、画面が大きくなったときにコンテンツを制限することも重要です。これを行うには、Limiterコンポーネントを使用できます。基本バージョンは、中央揃えとパディングのための2つの**Group**ノードと、コンテンツを保持する`max-width`を持つ別のノードを使用します：
 
 <div className="ndl-image-with-background">
 
@@ -538,7 +544,7 @@ So far we've mainly talked about making content fit smaller screens. But it's al
 
 </div>
 
-This will provide the following result:
+これにより、次の結果が得られます：
 
 <div className="ndl-image-with-background xl">
   <video
@@ -552,9 +558,9 @@ This will provide the following result:
   />
 </div>
 
-This component will allow us to keep the content size and spacing consistent across the app.
+このコンポーネントを使用すると、アプリ全体でコンテンツのサイズと間隔を一貫して保つことができます。
 
-A more advanced and configurable version of this component can be copied by pressing the "Copy nodes" button below:
+以下の「ノードをコピー」ボタンを押すと、このコンポーネントのより高度で設定可能なバージョンをコピーできます：
 
 <div className="ndl-image-with-background xl">
 
@@ -891,7 +897,7 @@ A more advanced and configurable version of this component can be copied by pres
 
 </div>
 
-It features the following options in the property panel:
+プロパティパネルで次のオプションが特徴です：
 
 <div className="ndl-image-with-background ">
 
@@ -899,8 +905,8 @@ It features the following options in the property panel:
 
 </div>
 
-## Get building!
+## ビルディングを始めましょう！
 
-Now you know all of the techniques we use when building responsive designs. However, Noodl is flexible, and we always learn new things from the community. If you have any tips and tricks that you use, but that havent been touched upon here and feel like sharing it, feel free to hop on in on the [Discord server](https://discord.com/invite/23xU2hYrSJ). The community is always happy to hear your ideas and feedback.
+これで、レスポンシブデザインを構築する際に使用するすべての技術を知っています。しかし、Noodlは柔軟であり、常にコミュニティから新しいことを学んでいます。ここで触れられていないが共有したいと思う自分のヒントやトリックがあれば、[Discordサーバー](https://discord.com/invite/23xU2hYrSJ)にぜひ参加してください。コミュニティは常にあなたのアイデアやフィードバックを聞くことを喜んでいます。
 
 Happy Noodling!

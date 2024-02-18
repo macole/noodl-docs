@@ -1,28 +1,28 @@
 ---
-title: SDK Overview
+title: SDK概要
 hide_title: true
 ---
 
-# SDK Overview
+# SDK概要
 
-Noodl SDK, or `@noodl/noodl-sdk`, is a javascript package that is making is easy to extend Noodl with core nodes.
+Noodl SDK、または `@noodl/noodl-sdk` は、Noodlをコアノードで拡張しやすくするためのJavaScriptパッケージです。
 
-## Installation
+## インストール
 
-Here are some guides on how to create a Noodl module, including installing the SDK.
-[Continue here.](/javascript/extending/overview)
+ここでは、SDKをインストールすることを含む、Noodlモジュールの作成方法についてのガイドがあります。
+[こちらを続けてください。](/javascript/extending/overview)
 
-## Getting started
+## はじめに
 
-We have a lot of open source modules in this [GitHub repository](https://github.com/noodlapp/modules).
-These are a great place to start when looking for references, and examples of how to build a module.
+私たちは、この[GitHubリポジトリ](https://github.com/noodlapp/modules)に多くのオープンソースモジュールを持っています。
+これらは、モジュールの構築方法についての参照や例を探す際の素晴らしい出発点です。
 
-Not all of these modules are made with the SDK. Why?
-The SDK is built on top of the internal Noodl API, designed to make it easier and future compatible with internal Noodl API changes in mind.
-Currently the SDK does lack some of the functionality that the internal Noodl API provides, which is the primary reason not to use the SDK for these modules.
-In the end the module code will be very similar, but can cause some confusion.
+これらのモジュールのすべてがSDKで作られているわけではありません。なぜでしょうか？
+SDKは、内部Noodl APIの上に構築されており、内部Noodl APIの変更に対して将来的に互換性を持つように設計されています。
+現在、SDKには内部Noodl APIが提供する機能の一部が不足しており、これがこれらのモジュールにSDKを使用しない主な理由です。
+結局のところ、モジュールのコードは非常に似ていますが、混乱を招く可能性があります。
 
-> At this time, the only module that is not built using the SDK in that GitHub repository is the `simple-tooltips` module.
+> この時点で、そのGitHubリポジトリにあるSDKを使用していない唯一のモジュールは、`simple-tooltips`モジュールです。
 
-For a module to be registered in the Noodl app, you don't need to have the SDK installed.
-The way that the modules are registered is by calling the `Noodl.defineModule(module)` function which is globally defined by the Noodl runtime and not in the SDK.
+モジュールをNoodlアプリに登録するためには、SDKをインストールする必要はありません。
+モジュールが登録される方法は、Noodlランタイムによってグローバルに定義された`Noodl.defineModule(module)`関数を呼び出すことにより、SDKではなく行われます。

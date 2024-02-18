@@ -1,37 +1,37 @@
 ---
-title: Components
+title: コンポーネント
 hide_title: true
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl'
 
-# Components
+# コンポーネント
 
-## What you will learn in this guide
+## このガイドで学べること
 
-In this guide you will learn how to create visual components to make re-usable UI components. This is essential to create dynamic user interfaces connected to data that we will learn later.
+このガイドでは、再利用可能なUIコンポーネントを作成するための視覚的コンポーネントの作成方法について学びます。これは、後ほど学ぶデータに接続された動的なユーザーインターフェイスを作成するために不可欠です。
 
-## Creating visual components
+## 視覚的コンポーネントの作成
 
-Visual components are parts of a user interface that can be reused. You create new visual components using the **Component Panel**.
+視覚的コンポーネントは、再利用可能なユーザーインターフェイスの一部です。新しい視覚的コンポーネントは、**コンポーネントパネル**を使用して作成します。
 
 <div className="ndl-image-with-background xl">
     <video width="100%" autoPlay muted loop src={useBaseUrl("/docs/guides/user-interfaces/components/create-component.mp4")}/>
 </div>
 
-Next you give it a name and it will show up in the components list, as well as in the visual canvas. Newly created visual components only contain a single root **Group** node. Once you have your component created you can start working on it like you have already learnt, or you can cut and paste UI elements from another component that you want to make re-usable.
+次に、それに名前を付けると、コンポーネントリストと視覚的キャンバスに表示されます。新しく作成された視覚的コンポーネントには、単一のルート**グループ**ノードのみが含まれています。コンポーネントの作成が完了したら、すでに学んだように作業を開始するか、再利用可能にしたい他のコンポーネントからUI要素をカットアンドペーストすることができます。
 
 <div className="ndl-image-with-background xl">
     <video width="100%" autoPlay muted loop src={useBaseUrl("/docs/guides/user-interfaces/components/cut-n-paste.mp4")}/>
 </div>
 
-When you have your component all done, you can re-use it anywhere in your application user interface by simply dragging it from the component panel.
+コンポーネントが完成したら、コンポーネントパネルからドラッグして、アプリケーションのユーザーインターフェイスのどこにでも再利用することができます。
 
 <div className="ndl-image-with-background xl">
     <video width="100%" autoPlay muted loop src={useBaseUrl("/docs/guides/user-interfaces/components/drag-component.mp4")}/>
 </div>
 
-If you prefer, you can also find your components in the node picker.
+好みに応じて、ノードピッカーでもコンポーネントを見つけることができます。
 
 <div className="ndl-image-with-background l">
 
@@ -39,9 +39,9 @@ If you prefer, you can also find your components in the node picker.
 
 </div>
 
-## Component Inputs & Outputs
+## コンポーネントの入力と出力
 
-That's a pretty neat trick. Now we can create our own re-usable UI components. But it would be even more powerful if we could turn them into templates and change some things up for each new instance of the UI component we create. This is where **Component Inputs** come into play. This is a concept where you can expose certain inputs of some of your nodes in the component as inputs to the component instance. This is done with the **Component Inputs** node.
+それはかなり便利なテクニックです。これで、自分自身の再利用可能なUIコンポーネントを作成することができます。しかし、それらをテンプレートに変えて、作成するUIコンポーネントのインスタンスごとにいくつかのことを変更できるようにすると、さらに強力になります。ここで**コンポーネント入力**が登場します。これは、コンポーネント内のいくつかのノードの特定の入力を、コンポーネントインスタンスの入力として公開できる概念です。これは**コンポーネント入力**ノードを使用して行われます。
 
 <div className="ndl-image-with-background l">
 
@@ -49,7 +49,7 @@ That's a pretty neat trick. Now we can create our own re-usable UI components. B
 
 </div>
 
-If you go ahead and edit the properties of this node you will see that you can add **ports** to it. Each port will become an input (and property) of your component instances when you use the component in your application. In this example, we create two **ports** one called **Label** and another called **Button Color**.
+このノードのプロパティを編集すると、**ポート**を追加できることがわかります。各ポートは、アプリケーションでコンポーネントを使用するときに、コンポーネントインスタンスの入力（およびプロパティ）になります。この例では、**ラベル**と**ボタンカラー**という2つの**ポート**を作成します。
 
 <div className="ndl-image-with-background m">
 
@@ -57,22 +57,22 @@ If you go ahead and edit the properties of this node you will see that you can a
 
 </div>
 
-After that is done, we can go ahead and make connections from the **Component Inputs** node to the inputs that we want each **Port** to connect to. 
+それが完了したら、**コンポーネント入力**ノードから、各**ポート**を接続したい入力に接続を行うことができます。
 
-- So the **Label** port we want to connect to the **Text** input of the **Text** node.
-- And the **Button Color** port we want to connect to the **Background Color** of the **Button** node.
+- **ラベル**ポートは**テキスト**ノードの**テキスト**入力に接続したいです。
+- **ボタンカラー**ポートは**ボタン**ノードの**背景色**に接続したいです。
 
 <div className="ndl-image-with-background xl">
     <video width="100%" autoPlay muted loop src={useBaseUrl("/docs/guides/user-interfaces/components/connect-inputs.mp4")}/>
 </div>
 
-Now with your new component inputs in place, you will see that the ports show up as properties on your component instance and you can go ahead and customize them individually.
+新しいコンポーネント入力が配置されると、ポートがコンポーネントインスタンスのプロパティとして表示され、個別にカスタマイズすることができます。
 
 <div className="ndl-image-with-background xl">
     <video width="100%" autoPlay muted loop src={useBaseUrl("/docs/guides/user-interfaces/components/edit-inputs.mp4")}/>
 </div>
 
-This works in the same way for component outputs, you simply use the **Component Outputs** node instead. This is very useful when you are creating UI component that accept some sort of user intput via UI controls.
+これは、コンポーネントの出力についても同様に機能し、代わりに**コンポーネント出力**ノードを使用するだけです。これは、UIコントロールを介して何らかのユーザー入力を受け入れるUIコンポーネントを作成するときに非常に便利です。
 
 <div className="ndl-image-with-background l">
 
@@ -80,14 +80,16 @@ This works in the same way for component outputs, you simply use the **Component
 
 </div>
 
-Component inputs and outputs, and connecting to these is not just important for making re-usable UI components. It's also a core concept in connecting data to your user interfaces and creating dynamic data driver applications. We will take a closer look at that in the [Working with data](/docs/guides/data/overview) section.
+コンポーネントの入力と出力、およびこれらに接続することは、再利用可能なUIコンポーネントを作成するためだけでなく、データをユーザーインターフェイスに接続し、動的なデータ駆動型アプリ
 
-## Sheets
+ケーションを作成する上でのコアコンセプトでもあります。これについては、[データの操作](/docs/guides/data/overview)セクションで詳しく見ていきます。
 
-When your application grows you will be creating more and more components and after a while the visual canvas can become crowded. When this happends it's a good idea to orginise your application into sheets. Each sheet is a new empty visual canvas for you to place more components into. To create a new sheet 
+## シート
+
+アプリケーションが成長するにつれて、ますます多くのコンポーネントが作成され、やがてビジュアルキャンバスが混雑してくることがあります。このような場合は、アプリケーションをシートに整理するとよいでしょう。各シートは、より多くのコンポーネントを配置できる新しい空のビジュアルキャンバスです。新しいシートを作成するには
 
 <div className="ndl-image-with-background m">
     <video width="100%" autoPlay muted loop src={useBaseUrl("/docs/guides/user-interfaces/components/create-sheet.mp4")}/>
 </div>
 
-You can move components between sheets by simply dragging from the components panel and dropping onto the sheet you want to move it to.
+コンポーネントをシート間で移動するには、コンポーネントパネルからドラッグして、移動したいシートにドロップするだけです。

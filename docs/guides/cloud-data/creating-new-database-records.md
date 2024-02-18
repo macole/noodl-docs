@@ -1,32 +1,31 @@
 ---
-title: Creating new Database Records
+title: データベースに新しいレコードを作成する
 hide_title: true
 ---
 
-# Storing and fetching data in a database
+# データベースでのデータの保存と取得
 
-## What you will learn in this guide
+## このガイドで学べること
 
-In this guide you will learn how to create and insert new entries - **Records** in a cloud database using the
-[Create New Record](/nodes/data/cloud-data/create-new-record) node.
+このガイドでは、[新しいレコードの作成](/nodes/data/cloud-data/create-new-record)ノードを使用して、クラウドデータベースに新しいエントリー - **レコード**を作成し挿入する方法を学びます。
 
-## Overview
+## 概要
 
-We will go through the following steps in this guide:
+このガイドでは、以下のステップを説明します：
 
-- Create a **Record** in the database
-- Retrieving the **Id** of the newly created **Record**
-- Setting initial values of the **Record**
+- データベースに**レコード**を作成する
+- 新しく作成された**レコード**の**ID**を取得する
+- **レコード**の初期値を設定する
 
-Before starting this guide, make sure you have Cloud Services enabled and have at least one **Class** in the database. You can learn how to do this in [this](/docs/guides/cloud-data/creating-a-backend) and [this](/docs/guides/cloud-data/creating-a-class) guide.
+このガイドを始める前に、クラウドサービスが有効で、データベースに少なくとも1つの**クラス**があることを確認してください。これについては、[この](/docs/guides/cloud-data/creating-a-backend)ガイドと[この](/docs/guides/cloud-data/creating-a-class)ガイドで学ぶことができます。
 
-## Create a Record using the Create New Record Node
+## 新しいレコードの作成ノードを使用してレコードを作成する
 
-If you tried out the **Dashboard** you could see how you could create **Records** from there. Now we will learn how to create **Records** from within an app.
+**ダッシュボード**を試した場合、そこから**レコード**を作成できることを確認できたでしょう。今回は、アプリ内から**レコード**を作成する方法を学びます。
 
-Create a new Noodl Project. You can use any template, for example the `Hello World` template.
+新しいNoodlプロジェクトを作成します。例えば`Hello World`テンプレートを使用できます。
 
-Again, make sure you have **Cloud Services** enabled and an active **Cloud Service** set up with at least one **Class**. When opening your `Cloud Services` sidebar it should look something like the image below, with a `Used in editor` cloud service selected.
+再度、**クラウドサービス**が有効で、少なくとも1つの**クラス**を設定したアクティブな**クラウドサービス**が設定されていることを確認してください。`クラウドサービス`サイドバーを開くと、以下の画像のように、`エディターで使用`されているクラウドサービスが選択されているはずです。
 
 <div className="ndl-image-with-background l">
 
@@ -34,7 +33,7 @@ Again, make sure you have **Cloud Services** enabled and an active **Cloud Servi
 
 </div>
 
-Now open the Node Picker by right clicking in the node graph editor panel. Create a **Create New Record** node.
+ノードグラフエディターパネルで右クリックしてノードピッカーを開き、**新しいレコードの作成**ノードを作成します。
 
 <div className="ndl-image-with-background l">
 
@@ -44,9 +43,9 @@ Now open the Node Picker by right clicking in the node graph editor panel. Creat
 
 </div>
 
-### The Create New Record Node
+### 新しいレコードの作成ノード
 
-As it name states, this node is used to create and insert new **Records** in a **Class** in the Database. First we need to set up which **Class** it should insert **Records** into. Click the node and select one of you **Classes** that you set up in your Backend. In this example, we select the **Class** **Task**.
+その名前が示すように、このノードはデータベースの**クラス**に新しい**レコード**を作成して挿入するために使用されます。まず、どの**クラス**に**レコード**を挿入するかを設定する必要があります。ノードをクリックして、バックエンドで設定した**クラス**のうちの1つを選択します。この例では、**クラス** **Task**を選択します。
 
 <div className="ndl-image-with-background">
 
@@ -54,13 +53,15 @@ As it name states, this node is used to create and insert new **Records** in a *
 
 </div>
 
-### Initial Values
+### 初期値
 
-As you can see, when selecting a **Class** for your **Create New Records** node you immedieatly get new Properties on your node, namely the **Columns** you added to your **Class** when creating it. The `Task` class created in the previous guides have the `task` and the `isComplete` property.
+**クラス**を**新しいレコードの作成**ノードのために選択すると、クラスを作成する際に追加した**カラム**、すなわち`task`と`isComplete`プロパティがノードの新しいプロパティとして即座に表示されます。
 
-You can add or remove **Columns** at any time in the **Dashboard** and all nodes that references to that **Class** will be updated accordingly. If you remove a **Column** that's used by your nodes, you will get warnings in Noodl.
+いつでも**ダッシュボード**で**カラム**を追加または削除し、その**クラス**を参照するすべてのノードがそれに応じて更新されます。使用しているノードで**カラム**を削除した場合、Noodlで警告が表示されます。
 
-As you probably already have figured out, by setting these properties on the node, you can control the initial values of the **Record** when creating it. So let's fill out the properties with some values, for example as below.
+おそらくすでに気付いているように、ノードのこれらのプロパティを設定することで、作成する際の**レコード**の初期値を制御できます。したがって
+
+、以下のようにいくつかの値でプロパティを埋めましょう。
 
 <div className="ndl-image-with-background">
 
@@ -68,9 +69,9 @@ As you probably already have figured out, by setting these properties on the nod
 
 </div>
 
-### Creating The Record
+### レコードの作成
 
-Actually creating the **Record** is easy. You need to trigger the **Do** input signal on the **Create New Record** node. So lets add a [Button](/nodes/ui-controls/button) for that purpose. Add it somewhere on your screen. In this example we add it after the **Text** node and center it and change its label.
+実際に**レコード**を作成することは簡単です。**新しいレコードの作成**ノードの**Do**入力シグナルをトリガーする必要があります。その目的で[ボタン](/nodes/ui-controls/button)を追加しましょう。画面のどこかに追加します。この例では、**テキスト**ノードの後に追加し、中央に配置してラベルを変更します。
 
 <div className="ndl-image-with-background l">
 
@@ -78,7 +79,7 @@ Actually creating the **Record** is easy. You need to trigger the **Do** input s
 
 </div>
 
-Now connect the **Click** output signal from the **Button** to the **Do** signal of the **Create New Record** by dragging from the **Button** to the **Create New Record** node.
+**ボタン**から**新しいレコードの作成**ノードへ**クリック**出力シグナルを**Do**シグナルにドラッグして接続します。
 
 <div className="ndl-image-with-background l">
 
@@ -86,7 +87,7 @@ Now connect the **Click** output signal from the **Button** to the **Do** signal
 
 </div>
 
-When the two nodes are connected you are ready to try your app. Click the button in the app a couple of times. You should see the **Clicked** to **Do** connection light up. If everything works as expected, a new **Record** should be created in the database each time you click. You can double check it by opening the **Dashboard** and look in your **Class**. Note: You may have to click the **Refresh** button in the **Dashboard** to see the items.
+2つのノードが接続されたら、アプリを試す準備ができました。アプリのボタンを数回クリックします。**クリック**から**Do**への接続が点灯するはずです。すべてが期待通りに動作した場合、クリックするたびにデータベースに新しい**レコード**が作成されるはずです。**ダッシュボード**を開いて、**クラス**で確認できます。注：アイテムを表示するには、**ダッシュボード**で**更新**ボタンをクリックする必要がある場合があります。
 
 <div className="ndl-image-with-background xl">
 
@@ -96,15 +97,15 @@ When the two nodes are connected you are ready to try your app. Click the button
 
 </div>
 
-## Retrieving the id of the newly created Record
+## 新しく作成されたレコードのIDの取得
 
-As you can see, the **Create New Record** node is kind of a **Record** creating factory. Each time **Do** is triggered a new **Record** is created. So how do you keep track of them?
+見ての通り、**新しいレコードの作成**ノードは、**Do**がトリガーされるたびに新しい**レコード**を作成する工場のようなものです。それらをどのように追跡しますか？
 
-The node has an output **Id**, which will be the identifyer for the **Record** just created. As a side note, assuming the creation went well, the **Success** output signal is triggered as well when the **Record** has been created. If the creation failed, for example if one of the properties of the **Record** is required and wasn't provided (see the [this](/docs/guides/cloud-data/creating-a-class/) guide), the **Failure** signal is triggered instead.
+ノードには出力**Id**があり、これはちょうど作成された**レコード**の識別子になります。副次的な注意として、作成がうまくいったと仮定すると、**レコード**が作成されたときに**成功**出力シグナルも同時にトリガーされます。作成に失敗した場合（例えば、**レコード**のプロパティの1つが必須であり、提供されていなかった場合など、[この](/docs/guides/cloud-data/creating-a-class/)ガイドを参照）、代わりに**失敗**シグナルがトリガーされます。
 
-Lets connect the output **Id** of the **Create New Record** node to a **String** node to take a better look at it.
+**新しいレコードの作成**ノードの出力**Id**を**文字列**ノードに接続して、それをよりよく見てみましょう。
 
-The **Id** is a special property of the **Record**. You will first notice that the **Id** of the newly created **Record** matches the **objectId** in the **Dashboard**.
+**Id**は**レコード**の特別なプロパティです。新しく作成された**レコード**の**Id**が**ダッシュボード**の**objectId**と一致することが最初に注目されるでしょう。
 
 <div className="ndl-image-with-background xl">
 
@@ -114,11 +115,11 @@ The **Id** is a special property of the **Record**. You will first notice that t
 
 </div>
 
-The **Id** is used to refer to this specific **Record**. For example, if you want to change a property of a specific **Record** you use a [Set Record Properties](/nodes/data/cloud-data/set-record-properties) node and make sure it's **Id** is referring to the correct **Record**. Same goes for the [Record](/nodes/data/cloud-data/record) node or the [Delete Record](/nodes/data/cloud-data/delete-record). So keeping track of you **Ids** is important.
+**Id**は、この特定の**レコード**を参照するために使用されます。例えば、特定の**レコード**のプロパティを変更したい場合は、[Set Record Properties](/nodes/data/cloud-data/set-record-properties)ノードを使用し、その**Id**が正しい**レコード**を参照していることを確認します。[Record](/nodes/data/cloud-data/record)ノードや[Delete Record](/nodes/data/cloud-data/delete-record)にも同様です。したがって、**Id**を追跡することが重要です。
 
-## Setting initial values of a Record
+## レコードの初期値の設定
 
-Now lets add some UI so each new Task **Record** can have a different task text, and can have `isDone` set to `true` or `false`. Add a [Text Input](/nodes/ui-controls/text-input) and a [Checkbox](/nodes/ui-controls/checkbox/) and connect them to the `Create New Record` node. As you can see, the two properties coming from the **Columns** of the **Class** are available as inputs on the **Create New Record** node.
+それでは、新しいタスク**レコード**が異なるタスクテキストを持ち、`isDone`が`true`または`false`に設定されるように、いくつかのUIを追加しましょう。[Text Input](/nodes/ui-controls/text-input)と[Checkbox](/nodes/ui-controls/checkbox/)を追加し、それらを`新しいレコードの作成`ノードに接続します。**クラス**の**カラム**から来る2つのプロパティが、**新しいレコードの作成**ノードの入力として利用可能であることがわかります。
 
 <div className="ndl-image-with-background xl">
 
@@ -126,4 +127,4 @@ Now lets add some UI so each new Task **Record** can have a different task text,
 
 </div>
 
-Try out your app, write some random task descriptions and check / uncheck. See that it works correctly by looking at the data in your **Dashboard**.
+アプリを試して、ランダムなタスクの説明を書いたり、チェックを入れたり外したりしてみてください。**ダッシュボード**のデータを見て、正しく動作していることを確認してください。

@@ -8,7 +8,7 @@ import CopyToClipboardButton from '../../../src/components/copytoclipboardbutton
 
 # States Node
 
-A common concept in Noodl is the use of different visual states. In this guide we will cover states with an example of how to create a simple reusable switch component, and an example of hovering effects.
+Noodlでは、異なる視覚状態の使用が一般的なコンセプトです。このガイドでは、シンプルな再利用可能なスイッチコンポーネントの作成例と、ホバリング効果の例を用いて、状態について説明します。
 
 <div className="ndl-image-with-background s">
 
@@ -16,11 +16,11 @@ A common concept in Noodl is the use of different visual states. In this guide w
 
 </div>
 
-The examples will cover how to use a **States** node for handling transitions and interactions.
+例では、遷移とインタラクションを扱うための**States**ノードの使用方法を説明します。
 
-## The visuals
+## ビジュアル
 
-First let's start with the basic visual nodes that make up the switch. This is simply a **Group** and a **Circle** with proper styling. You can copy the nodes below and paste into your own project.
+まず、スイッチを構成する基本的なビジュアルノードから始めましょう。これは、適切なスタイリングを施した**Group**と**Circle**で構成されます。以下のノードをコピーして、自分のプロジェクトに貼り付けてください。
 
 <div className="ndl-image-with-background xl">
   <img
@@ -78,7 +78,7 @@ First let's start with the basic visual nodes that make up the switch. This is s
   />
 </div>
 
-Below you can see the styling of the two nodes. The first image shows the Circle node's properties and the second image shows the Group node's properties. Don't forget that you can hover the nodes in the graph to see their placement in the preview.
+以下に、2つのノードのスタイリングを示します。最初の画像はCircleノードのプロパティを、2番目の画像はGroupノードのプロパティを示しています。プレビューでの配置を確認するために、グラフ内のノードにカーソルを合わせることを忘れないでください。
 
 <div className="ndl-image-with-background l">
   <img
@@ -91,11 +91,11 @@ Below you can see the styling of the two nodes. The first image shows the Circle
   ></img>
 </div>
 
-## The states node
+## Statesノード
 
-A very common pattern is to represent states visually. In this example we want our switch to have two states **On** and **Off**, and we want it to have different visuals for these states. This is achieved with the **States** node. Start by creating a new [States](/nodes/utilities/logic/states) node.
+視覚的に状態を表す非常に一般的なパターンがあります。この例では、スイッチが**On**と**Off**の2つの状態を持ち、これらの状態で異なるビジュアルを持つことを望んでいます。これは**States**ノードを使用して実現されます。新しい[States](/nodes/utilities/logic/states)ノードを作成して始めましょう。
 
-Next, create the two states.
+次に、2つの状態を作成します。
 
 <div className="ndl-image-with-background l">
   <img
@@ -104,9 +104,9 @@ Next, create the two states.
   ></img>
 </div>
 
-The **States** node will be in one of the states that we just defined. It starts in the state specified by the **State** property that shows up when you add states. Later we will switch state by connecting a signal.
+**States**ノードは、定義した状態のいずれかになります。状態は、状態を追加すると表示される**State**プロパティによって指定された状態で開始します。後で、シグナルを接続することによって状態を切り替えます。
 
-We will also specify **Values** for each of our states. In the same way you added states, add a single value and call it **Knob X**. It doesn't really matter what you call it, as long as you know what it is for. In this case it's for moving the knob's (the Circle node) X position to its correct position for the two states.
+また、各状態に対して**Values**を指定します。状態を追加したのと同じ方法で、単一の値を追加し、それを**Knob X**と呼びます。それが何のためのものかわかるように、何と呼ぶかはあまり重要ではありません。この場合、それは2つの状態のためのノブの（Circleノードの）X位置を正しい位置に移動するためのものです。
 
 <div className="ndl-image-with-background">
   <img
@@ -115,34 +115,34 @@ We will also specify **Values** for each of our states. In the same way you adde
   ></img>
 </div>
 
-Specify the value for each state. The X position should be **40** when the switch is in the **On** state and **0** when the switch is in the **Off** state. Enter these values in the **States** node properties.
+各状態の値を指定します。スイッチが**On**状態のときのX位置は**40**で、**Off**状態のときは**0**であるべきです。これらの値を**States**ノードのプロパティに入力します。
 
 <div className="ndl-image-with-background">
   <img
     src={useBaseUrl("/docs/guides/user-interfaces/states/on-values.png")}
     className="ndl-image med"
-  ></img>
+ ></img>
   <img
     src={useBaseUrl("/docs/guides/user-interfaces/states/off-values.png")}
     className="ndl-image med"
   ></img>
 </div>
 
-Connect the **Knob X** output of the **States** node to the **Pos X** input of the **Circle** node.
+**States**ノードの**Knob X**出力を**Circle**ノードの**Pos X**入力に接続します。
 
 <div className="ndl-image-with-background xl">
   <img src={useBaseUrl("/docs/guides/user-interfaces/states/knob-x-connected.png")}></img>
 </div>
 
-As you can see the **States** node will get an output corresponding to each value that is defined under **Values**. This output will transition to the specified values when the **States** node changes state. One way to see the different states and transitions is to play with the **State** dropdown menu in the properties panel.
+ご覧のとおり、**States**ノードは、**Values**の下で定義された各値に対応する出力を取得します。この出力は、**States**ノードが状態を変更するときに指定された値に遷移します。異なる状態と遷移を見る一つの方法は、プロパティパネルの**State**ドロップダウンメニューで遊ぶことです。
 
 <div className="ndl-image-with-background xl">
     <video width="100%" autoPlay muted loop src={useBaseUrl("/docs/guides/user-interfaces/states/change-state.mp4")}/>
 </div>
 
-If you hover over the output connection of the **States** node a small popup will show the current value that is being outputted. If you click this small popup, you pin the popup so that it stays visible. Now you can see the output value change as it transitions from one state to another.
+**States**ノードの出力接続にカーソルを合わせると、現在出力されている値を示す小さなポップアップが表示されます。この小さなポップアップをクリックすると、ポップアップが表示され続けるようにピン留めされます。これで、状態が一つから別のものに遷移するにつれて、出力値が変更されるのを見ることができます。
 
-You can connect the outputs of the **States** node to anything you like. In this example we connected the output to an input where they were both of the type **Number**. You can use different types than numbers. Add a new **Value** to the **States** node. Call it "Background Color" and give it a **Color** type instead of the default **Number** type. Then choose two different colors for the two states and connect the output to the **Background Color** of the **Group** node containing the **Circle**.
+**States**ノードの出力を好きなものに接続できます。この例では、両方とも**Number**タイプの入力と出力を接続しました。数値以外のタイプを使用することもできます。**States**ノードに新しい**Value**を追加します。それを"Background Color"と呼び、デフォルトの**Number**タイプの代わりに**Color**タイプを選択してください。次に、2つの状態のために2つの異なる色を選択し、出力を**Circle**を含む**Group**ノードの**Background Color**に接続します。
 
 <div className="ndl-image-with-background">
   <img
@@ -151,7 +151,7 @@ You can connect the outputs of the **States** node to anything you like. In this
   ></img>
 </div>
 
-Finally, we can make the **States** node toggle state when the switch **Group** node is clicked. This is achieved by connecting the **Click** signal from the **Group** to the **Toggle** input of the **States** node. This will make the **States** node jump to the next state in the list and when the last one is reached it will jump to the first one again. In this case we only have two states, so it will toggle between **On** and **Off**.
+最後に、スイッチ**Group**ノードがクリックされたときに**States**ノードが状態をトグルするようにすることができます。これは、**Group**からの**Click**シグナルを**States**ノードの**Toggle**入力に接続することで達成されます。これにより、**States**ノードはリスト内の次の状態にジャンプし、最後のものに達すると最初のものに再びジャンプします。この場合、2つの状態しかないので、**On**と**Off**の間でトグルします。
 
 <div className="ndl-image-with-background xl">
   <img src={useBaseUrl("/docs/guides/user-interfaces/states/click-toggle.png")}></img>
@@ -243,9 +243,9 @@ Finally, we can make the **States** node toggle state when the switch **Group** 
   />
 </div>
 
-## Transitions
+## 遷移
 
-For _number_ and _color_ types the **States** node will try to smoothly transition between the states. Sometimes this is not the desired behaviour, and sometimes you want to change how the transition behaves. Noodl let's you edit the transition curves to change the transition behaviour. Take a look at the example below. You can copy the nodes and replace the old nodes in your project or create a new component.
+_数値_ と _色_ のタイプについては、**States**ノードは状態間で滑らかに遷移しようとします。時にはこれが望ましい動作ではないことがあり、また、遷移の挙動を変更したい場合もあります。Noodlでは、遷移カーブを編集して遷移の挙動を変更することができます。以下の例を見てください。ノードをコピーしてプロジェクトに古いノードを置き換えるか、新しいコンポーネントを作成できます。
 
 <div className="ndl-image-with-background xl">
   <img
@@ -331,7 +331,7 @@ For _number_ and _color_ types the **States** node will try to smoothly transiti
   />
 </div>
 
-This simple graph has a **States** node that controls the hover state of a **Group**. As you can see the **Group** sends a signal when it is hovered which transitions the **States** node to the **Yes** state. A different signal is sent when the mouse leaves (you stop hovering), which changes the **States** node to the **No** state. The **States** node changes the **Scale** and **Color** of the **Group** node when it goes between its states. The effect is shown below:
+このシンプルなグラフは、**Group**のホバー状態を制御する**States**ノードを持っています。ご覧のとおり、**Group**はホバーされるとシグナルを送り、**States**ノードを**Yes**状態に遷移させます。マウスが離れる（ホバーが停止する）と、異なるシグナルが送られ、**States**ノードを**No**状態に変更します。**States**ノードは、状態が変わるときに**Group**ノードの**Scale**と**Color**を変更します。効果は以下の通りです：
 
 <div className="ndl-image-with-background">
   <img
@@ -340,7 +340,7 @@ This simple graph has a **States** node that controls the hover state of a **Gro
   ></img>
 </div>
 
-Both transitions (color and size) have the default transition curves. You can edit the transition curves in the properties of the **States** node. Look for the transitions when moving to the **Yes** state (i.e. the hovered state).
+両方の遷移（色とサイズ）はデフォルトの遷移カーブを持っています。**States**ノードのプロパティで遷移カーブを編集できます。**Yes**状態（つまり、ホバーされた状態）に移動するときの遷移を探します。
 
 <div className="ndl-image-with-background">
   <img
@@ -349,9 +349,11 @@ Both transitions (color and size) have the default transition curves. You can ed
   ></img>
 </div>
 
-The **Default** property is a transition curve that is used for all values if they don't have a specific transition curve set for themselves. If you want to change the curve for all transitions use this.
+**Default**プロパティは、自分自身に特定の遷移カーブが設定されていない場合にすべての値に使用される遷移カーブです。すべての遷移のカーブを変更したい場合は、これを使用してください。
 
-In this case we want to change the curve for the **Size** transition. You can edit the curve via the curve editor.
+この場合、**Size**遷移のカーブを変更したいです。カーブエ
+
+ディターを通じてカーブを編集できます。
 
 <div className="ndl-image-with-background l">
   <img
@@ -360,12 +362,12 @@ In this case we want to change the curve for the **Size** transition. You can ed
   ></img>
 </div>
 
-You can play with different settings for the curves and see them working when you hover the rectangle in the preview. Here is one example with a little bounce in the **Size** transition and a linear **Color** transition. Don't forget that you can use the preset icons on the right in the curve editor to choose between four presets:
+カーブの異なる設定を試して、プレビューで長方形をホバーするときにそれらがどのように機能するかを見てください。ここに、**Size**遷移に少しバウンスがあり、**Color**遷移がリニアな例があります。カーブエディターの右側にあるプリセットアイコンを使用して、4つのプリセットの間で選択することを忘れないでください：
 
-- **Ease In** Slower in the beginning and accelerating towards the end.
-- **Ease Out** Decelerates towards the end.
-- **Ease In and Out** Smooth/slower start and end.
-- **Linear** Linear animation, starts instantly and keeps constant speed.
+- **Ease In** 最初は遅く、最後に向かって加速します。
+- **Ease Out** 最後に向かって減速します。
+- **Ease In and Out** 開始と終了がスムーズ/遅い。
+- **Linear** 線形アニメーション、即座に開始し、一定の速度を維持します。
 
 <div className="ndl-image-with-background">
   <img
@@ -374,9 +376,9 @@ You can play with different settings for the curves and see them working when yo
   ></img>
 </div>
 
-## Chaining States
+## 状態の連鎖
 
-You can also connect several **States** nodes together to create more complex types of animations. In the node graph below we have a second **States** node that expands the **Group** node (changes the width). The second **States** node labeled **Expand** changes the width between the states **Yes** and **No**. The neat thing is that it is triggered when the first states node (the hover states) has reached the **Yes** state. It is returned to **No** when the mouse leaves (the hover end), just like the first node.
+複数の**States**ノードを接続して、より複雑なタイプのアニメーションを作成することもできます。以下のノードグラフでは、**Group**ノードを拡張する（幅を変更する）2番目の**States**ノードがあります。2番目の**States**ノード（**Expand**とラベル付けされている）は、状態**Yes**と**No**の間で幅を変更します。面白いことに、最初の状態ノード（ホバー状態）が**Yes**状態に到達したときにトリガーされます。マウスが離れる（ホバー終了）と、最初のノードと同じように**No**に戻ります。
 
 <div className="ndl-image-with-background xl">
   <img src={useBaseUrl("/docs/guides/user-interfaces/states/chaining-states.png")}></img>
@@ -513,7 +515,7 @@ You can also connect several **States** nodes together to create more complex ty
   />
 </div>
 
-This will result in the behaviour shown below. As you can see the first **States** node triggers the bouncy size change, which is immediately followed by the second **Expand** states node that changes the state to **Yes** and transitions the width to the expanded state.
+これにより、以下に示す動作が得られます。ご覧のとおり、最初の**States**ノードはバウンシーなサイズ変更をトリガーし、直後に2番目の**Expand** statesノードが状態を**Yes**に変更し、幅を拡張状態に遷移させます。
 
 <div className="ndl-image-with-background">
   <img
@@ -522,4 +524,4 @@ This will result in the behaviour shown below. As you can see the first **States
   ></img>
 </div>
 
-The **States** node is one of the most commonly used nodes in Noodl apps, and mastering it will let you create many great interactions. Have fun!
+**States**ノードはNoodlアプリで最も一般的に使用されるノードの1つであり、それをマスターすることで多くの素晴らしいインタラクションを作成できます。楽しんでください！

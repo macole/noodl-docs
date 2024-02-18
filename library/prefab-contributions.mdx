@@ -1,44 +1,46 @@
 ---
-title: Prefab Contributions
+title: プリファブで貢献する
 hide_title: true
 ---
 
-# Prefab contributions
+# プリファブで貢献する
 
-All Prefabs in Noodl are just standard Noodl Components, and all of them are served to the Nood Editor Node Picker through the docs. This means that if you have built a Noodl app with components you think would benefit others as well - sharing your own Prefab with the rest of the Noodl community is just one GitHub Pull request away!
+Noodlのすべてのプリファブは標準的なNoodlコンポーネントであり、すべてのプリファブがNoodエディターのノードピッカーにドキュメントを介して提供されます。これはもしあなたが他の人にも役立つと思うコンポーネントでNoodlアプリを構築した場合、自分のプリファブをNoodlコミュニティと共有することがGitHubのプルリクエストだけで可能であることを意味します！
 
-## Quick overview of the process
+## プロセスの概要
 
-- Build the Prefab following the guidelines below, and export the components.
-- Download the [Prefab Docs Boilerplate zip](/library/prefab-contributions/prefab-docs-boilerplate.zip).
-- Clone the Noodl docs repo and create a new branch.
-- Drop all boilerplate files in the correct folders in Noodl docs, dont forget to add the Prefab zip export to the static assets folder.
-- Add your Prefab to the index.
-- Write your docs and setup the sidebar.
-- Do a test build.
-- Submit pull request
+- 下記のガイドラインに従ってプリファブを構築し、コンポーネントをエクスポートします。
+- [プリファブドキュメントボイラープレートzip](/library/prefab-contributions/prefab-docs-boilerplate.zip)をダウンロードします。
+- Noodlのドキュメントリポジトリをクローンして新しいブランチを作成します。
+- すべてのボイラープレートファイルをNoodlドキュメントの正しいフォルダにドロップし、プリファブのzipエクスポートを静的アセットフォルダに追加することを忘れないでください。
+- インデックスにプリファブを追加します。
+- ドキュメントを記述し、サイドバーを設定します。
+- テストビルドを行います。
+- プルリクエストを送信します。
 
-## Prefab guidelines
+## プリファブのガイドライン
 
-For your Prefab to be as successful as possible we have a couple of guidelines that are good to follow. Please consider the following before exporting it:
+プリファブができるだけ成功するように、いくつかのガイドラインに従うことが良いです。エクスポートする前に以下を考慮してください：
 
-The Prefab should work across many different projects, built by many different users. Try making it as general and isolated as possible, so that it can be used in a variety of scenarios. Some examples would include:
+プリファブは、多くの異なるプロジェクトで、多くの異なるユーザーによって使用されるべきです。できるだけ一般的で孤立したものにすることで、さまざまなシナリオで使用できるようにしてください。例えば：
 
-- **Build in isolation**: Use a fresh Noodl project to build the Prefab. This will make it easier to keep track of, version control and export cleanly with no unnecessary dependencies.
-- **General naming**: Consider the component `Save Username To localStorage` with a `Username` input vs. `Save to localStorage` with the inputs `Key` and `Value`. This will allow the user to not only save the username, but any value they need by providing their own `Key`. If your Prefb needs to handle a `Username` key specifiaclly, the `Save to localStorage` component coul be used internally in another component in your Prefab with the `Username` key already filled in.
-- **Splitting up functionality**: having separate components for `Init X Data`, `Get X Data`, `Set X Data` and `Clear X Data` instead of one big `X Data` component with all functionality built in.
-- **Use as litle styling as possible**: All the All Style Variants, Color Styles and Text Styles used in your exported comonents will be imported along with the prefab. Try using as much of the default styles as possible to minimize the cleanup the user needs to do. Of course, this varies from Prefab to Prefab, but many Prefabs will be imported for their functionality and then restyled to fit the project. Whenever possible, keep the styles related to functionality and not visual flare. This guideline gets more relevant the more data-oriented your Prefab is.
-- **Prefix the component names**: `Xano Prefab - Log In`, `Xano Prefab - Log Out` etc. will make it easier to search for in the Node Picker, and prevent import conflicts if the project already includes a component called `Log In`.
-- **Use a separate sheet for the Prefab**: To further prevent import conflicts it's good to build your Prefab in a separate sheet, instead of keeping it in the `Default` one.
-- **Consider using existing Noodl conventions**: This would include calling signals things like `Do`, `Success` and `Failure`, trying to model your components after the core nodes in Noodl, etc. This will make it easier for users to pick up how the components work if they are already familiar with Noodl.
-- **Quality assurance**: The Prefab you build will be shipped to end users everywhere. Make sure the quality and performance of your Prefab is as high as possible.
-- **Add comments in your components**: This will make it easier for users to use the Prefab without having to reference the docs. This will also help them to understand how the Prefab is built should they need to make any modifications to the components in their project.
+- **孤立して構築する**：プリファブを構築するために新しいNoodlプロジェクトを使用します。これにより、追跡、バージョン管理、不要な依存関係なしにクリーンにエクスポートすることが容易になります。
+- **一般的な命名を使用する**：`Save Username To localStorage`のコンポーネントが`Username`入力を持つのに対し、`Save to localStorage`が`Key`と`Value`の入力を持つようにします。これにより、ユーザーは`Username`だけでなく、自分の`Key`を提供することで必要な値を保存できます。プリファブが`Username`キーを特に扱う必要がある場合、`Username`キーが既に入力された別のコンポーネント内で`Save to localStorage`コンポーネントを使用できます。
+- **機能を分割する**：`Init X Data`、`Get X Data`、`Set X Data`、`Clear X Data`といった別々のコンポーネントを持つことが、すべての機能を内蔵した1つの大きな`X Data`コンポーネントよりも有用です。
+- **できるだけ少ないスタイリングを使用する**：エクスポートされたコンポーネントで使用されるすべてのスタイルバリアント、カラースタイル、テキストスタイルがプリファブと共にインポートされます。できるだけデフォルトのスタイルを使用して、ユーザーが行う必要のあるクリーンアップを最小限に抑えます。もちろん、これはプリファブによって異なりますが、多くのプリファブは機能性のためにインポートされ、その後プロジェクトに合わせて再スタイルされます。可能な限り、機能に関連するスタイルに留め、視覚的な装飾に関連しないようにします。これは、プリファブがよりデータ指向の場合により関連性があります。
+- **コンポーネント名にプレフィックスを付ける**：`Xano Prefab - Log In`、`Xano Prefab - Log Out`などは、ノードピッカーで検索しやすくするため、またプロジェクトに`Log In`というコンポーネントが既に含まれている場合のインポート競合を防ぐために役立ちます。
+- **プリファブ用に別のシートを使用する**：インポート競合をさらに防ぐために、`Default`ではなく別のシートでプリファブを構築することが良いです。
+- **既存のNoodl規約の使用を検討する**：これには、シグナルを`Do`、`Success`、`Failure`などと呼ぶこと、コンポーネントをNoodlのコアノードにモデル化しようとするこ
 
-For a good example of how this can look in practice, clone and check out how the `Xano` Prefab is built.
+となどが含まれます。これにより、ユーザーがNoodlに既に慣れている場合、コンポーネントの動作を把握しやすくなります。
+- **品質保証**：構築したプリファブは、世界中のエンドユーザーに提供されます。プリファブの品質とパフォーマンスができるだけ高いことを確認してください。
+- **コンポーネントにコメントを追加する**：これにより、ユーザーがドキュメントを参照することなくプリファブを使用しやすくなります。これはまた、プロジェクト内でコンポーネントを変更する必要がある場合に、プリファブの構築方法を理解するのにも役立ちます。
 
-## Exporting the Prefab
+`Xano`プリファブの構築方法を確認するために、クローンしてみると良い例が得られます。
 
-When your Prefab is tested and ready to be published you will need to export it as a zip file. The best way to do this is to open the project of your Prefab and pressing `Ctrl/Cmd + Shift + E`. This will bring up the export popup:
+## プリファブのエクスポート
+
+プリファブがテストされ、公開の準備ができたら、zipファイルとしてエクスポートする必要があります。これを行う最良の方法は、プリファブのプロジェクトを開いて`Ctrl/Cmd + Shift + E`を押すことです。これにより、エクスポートポップアップが表示されます：
 
 <div className="ndl-image-with-background l">
 
@@ -46,57 +48,59 @@ When your Prefab is tested and ready to be published you will need to export it 
 
 </div>
 
-Select the components you want your Prefab to include, scroll to the bottom, and click `Export`. This will also automatically select all dependencies those components have, such as Style Variants, Color Styles and Text Styles, Fonts, Images and other components.
+プリファブに含めたいコンポーネントを選択し、一番下までスクロールして`Export`をクリックします。これにより、スタイルバリアント、カラースタイル、テキストスタイル、フォント、イメージ、その他のコンポーネントなど、それらのコンポーネントが持つすべての依存関係も自動的に選択されます。
 
-This will open up a file explorer window and you will be prompted to name the file. A good best practiche here is to name it with dashes and a version number, like so: `list-with-icons-prefab-1-0.zip`. This will make it browser safe, and will allow you to know what iteration of the prefab that has been exported.
+これにより、ファイルエクスプローラーウィンドウが開き、ファイルに名前を付けるように求められます。ここでの良い実践は、バージョン番号を含むダッシュで名前を付けることです。例：`list-with-icons-prefab-1-0.zip`。これにより、ブラウザセーフになり、エクスポートされたプリファブのイテレーションを知ることができます。
 
-## Cloning the docs repo
+## ドキュメントリポジトリのクローン
 
-To submit a pull request you first need to clone the docs repository from the [Noodl Docs Github](https://github.com/noodlapp/noodl-docs). If you are new to Git it can be helpful to use a visual Git client. A good alternative is [Github Desktop](https://desktop.github.com/), as it is both free and tightly coupled to the Gihub workflow. [Here](https://docs.github.com/en/desktop/overview/getting-started-with-github-desktop) is a guide to get you started, pay extra attention to what they say about **branches**.
+プルリクエストを送信するには、まず[Noodl Docs Github](https://github.com/noodlapp/noodl-docs)からドキュメントリポジトリをクローンする必要があります。Gitに慣れていない場合は、ビジュアルGitクライアントを使用すると便利です。良い選択肢は[Github Desktop](https://desktop.github.com/)で、無料であり、Gihubワークフローに密接に連携しています。[こちら](https://docs.github.com/en/desktop/overview/getting-started-with-github-desktop)は開始するためのガイドです。特に**ブランチ**についての記述に注意してください。
 
-All pull requests for the Noodl Docs need to be done through feature branches - preferrably one branch per Prefab, as this will make it easier to keep track of.
+Noodlドキュメントのすべてのプルリクエストは、機能ブランチを通じて行う必要があります - できればプリファブごとに1つのブランチを使用すると、追跡が容易になります。
 
-## Making changes
+## 変更の加え方
 
-Once you have created a new branch, you're good to go to start making changes.
+新しいブランチを作成したら、変更を加える準備が整いました。
 
-There are 4 files and folders you need to know about.
+知っておくべき4つのファイルとフォルダがあります。
 
-- `/library/prefabs/`: Where a folder with your Prefab docs will live.
-- `/static/library/prefabs/`: Where any assets for your Prefab docs will live, like images or the exported zip-file.
-- `/static/library/prefabs/index.json`: Where you will link your Prefab for it to be available in the Node Picker.
-- `sidebarsLibrary.js`: Where you will set up the sidebar menu for your Prefab docs.
+- `/library/prefabs/`：プリファブのドキュメントが置かれる場所です。
+- `/static/library/prefabs/`：プリファブのドキュメントのアセットが置かれる場所、例えば画像やエクスポートされたzipファイルなど。
+- `/static/library/prefabs/index.json`：ノードピッカーでプリファブを利用可能にするためにプリファブをリンクする場所です。
+- `sidebarsLibrary.js`：プリファブのドキュメントのサイドバーメニューを設定する場所です。
 
-We will expand on this later on in this guide.
+このガイドでは後ほど詳しく説明します。
 
-## Writing the docs
+## ドキュメントの記述
 
-It's important for your prefab to have good docs, not only so that people can learn how to use the Prefab, but also for them to be able to find it outside of the Noodl editor.
+プリファブに良いドキュメントがあることは重要です。これは、人々がプリファブの使用方法を学ぶだけでなく、Noodlエディター外でそれを見つけることができるようにするためです。
 
-To streamline this process as much as possible, you can download a zip-file with boilerplate docs [here](/library/prefab-contributions/prefab-docs-boilerplate.zip).
+このプロセスをできるだけ簡素化するために、[こちら](/library/prefab-contributions/prefab-docs-boilerplate.zip)からボイラープレートドキュメントのzipファイルをダウンロードできます。
 
-### Boilerplate structure
+### ボイラープレートの構造
 
-In the boilerplate folder you will find a folder named `docs-starter`. In it you will find two folders.
+ボイラープレートフォルダには`docs-starter`という名前のフォルダがあります。それには二つのフォルダが含まれています。
 
-- `markdown`: Contains the files that should be placed in their own folder in `/library/prefabs/`
-- `assets`: Contains the files that should be placed in their own folder in `/static/library/prefabs/`.
+- `markdown`：`/library/prefabs/`に自分のフォルダで配置するべきファイルが含まれています。
+- `assets`：`/static/library/prefabs/`に自分のフォルダで配置するべきファ
 
-Noodl docs are written in [Markdown](https://www.markdownguide.org/cheat-sheet/). In addition to the Markdown standards there are a couple of CSS classes that are good to know. These are documented in the starter files.
+イルが含まれています。
 
-### Linking it up
+Noodlドキュメントは[Markdown](https://www.markdownguide.org/cheat-sheet/)で書かれています。Markdownの標準に加えて、いくつかのCSSクラスが知っておくと良いです。これらはスターターファイルで文書化されています。
 
-The easiest way to write and preview your Prefab docs is to drop the folders in `docs-starter` in the correct folders and rename the folders to the name of your Prefab.
+### リンクを設定する
 
-After that you need to make sure that you can navigate to them. This is where the file `/static/library/prefabs/index.json` comes in. In your downloaded boilerplate folder you will find a file named `add-to-prefabs-index.json`. In it you find a JSON object that you can copy and paste at the bottom of the array in the `/static/library/prefabs/index.json` file.
+プリファブのドキュメントを書いてプレビューする最も簡単な方法は、`docs-starter`のフォルダを正しいフォルダにドロップしてプリファブの名前に変更することです。
 
-When this is done you can open up the terminal in the root of the docs repo and run `npm i` to install, and then `npm run start`. This will start up a local server with Docusaurus and open a new browser tab where you can preview your local version of the docs. Whenever you save any changes in the filebase, the preview will reload.
+その後、それらにナビゲートできるようにする必要があります。これが`/static/library/prefabs/index.json`ファイルの役割です。ダウンロードしたボイラープレートフォルダには`add-to-prefabs-index.json`というファイルがあります。これには、`/static/library/prefabs/index.json`ファイルの配列の最後にコピーして貼り付けることができるJSONオブジェクトが含まれています。
 
-In the browser, navigate to the **Library** page and click the **Prefabs** section in the sidebar. Your Prefab should now be at the bottom of the list.
+これが完了したら、ドキュメントリポのルートでターミナルを開き、`npm i`を実行してインストールし、次に`npm run start`を実行します。これにより、Docusaurusでローカルサーバーが起動し、新しいブラウザタブが開いてローカルバージョンのドキュメントをプレビューできます。ファイルベースで変更を保存するたびに、プレビューがリロードされます。
 
-### Prefab doc structure
+ブラウザで**Library**ページに移動し、サイドバーの**Prefabs**セクションをクリックします。プリファブはリストの一番下に表示されるはずです。
 
-When the boilerplate `markdown` folder has been renamed and dropped in the `/library/prefabs/` folder, it should look something like this:
+### プリファブドキュメントの構造
+
+ボイラープレートの`markdown`フォルダが`/library/prefabs/`フォルダに名前を変更して配置された場合、以下のようになるはずです：
 
 <div className="ndl-image-with-background">
 
@@ -104,22 +108,22 @@ When the boilerplate `markdown` folder has been renamed and dropped in the `/lib
 
 </div>
 
-If you look at the structure you see a `README.md` in the root of the Prefab docs. This is meant to be a summary of the whole Prefab. You also see a folder named `components`. This includes specific docs for every component that is included in your Prefab. It's recommended that you keep your Prefab docs structured like this, as it makes them easier to reference.
+構造を見ると、プリファブドキュメントのルートに`README.md`があります。これは、プリファブ全体の概要を意味しています。また、`components`という名前のフォルダがあります。これにはプリファブに含まれる各コンポーネントの具体的なドキュメントが含まれています。プリファブドキュメントをこのように構造化することをお勧めします。これにより、参照が容易になります。
 
-For a good example of how a Prefab doc can be written, please check out the [Xano Prefab](/library/prefabs/xano) is written and structured.
+[Xanoプリファブ](/library/prefabs/xano)がどのように書かれ、構造化されているかを確認すると、プリファブドキュメントがどのように書かれるべきかの良い例が得られます。
 
-### Creating a sidebar
+### サイドバーの作成
 
-If you browse to the Prefab now, you will see your docs, but you might notice that the sidebar is missing. This is because you need to edit one last file: `sidebarsLibrary.js`.
+今、プリファブに移動するとドキュメントが表示されますが、サイドバーがないことに気づくかもしれません。これは、`sidebarsLibrary.js`ファイルを編集する必要があるためです。
 
-In your downloaded boilerplate folder you will find a file named `add-to-sidebarsLibrary.js`. This contains a JS array that represents the sidebar. Copy and paste it at the very bottom of the object in `sidebarsLibrary.js`.
+ダウンロードしたボイラープレートフォルダには`add-to-sidebarsLibrary.js`というファイルがあります。これには、サイドバーを表すJS配列が含まれています。`sidebarsLibrary.js`のオブジェクトの一番下にコピーして貼り付けてください。
 
-It is recommended that you keep the base structure the way it is, with an overview, a category for components and a "Back to prefabs" link at the end. However, if your Prefab has many components it could be good to split them up into separate categories, groupling the components in whatever way is logical for your Prefab. Additionally, if your Prefab requires any external setup (with a third party provider, etc.) it can be a good idea to include a guide on it in the root of the Prefab docs, right after the _Overview_ page.
+基本構造をそのままにしておくことをお勧めします。これには、概要、コンポーネントのカテゴリ、最後に「プリファブに戻る」リンクが含まれます。ただし、プリファブに多くのコンポーネントが含まれている場合は、論理的な方法でコンポーネントを別のカテゴリに分けてグループ化すると良いでしょう。さらに、プリファブがサードパーティプロバイダーなどの外部セットアップを必要とする場合は、_概要_ページの直後にルートにガイドを含めると良いでしょう。
 
-## Pull request time!
+## プルリクエストの時間です！
 
-When all docs are written you need to check that everything builds smoothly. You can do this by running `npm run build` in the root folder of the docs in the terminal, when that is done you need to run `npm run serve`, open the local docs in a browser and check that your Prefab docs look like they should.
+すべてのドキュメントが書かれたら、すべてがスムーズにビルドされるかを確認する必要があります。これを行うには、ターミナルでドキュメントのルートフォルダで`npm run build`を実行し、完了したら`npm run serve`を実行し、ブラウザでローカルドキュメントを開いて、プリファブドキュメントが期待どおりに見えるかを確認します。
 
-Then it's time to submit a pull request! Commit and push your changes to your Git branch, and then submit the pull request, either on Github or in your Git client (it if supports requests).
+次に、プルリクエストを送信する時が来ました！Gitブランチに変更をコミットしてプッシュし、プルリクエストを送信してください（Gitクライアントがリクエストをサポートしている場合）。
 
-Your pull request will then be reviewed by the Noodl team, and published as soon as it has passed!
+プルリクエストはNoodlチームによってレビューされ、承認され次第公開されます！

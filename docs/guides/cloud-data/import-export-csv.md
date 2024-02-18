@@ -1,9 +1,6 @@
+CSV（Comma Separated Values）形式を使用して、クラウドサービスへのデータのインポートとエクスポートを行うことができます。これはクラウドサービスのダッシュボードで行われます。
 
-# Importing and exporting data with CSV
-
-You can import and export data to/from your cloud service in the CSV (Comma Separated Values) format. This is done in the cloud services dashboard.
-
-To export, browse the data for a specific record class and then you find the export commands in the toolbar at the top.
+エクスポートするには、特定のレコードクラスのデータを閲覧し、その後、ツールバーの上部にあるエクスポートコマンドを見つけます。
 
 <div className="ndl-image-with-background">
 
@@ -11,9 +8,9 @@ To export, browse the data for a specific record class and then you find the exp
 
 </div>
 
-You can either export all records in a class (max 10K) or only the selected records. Select an option and then save the exported CSV.
+クラス内のすべてのレコード（最大10K）をエクスポートするか、選択したレコードのみをエクスポートするかを選択し、エクスポートされたCSVを保存します。
 
-To import a CSV you must also browse to the record class that you want to import into. Then you will find the import command in the `Edit` menu at the very bottom.
+CSVをインポートするには、インポートしたいレコードクラスに移動する必要があります。その後、`Edit`メニューの一番下にインポートコマンドを見つけます。
 
 <div className="ndl-image-with-background">
 
@@ -21,15 +18,15 @@ To import a CSV you must also browse to the record class that you want to import
 
 </div>
 
-Click and then pick the CSV file on your computer that you want to use for import. The CSV file must follow a certain format for the import to work well.
+クリックしてから、インポートに使用したいコンピュータ上のCSVファイルを選択します。インポートがうまくいくためには、CSVファイルが特定の形式に従っている必要があります。
 
-### String
+### 文字列
 
-The input will be assigned directly as a string.
+入力は直接文字列として割り当てられます。
 
-### Boolean
+### ブール値
 
-When the column data type is a boolean, there are a few different formats that are possible:
+カラムのデータタイプがブール値の場合、いくつかの異なる形式が可能です：
 
 ```js
 "True" // == true
@@ -43,15 +40,15 @@ When the column data type is a boolean, there are a few different formats that a
 0 // == false
 ```
 
-### Number
+### 数値
 
-When the column data type is a number, it will convert the input to a number and assign if the value is not invalid or NaN.
+カラムのデータタイプが数値の場合、入力を数値に変換し、値が無効またはNaNでない場合に割り当てます。
 
-### Date
+### 日付
 
-Everything that is available via `new Date(...)` will be possible to import.
+`new Date(...)`を介して利用可能なすべてがインポート可能です。
 
-For example:
+例えば：
 
 ```json
 "Thu Apr 13 2023 10:07:29 GMT+0200 (Central European Summer Time)"
@@ -59,9 +56,9 @@ For example:
 "Thu, 13 Apr 2023 08:06:11 GMT"
 ```
 
-### Object
+### オブジェクト
 
-You can import an object type property by specifying it as JSON:
+オブジェクトタイプのプロパティは、JSONとして指定することでインポートできます：
 
 ```json
 {
@@ -69,37 +66,37 @@ You can import an object type property by specifying it as JSON:
 }
 ```
 
-### Array
+### 配列
 
-Properties of array types can also be provided as JSON.
+配列タイプのプロパティもJSONとして提供できます。
 
 ```json
 [1,2,3]
 ```
 
-### GeoPoint
+### ジオポイント
 
-A propety of type GeoPoint can be imported either as a string with latitude and longitude:
+ジオポイントタイプのプロパティは、緯度と経度を含む文字列として、
 
 ```json
 "30,30"
 ```
 
-Or as an object with lat/long as properties:
+または、lat/longをプロパティとして持つオブジェクトとしてインポートできます：
 
 ```json
 {"latitude": 30, "longitude": 30}
 ```
 
-### Pointer
+### ポインター
 
-A point is simply a string with the `Id` of the target record.
+ポインターは、対象レコードの`Id`を含む単純な文字列です。
 
-### Relation
+### 関係
 
-This is currently not supported.
+現在はサポートされていません。
 
-### File
+### ファイル
 
 ```json
 {

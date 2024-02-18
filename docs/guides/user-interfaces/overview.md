@@ -1,18 +1,17 @@
 ---
-title: Building User Interfaces
+title: ユーザーインターフェースの構築
 hide_title: true
 ---
-# Building User Interfaces in Noodl
+# Noodlでのユーザーインターフェースの構築
 
-The user interface in your Noodl App are all the things that your users will interact with on your screen. Lists, buttons, checkboxes, etc.
+Noodlアプリのユーザーインターフェースは、ユーザーが画面上で対話するすべての要素です。リスト、ボタン、チェックボックスなどがそれにあたります。
 
-In Noodl, you build these using **Visual Nodes**, i.e. the blue nodes in your node graph. Visual nodes represents something that can be seen on a screen. In contrast, logical nodes, for example representing a query to the database or a condition to be evaluated are not directly visible on the screen.
+Noodlでは、これらを**ビジュアルノード**、つまりノードグラフの青いノードを使用して構築します。ビジュアルノードは、画面上に見えるものを表します。対照的に、データベースへのクエリを表すロジカルノードや評価される条件などは、直接画面上に表示されません。
 
-The visual nodes can also be grouped together in hierarchies mainly to define how they are relate to each other in the layout on the screen. By putting two **Buttons** as children of the same **Group** you can for example hide both these **Buttons** by hiding the **Group**. The order of the visual nodes also generally tells which order they will be rendered on the screen. Nodes later in the tree will be rendered on top of nodes earlier in the tree, if they happen to occupy the same space in the tree. (However this can be overridden using the **zIndex** property.)
+ビジュアルノードは、主に画面上でのレイアウトにおける相互関係を定義するために、階層でまとめることもできます。たとえば、同じ**グループ**の子として2つの**ボタン**を配置することで、**グループ**を隠すことでこれらの**ボタン**を両方隠すことができます。ビジュアルノードの順序は、一般的に画面上でレンダリングされる順序を示します。木の中で同じ場所を占める場合、木の後ろにあるノードは、木の前にあるノードの上にレンダリングされます（ただし、**zIndex**プロパティを使用して上書きすることができます）。
 
-As you can understand, for a large App, the visual tree can quickly become very large. That's why you typically create **Components** of subtrees that capture a specific functionality. The components can in themselves contain more components. Components are also a great way to re-use UI in many places in your app and create a design system greatly reducing time to build UI.
+大きなアプリでは、ビジュアルツリーが非常に大きくなりがちです。そのため、特定の機能を捉えるサブツリーの**コンポーネント**を通常作成します。コンポーネント自体がさらにコンポーネントを含むことがあります。コンポーネントは、アプリの多くの場所でUIを再利用し、デザインシステムを作成してUIの構築時間を大幅に削減する素晴らしい方法です。
 
-The visual nodes can also be styled and customized heavily from a visual perspective. Also the visualization aspect of a visual node can be saved and re-used using the style variants system. Many visual nodes also have multiple visual states. For example a Button will typically change appearance when the user hovers over it, clicks it or if the button is disabled. Using the visual states system or the **States** node, you can finetune in detail how you UI will react visibly to ser interactions.
+ビジュアルノードは、視覚的な観点からも大幅にスタイル設定され、カスタマイズされます。また、スタイルバリアントシステムを使用して、ビジュアルノードの視覚化アスペクトを保存して再利用することもできます。多くのビジュアルノードには複数のビジュアルステートもあります。たとえば、ボタンは通常、ユーザーが上にホバーしたとき、クリックしたとき、またはボタンが無効になっているときに外観が変わります。ビジュアルステートシステムや**ステート**ノードを使用すると、UIがユーザーの操作に対して視覚的にどのように反応するかを詳細に微調整できます。
 
-All of this and more is covered in this part of the guide.
-
+これらのことやそれ以上のことが、このガイドのパートでカバーされています。

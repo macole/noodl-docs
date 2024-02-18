@@ -3,81 +3,83 @@ title: Figma Plugin
 hide_title: true
 ---
 
-# Figma plugin
+# Figmaプラグイン
 
 :::info
-Download the plugin here: https://www.figma.com/community/plugin/1006908263044642341/Noodl
+こちらからプラグインをダウンロードしてください: https://www.figma.com/community/plugin/1006908263044642341/Noodl
 :::
 
-If you're a Figma user you can use Figma documents to create nodes in Noodl.
+Figmaユーザーであれば、Figmaドキュメントを使用してNoodl内でノードを作成することができます。
 
-Layers in Figma will be mapped to nodes in Noodl, and complex shapes will be exported as images.
+FigmaのレイヤーはNoodl内のノードにマッピングされ、複雑な形状は画像としてエクスポートされます。
 
-The Noodl plugin can export:
+Noodlプラグインは以下をエクスポートできます：
 
--   Shapes like circles, rectangles and lines with one fill or stroke. These will be mapped to the corresponding Noodl nodes.
--   Complex shapes, like vectors paths and boolean operation, will be exported as images
--   Text styles
--   Positions and sizes will map to absolute layouts and fixed dimensions
--   Entire layer hierarchies, with the correct order and parent/child relations.
+-   塗りつぶしまたはストロークが1つの円、長方形、線などの形状。これらは対応するNoodlノードにマッピングされます。
+-   ベクターパスやブーリアン操作のような複雑な形状は画像としてエクスポートされます
+-   テキストスタイル
+-   位置とサイズは絶対レイアウトと固定寸法にマップされます
+-   正しい順序と親/子関係を持つ、レイヤー階層全体。
 
-The Noodl plugin can't currently export:
+現在、Noodlプラグインでは以下をエクスポートできません：
 
--   Auto layout
--   Constraints
--   Prototype interactions
+-   オートレイアウト
+-   制約
+-   プロトタイプのインタラクション
 
-This guide uses the Mobile UI kit by Toni Gemayel — a design resource from the Figma community:
+このガイドでは、FigmaコミュニティからのデザインリソースであるToni GemayelによるモバイルUIキットを使用しています：
 https://www.figma.com/community/file/836596421863073964/Mobile-UI-kit
 
-## Export a layer
+## レイヤーをエクスポートする
 
-1. Select a layer
-2. Open the Noodl plugin and click "Export". Make sure Noodl is running and have a project open.
-3. Noodl will now become focused. Place the Noodl node in your node hierarchy. Assets, like images, will be automatically placed in your project directory.
+1. レイヤーを選択します
+2. Noodlプラグインを開いて「エクスポート」をクリックします。Noodlが実行中でプロジェクトが開いていることを確認してください。
+3. Noodlがフォーカスされます。Noodlノードをノード階層に配置してください。画像などのアセットは、プロジェクトディレクトリに自動的に配置されます。
 
 <iframe width="560" height="315" style={{margin:'0 auto',display:'block'}} src="https://www.youtube-nocookie.com/embed/GsczhwfoyEE" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe><br/>
 
-Note that the Ellipse in Figma was mapped to an `Image` node in Noodl, with the correct size, image asset and border.
+Figmaの楕円形が、正しいサイズ、画像アセット、枠線でNoodlの`Image`ノードにマッピングされたことに注意してください。
 
 :::info
-Here's the same node duplicated in Noodl, with a different source and border radius
+こちらは、異なるソースと境界線の半径でNoodl内で複製された同じノードです
 :::
 
 ![](/docs/guides/user-interfaces/figma-plugin/image2.png ':class=img-size-l')
 
-## Export text and text styles
+## テキストとテキストスタイルをエクスポートする
 
-All text styles used by exported text layers will automatically be imported.
+エクスポートされたテキストレイヤーが使用するすべてのテキストスタイルは自動的にインポートされます。
 
-Figma uses the fonts you have installed on your system. In Noodl apps the required font files have to be defined in your projects. You can [import fonts via Google Fonts](https://www.youtube.com/watch?v=lgMZZC6XoAs) or [via font files](https://www.youtube.com/watch?v=P76v0Q38eKI)
+Figmaはシステムにインストールされているフォントを使用します。Noodlアプリでは、プロジェクトで必要なフォントファイルを定義する必要があります。[Google Fonts経由でフォントをインポートする](https://www.youtube.com/watch?v=lgMZZC6XoAs)か、[フォントファイル経由でインポートする](https://www.youtube.com/watch?v=P76v0Q38eKI)ことができます。
 
 <iframe width="560" height="315"  style={{margin:'0 auto',display:'block'}} src="https://www.youtube-nocookie.com/embed/sZm0eBZvLaM" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe><br/>
 
-Note that the text styles was added to the styles tab in Noodl ![](/docs/guides/user-interfaces/figma-plugin/text-styles.png ':class=img-size-l')
+テキストスタイルがNoodlのスタイルタブに追加されたことに注意してください。![](/docs/guides/user-interfaces/figma-plugin/text-styles.png ':class=img-size-l')
 
-## Export complex shapes
+## 複雑な形状をエクスポートする
 
-Complex shapes that don't map to a visual node in Noodl, like this vector path, will be exported as images. You can use the "Default image size" option to specify what resolutions the images should be exported at.
+Noodlの視覚ノードにマッピングされない複雑な形状、このベクターパスのようなものは、画像としてエクスポートされます。画像をエクスポートする解像度を指定するために「デフォルト画像サイズ」オプションを使用できます。
 
 <iframe width="560" height="315"  style={{margin:'0 auto',display:'block'}} src="https://www.youtube-nocookie.com/embed/mqML1OL0SUk" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe><br/>
 
-## Export larger layer structures
+## より大きなレイヤー構造をエクスポートする
 
-To get started quickly you can export entire structures, like a whole page. As you progress building the application and you can extract components and replace the static layouts with dynamic layouts and make the design data-driven.
+迅速に始めるために、全ページなどの全体構造をエクスポートすることができます。アプリケーションを構築するにつれて、コンポーネントを抽出し、静的レイアウトを動的レイアウトに置き換え、デザインをデータ駆動型にすることができます。
 
-<iframe width="560" height="315"  style={{margin:'0 auto',display:'block'}} src="https://www.youtube-nocookie.com/embed/5miB0PD4z9k" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe><br/>
+<iframe width="560" height="315"  style={{margin:'0 auto',display:'block'}} src="https://www.youtube-nocookie.com/embed/
+
+5miB0PD4z9k" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe><br/>
 
 :::info
-Another page exported all at once
+一度にエクスポートされた別のページ
 :::
 
 ![](/docs/guides/user-interfaces/figma-plugin/whole-page.png ':class=img-size-l')
 
-## Notes about workflow
+## ワークフローに関する注意
 
-Most application are more dynamic than what's typically designed in Figma. Text inputs are interactive, labels and values are data-driven, the amount of items in a list isn't fixed, groups can have padding, and so on. This means that there's some work left to do on the nodes that are exported.
+ほとんどのアプリケーションは、Figmaで通常設計されるものよりも動的です。テキスト入力はインタラクティブであり、ラベルと値はデータ駆動型であり、リスト内のアイテムの数は固定されていません、グループにはパディングがあります、などです。これは、エクスポートされたノードにまだ行うべき作業があることを意味します。
 
--   **Applications**: Export small parts, like a list item, a button, and build them up one by one in Noodl. Entire structures are harder to export as they often need to be restructured.
+-   **アプリケーション**: リストアイテム、ボタンなどの小さな部品をエクスポートし、Noodlで一つずつ構築します。全体構造は、しばしば再構築が必要になるため、エクスポートが難しいことがあります。
 
--   **Prototypes**: Export entire pages, one by one, and build up the navigation structure in Noodl. Then start replacing the parts that require dynamic and interactive elements, and adjust the layout where it needs to be more flexible.
+-   **プロトタイプ**: ページ全体を一つずつエクスポートし、Noodl内でナビゲーション構造を構築します。次に、動的でインタラクティブな要素が必要な部分を置き換え、レイアウトをより柔軟にする必要がある場所を調整します。

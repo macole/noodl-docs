@@ -1,32 +1,32 @@
 [
     {
         "videoId": "titAgD6L6no",
-        "title": "Using the Noodl Figma plugin",
-        "description": "This video shows how to use the Noodl Figma plugin.",
-        "videoLength": "06.56"
+        "title": "Noodl Figmaプラグインの使用方法",
+        "description": "このビデオは、Noodl Figmaプラグインの使用方法を示しています。",
+        "videoLength": "06:56"
     },
     {
         "videoId": "u04KnVju4KU",
-        "title": "Building AirBnB Clone",
-        "description": "Casually building an AirBnB clone and testing some new upcoming features of 2.8.2",
+        "title": "AirBnBクローンの構築",
+        "description": "気軽にAirBnBクローンを構築し、2.8.2の新しい機能をいくつかテストします",
         "videoLength": "2:09:22"
     },
     {
         "videoId": "zFJLPNCZGV8",
-        "title": "Noodl 2.8 release overview",
-        "description": "A look at the new features of 2.8 most norably cloud functions.",
+        "title": "Noodl 2.8リリース概要",
+        "description": "2.8の新機能、特にクラウド関数の概要を説明します。",
         "videoLength": "04:15"
     },
     {
         "videoId": "ATyqeK_deu4",
-        "title": "Noodl Basics - Visual States",
-        "description": "Learn how to use Noodl visual interaction states.",
+        "title": "Noodlの基本 - ビジュアルステート",
+        "description": "Noodlのビジュアルインタラクションステートの使用方法を学びます。",
         "videoLength": "1:54"
     },
     {
         "videoId": "ecas2QPbr0g",
-        "title": "Intro to cloud services",
-        "description": "Continue the learning journey from the intro lessons in this video guide.",
+        "title": "クラウドサービス入門",
+        "description": "このビデオガイドで、イントロレッスンから学習の旅を続けます。",
         "videoLength": "22:08"
     }
 ]

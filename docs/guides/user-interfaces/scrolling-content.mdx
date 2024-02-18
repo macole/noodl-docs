@@ -1,44 +1,44 @@
 ---
-title: Scrolling Content
+title: スクロールコンテンツ
 hide_title: true
 ---
 
 import ImportButton from '../../../src/components/importbutton'
 import ReactPlayer from 'react-player'
 
-# Scrolling Content
+# スクロールコンテンツ
 
-## What you will learn in this guide
+## このガイドで学べること
 
-This guide will teach you the basics on how to make content larger than its container visible through scrolling. We will mainly make use of the **Scrolling** property on the [Group](/nodes/basic-elements/group) node and go into detail on how the layout engine works in relation to scrolling. We will also look at the built in scrolling functionality in the [Page Router](/nodes/navigation/page-router) that makes it easy to build pages with scrollable content.
+このガイドでは、コンテナより大きいコンテンツをスクロールを通じて表示する基本を学びます。主に[Group](/nodes/basic-elements/group)ノードの**スクロール**プロパティを使用し、スクロールに関連するレイアウトエンジンの動作について詳しく説明します。また、スクロール可能なコンテンツを簡単に構築できる[Page Router](/nodes/navigation/page-router)の組み込みスクロール機能についても見ていきます。
 
-## Overview
+## 概要
 
-The guides will walk through the following topics
+このガイドでは、以下のトピックを取り上げます。
 
--   How the **Group** node gets it size
--   Scrolling in the **Group** node
--   Scrolling in the **Page Router** node.
--   `Sticky` Layout Position in a scrolling **Group**
+-   **Group**ノードのサイズの取得方法
+-   **Group**ノード内のスクロール
+-   **Page Router**ノード内のスクロール
+-   スクロール中の**Group**での`Sticky`レイアウト位置
 
-This guide will use the [Repeater](/nodes/ui-controls/repeater) node to create lists and also touch on navigation using the [Page Router](/nodes/navigation/page-router). So it's recommended to check out the guides for them either before or after following this guide.
+このガイドでは、リストを作成するために[Repeater](/nodes/ui-controls/repeater)ノードを使用し、[Page Router](/nodes/navigation/page-router)を使用したナビゲーションにも触れます。そのため、このガイドを行う前または後にそれらのガイドを確認することをお勧めします。
 
--   [List Basics Guide](/docs/guides/data/list-basics)
--   [Web Navigation Guide](/docs/guides/navigation/basic-navigation)
+-   [リスト基本ガイド](/docs/guides/data/list-basics)
+-   [Webナビゲーションガイド](/docs/guides/navigation/basic-navigation)
 
-You should also be familiar with layout basics so check out [this](/docs/guides/user-interfaces/layout) guide before you start this guide, if you haven't already.
+また、レイアウトの基本についても理解しておくことをお勧めします。まだの場合は、[このガイド](/docs/guides/user-interfaces/layout)を始める前にチェックしてください。
 
-## Scrolling in the Group node
+## Groupノード内のスクロール
 
-The **Group** node is the fundamental node to create a layout. So what happens if the children of a **Group** node takes up more space than what's available?
-Well, it depends on how you set up its sizing.
+**Group**ノードはレイアウトを作成するための基本的なノードです。では、**Group**ノードの子が利用可能なスペースよりも多くのスペースを占める場合はどうなるでしょうか？
+それは、そのサイズの設定方法に依存します。
 
-### The size of the Group node
+### Groupノードのサイズ
 
-On a high level there are two options (in both horizontal and vertical direction):
+大まかには、水平および垂直方向に2つのオプションがあります。
 
-1. Size is explicitly set. The size can then be given in % of available space, pixels or vw
-2. Size is decided by the total size of its children
+1. サイズが明示的に設定されています。そのサイズは、利用可能なスペースの%、ピクセル、またはvwで指定できます。
+2. サイズはその子の合計サイズによって決定されます。
 
 <div className="ndl-image-with-background">
 
@@ -46,8 +46,7 @@ On a high level there are two options (in both horizontal and vertical direction
 
 </div>
 
-So we only need to worry about case 1), what happens if the children takes up more than the space that you give them in the Group?
-Let's try it. Start a new project, for example using the "Hello World" template. Replace the current nodes with the ones below.
+したがって、1)の場合、子がGroup内で与えられたスペースよりも多くのスペースを占める場合、何が起こるかについてのみ心配する必要があります。"Hello World"テンプレートを使用して新しいプロジェクトを開始し、以下のノードに置き換えてみましょう。
 
 <div className="ndl-image-with-background">
 
@@ -55,7 +54,7 @@ Let's try it. Start a new project, for example using the "Hello World" template.
 
 </div>
 
-Fill up the **Static Array** node with some data. Make sure its set to `JSON` format.
+**Static Array**ノードにいくつかのデータを埋め込んでください。`JSON`形式に設定されていることを確認してください。
 
 <div className="ndl-image-with-background">
 
@@ -63,34 +62,36 @@ Fill up the **Static Array** node with some data. Make sure its set to `JSON` fo
 
 </div>
 
-Then copy and paste the data below into the **Static Array**.
+次に、以下のデータを**Static Array**にコピー＆ペーストしてください。
 
 ```json
 [
-    { "label": "item 1" },
-    { "label": "item 2" },
-    { "label": "item 3" },
-    { "label": "item 4" },
-    { "label": "item 5" },
-    { "label": "item 6" },
-    { "label": "item 7" },
-    { "label": "item 8" },
-    { "label": "item 9" },
-    { "label": "item 10" },
-    { "label": "item 11" },
-    { "label": "item 12" },
-    { "label": "item 13" },
-    { "label": "item 14" },
-    { "label": "item 15" },
-    { "label": "item 16" },
-    { "label": "item 17" },
-    { "label": "item 18" },
-    { "label": "item 19" },
-    { "label": "item 20" }
+    { "label": "アイテム 1" },
+    { "label": "アイテム 2" },
+    { "label": "アイテム 3" },
+    { "label": "アイテム 4" },
+    { "label": "アイテム 5" },
+    { "label": "アイテム 6" },
+    { "label": "アイテム 7" },
+    { "label": "アイテム 8" },
+    { "label": "アイテム 9" },
+    { "label": "アイテム 10" },
+    { "label": "アイテム 11" },
+    { "label": "アイテム 12" },
+    { "label": "アイテム 13" },
+    { "label": "アイテム 14" },
+    { "label": "アイテム 15" },
+    { "label": "アイテム 16" },
+    { "label": "アイテム 17" },
+    { "label": "アイテム 18" },
+    { "label": "アイテム 19" },
+    { "label": "アイテム 20" }
+
+
 ]
 ```
 
-Then create a new visual component and call it "List Item".
+次に、「List Item」という名前の新しい視覚的コンポーネントを作成します。
 
 <div className="ndl-image-with-background">
 
@@ -98,7 +99,7 @@ Then create a new visual component and call it "List Item".
 
 </div>
 
-And create the following node structure:
+そして、以下のノード構造を作成します。
 
 <div className="ndl-image-with-background">
 
@@ -106,24 +107,24 @@ And create the following node structure:
 
 </div>
 
-Make sure the **Object** node has a property called `label` connected to the **Text** node. Also set the size of the **Group** node to 100% width, and 45 px height. Give it a 5 px margin at the bottom. Also give it a outline so we can see it properly.
-Center align the **Text** node vertically.
+**Object**ノードに`label`というプロパティがあり、それが**Text**ノードに接続されていることを確認してください。また、**Group**ノードのサイズを100%の幅と45pxの高さに設定し、下に5pxのマージンを付けます。また、きちんと見えるようにアウトラインを付けてください。
+**Text**ノードを垂直方向に中央揃えにします。
 
-Finally go back to the "App" component and select the newly created list item as the **Template**.
+最後に、「App」コンポーネントに戻り、新しく作成したリストアイテムを**テンプレート**として選択します。
 
-You will now have something that looks like below. (You can also import the project directly by clicking "Import" below).
+これで、以下のようなものができあがります。（直接インポートするには、下の「インポート」をクリックしてください）。
 
 <div className="ndl-image-with-background">
 
 ![](/docs/guides/user-interfaces/scrolling-content/result-1.png)
 
-<ImportButton zip="/docs/guides/user-interfaces/scrolling-content/step-1.zip" name="Scrolling Part 1" thumb="/docs/guides/user-interfaces/scrolling-content/result-1.png" />
+<ImportButton zip="/docs/guides/user-interfaces/scrolling-content/step-1.zip" name="スクロールパート1" thumb="/docs/guides/user-interfaces/scrolling-content/result-1.png" />
 
 </div>
 
-As you can see, the list takes up the full screen and unless you have a veeeeery long screen the items will flow outside the screen. You are not able to scroll the content.
+リストが画面全体を占めており、非常に長い画面を持っていない限り、アイテムは画面外に流れ出します。コンテンツをスクロールすることはできません。
 
-Also try to change the vertical size of the **Group** node in the main App to `50%`.
+また、メインアプリの**Group**ノードの垂直サイズを`50%`に変更してみてください。
 
 <div className="ndl-image-with-background l">
 
@@ -131,9 +132,9 @@ Also try to change the vertical size of the **Group** node in the main App to `5
 
 </div>
 
-You might expect that only half the screen would be covered by the list, but you will see no change. That's because the default behavior of a **Group** with explicit size set is that _if the size of the children are larger than the size of the Group, the size will grow to fit the children_.
+リストが画面の半分だけを覆うと思われるかもしれませんが、変化は見られません。これは、サイズが明示的に設定された**Group**のデフォルトの振る舞いは、_子のサイズがGroupのサイズよりも大きい場合、子に合わせてサイズが拡大する_ ためです。
 
-You can change that behavior and tell the **Group** to clip the content instead of growing. Check the **Clip Content** property of the group.
+コンテンツをクリップする代わりに成長するというこの振る舞いを変更し、**Group**にコンテンツをクリップするように指示することができます。**Group**の**Clip Content**プロパティをチェックしてください。
 
 <div className="ndl-image-with-background l">
 
@@ -141,28 +142,28 @@ You can change that behavior and tell the **Group** to clip the content instead 
 
 </div>
 
-### Getting the Group to Scroll
+### Groupをスクロールさせる
 
-Another way to do it is to tell the **Group** that it allows scrolling. Uncheck the **Clip Content** and instead check **Enable Scroll**. You will now have a scrollable list.
+別の方法として、**Group**にスクロールを許可するように指示することができます。**Clip Content**のチェックを外し、代わりに**Enable Scroll**をチェックしてください。これで、スクロール可能なリストができます。
 
 <ReactPlayer playing autoplay muted loop url="scrolling-content/scroll1.mp4" />
 
 
-As you can see there is an extra option **Use native scroll**. Generally you should have this checked, unless you are doing a very custom scroll interaction. We will not cover that in this guide.
+一般的には、非常にカスタムなスクロールインタラクションを行っていない限り、**Use native scroll**をチェックしたままにしておくべきです。このガイドではそれについては取り上げません。
 
-### Structuring Scrolling Content
+### スクロールコンテンツの構造化
 
-Change back the size to `100%` on the **Group** node.
+**Group**ノードのサイズを`100%`に戻してください。
 
-Now let's add a title and and a footer. We can't add it to our **Group** node, because then they will scroll away with the list. So we have to restructure our layout a little.
+次に、タイトルとフッターを追加しましょう。これらを**Group**ノードに追加すると、リストとともにスクロールされてしまいます。したがって、少し構造を変更する必要があります。
 
-Create a new **Group** node. Make the existing **Group** node a child of the new **Group** node.
+新しい**Group**ノードを作成します。既存の**Group**ノードを新しい**Group**ノードの子にします。
 
 <ReactPlayer playing autoplay muted loop url="scrolling-content/regroup.mp4" />
 
 
-Now we can add a header and a footer to the highest level **Group** and they will not be affected by the scrolling.
-The header and footer could for example be a **Group** node with content height and 100% width. Then add a **Text** with a larger font. Perhaps add a bit of padding in the **Group** containing the text.
+これで、ヘッダーとフッターを最上位の**Group**に追加しても、スクロールによって影響を受けることはありません。
+ヘッダーとフッターは、たとえばコンテンツの高さと100%の幅を持つ**Group**ノードであり、その中にフォントサイズが大きい**Text**を追加することができます。
 
 <div className="ndl-image-with-background l">
 
@@ -170,7 +171,7 @@ The header and footer could for example be a **Group** node with content height 
 
 </div>
 
-Now you can see that the footer and header are allowed to take its space while the scrolling content takes whatever is left and lets its content scroll if it doesn't fit.
+これで、ヘッダーとフッターがスペースを取りながら、スクロールコンテンツが残りのスペースを取り、収まらない場合にコンテンツをスクロールさせることができます。
 
 <ReactPlayer
     playing
@@ -181,9 +182,11 @@ Now you can see that the footer and header are allowed to take its space while t
 />
 
 
-## Scrolling in Page Routers
+## Page Routers内のスクロール
 
-The **Page Router** is one of the main nodes to implement navigation in Noodl. In short, the **Page Router** contains the [Pages](/nodes/navigation/page/) you navigate to. In that sense, the **Page Router** is quite similar to a **Group** node. That's why a **Page Router** also have the options to make it's content scrollable by chosing **Clip Behavior** and setting **Scrolling**.
+**Page Router**は、Noodlでナビゲーションを実装するための主要なノードの一つです。簡単に言うと、**Page Router**はナビゲートする[ページ](/nodes/navigation/page/)を含んでいます。その意味で、**Page Router**は**Group**ノードとかなり似ています。そのため、**Page Router**にも、**Clip Behavior**を選択し、**Scrolling**を設定することで、コン
+
+テンツをスクロール可能にするオプションがあります。
 
 <div className="ndl-image-with-background m">
 
@@ -191,9 +194,9 @@ The **Page Router** is one of the main nodes to implement navigation in Noodl. I
 
 </div>
 
-Lets try it out!
+試してみましょう！
 
-Create a new visual component. Call it "App 2". Select "Make Home" to make it the new home component (i.e it will be shown in the viewer).
+新しい視覚的コンポーネントを作成します。「App 2」と呼びます。"Make Home"を選択して、新しいホームコンポーネントにします（つまり、ビューアーに表示されます）。
 
 <div className="ndl-image-with-background m">
 
@@ -201,7 +204,7 @@ Create a new visual component. Call it "App 2". Select "Make Home" to make it th
 
 </div>
 
-Add a **Page Router** as the first child of the root **Group**
+ルート**Group**の最初の子として**Page Router**を追加します。
 
 <div className="ndl-image-with-background m">
 
@@ -209,9 +212,9 @@ Add a **Page Router** as the first child of the root **Group**
 
 </div>
 
-Click on the **Page Router** and click `Add new Page` and add a new **Page** called `Page 1`.
+**Page Router**をクリックし、`Add new Page`をクリックして`Page 1`という新しい**Page**を追加します。
 
-We can now simplify the previous structure. Since the **Page Router** will work as the **Group** we can move the **Repeater** (and the **Static Array** that provides the items) to right under the **Page** node in our newly created **Page** component.
+これで、以前の構造を簡略化できます。**Page Router**が**Group**の役割を果たすため、**Repeater**（およびアイテムを提供する**Static Array**）を新しく作成した**Page**コンポーネントの直下に移動できます。
 
 <div className="ndl-image-with-background m">
 
@@ -219,11 +222,11 @@ We can now simplify the previous structure. Since the **Page Router** will work 
 
 </div>
 
-Make sure to set the **Clip Behavior** to **Scrolling** on the **Page Router** and you now have scrolling content in your **Page**. Try it out.
+**Page Router**の**Clip Behavior**を**Scrolling**に設定すると、**Page**内のスクロール可能なコンテンツができあがります。試してみてください。
 
-### Sticky Layout Position option
+### Sticky Layout Positionオプション
 
-There is another way to get things like headers and footers to not be scrolled out of the **Group** node even if scrolling is enabled, and we will try it out on our **Page**. Instead of creating a new structure we can add our header and footer to be direct children to the **Page** node. So copy and paste them so they end up before and after our **Repeater**.
+ヘッダーやフッターなどの要素を、スクロールが有効になっていても**Group**ノードからスクロールされないようにするもう一つの方法があります。これを新しい**Page**で試してみましょう。新しい構造を作成する代わりに、ヘッダーとフッターを**Page**ノードの直接の子として追加できます。そのため、それらをコピーして**Repeater**の前後に貼り付けます。
 
 <div className="ndl-image-with-background m">
 
@@ -231,9 +234,9 @@ There is another way to get things like headers and footers to not be scrolled o
 
 </div>
 
-Also make sure the header is aligned to the top and the footer aligned to the bottom.
+また、ヘッダーが上に、フッターが下に揃えられていることを確認してください。
 
-If you try scrolling now, they will be scrolled in and out of the screen. However if you change the **Position** setting for the header and footer **Group** to `Sticky` you will see that they will stay on screen.
+今、スクロールしてみると、画面からスクロールされてしまいます。しかし、ヘッダーとフッターの**Group**の**Position**設定を`Sticky`に変更すると、画面上に留まることがわかります。
 
 <div className="ndl-image-with-background m">
 
@@ -241,12 +244,12 @@ If you try scrolling now, they will be scrolled in and out of the screen. Howeve
 
 </div>
 
-The only issue is that you can see the list scroll behind the header and footer. This is probably not what you want.
+ただし、リストがヘッダーとフッターの背後でスクロールするのが見えるかもしれません。これはおそらく望んでいる結果ではありません。
 
 <ReactPlayer playing autoplay muted loop url="scrolling-content/sticky1.mp4" />
 
 
-You fix that by setting the background color to non-transparent white. Also since Noodl by default renders everything in the order as it's in the tree (nodes later in the tree will be rendered on top of nodes earlier in the tree if they overlap), we also need to change the **zIndex** of the header to `1` to stay on top of the **Repeater** that's below it in the tree.
+これを修正するには、背景色を透明でない白に設定します。また、Noodlはデフォルトでツリー内のすべてをその順序でレンダリングするため（ツリーで早いノードが後のノードに重なる場合、後のノードが上にレンダリングされます）、ツリーで下にある**Repeater**より上に表示されるようにヘッダーの**zIndex**も`1`に変更する必要があります。
 
 <div className="ndl-image-with-background m">
 
@@ -254,17 +257,19 @@ You fix that by setting the background color to non-transparent white. Also sinc
 
 </div>
 
-You now have a working scrolling list with a sticky header and footer.
+これで、スティッキーヘッダーとフッター
+
+を持つ動作するスクロールリストができました。
 
 <ReactPlayer playing autoplay muted loop url="scrolling-content/sticky2.mp4" />
 
 
-If you want to try out the full project, import the project below.
+全プロジェクトを試してみたい場合は、以下のプロジェクトをインポートしてください。
 
 <div className="ndl-image-with-background">
 
 ![](/docs/guides/user-interfaces/scrolling-content/result-2.png)
 
-<ImportButton zip="/docs/guides/user-interfaces/scrolling-content/step-2.zip" name="Scrolling Part 2" thumb="/docs/guides/user-interfaces/scrolling-content/result-2.png" />
+<ImportButton zip="/docs/guides/user-interfaces/scrolling-content/step-2.zip" name="スクロールパート2" thumb="/docs/guides/user-interfaces/scrolling-content/result-2.png" />
 
 </div>
