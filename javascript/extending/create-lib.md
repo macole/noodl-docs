@@ -1,46 +1,46 @@
 ---
 hide_title: true
 hide_table_of_contents: true
-title: Create a new core node
+title: 新しいコアノードを作成する
 ---
 
-# Create a new core node
+# 新しいコアノードを作成する
 
-Noodl is very extensible. As a developer you can add new modules with new capablities, create connections to data or make new visual components for your projects. This guide gets us started by showing how the Noodl command line tool works and how to create an extension module with a single new node. This node will behave and appear just like the standard core nodes of Noodl.
+Noodlは非常に拡張性が高いです。開発者として、新しいモジュールを追加して新しい機能を提供したり、データへの接続を作成したり、プロジェクト用の新しいビジュアルコンポーネントを作成することができます。このガイドでは、Noodlコマンドラインツールの動作方法と、単一の新しいノードを含む拡張モジュールの作成方法を示します。このノードは、Noodlの標準コアノードのように振る舞い、表示されます。
 
 :::note
-This guide requires <a href="https://nodejs.org/en/download/" target="_blank">Node.js</a> and <a href="https://docs.npmjs.com/downloading-and-installing-node-js-and-npm" target="_blank">npm</a> installed.
+このガイドでは、<a href="https://nodejs.org/en/download/" target="_blank">Node.js</a>と<a href="https://docs.npmjs.com/downloading-and-installing-node-js-and-npm" target="_blank">npm</a>がインストールされていることが必要です。
 :::
 
-## Overview
+## 概要
 
-This guide will walk you through how to create a **Noodl Module**. A Noodl Module can contain new core nodes to use in your projects. You can for example wrap an existing JavaScript library and expose it as a node in Noodl.
+このガイドでは、**Noodlモジュール**の作成方法を説明します。Noodlモジュールには、プロジェクトで使用するための新しいコアノードを含めることができます。たとえば、既存のJavaScriptライブラリをラップして、Noodl内のノードとして公開することができます。
 
-The general process works like this
+一般的なプロセスは次のとおりです
 
-- Set up a new **Module Project** where you can write the code for your module.
-- Test your module in one of you projects while developing it.
-- When you are done, build the module and deploy it to the projects you want to use it in.
+- モジュールのコードを書くための新しい**モジュールプロジェクト**を設定します。
+- 開発中にプロジェクト内でモジュールをテストします。
+- 完了したら、モジュールをビルドして使用したいプロジェクトにデプロイします。
 
-## Install the Noodl CLI
+## Noodl CLIのインストール
 
-First you need to install the Noodl command line interfaces. If you have not previously installed the CLI you can do so via npm.
+まず、Noodlコマンドラインインターフェイスをインストールする必要があります。CLIがまだインストールされていない場合は、npmを介してインストールできます。
 
 ```bash
 npm install -g @noodl/noodl-cli
 ```
 
-## Create a Module Project
+## モジュールプロジェクトの作成
 
-With the CLI tool you can easily create a new Noodl module from a template:
+CLIツールを使用すると、テンプレートから新しいNoodlモジュールを簡単に作成できます：
 
 ```bash
 noodl-cli new lib ./my-noodl-module
 ```
 
-You need to specify a directory name that will be created. The directory will contain everything you need to get started. Using the command above, the directory _my-noodl-module_ will be created.
+作成されるディレクトリ名を指定する必要があります。ディレクトリには、開始に必要なすべてが含まれます。上記のコマンドを使用すると、_my-noodl-module_ディレクトリが作成されます。
 
-The newly created directory has the following structure:
+新しく作成されたディレクトリには以下の構造があります：
 
 ```
 my-noodl-module/
@@ -51,12 +51,12 @@ my-noodl-module/
     module.json
 ```
 
-First some notes on the content of a library module:
+ライブラリモジュールの内容についていくつか注意点：
 
-- The **module** directory contains the source code for the module as well as build scripts and any assets you might want, such as fonts, css etc.
-- The **project** and **tests** folder can be ignored
+- **module**ディレクトリには、モジュールのソースコード、ビルドスクリプト、およびフォント、cssなどのアセットが含まれています。
+- **project**と**tests**フォルダは無視してかまいません
 
-First enter the **module** directory and install the needed dependencies:
+まず、**module**ディレクトリに入り、必要な依存関係をインストールします：
 
 ```bash
 cd module
@@ -66,13 +66,13 @@ cd module
 npm install
 ```
 
-If your module uses any other external libraries through NPM they will be installed as well.
+モジュールがNPMを通じて他の外部ライブラリを使用する場合、それらもインストールされます。
 
-## Developing your module
+## モジュールの開発
 
-You develop your module mainly by editing the file `module/src/index.js`. From start it contains some example code that you can use as a boiler plate. There is currently no official documenation of the Noodl module SDK but you can find the source code to a number of modules [here](https://github.com/noodlapp).
+`module/src/index.js`ファイルを編集することで主にモジュールを開発します。開始時には、ボイラープレートとして使用できる例示コードが含まれています。NoodlモジュールSDKの公式ドキュメントは現在ありませんが、[こちら](https://github.com/noodlapp)でいくつかのモジュールのソースコードを見ることができます。
 
-As you are developing your module you would want it packaged up and deployed in a Noodl project where you can test it. To do that you first have to create a new Noodl project that will be your test project. Once you've done that, find the local folder of that project by clickin the cogwheel ("Settings") and "Open project folder".
+モジュールを開発している間、ソースコードに変更を加えるたびに自動的にパッケージ化され、プロジェクトにデプロイされるようにしたいでしょう。そのためにはまず、テストプロジェクトとなる新しいNoodlプロジェクトを作成する必要があります。それが完了したら、設定（歯車アイコン）をクリックして「プロジェクトフォルダを開く」を選択し、そのプロジェクトのローカルフォルダの場所を見つけます。
 
 <div class="ndl-image-with-background m">
 
@@ -80,39 +80,40 @@ As you are developing your module you would want it packaged up and deployed in 
 
 </div>
 
-Copy the full path to that folder - you will need it in the next step.
+そのフォルダの完全なパスをコピーします。次のステップで必要になります。
 
-Now open the file `/module/src/webpack.config.js`. Among other things, this file specifies where to deploy the module. We want to make sure its deployed to our test project.
-Update the row containing `var outputPath = ...` to the following
+次に、`/module/src/webpack.config.js`ファイルを開きます。このファイルには、モジュールをデプロイする場所が指定されています。テストプロジェクトにデプロイされるようにしたいので、`var outputPath = ...`を含む行を次のように更新します。
 
 ```javascript
 var outputPath = path.resolve(
-  '<the absolute path that your project>',
+  '<プロジェクトの絶対パス>',
   'noodl_modules/' + pjson.name
 );
 ```
 
-Now go back to your terminal window (that was located in the `modules/` folder) and write the following.
+次に、`modules/`フォルダにある
+
+ターミナルウィンドウに戻り、以下を入力します。
 
 ```bash
 npm run dev
 ```
 
-This will enter development mode where your module is automatically rebuilt and redeployed to your project when you make changes in the source code.
+これにより、開発モードが開始され、ソースコードに変更を加えるたびにモジュールが自動的に再ビルドされ、プロジェクトに再デプロイされます。
 
-If you started from the boiler plate code in `module/src/index.js` you will already have a module now in your project. Reload the Noodl project by closing it and opening it again, or simply press ctrl+R (Windows) / cmd+R (Mac) when you are in the Node Editor. Then bring up the Node Picker and you should see your new core node under "External Libraries".
+`module/src/index.js`のボイラープレートコードから始めた場合、プロジェクトには既にモジュールがあります。Noodlプロジェクトを閉じて再度開くか、ノードエディタにいるときにctrl+R（Windows）/ cmd+R（Mac）を押してリロードします。次に、ノードピッカーを開き、「外部ライブラリ」の下に新しいコアノードが表示されるはずです。
 
-## Overview of the module code
+## モジュールコードの概要
 
-The file _index.js_ contains the code for your nodes. Open it in your favorite editor and have a look. The file contains boilerplate code for a simple new core node, let's look at the different sections:
+_index.js_ファイルにはノードのコードが含まれています。お気に入りのエディタで開いてみてください。ファイルには、シンプルな新しいコアノードのためのボイラープレートコードが含まれています。さまざまなセクションを見てみましょう：
 
-First you must import the Noodl SDK.
+まず、Noodl SDKをインポートする必要があります。
 
 ```javascript
 const Noodl = require('@noodl/noodl-sdk');
 ```
 
-Next you will define the code for the new node.
+次に、新しいノードのコードを定義します。
 
 ```javascript
 const MyFullNameNode = Noodl.defineNode({
@@ -140,28 +141,28 @@ const MyFullNameNode = Noodl.defineNode({
 });
 ```
 
-- You need to specify the **name** of the node, this is the name that shows up in the list when creating new nodes.
-- you can optionally specify a **category**, this will also be used in the new node popup in Noodl.
+- ノードの**name**を指定する必要があります。これは、新しいノードを作成するときにリストに表示される名前です。
+- 任意で**category**を指定することもできます。これもNoodlで新しいノードをポップアップする際に使用されます。
 
-Finally you need to define the specification of your module.
+最後に、モジュールの仕様を定義する必要があります。
 
 ```javascript
 Noodl.defineModule({
   nodes: [MyFullNameNode],
   setup() {
-    //this is called once on startup
+    //これはスタートアップ時に一度呼ばれます
   },
 });
 ```
 
-Again, check out the [Noodl Repo](https://github.com/noodlapp) at GitHub for some module examples.
+再び、GitHubで[Noodl Repo](https://github.com/noodlapp)をチェックして、いくつかのモジュール例を確認してください。
 
-## Deploying your module
+## モジュールのデプロイ
 
-When you are happy with your module you can do a proper deploy. Go back to the terminal window (still in the `modules/` folder) and write.
+モジュールに満足したら、適切なデプロイを行うことができます。`modules/`フォルダにあるターミナルウィンドウに戻り、以下を入力します。
 
 ```bash
 npm run build
 ```
 
-This deploys an optimized version of the module. If you want to use the module in a different project, just change the path in `/module/src/webpack.config.js` and do `npm run build` again.
+これにより、モジュールの最適化バージョンがデプロイされます。別のプロジェクトでモジュールを使用したい場合は、`/module/src/webpack.config.js`のパスを変更して`npm run build`を再度実行してください。

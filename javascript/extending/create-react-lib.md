@@ -1,26 +1,26 @@
 ---
 hide_title: true
 hide_table_of_contents: true
-title: Create a Visual node with React
+title: Reactでビジュアルノードを作成する
 ---
 
-# Create a Visual node with React
+# Reactでビジュアルノードを作成する
 
-Noodl is built with React which makes it easy for you to add custom or community React components to your projects. This guide will help you create a React library from scratch and push it to a Noodl project.
+NoodlはReactで構築されているため、カスタムまたはコミュニティのReactコンポーネントをプロジェクトに簡単に追加できます。このガイドでは、Reactライブラリを一から作成し、それをNoodlプロジェクトにプッシュする方法を説明します。
 
-## Setup
+## セットアップ
 
-In order to complete this guide you must install the _Noodl CLI_ and learn how to push the module to a project. Please review [this guide](/javascript/extending/create-lib) first.
+このガイドを完了するためには、_Noodl CLI_をインストールし、モジュールをプロジェクトにプッシュする方法を学ぶ必要があります。まず[このガイド](/javascript/extending/create-lib)を確認してください。
 
-With the CLI tool you can easily create a new react library module from a template:
+CLIツールを使用すると、テンプレートから新しいreactライブラリモジュールを簡単に作成できます：
 
 ```bash
 noodl-cli new react-lib ./my-react-lib
 ```
 
-You need to specify a directory name that will be created. The directory will contain everything you need to get started. Using the command above, the directory _my-react-lib_ will be created.
+作成されるディレクトリ名を指定する必要があります。そのディレクトリには、開始に必要なすべてが含まれます。上記のコマンドを使用すると、_my-react-lib_ディレクトリが作成されます。
 
-The newly created directory has the following structure:
+新しく作成されたディレクトリには以下の構造があります：
 
 ```
 my-react-lib/
@@ -31,17 +31,17 @@ my-react-lib/
     module.json
 ```
 
-Just like in the introductory [guide](/javascript/extending/create-lib) the folder contains the **project** and **tests** subfolders that you may to import into Noodl. Especially the **tests** folder is a good place to play around with your library and create tests to make sure the component is working as expected.
+紹介された[ガイド](/javascript/extending/create-lib)と同様に、**project**と**tests**のサブフォルダが含まれており、これらをNoodlにインポートすることができます。特に**tests**フォルダは、ライブラリを試して、コンポーネントが期待通りに動作していることを確認するための良い場所です。
 
 :::note
-It is important that you do not change the name of the **project** and **tests** folders. The build scripts in the _module_ folder is dependent on these names or it will not build the module properly making it unusable in your projects.
+**project**と**tests**フォルダの名前を変更しないことが重要です。_module_フォルダ内のビルドスクリプトはこれらの名前に依存しており、名前を変更するとモジュールが正しくビルドされず、プロジェクトで使用できなくなります。
 :::
 
-## A tour of the code
+## コードの概要
 
-Now you have created a new React library module from the template and you have pushed it to Noodl. Let's review the code a bit to get you up and running.
+これで、テンプレートから新しいReactライブラリモジュールを作成し、Noodlにプッシュしました。少しコードを見てみましょう。
 
-The react code can be found in the **module** directory.
+Reactのコードは**module**ディレクトリ内にあります。
 
 ```
 my-react-lib/
@@ -56,9 +56,9 @@ my-react-lib/
         ...
 ```
 
-Open _index.js_ in your favorite editor. This file contains a simple React component and its export to Noodl. Each component that you want to be exposed in Noodl as a visual component, must be exported.
+お気に入りのエディタで_index.js_を開きます。このファイルには、シンプルなReactコンポーネントとそのNoodlへのエクスポートが含まれています。Noodlでビジュアルコンポーネントとして公開したい各コンポーネントは、エクスポートする必要があります。
 
-First a simple React component:
+まず、シンプルなReactコンポーネント：
 
 ```javascript
 function MyCustomReactComponent(props) {
@@ -78,7 +78,7 @@ function MyCustomReactComponent(props) {
 }
 ```
 
-Next the export of the component to Noodl:
+次に、コンポーネントをNoodlにエクスポートする方法：
 
 ```javascript
 const MyCustomReactComponentNode = Noodl.defineReactNode({
@@ -100,18 +100,18 @@ const MyCustomReactComponentNode = Noodl.defineReactNode({
 });
 ```
 
-In addition to how you would specify a simple Noodl node, as in the introductory [guide](/javascript/extending/create-lib), you must provide the _getReactComponent_ function that retuns the React component. You may also specify _inputProps_ and _outputProps_ that map to the properties of the React node and will become inputs and outputs of your Noodl node.
+紹介[ガイド](/javascript/extending/create-lib)で説明されているような、シンプルなNoodlノードを指定する方法に加えて、_getReactComponent_関数を提供する必要があります。これはReactコンポーネントを返します。また、Reactノードのプロパティにマッピングされ、Noodlノードの入力と出力になる_inputProps_と_outputProps_も指定できます。
 
-Outputs in React are typically done via callbacks. You can capture these callbacks and deliver them as outputs in Noodl.
+Reactでの出力は通常、コールバック経由で行われます。これらのコールバックをキャプチャし、Noodlの出力として提供することができます。
 
-Finally the component is provided as part of your module declaration. Here you need to put it under the _reactNodes_ section to make sure Noodl recognises it as a visual node.
+最後に、モジュール宣言の一部としてコンポーネントを提供します。ここでは、Noodlがそれをビジュアルノードとして認識するように、_reactNodes_セクションの下に置く必要があります。
 
 ```javascript
 Noodl.defineModule({
   reactNodes: [MyCustomReactComponentNode],
   nodes: [],
   setup() {
-    //this is called once on startup
+    //これはスタートアップ時に一度呼ばれます
   },
 });
 ```

@@ -1,53 +1,53 @@
-# Noodl docs
+# Noodlドキュメント
 
-Welcome to the Noodl docs project! This is a open-source project aimed at providing detailed and up-to-date documentation for users of Noodl. Whether you're a beginner, intermediate, or advanced Noodl user, you will find this documentation invaluable.
+Noodlドキュメントプロジェクトへようこそ！これは、Noodlのユーザーに詳細かつ最新のドキュメントを提供することを目的としたオープンソースプロジェクトです。あなたがNoodlの初心者、中級者、または上級者であるかどうかにかかわらず、このドキュメントは貴重な情報源となるでしょう。
 
-## About Noodl
+## Noodlについて
 
-Noodl is the low-code platform where designers and developers build custom applications and experiences. Designed as a visual programming environment, it aims to expedite your development process. It promotes swift and efficient creation of applications, requiring minimal coding knowledge.
+Noodlは、デザイナーや開発者がカスタムアプリケーションや体験を構築するためのローコードプラットフォームです。ビジュアルプログラミング環境として設計されており、開発プロセスを加速することを目指しています。最小限のコーディング知識でアプリケーションの迅速かつ効率的な作成を促進します。
 
-## Getting Started
+## はじめに
 
-This project is using [Docusaurus](https://docusaurus.io/) to help us ship a beautiful documentation site.
+このプロジェクトは、美しいドキュメントサイトを提供するのに役立つ[Docusaurus](https://docusaurus.io/)を使用しています。
 
-In order to run this project locally, you need to follow the steps below:
+このプロジェクトをローカルで実行するには、以下の手順に従ってください：
 
 ```bash
-# Clone the repository to your local machine using the command below in your terminal or an external git client.
+# 下記のコマンドを使用して、リポジトリをローカルマシンにクローンします。
 git clone https://github.com/noodlapp/noodl-docs.git
 
-# Navigate into the project's directory.
+# プロジェクトディレクトリに移動します。
 cd repository
 
-# Install the project dependencies.
+# プロジェクトの依存関係をインストールします。
 npm install
 
-# Start the development server.
+# 開発サーバーを起動します。
 npm run start
 ```
 
-Now, you should be able to view the project in your preferred browser through `localhost:3000`.
+これで、`localhost:3000`を通じて、お好みのブラウザでプロジェクトを閲覧できるはずです。
 
-## FAQ
+## よくある質問
 
-##### Can I preview my changes in the Noodl editor?
+##### Noodlエディターで変更をプレビューできますか？
 
-Yes, when the Noodl editor starts up it will check anything running on `localhost:3000` and if it recognize that it is the Noodl docs it will use the local endpoint instead of the live docs.
+はい、Noodlエディターが起動すると、`localhost:3000`で実行されているものをチェックし、それがNoodlドキュメントであると認識した場合は、ライブドキュメントの代わりにローカルエンドポイントを使用します。
 
-##### How do we deploy the changes?
+##### 変更をどのようにデプロイしますか？
 
-Currently people at Noodl will deploy the changes manually, until we have an automatic system in place.
+現在、Noodlの人々が手動で変更をデプロイしていますが、自動システムが整うまではそのようになります。
 
-## Contributing
+## 貢献する
 
-We welcome contributions from the community. Whether you've found a typo, incorrect information, or you want to make large-scale updates or additions, we appreciate your effort.
+コミュニティからの貢献を歓迎します。誤字を発見した場合、情報に誤りがある場合、または大規模な更新や追加を行いたい場合でも、あなたの努力に感謝します。
 
-## License
+## ライセンス
 
-Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
+このプロジェクトは、[Contributor Code of Conduct](CODE_OF_CONDUCT.md)でリリースされていることに注意してください。このプロジェクトに参加することで、その条件を遵守することに同意したことになります。
 
-This project is licensed under the GPL License - see the [LICENSE.md](LICENSE.md) file for details.
+このプロジェクトはGPLライセンスの下でライセンスされています - 詳細は[LICENSE.md](LICENSE.md)ファイルを参照してください。
 
-## Contact
+## 連絡先
 
-If you have any questions, concerns, or feedback, please open a discussion in the [discussions tracker](https://github.com/noodlapp/noodl-docs/discussions) or join our Discord channel and we'll be happy to assist you!
+質問、懸念、またはフィードバックがある場合は、[discussions tracker](https://github.com/noodlapp/noodl-docs/discussions)でディスカッションを開いたり、Discordチャンネルに参加してください。喜んでお手伝いします！

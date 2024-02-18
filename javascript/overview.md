@@ -4,13 +4,12 @@ hide_table_of_contents: true
 title: Javascript API
 ---
 
-# Getting Started
+# はじめに
 
-This section contains the Javascript API reference documentation, samples and guides on how to extend Noodl with core nodes. Most Javascript is used in your project as part of nodes, most notably the [Function](/nodes/javascript/function) and [Script](/nodes/javascript/script) nodes. You can learn more about how to use Javascript in your Noodl projects in the [Client side business logic with Javascript guide](/docs/guides/business-logic/client-side-biz-logic-js), or when writing Javascript in cloud functions [Javascript In Cloud Functions](/docs/guides/cloud-logic/javascript).
+このセクションには、Javascript APIのリファレンスドキュメント、サンプル、およびNoodlのコアノードを拡張する方法についてのガイドが含まれています。ほとんどのJavascriptは、主に[Function](/nodes/javascript/function)ノードや[Script](/nodes/javascript/script)ノードなどのノードの一部としてプロジェクトで使用されます。NoodlプロジェクトでJavascriptを使用する方法については、[クライアントサイドビジネスロジックでのJavascriptガイド](/docs/guides/business-logic/client-side-biz-logic-js)や、クラウドファンクションでのJavascriptの記述方法[クラウドファンクションでのJavascript](/docs/guides/cloud-logic/javascript)で詳しく学ぶことができます。
 
-This section is devided into the following sub sections:
+このセクションは、以下のサブセクションに分かれています：
 
-* **References** Here you will find the API reference documentation.
-* **Samples** Here you will find small useful samples of how you can use the Javascript API.
-* **Extending** Here you will find documentation on how to write your own Noodl modules and create your own core Noodl nodes.
-
+* **リファレンス** ここでは、APIリファレンスドキュメントを見つけることができます。
+* **サンプル** ここでは、Javascript APIを使用する際の小さくて役に立つサンプルを見つけることができます。
+* **拡張** ここでは、独自のNoodlモジュールを書き、独自のコアNoodlノードを作成する方法についてのドキュメントを見つけることができます。

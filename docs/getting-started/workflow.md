@@ -1,129 +1,133 @@
 ---
-title: Workflow overview
+title: ワークフローの概要
 hide_title: true
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl'
 
-# Workflow Overview
+# ワークフローの概要
 
-Let's take a look at the different concepts of the Noodl workflow when building your applications, namely
+アプリケーションを構築する際のNoodlワークフローの異なる概念を見てみましょう。具体的には、
 
-- Building User Interfaces
-- Page Navigation & Components
-- Actions
-- Working with Data
-- The Cloud Database
-- Business Logic
-- Cloud Functions
-- Collaboration
-- Modules and Prefabs
+- ユーザーインターフェイスの構築
+- ページナビゲーション & コンポーネント
+- アクション
+- データの操作
+- クラウドデータベース
+- ビジネスロジック
+- クラウド関数
+- コラボレーション
+- モジュールとプレファブ
 
-## Building user interfaces
+## ユーザーインターフェイスの構築
 
-Any app needs a great **User Interface**. In Noodl it's easy and fast to build dynamic, reactive, beautiful user interfaces using the built in UI Controls. These controls are then arranged and layed out appropriately. Noodl contains a library of highly customizable core UI controls. It's also possible to extend Noodl with your own UI Controls, if needed.
+どんなアプリも素晴らしい**ユーザーインターフェイス**が必要です。Noodlでは、組み込みのUIコントロールを使用して、動的でリアクティブで美しいユーザーインターフェイスを簡単かつ迅速に構築できます。これらのコントロールは適切に配置され、レイアウトされます。Noodlには、高度にカスタマイズ可能なコアUIコントロールのライブラリが含まれています。必要に応じて、独自のUIコントロールでNoodlを拡張することも可能です。
 
 <div className="ndl-video">
     <video width="100%" autoPlay muted loop src={useBaseUrl("/docs/getting-started/basic-concepts/ui-1.mp4")}/>
 </div>
 
-### Customizing UI Controls
+### UIコントロールのカスタマイズ
 
-Each UI control has properties that can be used for fine-grained customization. Here is a short overview of concepts important for building user interfaces:
+各UIコントロールには、細かいカスタマイズに使用できるプロパティがあります。ユーザーインターフェイスを構築するための重要な概念の短い概要は次のとおりです：
 
-- **Visual States** Each UI control has a set of visual states, such as Hover, Pressed, etc., and the control properties can be set for each state individually. Learn more [here](/docs/guides/user-interfaces/visual-states).
+- **ビジュアルステート** 各UIコントロールには、Hover、Pressedなどの一連のビジュアルステートがあり、各ステートごとにコントロールプロパティを個別に設定できます。詳細は[ここ](/docs/guides/user-interfaces/visual-states)で学びましょう。
 
-- **Transitions** You can control transition animations between each visual state using the animation editor.
+- **トランジション** アニメーションエディターを使用して、各ビジュアルステート間のトランジションアニメーションを制御できます。
 
-- **Variants** Define reusable variants for your UI controls, including properties, visual states, and transitions. Build your own design systems to enhance productivity. Learn more [here](/docs/guides/user-interfaces/style-variants)
+- **バリアント** UIコントロールの再利用可能なバリアントを定義し、プロパティ、ビジュアルステート、トランジションを含めます。独自のデザインシステムを構築して生産性を向上させましょう。詳細は[ここ](/docs/guides/user-interfaces/style-variants)で学びましょう。
 
-## Page Navigation & Components
+## ページナビゲーション & コンポーネント
 
-When you start building more complete frontends, you will be working with **components**. A component can be an entire page in your application; these are called **Page Components**, or they can be a smaller part of your UI that you want to reuse in many places; these are called **Visual Components**. Pages can be found in the top navigation bar, and visual components are found in the component panel in the sidebar. You can also use the preview in design mode to quickly locate a specific visual element in your app.
+より完全なフロントエンドを構築し始めると、**コンポーネント**を扱うことになります。コンポーネントは、アプリケーション内の完全なページであり、これらは**ページコンポーネント**と呼ばれます。または、多くの場所で再利用したいUIのより小さな部分であり、これらは**ビジュアルコンポーネント**と呼ばれます。ページはトップナビゲーションバーにあり、ビジュアルコンポーネントはサイドバーのコンポーネントパネルにあります。デザインモードのプレビューを使用して、アプリ内の特定のビジュアル要素を迅速に見つけることもできます。
 
 <div className="ndl-video">
     <video width="100%" autoPlay muted loop src={useBaseUrl("/docs/getting-started/basic-concepts/nav-1.mp4")}/>
 </div>
 
-It's simple to create page navigation but the system is also flexible enough to build more complex navigation flows, such as nested navigation. Noodl supports state of the art web app navigation, with permalinks and encoding of data in URLs. Here is a short overview of concepts important for building pages and navigation:
+ページナビゲーションを作成するのは簡単ですが、ネストされたナビゲーションなど、より複雑なナビゲーションフローを構築するのに十分な柔軟性もあります。Noodlは、パーマリンクやURL内のデータエンコーディングを備えた最先端のWebアプリナビゲーションをサポートしています。ページとナビゲーションを構築するための重要な概念の短い概要は次のとおりです：
 
-- The **Page**, **Page Router** and **Navigate** nodes are the essence of the navigation system. Learn how to build basic page navigation in this [guide](/docs/guides/navigation/basic-navigation) and more advanced multi level navigation [here](/docs/guides/navigation/multi-level-navigation).
+- **ページ**、**ページルーター**、および**ナビゲート**ノードは、ナビゲーションシステムの本質です。基本的なページナビゲーションの構築方法については、この[ガイド](/docs/guides/navigation/basic-navigation)で学び、より高度なマルチレベルナビゲーションについては[ここ](/docs/guides/navigation/multi-level-navigation)で学びましょう。
 
-- Another feature of the navigation is **Popups**, these can be used to show or collect transient information. Learn more about popups [here](/docs/guides/navigation/popups)
+- ナビゲーションの別の機能は**ポップアップ**で、これは一時的な情報を表示または収集するために使用できます。ポップアップについての詳細は[ここ](/docs
 
-## Actions
+/guides/navigation/popups)で学びましょう。
 
-An important concept in Noodl, as briefly shown above, is **action nodes**. These nodes perform some sort of action when triggered by a signal, for example, from a UI control (such as a button click) or from another action node (such as when an action has completed successfully or failed). Noodl contains a wide variety of action nodes for most common basic tasks, including **Navigation** and **Reading and Writing Data**.
+## アクション
+
+上記で簡単に示されたように、Noodlの重要な概念は**アクションノード**です。これらのノードは、UIコントロール（たとえばボタンクリック）や他のアクションノード（たとえばアクションが成功または失敗したとき）からのシグナルによってトリガーされたときに、何らかのアクションを実行します。Noodlには、**ナビゲーション**や**データの読み書き**など、ほとんどの一般的な基本タスクのための幅広いアクションノードが含まれています。
 
 ![](/docs/getting-started/basic-concepts/connecting-nodes.gif)
 
-Connections between nodes is a core concept in Noodl, this is how you connect your user interface to data and actions.
+ノード間の接続はNoodlのコアコンセプトであり、これによりユーザーインターフェイスをデータやアクションに接続します。
 
-## Working with data
+## データの操作
 
-When you have built some of your frontend, added pages, components and navigation it is time to connect dynamic data to your user interfaces. This is what makes your application come alive, and in Noodl you have a neat visual way to build modern reactive user interfaces.
+フロントエンドの一部を構築し、ページ、コンポーネント、ナビゲーションを追加したら、動的なデータをユーザーインターフェイスに接続する時です。これにより、アプリケーションが活気づき、Noodlでは、モダンなリアクティブユーザーインターフェイスをビジュアルな方法で構築できます。
 
 <div className="ndl-video">
     <video width="100%" autoPlay muted loop src={useBaseUrl("/docs/getting-started/basic-concepts/data-1.mp4")}/>
 </div>
 
-There are three basic concepts for data in Noodl, the **Variable**, **Object** and **Array** nodes. You can learn more about how to work with these [here](/docs/guides/data/overview).
+Noodlのデータには、**変数**、**オブジェクト**、**配列**ノードの3つの基本的な概念があります。これらの操作方法については[ここ](/docs/guides/data/overview)で詳しく学びましょう。
 
-A very common pattern in web applications frontends are different types of lists or other dynamic repeating content. Learn how to do that in Noodl [here](/docs/guides/data/list-basics).
+Webアプリケーションのフロントエンドでは、リストや他の動的な繰り返しコンテンツなど、さまざまなタイプが一般的です。Noodlでこれを行う方法については[ここ](/docs/guides/data/list-basics)で学びましょう。
 
-## Business Logic
+## ビジネスロジック
 
-As mentioned above you use **action nodes** to perform some sort of business logic action in Noodl. There are a wide variety of action nodes built in for most basic tasks such as navigating between pages, or storing data in the database. Data and signals from your UI controls are connected to your action nodes, and you can connect them together to make flows.
+上記で述べたように、ビジネスロジックアクションを実行するためにNoodlでは**アクションノード**を使用します。ページ間のナビゲーションやデータベースにデータを保存するなど、ほとんどの基本的なタスクのために多種多様なアクションノードが組み込まれています。UIコントロールからのデータとシグナルはアクションノードに接続され、フローを作成するためにそれらを連結できます。
 
 <div className="ndl-video">
     <video width="100%" autoPlay muted loop src={useBaseUrl("/docs/getting-started/basic-concepts/actions-1.mp4")}/>
 </div>
 
-But most applications require some sort of more advanced business logic, for instance processing data from the database or maybe logic to create more advanced UI components. You can build most basic logic with the built in action nodes, but when you require more complex actions it is very easy and fast to add code to your projects.
+しかし、ほとんどのアプリケーションでは、データベースからのデータ処理やより高度なUIコンポーネントの作成など、より高度なビジネスロジックが必要です。組み込みのアクションノードで基本的なロジックを構築できますが、より複雑なアクションが必要な場合、プロジェクトにコードを追加するのは非常に簡単かつ迅速です。
 
 <div className="ndl-video">
     <video width="100%" autoPlay muted loop src={useBaseUrl("/docs/getting-started/basic-concepts/edit-code.mp4")}/>
 </div>
 
-Not a skilled software developer? Don't worry; the philosophy of Noodl is to focus on the code that matters and remove much of the unnecessary complexities of software development. If you have a basic knowledge of JavaScript, you will go a long way with Noodl.
+ソフトウェア開発者ではないですか？心配しないでください。Noodlの哲学は、重要なコードに焦点を当て、ソフトウェア開発の不必要な複雑さの多くを取り除くことです。JavaScriptの基本的な知識があれば、Noodlで長い道のりを歩むことができます。
 
-## The cloud services
+## クラウドサービス
 
-Now it's time to take a look at the second part of the Noodl platform, the cloud services. This is an important piece of any web application. You can create and manage cloud databases, or cloud services as they are refered to as, from within your Noodl project.
+Noodlプラットフォームの第2部であるクラウドサービスを見てみましょう。これは、任意のWebアプリケーションにとって重要な部分です。クラウドデータベースを作成および管理することができます。これらは、Noodlプロジェクト内から参照されるクラウドサービスとして知られています。
 
 <div className="ndl-video">
     <video width="100%" autoPlay muted loop src={useBaseUrl("/docs/getting-started/basic-concepts/cloud-1.mp4")}/>
 </div>
 
-The Noodl cloud services will provide your applications with several important functions:
+Noodlのクラウドサービスは、アプリケーションにいくつかの重要な機能を提供します：
 
-- **Reading and Writing Data**: You can create **classes** to store **records**, which can then be read, filtered, and presented in your application. Dive in [here](/docs/guides/cloud-data/overview) to start learning about cloud services.
+- **データの読み書き**：**クラス**を作成して**レコード**を格納できます。これらは読み取られ、フィルタリングされ、アプリケーションで表示されます。クラウドサービスについて学び始めるには、[ここ](/docs/guides/cloud-data/overview)から入りましょう。
 
-- **User Management**. Most applications need users, you can sign up users, log in, manage passwords etc.
+- **ユーザー管理**。ほと
 
-- **Access Control**: When you have users and data, you need to control which users can access what data. This can be done through **roles** in your cloud services. Learn more [here](/docs/guides/cloud-data/access-control).
+んどのアプリケーションにはユーザーが必要です。ユーザーを登録し、ログインし、パスワードを管理することができます。
 
-- **Cloud Functions**: You are not limited to creating logic on the frontend; you can also create cloud functions that perform tasks running in the cloud. This is especially useful for operations like database operations requiring admin access and background jobs.
+- **アクセス制御**：ユーザーとデータがある場合、どのユーザーがどのデータにアクセスできるかを制御する必要があります。これは、クラウドサービスの**ロール**を通じて行うことができます。詳細は[ここ](/docs/guides/cloud-data/access-control)で学びましょう。
 
-## Cloud Functions
+- **クラウド関数**：フロントエンドでロジックを作成するだけでなく、クラウドで実行されるタスクを実行するクラウド関数も作成できます。これは、管理アクセスが必要なデータベース操作やバックグラウンドジョブなどの操作に特に役立ちます。
 
-Using the same techniques to build logic as described above you can build logic that runs in the cloud, this is called a **Cloud Function**.
+## クラウド関数
+
+上述のようにロジックを構築するのと同じ技術を使用して、クラウドで実行されるロジックを構築できます。これは**クラウド関数**と呼ばれます。
 
 <div className="ndl-video">
     <video width="100%" autoPlay muted loop src={useBaseUrl("/docs/getting-started/basic-concepts/cloud-2.mp4")}/>
 </div>
 
-This is very useful for many different functions such as:
+これは、以下のような多くの異なる機能に非常に役立ちます：
 
-- Access the database in admin mode, do things that should not be possible from the client for security reasons such as resetting passwords and verifying emails.
+- 管理モードでデータベースにアクセスし、パスワードのリセットやメールの確認など、クライアントからはセキュリティ上の理由で可能であってはならないことを行います。
 
-- Connecting to external services using methods such as OAuth or webhooks requires logic to be executed in the cloud. In such cases, cloud functions can be incredibly helpful.
+- OAuthやWebhookなどの方法を使用して外部サービスに接続するには、クラウドでロジックを実行する必要があります。このような場合、クラウド関数が非常に役立ちます。
 
-- Performing queries is significantly faster in the cloud, so if you need to make numerous database queries and combine the results, you can achieve high performance by doing this in the cloud.
+- クラウドでのクエリ実行は著しく高速なので、多数のデータベースクエリを実行して結果を組み合わせる必要がある場合、クラウドでこれを行うことで高いパフォーマンスを実現できます。
 
-## Collaboration
+## コラボレーション
 
-Finally, as your application grows, you'll want to collaborate with colleagues and friends. Thankfully, Noodl is compatible with version control through Git and will give you a built in Version Control panel after the Project Folder has been pushed to a repo at your preferred Git provider. You can collaborate on a project, work on your individual branches, and merge changes. We aim to incorporate powerful concepts from the software development world into Noodl to ensure you never encounter any limitations.
+最後に、アプリケーションが成長するにつれて、同僚や友人と協力したくなるでしょう。幸いにも、NoodlはGitを通じたバージョンコントロールと互換性があり、プロジェクトフォルダーがお好みのGitプロバイダーのリポジトリにプッシュされた後、組み込みのバージョンコントロールパネルを提供します。プロジェクトで協力し、個々のブランチで作業し、変更をマージすることができます。ソフトウェア開発の世界から強力なコンセプトをNoodlに取り入れることで、あらゆる制限に直面することがないようにします。
 
 <div className="ndl-image-with-background">
 
@@ -131,11 +135,11 @@ Finally, as your application grows, you'll want to collaborate with colleagues a
 
 </div>
 
-Learn more about the collaboration and version control capabilities [here](/docs/guides/collaboration/version-control).
+コラボレーションとバージョンコントロールの機能についての詳細は[ここ](/docs/guides/collaboration/version-control)で学びましょう。
 
-## Modules and Prefabs
+## モジュールとプレファブ
 
-In Noodl you can also import modules developed by others or develop your own modules. You can find a list of current modules provided by Noodl [here](/library/modules/overview). You can also build your own modules and extensions, for example wrapping existing Javascript libraries. You can read more about it [here](/javascript/extending/overview).
+Noodlでは、他の人が開発したモジュールをインポートしたり、独自のモジュールを開発したりすることもできます。Noodlが提供する現在のモジュールのリストは[ここ](/library/modules/overview)にあります。また、既存のJavascriptライブラリをラッピングするなど、独自のモジュールや拡張機能を構築することもできます。それについての詳細は[ここ](/javascript/extending/overview)で読むことができます。
 
 <div className="ndl-image-with-background l">
 
@@ -143,7 +147,7 @@ In Noodl you can also import modules developed by others or develop your own mod
 
 </div>
 
-An important concept in Noodl that will take your productivity to the next level is **prefabs**. These are pre-built components that can be cloned into your project. You can use them as they are or as a starting point for modification and extension. It's also a great way to learn some of the best development patterns in Noodl.
+Noodlで生産性を次のレベルに引き上げる重要な概念は**プレファブ**です。これらは、プロジェクトにクローンして使用できる事前に構築されたコンポーネントです。それらをそのまま使用することも、変更や拡張の出発点として使用することもできます。また、Noodlの最良の開発パターンを学ぶための素晴らしい方法でもあります。
 
 <div className="ndl-image-with-background l">
 
@@ -151,4 +155,4 @@ An important concept in Noodl that will take your productivity to the next level
 
 </div>
 
-Any components that you build can also be turned into prefabs, and submitted to the Noodl Docs repo for the whole community to use. Read more about it [here](/library/prefab-contributions).
+あなたが構築した任意のコンポーネントもプレファブに変換され、コミュニティ全体が使用できるようにNoodl Docsリポジトリに提出することができます。それについての詳細は[ここ](/library/prefab-contributions)で読むことができます。

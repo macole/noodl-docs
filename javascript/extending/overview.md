@@ -1,15 +1,15 @@
 ---
 hide_title: true
 hide_table_of_contents: true
-title: Extending Noodl
+title: Noodlの拡張
 ---
 
-# Extending Noodl
+# Noodlの拡張
 
-One important aspect to improve productivity is extending your Noodl project with library modules that are tailored for your organizations needs.
+生産性を向上させる上で重要な側面の一つは、組織のニーズに合わせてカスタマイズされたライブラリモジュールでNoodlプロジェクトを拡張することです。
 
-[Create a new core node](/javascript/extending/create-lib)
-This guide will show you how to install the Noodl CLI and create a single simple new core node in Noodl. This is a good starting point to cover before diving into the other guides.
+[新しいコアノードを作成する](/javascript/extending/create-lib)
+このガイドでは、Noodl CLIをインストールし、Noodlで単一のシンプルな新しいコアノードを作成する方法を示します。これは、他のガイドに進む前にカバーする良い出発点です。
 
-[Create a React component](/javascript/extending/create-react-lib)
-This guide will show you how to add React components to your Noodl project so that you can quickly build great front ends for your applications.
+[Reactコンポーネントを作成する](/javascript/extending/create-react-lib)
+このガイドでは、アプリケーションのフロントエンドを迅速に構築できるように、NoodlプロジェクトにReactコンポーネントを追加する方法を示します。

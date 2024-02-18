@@ -1,17 +1,17 @@
 ---
-title: Custom UI Components
+title: カスタムUIコンポーネント
 hide_title: true
 ---
 import CopyToClipboardButton from '/src/components/copytoclipboardbutton'
 import ImportButton from '../../../src/components/importbutton'
 
-# Custom UI Components
+# カスタムUIコンポーネント
 
-## What you will learn in this guide
-A very powerful feature of Noodl is the ability to create re-usable components easily. This guide will cover some useful patterns for create re-usable UI components. This guide will involve a bit of coding so it is good if you have some basic coding skills in Javascript and have read our previous guides on business logic in Javascript.
+## このガイドで学ぶこと
+Noodlの非常に強力な機能の1つは、簡単に再利用可能なコンポーネントを作成できることです。このガイドでは、再利用可能なUIコンポーネントを作成するためのいくつかの有用なパターンをカバーします。このガイドでは少しコーディングが含まれるため、Javascriptでの基本的なコーディングスキルと、Javascriptでのビジネスロジックに関する以前のガイドを読んでいることが望ましいです。
 
-## Component Inputs and Outputs
-The key to creating good re-usable components is to provide inputs and outputs that makes it useable. There are some good patterns to follow here and we will outline them here. We will start with a simple example where we create a component with a slider plus two labels. This is what it will look like:
+## コンポーネントの入力と出力
+良い再利用可能なコンポーネントを作成する鍵は、それを使用可能にする入力と出力を提供することです。ここではいくつかの良いパターンがあり、ここでそれらを概説します。スライダーと2つのラベルを持つコンポーネントを作成するシンプルな例から始めます。これがその外観です：
 
 <div className="ndl-image-with-background l">
 
@@ -19,17 +19,19 @@ The key to creating good re-usable components is to provide inputs and outputs t
 
 </div>
 
-And here is the content of the component. This is a simple UI component that has a slider and two text labels. One label is simple the header for the slider, and the other is formatted using the **String Format** node and the current **Value** and the **Max** value.
+そしてこれがコンポーネントの内容です。これはスライダーと2つのテキストラベルを持つシンプルなUIコンポーネントです。1つのラベルはスライダーのヘッダーで、もう1つは**String Format**ノードと現在の**Value**および**Max**値を使用してフォーマットされます。
 
 <div className="ndl-image-with-background xl">
 
-<CopyToClipboardButton json={{"nodes":[{"id":"f73a5d7c-7b0e-e7f1-18a0-537f50623b8d","type":"Group","x":0,"y":0,"parameters":{},"ports":[],"children":[{"id":"5fb30353-669f-cee0-0339-e96608ad1478","type":"Text","x":20,"y":202,"parameters":{},"ports":[],"children":[]},{"id":"62063b48-b2c8-cf28-1de2-d20c7866ef42","type":"net.noodl.controls.range","x":20,"y":284,"parameters":{"marginBottom":{"value":15,"unit":"px"},"marginTop":{"value":15,"unit":"px"}},"ports":[],"children":[]},{"id":"fcee5809-211f-d59d-d566-7737e5383ceb","type":"Text","x":20,"y":406,"parameters":{"alignX":"right","sizeMode":"contentSize","color":"Light Gray"},"ports":[],"children":[]}]},{"id":"aaa82451-4b5d-874e-17c4-622b70e46249","type":"Component Inputs","x":-622.5,"y":167,"parameters":{},"ports":[{"name":"Label","plug":"output","type":{"name":"*"},"group":"Settings","index":0},{"name":"Value","plug":"output","type":{"name":"*"},"group":"Settings","index":1},{"name":"Max","plug":"output","type":{"name":"*"},"group":"Settings","index":2}],"children":[]},{"id":"1d8d66d2-b86d-6c90-a93c-8b3ffa7bfd56","type":"String Format","x":-184.5,"y":377,"parameters":{"format":"{Value} / {Max}"},"ports":[],"children":[]},{"id":"13725968-85f6-ee25-5e66-b7f208aac194","type":"Number","x":-387.5,"y":364,"parameters":{},"ports":[],"children":[]},{"id":"f4d370e6-ec69-5459-49e9-9d258172c77a","type":"Component Inputs","x":-227.5,"y":-20,"parameters":{},"ports":[{"name":"Margin Left","plug":"output","type":{"name":"*"},"index":0},{"name":"Margin Right","plug":"output","type":{"name":"*"},"index":1},{"name":"Margin Bottom","plug":"output","type":{"name":"*"},"index":3},{"name":"Margin Top","plug":"output","type":{"name":"*"},"index":2},{"name":"Align X","plug":"output","type":{"name":"*"},"index":4},{"name":"Align Y","plug":"output","type":{"name":"*"},"index":5},{"name":"Position","plug":"output","type":{"name":"*"},"index":6}],"children":[]},{"id":"51777154-9afa-4aa7-515a-6164a47ba35e","type":"Component Outputs","x":321.5,"y":287,"parameters":{},"ports":[{"name":"Value","plug":"input","type":{"name":"*"},"index":1},{"name":"Changed","plug":"input","type":{"name":"*"},"index":2}],"children":[]}],"connections":[{"fromId":"aaa82451-4b5d-874e-17c4-622b70e46249","fromProperty":"Label","toId":"5fb30353-669f-cee0-0339-e96608ad1478","toProperty":"text"},{"fromId":"aaa82451-4b5d-874e-17c4-622b70e46249","fromProperty":"Max","toId":"62063b48-b2c8-cf28-1de2-d20c7866ef42","toProperty":"max"},{"fromId":"62063b48-b2c8-cf28-1de2-d20c7866ef42","fromProperty":"value","toId":"1d8d66d2-b86d-6c90-a93c-8b3ffa7bfd56","toProperty":"Value"},{"fromId":"1d8d66d2-b86d-6c90-a93c-8b3ffa7bfd56","fromProperty":"formatted","toId":"fcee5809-211f-d59d-d566-7737e5383ceb","toProperty":"text"},{"fromId":"aaa82451-4b5d-874e-17c4-622b70e46249","fromProperty":"Max","toId":"13725968-85f6-ee25-5e66-b7f208aac194","toProperty":"value"},{"fromId":"13725968-85f6-ee25-5e66-b7f208aac194","fromProperty":"savedValue","toId":"1d8d66d2-b86d-6c90-a93c-8b3ffa7bfd56","toProperty":"Max"},{"fromId":"aaa82451-4b5d-874e-17c4-622b70e46249","fromProperty":"Value","toId":"62063b48-b2c8-cf28-1de2-d20c7866ef42","toProperty":"value"},{"fromId":"62063b48-b2c8-cf28-1de2-d20c7866ef42","fromProperty":"onChange","toId":"51777154-9afa-4aa7-515a-6164a47ba35e","toProperty":"Changed"},{"fromId":"62063b48-b2c8-cf28-1de2-d20c7866ef42","fromProperty":"value","toId":"51777154-9afa-4aa7-515a-6164a47ba35e","toProperty":"Value"},{"fromId":"f4d370e6-ec69-5459-49e9-9d258172c77a","fromProperty":"Align Y","toId":"f73a5d7c-7b0e-e7f1-18a0-537f50623b8d","toProperty":"alignY"},{"fromId":"f4d370e6-ec69-5459-49e9-9d258172c77a","fromProperty":"Align X","toId":"f73a5d7c-7b0e-e7f1-18a0-537f50623b8d","toProperty":"alignX"},{"fromId":"f4d370e6-ec69-5459-49e9-9d258172c77a","fromProperty":"Margin Top","toId":"f73a5d7c-7b0e-e7f1-18a0-537f50623b8d","toProperty":"marginTop"},{"fromId":"f4d370e6-ec69-5459-49e9-9d258172c77a","fromProperty":"Margin Bottom","toId":"f73a5d7c-7b0e-e7f1-18a0-537f50623b8d","toProperty":"marginBottom"},{"fromId":"f4d370e6-ec69-5459-49e9-9d258172c77a","fromProperty":"Margin Right","toId":"f73a5d7c-7b0e-e7f1-18a0-537f50623b8d","toProperty":"marginRight"},{"fromId":"f4d370e6-ec69-5459-49e9-9d258172c77a","fromProperty":"Margin Left","toId":"f73a5d7c-7b0e-e7f1-18a0-537f50623b8d","toProperty":"marginLeft"},{"fromId":"f4d370e6-ec69-5459-49e9-9d258172c77a","fromProperty":"Position","toId":"f73a5d7c-7b0e-e7f1-18a0-537f50623b8d","toProperty":"position"}],"comments":[]}} />
+<CopyToClipboardButton json={{"nodes":[{"id":"f73a5d7c-7b0e-e7f1-18a0-537f50623b8d","type":"Group","x":0,"y":0,"parameters":{},"ports":[],"children":[{"id":"5fb30353-669f-cee0-0339-e96608ad1478","type":"Text","x":20,"y":202,"parameters":{},"ports":[],"children":[]},{"id":"62063b48-b2c8-cf28-1de2-d20c7866ef42","type":"net.noodl.controls.range","x":20,"y":284,"parameters":{"marginBottom":{"value":15,"unit":"px"},"marginTop":{"value":15,"unit":"px"}},"ports":[],"children":[]},{"id":"fcee5809-211f-d59d-d566-7737e5383ceb","type":"Text","x":20,"y":406,"parameters":{"alignX":"right","sizeMode":"contentSize","color":"Light Gray"},"ports":[],"children":[]}]},{"id":"aaa82451-4b5d-874e-17c4-622b70e46249","type":"Component Inputs","x":-622.5,"y":167,"parameters":{},"ports":[{"name":"Label","plug":"output","type":{"name":"*"},"group":"Settings","index":0},{"name":"Value","plug":"output","type":{"name":"*"},"group":"Settings","index":1},{"name":"Max","plug":"output","type":{"name":"*"},"group":"Settings","index":2}],"children":[]},{"id":"1d8d66d2-b86d-6c90-a93c-8b3ffa7bfd56","type":"String Format","x":-184.5,"y":377,"parameters":{"format":"{Value} / {Max}"},"ports":[],"children":[]},{"id":"13725968-85f6-ee25-5e66-b7f208aac194","type":"Number","x":-387.5,"y":364,"parameters":{},"ports":[],"children":[]},{"id":"f4d370e6-ec69-5459-49e9-9d258172c77a","type":"Component Inputs","x":-227.5,"y":-20,"parameters":{},"ports":[{"name":"Margin Left","plug":"output","type":{"name":"*"},"index":0},{"name":"Margin Right","plug":"output","type":{"name":"*"},"index":1},{"name":"Margin Bottom","plug":"output","type":{"name":"*"},"index":3},{"name":"Margin Top","plug":"output","type":{"name":"*"},"index":2},{"name":"Align X","plug":"output","type":{"name":"*"},"index":4},{"name":"Align Y","plug":"output","type":{"name":"*"},"index":5},{"name":"Position","plug":"output","type":{"name":"*"},"index":6}],"children":[]},{"id":"51777154-9afa-4aa7-515a-6164a47ba35e","type":"Component Outputs","x":321.5,"y":287,"parameters":{},"ports":[{"name":"Value","plug":"input","type":{"name":"*"},"index":1},{"name":"Changed","plug":"input","type":{"name":"*"},"index":2}],"children":[]}],"connections":[{"fromId":"aaa82451-4b5d-874e-17c4-622b70e46249","fromProperty":"Label","toId":"5fb30353-669f-cee0-0339-e96608ad1478","toProperty":"text"},{"fromId":"aaa82451-4b5d-874e-17c4-622b70e46249","fromProperty":"Max","toId":"62063b48-b2c8-cf28-1de2-d20c7866ef42","toProperty":"max"},{"fromId":"62063b48-b2c8-cf28-1de2-d20c7866ef42","fromProperty":"value","toId":"1d8d66d2-b86d-6c90-a93c-8b3ffa7bfd56","toProperty":"Value"},{"fromId":"1d8d66d2-b86d-6c90-a93c-8b3ffa7bfd56","fromProperty":"formatted","toId":"fcee5809-211f-d59d-d566-7737e5383ceb","toProperty":"text"},{"fromId":"aaa82451-4b5d-874e-17c4-622b70e46249","from
+
+Property":"Max","toId":"13725968-85f6-ee25-5e66-b7f208aac194","toProperty":"value"},{"fromId":"13725968-85f6-ee25-5e66-b7f208aac194","fromProperty":"savedValue","toId":"1d8d66d2-b86d-6c90-a93c-8b3ffa7bfd56","toProperty":"Max"},{"fromId":"aaa82451-4b5d-874e-17c4-622b70e46249","fromProperty":"Value","toId":"62063b48-b2c8-cf28-1de2-d20c7866ef42","toProperty":"value"},{"fromId":"62063b48-b2c8-cf28-1de2-d20c7866ef42","fromProperty":"onChange","toId":"51777154-9afa-4aa7-515a-6164a47ba35e","toProperty":"Changed"},{"fromId":"62063b48-b2c8-cf28-1de2-d20c7866ef42","fromProperty":"value","toId":"51777154-9afa-4aa7-515a-6164a47ba35e","toProperty":"Value"},{"fromId":"f4d370e6-ec69-5459-49e9-9d258172c77a","fromProperty":"Align Y","toId":"f73a5d7c-7b0e-e7f1-18a0-537f50623b8d","toProperty":"alignY"},{"fromId":"f4d370e6-ec69-5459-49e9-9d258172c77a","fromProperty":"Align X","toId":"f73a5d7c-7b0e-e7f1-18a0-537f50623b8d","toProperty":"alignX"},{"fromId":"f4d370e6-ec69-5459-49e9-9d258172c77a","fromProperty":"Margin Top","toId":"f73a5d7c-7b0e-e7f1-18a0-537f50623b8d","toProperty":"marginTop"},{"fromId":"f4d370e6-ec69-5459-49e9-9d258172c77a","fromProperty":"Margin Bottom","toId":"f73a5d7c-7b0e-e7f1-18a0-537f50623b8d","toProperty":"marginBottom"},{"fromId":"f4d370e6-ec69-5459-49e9-9d258172c77a","fromProperty":"Margin Right","toId":"f73a5d7c-7b0e-e7f1-18a0-537f50623b8d","toProperty":"marginRight"},{"fromId":"f4d370e6-ec69-5459-49e9-9d258172c77a","fromProperty":"Margin Left","toId":"f73a5d7c-7b0e-e7f1-18a0-537f50623b8d","toProperty":"marginLeft"},{"fromId":"f4d370e6-ec69-5459-49e9-9d258172c77a","fromProperty":"Position","toId":"f73a5d7c-7b0e-e7f1-18a0-537f50623b8d","toProperty":"position"}],"comments":[]}} />
 
 ![](/docs/guides/business-logic/custom-ui-components/slider-with-label-nodes.png)
 
 </div>
 
-Let's take a closer look at the **Component Inputs** of this component. First we have a couple of inputs that are the basic settings for the component, the **Label**, **Max** and **Value** inputs. There are a couple of things to note about this component inputs. If you look at the **Max** input it is first connected to a **Number** node and then to the **String Format** node. This is a common pattern to ensure that the **Max** input is represented as a number in the property panel when this component is used. The component input will get the same type in the property panel, as the node it is connected to and in this case it is connected to both the **Max** of the **Slider** (which is a number) and the **Max** input of the **String Format** node which is a string. That fact that we go via a **Number** node will make sure the property panel knows what input field to show for that input.
+このコンポーネントの**コンポーネント入力**について詳しく見てみましょう。まず、コンポーネントの基本設定である**Label**、**Max**、**Value**入力があります。このコンポーネント入力に関して注目すべきいくつかの点があります。**Max**入力を見ると、最初に**Number**ノードに接続され、その後**String Format**ノードに接続されていることがわかります。これは、**Max**入力がコンポーネントを使用したときにプロパティパネルで数値として表されることを保証する一般的なパターンです。コンポーネント入力は、接続されたノードと同じタイプのプロパティパネルになりますが、この場合は**Slider**の**Max**（数値）と**String Format**ノードの**Max**入力（文字列）の両方に接続されています。**Number**ノードを経由することで、プロパティパネルがその入力に対してどの入力フィールドを表示するかを正しく認識することができます。
 
 <div className="ndl-image-with-background xl">
 
@@ -37,9 +39,9 @@ Let's take a closer look at the **Component Inputs** of this component. First we
 
 </div>
 
-Another thing to note is that the **Value** component input is connected to the **Value** input of the **Slider**. Most UI Components is collecting some sort of data from the user, in this case it's a range value, it is very important that the data is also exposed as an input so that it can be properly connected to a data source.
+もう1つ注目すべき点は、**Value**コンポーネント入力が**Slider**の**Value**入力に接続されていることです。ほとんどのUIコンポーネントは、この場合は範囲値のように、ユーザーから何らかのデータを収集しています。そのデータも入力として公開されることが非常に重要です。これにより、データソースに適切に接続することができます。
 
-Moving on to the component outputs. Here you of course need the **Value** as an output as well, so that the UI component can be used to collect data from the user. It is also important to have a **Changed** signal.
+コンポーネント出力に進むと、もちろん**Value**も出力として必要です。これにより、UIコンポーネントを使用してユーザーからデータを収集することができます。**Changed**シグナルも重要です。
 
 <div className="ndl-image-with-background xl">
 
@@ -48,10 +50,12 @@ Moving on to the component outputs. Here you of course need the **Value** as an 
 </div>
 
 :::warning
-The **Changed** signal should **ALWAYS** be on a user input, not just if the **Value** input have changed. This is to make sure that the UI component doesn't report a change if the input value is changed. That can cause unnecessary data feedback loops.
+**Changed**シグナルは、ユーザーの入力があった場合に**常に**オンにするべきです。**Value**入力が変更されただけではないことを確認するためです。これにより、入力値が変更された場合に
+
+UIコンポーネントが変更を報告しないようにします。これにより、不要なデータフィードバックループが発生することがあります。
 :::
 
-Finally it's a good idea to expose some minimum set of layout properties on the root node. This will make the UI component easier to use.
+最後に、ルートノードにいくつかの最小限のレイアウトプロパティを公開することは良いアイデアです。これにより、UIコンポーネントの使用が容易になります。
 
 <div className="ndl-image-with-background xl">
 
@@ -59,25 +63,25 @@ Finally it's a good idea to expose some minimum set of layout properties on the 
 
 </div>
 
-You can choose yourself what you want to expose as inputs but here are a few recommendations:
+何を入力として公開するかは自由に選択できますが、ここではいくつかの推奨事項があります：
 
-* **Margins** At least exposing margins will remove the need for extra **Group** nodes when using your component.
-* **Align** It's also common to need to re-align your component when using it, providing this as an input is helpful.
-* **Position** Maybe not as common, but could still be good to expose.
+- **マージン** 少なくともマージンを公開することで、コンポーネントを使用する際に余分な**Group**ノードが不要になります。
+- **アライン** コンポーネントを使用する際に再アラインメントが必要になることがよくありますので、これを入力として提供することが役立ちます。
+- **ポジション** 一般的ではありませんが、公開しておくと良いでしょう。
 
-## Component Object
-You have learnt how to use the [Object](/nodes/data/object/object-node) node in the [working with data guides](/docs/guides/data/objects) and how to connect it to UI controls in the [Connecting UI controls to data guide](/docs/guides/data/ui-controls-and-data). There is another node which is very useful when working on re-usable UI componets and that is the [Component Object](/nodes/component-utilities/component-object) node. This node works just like the **Object** node except that it is unique to the component instance, so it will not be shared between component instances like regular objects. This is very useful when keeping the state of UI controls.
+## コンポーネントオブジェクト
+[データを扱うガイド](/docs/guides/data/objects)で[Object](/nodes/data/object/object-node)ノードの使用方法を学び、[UIコントロールをデータに接続するガイド](/docs/guides/data/ui-controls-and-data)でUIコントロールに接続する方法を学びました。再利用可能なUIコンポーネントを作成する際に非常に便利な別のノードがあります。それが[Component Object](/nodes/component-utilities/component-object)ノードです。このノードは**Object**ノードと同じように機能しますが、コンポーネントインスタンス固有であり、通常のオブジェクトのようにコンポーネントインスタンス間で共有されません。これは、UIコントロールの状態を保持する際に非常に便利です。
 
-We will take a look at a very simple example below, the **Segment Control** UI Component.
+**Segment Control** UIコンポーネントの非常にシンプルな例を見てみましょう。
 
 <div className="ndl-image-with-background l">
-<ImportButton zip="/docs/guides/business-logic/custom-ui-components/segment-control-1.zip" name="Segment Control" thumb="/docs/guides/business-logic/custom-ui-components/segment-control.png"/>
+<ImportButton zip="/docs/guides/business-logic/custom-ui-components/segment-control-1.zip" name="セグメントコントロール" thumb="/docs/guides/business-logic/custom-ui-components/segment-control.png"/>
 
 ![](/docs/guides/business-logic/custom-ui-components/segment-control.png)
 
 </div>
 
-This example actually contains two components the **Segment Control** component and the **Segment Control Button** component. What it does is that it accepts an array as input containing the possible options for the control, each object in the array should have a **Label** and a **Value**. It also accepts an input that is the current selected **Value** of the control, this should correspond to one of the values in the array and that button will be shown as selected (like radio buttons).
+この例には、**セグメントコントロール**コンポーネントと**セグメントコントロールボタン**コンポーネントの2つのコンポーネントが実際に含まれています。これは、可能なオプションの配列を入力として受け入れ、配列内の各オブジェクトには**Label**と**Value**が必要です。また、コントロールの現在の選択された**Value**も入力として受け入れます。これは配列内の値の1つに対応する必要があり、そのボタンが選択されているように表示されます（ラジオボタンのように）。
 
 <div className="ndl-image-with-background xl">
 
@@ -85,7 +89,7 @@ This example actually contains two components the **Segment Control** component 
 
 </div>
 
-Here you can see how we use the **Component Object** node to store the currently **Selected Value** and how it is also passed through as the **Value** output. We will take a look at how it is used later. The options input array is used directly as items in the **Repeater** node. If we take a closer look at the **Segment Control Button** component (that is used as template in the repeater) we will see where the magic happends.
+ここでは、**Component Object**ノードを使用して現在の**Selected Value**を保存し、それを**Value**出力としても渡している方法を見ることができます。後でこれがどのように使用されるかを見てみましょう。オプション入力配列は、**Repeater**ノードのアイテムとして直接使用されます。リピーター内のテンプレートとして使用される**セグメントコントロールボタン**コンポーネントを詳しく見てみると、魔法が起こる場所がわかります。
 
 <div className="ndl-image-with-background xl">
 
@@ -93,26 +97,28 @@ Here you can see how we use the **Component Object** node to store the currently
 
 </div>
 
-Let's go over this one quickly:
+簡単に説明しましょう：
 
-* The **Object** node is used to connect the **Label** to the button. So each button that is created by the repeater will get the correct label.
-* Here we introduce a new action node, the [Set Parent Component Object Properties](/nodes/component-utilities/set-parent-component-object-properties) node that is used to set a property on the component object. But not the component object of this component instance, but instead it's closets visual parent. In this case (since this component is used as template in the repeater) it will be the **Segment Control** component. That is, each **Segment Control Button** component in the repeater will, when clicked, set it's **Value** as the **Selected Value** of the **Component Object**.
-* Now we also use the [Parent Component Object](/nodes/component-utilities/parent-component-object) to compare the currently **Selected Value** with the **Value** of this segment control button, this is done in the **Function** node that takes both the currently selected value and the value from the repeater instance object as inputs. It has the following code:
+- **Object**ノードは、ボタンに**Label**を接続するために使用されます。したがって、リピーターによって作成された各ボタンに正しいラベルが付けられます。
+- ここで、[Set Parent Component Object Properties](/nodes/component-utilities/set-parent-component-object-properties)ノードという新しいアクションノードを紹介します。これは、コンポーネントオブジェクトのプロパティを設定するために使用されます。しかし、このコンポーネントインスタンスのコンポーネントオブジェクトではなく、代わりに最も近い視覚的親のコンポーネントオブジェクトです。この場合（このコンポーネントがリピーターのテンプレートとして使用されているため）、**セグメントコントロール**コンポーネントになります。つまり、リピーター内の各**セグメントコントロールボタン**コンポーネントは、クリックされると、その**Value**を**Component Object**の**Selected Value**として設定します。
+- 現在の**Selected Value**とこのセグメントコントロールボタンの**Value**を比較するために、[Parent Component Object](/nodes/component-utilities/parent-component-object)を
+
+使用して、**Function**ノードでそれを行います。そのコードは以下の通りです：
 
 ```javascript
 if(Inputs.SelectedValue == Inputs.MyValue)
-  Outputs.Variant = "Segment Control Button Selected"
+  Outputs.Variant = "セグメントコントロールボタン選択"
 else
-  Outputs.Variant = "Segment Control Button"
+  Outputs.Variant = "セグメントコントロールボタン"
 ```
 
-* Here comes the next little trick. The **Variant** of the **Button** is choosen by the **Function** to be either **Segment Control Button** or **Segment Control Button Selected**. We have created two different **Button** variants with those names so we can design how we want the button to look if it is selected and not. Learn more about style variants in [this guide](/docs/guides/user-interfaces/style-variants).
-* Finally we send the **Click** signal from the button as **Component Output** from this component, this will allow us to use that signal from the **Repeater** node in the parent component.
+- 次に、**Function**によって選択された**Variant**が**ボタン**の**Variant**になります。**ボタン**の2つの異なる**Variant**をそれぞれその名前で作成しているので、選択された場合とそうでない場合にボタンがどのように見えるかを設計できます。スタイルバリアントについては、[このガイド](/docs/guides/user-interfaces/style-variants)で詳しく学ぶことができます。
+- 最後に、ボタンからの**Click**シグナルをこのコンポーネントからの**Component Output**として送信します。これにより、親コンポーネント内の**Repeater**ノードからそのシグナルを使用することができます。
 
-The [Component Object](/nodes/component-utilities/component-object) and [Parent Component Object](/nodes/component-utilities/parent-component-object) nodes, and their action nodes to set properties, [Set Component Object Properties](/nodes/component-utilities/set-component-object-properties) and [Set Parent Component Object Properties](/nodes/component-utilities/set-parent-component-object-properties) are very useful when building re-usable UI components. We recommend storing the state of your UI component in these.
+[Component Object](/nodes/component-utilities/component-object)および[Parent Component Object](/nodes/component-utilities/parent-component-object)ノードと、プロパティを設定するためのアクションノード、[Set Component Object Properties](/nodes/component-utilities/set-component-object-properties)および[Set Parent Component Object Properties](/nodes/component-utilities/set-parent-component-object-properties)は、再利用可能なUIコンポーネントを構築する際に非常に便利です。UIコンポーネントの状態はこれらに保存することをお勧めします。
 
-## State management
-Some times you need to initialise your UI components when they are created. Then you can use the **Did mount** signal from the root UI element, often a **Group** node.
+## 状態管理
+UIコンポーネントが作成されたときに初期化する必要がある場合があります。その場合、ルートUI要素（通常は**Group**ノード）からの**Did mount**シグナルを使用できます。
 
 <div className="ndl-image-with-background l">
 
@@ -120,19 +126,18 @@ Some times you need to initialise your UI components when they are created. Then
 
 </div>
 
-You can also access the **Component Object** and **Parent Component Object** from **Function** and **Script** nodes by simply writing:
+**Component Object**および**Parent Component Object**には、**Function**および**Script**ノードから次のようにアクセスできます：
 
 ```javascript
-Component.Object.MyValue = "Hello" 
-Component.Object["Selected Value"] = "Use this for properties with spaces"
+Component.Object.MyValue = "こんにちは" 
+Component.Object["選択された値"] = "スペースを含むプロパティにはこれを使用します"
 
-Component.ParentObject.MyValue = "This works too"
+Component.ParentObject.MyValue = "これも機能します"
 ```
 
-So this is a great place to initialise your **Component Object** when the UI component is created. 
+これは、UIコンポーネントが作成されたときに**Component Object**を初期化するのに最適な場所です。
 
-Here is another interesting example to look at. This is a **Multi Checkbox Group** example. It takes two arrays as input, one with all possible options each with their 
-**Value** and **Label** and a second array which is the value, this array contains objects with just **Value**. So you can choose multiple options and not just one like the segment control. This is a little more complex so we wont go into detail here, but you can check out the example below and we will look at a few details.
+ここで、もう1つ興味深い例を見てみましょう。これは**マルチチェックボックスグループ**の例です。2つの配列を入力として受け取り、1つはすべての可能なオプションを持ち、各オブジェクトには**Value**と**Label**が必要です。もう1つの配列は値で、この配列には**Value**のみを含むオブジェクトが含まれます。したがって、複数のオプションを選択でき、セグメントコントロールのように1つだけではありません。これは少し複雑なので、詳細には触れませんが、以下の例をチェックして、いくつかの詳細を見てみましょう。
 
 <div className="ndl-image-with-background l">
 <ImportButton zip="multi-checkbox.zip"/>
@@ -141,7 +146,7 @@ Here is another interesting example to look at. This is a **Multi Checkbox Group
 
 </div>
 
-If we take a close look at the nodes in the **Multi Checkbox Group** component, this is what we find:
+**マルチチェックボックスグループ**コンポーネントのノードを詳しく見ると、次のようになります：
 
 <div className="ndl-image-with-background xl">
 
@@ -149,10 +154,10 @@ If we take a close look at the nodes in the **Multi Checkbox Group** component, 
 
 </div>
 
-Here is we can see that if any of the **Options** or **Selection** inputs change, we will run a **Function** node. The code of that node is as follows:
+ここでは、**オプション**または**選択**の入力が変更された場合に**Function**ノードが実行されることがわかります。そのノードのコードは次のとおりです：
 
 ```javascript
-if(!Inputs.Options) return // No options, no fun
+if(!Inputs.Options) return // オプションがなければ何もできません
 
 Component.Object.Checkboxes = Inputs.Options.map(o => Noodl.Object.create({
     id:Component.Object.id+'-'+o.Value,
@@ -162,21 +167,23 @@ Component.Object.Checkboxes = Inputs.Options.map(o => Noodl.Object.create({
 }))
 ```
 
-It creates a new array of objects in the **Component Object** called **Checkboxes**, these will get the value and label, and a **Checked** property that is true if that value is represented in the in the selection. This array is that is then used in the **Repeater** node to show all components. It is important that this function is re-run if the **Options** or **Selection** is changed so that the UI control will always show the correct state as corresponds to its inputs.
+これにより、**Component Object**に**Checkboxes**という名前の新しいオブジェクトの配列が作成され、それらは値とラベルを取得し、**Checked**プロ
+
+パティはその値が選択内に表現されている場合にtrueになります。この配列は、すべてのコンポーネントを表示するために**Repeater**ノードで使用されます。この関数が**オプション**または**選択**が変更された場合に再実行されることが重要です。これにより、UIコントロールが常に入力に対応する正しい状態を表示するようになります。
 
 :::note
-We set the **id** of the object. This makes sure that the **Repeater** doesn't create new items every time the array changes. This increases performance. 
+オブジェクトの**id**を設定します。これにより、配列が変更されるたびに**Repeater**が新しいアイテムを作成しないようになります。これによりパフォーマンスが向上します。
 :::
 
-Another important thing to notice is that the **Selection** input is passed to the **Component Object** and then directly to the corresponding output. This is also very common.
+もう1つ注目すべき点は、**Selection**入力が**Component Object**に渡され、そのまま対応する出力に渡されることです。これも非常に一般的です。
 
-Finally, we have another **Function** node that is run whenever the selection changes due to user input, just like the segment control component above this is sent out from the **Repeater** node. In this component we update the current **Selection** on the **Component Object** by filtering out the objects that currently are checked, and then filtering out the **Value** property for those objects. We update the **Component Object** which in turn will update the selection output.
+最後に、選択がユーザー入力によって変更された場合に実行される**Function**ノードがあります。上記のセグメントコントロールコンポーネントと同様に、このコンポーネントは**Repeater**ノードから送信されます。このコンポーネントでは、現在チェックされているオブジェクトをフィルタリングして、それらのオブジェクトの**Value**プロパティをフィルタリングすることによって、現在の**Selection**を**Component Object**で更新します。
 
 ```javascript
 Component.Object.Selection = Component.Object.Checkboxes.filter(o => o.Checked).map(o => ({Value:o.Value}))
 ```
 
-If we look at the **Multi Checkbox Group Item** component we will see that it is very basic. It is simply a checkbox that with the corresponding **Checked** and **Label** from the object in the **Checkboxes** array that we created before. When the checkbox is updated we update the **Checked** value of the object and report the change.
+**マルチチェックボックスグループアイテム**コンポーネントを見ると、非常に基本的であることがわかります。これは単に、**Checkboxes**配列に作成したオブジェクトの**Checked**と**Label**に対応するチェックボックスです。チェックボックスが更新されると、オブジェクトの**Checked**値を更新し、変更を報告します。
 
 <div className="ndl-image-with-background xl">
 
@@ -184,6 +191,4 @@ If we look at the **Multi Checkbox Group Item** component we will see that it is
 
 </div>
 
-There you go, that's everything need to create a multi checkbox component. This pattern can be used to create all sorts of UI components with multi selection.
-
-
+以上です。これで、マルチチェックボックスコンポーネントを作成するために必要なすべてのことを説明しました。このパターンは、マルチ選択を持つあらゆる種類のUIコンポーネントを作成するために使用できます。

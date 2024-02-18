@@ -1,67 +1,69 @@
 ---
-title: Fundamentals
+title: 基本
 hide_title: true
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl'
 
-# Fundamentals
+# 基本
 
-Here you will learn about a few fundamental concepts in Noodl that are important to get a grasp on before continuing. You can view the video below or review the short guide.
+ここでは、続ける前に把握しておくべきNoodlのいくつかの基本的な概念について学びます。以下のビデオを視聴するか、短いガイドを確認してください。
 
 <div style={{padding:'62.5% 0 0 0',position:'relative'}}><iframe width="100%" height="100%" src="https://www.youtube.com/embed/kD-Oz_M-IS4" style={{position:'absolute',top:0,left:0}} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe></div>
 
 :::note
-This video is from a deprecated commercial version of Noodl and includes some features not present in the open source version, notably workspaces and built-in Git hosting
+このビデオは、Noodlの非推奨の商用バージョンからのもので、オープンソースバージョンには存在しないいくつかの機能、特にワークスペースと組み込みのGitホスティングを含んでいます。
 :::
 
-## Nodes
+## ノード
 
-The main building blocks of Noodl are nodes. Every node has its own specific purpose and is very simple in itself, but together they become really powerful. There are a number of types of nodes, indicated by its color. **Blue** nodes are visual elements, such as buttons, or not immediately visible but related, such as groups. **Green** nodes are generally related to reading, writing and manipulating data. **Grey** nodes are utilities, and **Pink** nodes are related to custom code.
+Noodlの主要な構成要素はノードです。各ノードにはそれぞれ特定の目的があり、それ自体では非常にシンプルですが、一緒になると非常に強力になります。ノードの種類はその色によって示されます。**青**のノードは、ボタンなどの視覚的要素や、グループなどすぐには見えないが関連する要素です。**緑**のノードは一般にデータの読み書きや操作に関連しています。**灰色**のノードはユーティリティであり、**ピンク**のノードはカスタムコードに関連しています。
 
 ![](/docs/getting-started/basic-concepts/nodes.png)
 
-### Inputs and outputs
+### 入力と出力
 
-All nodes have inputs and outputs. Connecting two nodes is as easy as clicking one node, dragging the connection to another node and selecting what output should be connected to what input. You can visually see the data flow in the Node Graph, and clicking a connection allows you to see what data is being passed.
+すべてのノードには入力と出力があります。2つのノードを接続するのは、一方のノードをクリックし、もう一方のノードに接続をドラッグして、どの出力をどの入力に接続するかを選択するほど簡単です。ノードグラフでデータの流れを視覚的に確認でき、接続をクリックするとどのようなデータが渡されているかを確認できます。
 
 ![](/docs/getting-started/basic-concepts/connecting-nodes.gif)
 
-Most properties in Noodl can be connected, that's what makes it so powerful and easy to be creative with.
+Noodlのほとんどのプロパティは接続可能であり、それが非常に強力で創造的に活用できる理由です。
 
-### Connection types
+### 接続タイプ
 
-Noodl has two different connection types, <span className="ndl-data">Data</span> and <span className="ndl-signal">Signals</span>.
+Noodlには、<span className="ndl-data">データ</span>と<span className="ndl-signal">シグナル</span>の2種類の接続タイプがあります。
 
-- <span className="ndl-data">Data</span>: This connects an output value from one node, such as the content of a Text Input or a Variable, to an input of another node. This is typically used to present data in your user interface. When data is passed over a connection you will see it light up in the Node Graph.
+- <span className="ndl-data">データ</span>：これは、テキスト入力の内容や変数など、あるノードの出力値を別のノードの入力に接続します。これは、ユーザーインターフェイスにデータを表示するために一般的に使用されます。データが接続を通じて渡されると、ノードグラフでそれが光るのが見えます。
 
-- <span className="ndl-signal">Signal</span>: Whenever we want our app to perform some kind of action we use a Signal connection. A node can have several signal outputs that each will trigger on a specific event, e.g. Click on a button, to a signal input on another node. The receiving node will typically be some kind of action that is peformed when the signal is received. When a signal is triggered you will see it light up in the Node Graph.
+- <span className="ndl-signal">シグナル</span>：アプリに何らかのアクションを実行させたいときは、シグナル接続を使用します。ノードには、ボタンのクリックなど、特定のイベントでトリガーされるいくつかのシグナル出力があり、別のノードのシグナル入力に接続されます。受信ノードは通常、シグナルを受け取ったときに実行される何らかのアクションです。シグナルがトリガーされると、ノードグラフでそれが光るのが見えます。
 
-### Type conversion
+### タイプ変換
 
-You can not connect <span className="ndl-data">Data</span> and <span className="ndl-signal">Signals</span> directly to one another, but there are nodes that can convert the connection types, for example if you want to trigger a signal whenever a value changes.
+<span className="ndl-data">データ</span>と<span className="ndl-signal">シグナル</span>を直接接続することはできませんが、接続タイプを変換できるノードがあります。たとえば、値が変更されるたびにシグナルをトリガーしたい場合などです。
 
-## Components
+## コンポーネント
 
-You can group your clusters of nodes and connections into components. These components can then be combined in new node graphs and be part of even larger components. For a larger app, you typically create many different components to keep your application organised. These components can have their own inputs and outputs, just like the built in nodes. This is a great way of reusing UI or logic across your application.
+ノードと接続のクラスターをコンポーネントにグループ化できます。これらのコンポーネントは、新しいノードグラフで組み合わせられ、さらに大きなコンポーネントの一部になることができます。大規模なアプリでは、アプリケーションを整理するために多くの異なるコンポーネントを作成します。これらのコンポーネントは、組み込みのノードと同様に、独自の入力と出力を持つことができます。これは、アプリケーション全体でUIやロジックを再利用する素晴らしい方法です。
 
-Components are also a great way to abstract and encapsulate complex functionality. You can decide what properties a component has and that are exposed the outer world, sort of like an API.
+コンポーネントはまた、複雑な機能を抽象化してカプセル化する素晴らしい方法です。コンポーネントが持つプロパティと、外部の世界に公開されるプロパティを決定できます。APIのようなも
 
-### Component types
+のです。
 
-There are four types of components: Page, Visual, Logic and Cloud Function.
+### コンポーネントタイプ
 
-- `Page`: Page components are your app’s screens and can be navigated to using Page Router nodes.
+コンポーネントには4つのタイプがあります：ページ、ビジュアル、ロジック、クラウドファンクション。
 
-- `Visual`: Visual components are made to group and render your UI elements on the screen. They can contain logic, but the main output is always something visible.
+- `Page`：ページコンポーネントはアプリの画面であり、ページルーターノードを使用してナビゲートできます。
 
-- `Logic`: Logic components are the brains of your app. They are used to group nodes that don’t render anything on the screen. It can be as simple as a couple of nodes that do data transformation to something more complex, like routing signals to different outputs based on passed values.
+- `Visual`：ビジュアルコンポーネントは、画面上にUI要素をグループ化してレンダリングするために作られています。ロジックを含むことができますが、主な出力は常に何か見えるものです。
 
-- `Cloud Function`: A cloud function component is a logic component that run in the cloud, and work with data. It can do tasks that cannot be done on the frontend and may contain other logic components.
+- `Logic`：ロジックコンポーネントは、アプリの脳です。これらは、画面上に何もレンダリングしないノードをグループ化するために使用されます。データ変換を行う数個のノードから、渡された値に基づいて異なる出力にシグナルをルーティングするようなものまで、シンプルなものから複雑なものまであります。
 
-### Update everywhere
+- `Cloud Function`：クラウドファンクションコンポーネントは、クラウドで実行されるロジックコンポーネントであり、データを扱います。フロントエンドで実行できないタスクを行ったり、他のロジックコンポーネントを含むことができます。
 
-One very practical thing with Components is that they are global, meaning that whenever you update a component's internals, these changes will be updated everywhere this component is used in the app.
+### どこでも更新
+
+コンポーネントに非常に実用的なことの一つは、それらがグローバルであるということです。つまり、コンポーネントの内部を更新すると、アプリ内でこのコンポーネントが使用されているすべての場所でこれらの変更が更新されます。
 
 <div className="ndl-video">
     <video width="100%" autoPlay muted loop src={useBaseUrl("/docs/getting-started/basic-concepts/always-live.mp4")}/>

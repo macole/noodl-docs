@@ -1,26 +1,26 @@
 ---
 hide_title: true
-title: Custom Survey App Build Along
+title: カスタムアンケートアプリのビルドアロング
 ---
 
-# Custom Survey App Build Along
+# カスタムアンケートアプリのビルドアロング
 
-In this three parts video series, Johan walks your through the creation of a simple Survey App. This build along mainly covers **Navigation**, **styling of components** and how to create more advanced **custom components**.
+この3部構成のビデオシリーズでは、Johanがシンプルなアンケートアプリの作成をガイドします。このビルドアロングでは、主に**ナビゲーション**、**コンポーネントのスタイリング**、さらに高度な**カスタムコンポーネント**の作成方法について説明しています。
 
-You can import the full project [here](/library/examples/survey-app).
+完全なプロジェクトは[こちら](/library/examples/survey-app)からインポートできます。
 
 :::note
-These videos are from a deprecated commercial version of Noodl and include some features not present in the open source version, notably workspaces and built-in Git hosting
+これらのビデオは、廃止された商用バージョンのNoodlからのもので、オープンソースバージョンには含まれていないいくつかの機能、特にワークスペースと組み込みのGitホスティングが含まれています。
 :::
 
-## Part 1 - Navigation & Components
+## パート1 - ナビゲーション＆コンポーネント
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ntKTCC7eEk0" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
 
-## Part 2 - Styling Interaction States
+## パート2 - スタイリングインタラクションステート
 
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/720U1pZqWJg" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
 
-## Part 3 - Advanced Custom Components
+## パート3 - 高度なカスタムコンポーネント
 
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/ZiEddnfPrx8" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>

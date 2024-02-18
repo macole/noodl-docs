@@ -5,7 +5,7 @@ hide_title: true
 
 # Noodl AI
 
-Noodl AI presents a unique way of leveraging the power of Large Language Models (LLM) for app development. It allows you to generate custom building blocks from simple text prompts, simplifying the development process. By playing on, and amplifying, the strengths of current LLM models, Noodl AI goes beyond experiment and novelty, becoming truly valuable in real-world applications.
+Noodl AIは、アプリ開発のための大規模言語モデル（LLM）の力を活用するユニークな方法を提示します。シンプルなテキストプロンプトからカスタムビルディングブロックを生成することで、開発プロセスを簡素化します。現在のLLMモデルの強みを活用し、増幅させることで、Noodl AIは実験や新奇性を超え、実世界のアプリケーションで真に価値のあるものになります。
 
 <div className="ndl-image-with-background l">
 
@@ -13,23 +13,23 @@ Noodl AI presents a unique way of leveraging the power of Large Language Models 
 
 </div>
 
-Easily create JavaScript logic, handle API calls, interact with databases, and generate UI elements. Our goal is to make the development process more inclusive and accessible for a bigger range of skill sets. Whether you're an experienced developer or a beginner, Noodl AI is here to support you throughout your app development journey.
+JavaScriptのロジックを簡単に作成し、API呼び出しを処理し、データベースとやり取りし、UI要素を生成します。私たちの目標は、より多くのスキルセットの範囲に対して開発プロセスをより包括的でアクセスしやすいものにすることです。あなたが経験豊富な開発者であろうと初心者であろうと、Noodl AIはあなたのアプリ開発の旅を通じてサポートします。
 
-## Noodl AI access
+## Noodl AIへのアクセス
 
-Noodl AI is built on top of OpenAIs GPT models, and requires you to input an OpenAI API key. It currently supports two modes:
+Noodl AIはOpenAIs GPTモデルの上に構築されており、OpenAIのAPIキーを入力する必要があります。現在、2つのモードをサポートしています：
 
-- **GPT-3.5**: As this model is not as advanced as GPT-4, this mode only supports very limited AI features.
+- **GPT-3.5**：このモデルはGPT-4ほど進んでいないため、このモードは非常に限定的なAI機能のみをサポートしています。
 
-- **GPT-4**: This AI mode includes all generative features, and provides significantly better results.
+- **GPT-4**：このAIモードにはすべての生成機能が含まれており、大幅に優れた結果を提供します。
 
 :::note
-Please note that the performance of the same AI command varies between the two modes due to the different capabilities of the GPT versions. For the best results, we recommend using the GPT-4 mode, as it gives you a better output.
+同じAIコマンドの性能は、GPTバージョンの異なる能力により、2つのモード間で異なることに注意してください。最高の結果を得るためには、より良い出力を提供するGPT-4モードの使用をお勧めします。
 :::
 
-## Setup Instructions
+## 設定手順
 
-When opening a project you should see the AI bar in the top left corner of the node canvas. In the Editor Settings (in the Sidepanel) you can find options for changing the AI model, or disabling all AI features.
+プロジェクトを開くと、ノードキャンバスの左上隅にAIバーが表示されます。エディター設定（サイドパネル内）で、AIモデルを変更するオプションや、すべてのAI機能を無効にするオプションを見つけることができます。
 
 <div className="ndl-image-with-background l">
 
@@ -37,11 +37,11 @@ When opening a project you should see the AI bar in the top left corner of the n
 
 </div>
 
-## AI commands
+## AIコマンド
 
-When using Noodl AI, start by choosing the type of command you want to work with. This helps the AI generate the best possible result. Behind the scenes, the command sets up the AI with the relevant context and project information, allowing it to perform its task effectively.
+Noodl AIを使用するときは、作業したいコマンドのタイプを選択します。これにより、AIは可能な限り最適な結果を生成するのに役立ちます。裏側では、コマンドは関連するコンテキストとプロジェクト情報でAIを設定し、効果的にタスクを実行することができます。
 
-Noodl AI has the following commands:
+Noodl AIには以下のコマンドがあります：
 
 - `/Function`
 - `/Read from database`
@@ -57,11 +57,11 @@ Noodl AI has the following commands:
 
 </div>
 
-The `/Function` command is specialized in generating custom JavaScript functions. This is the most flexible and general purpose command. Noodl AI makes sure the generated code follow Noodl best practices, such as creating Inputs/Outputs on the node, checking the data sent to it, and sending Success and Failure signals. It also names the function, which is not necessary, but a nice touch for automatic self-documentation.
+`/Function`コマンドは、カスタムJavaScript関数を生成することに特化しています。これは最も柔軟で汎用性の高いコマンドです。Noodl AIは、ノードに入力/出力を作成し、それに送られたデータをチェックし、成功と失敗のシグナルを送信するなど、Noodlのベストプラクティスに従ったコードを生成することを保証します。また、関数に名前を付けることは必須ではありませんが、自動的な自己文書化のための素敵なタッチです。
 
-After the initial prompt, an AI Function node will be created in the currently active node graph. In its Property Panel you can find two tabs: **AI Chat** and **Properties**.
+初期プロンプトの後、現在アクティブなノードグラフにAI Functionノードが作成されます。そのプロパティパネルでは、**AI Chat**と**Properties**の2つのタブを見つけることができます。
 
-In the **AI Chat** tab you get an explanation of the generated code. You can also continue prompting the AI to refine your results. The chat history is saved so you can come back to it at any time to pick up where you left off or simply to remember what the function does in more detail.
+**AI Chat**タブでは、生成されたコードの説明を得られます。また、AIに対してプロンプトを続けて結果を洗練させることもできます。チャット履歴は保存されるので、いつでも戻って詳細に機能を思い出すことができます。
 
 <div className="ndl-image-with-background">
 
@@ -69,7 +69,7 @@ In the **AI Chat** tab you get an explanation of the generated code. You can als
 
 </div>
 
-The **Properties** tab is the same as the Property Panel for a regular Function node. Here you can inspect the generated code, and modify it by hand if you want to. The AI will take your modifications into account in future follow-up prompting.
+**Properties**タブは、通常のFunctionノードのプロパティパネルと同じです。ここで生成されたコードを検査し、手動で変更することができます。AIは、将来のフォローアッププロンプトであなたの変更を考慮に入れます。
 
 <div className="ndl-image-with-background l">
 
@@ -77,14 +77,16 @@ The **Properties** tab is the same as the Property Panel for a regular Function 
 
 </div>
 
-Here are some examples of prompting the `/Function` command:
+`/Function`コマンドをプロンプトする例はこちらです：
 
-- https://youtu.be/-9bd5AVo9o8
+- https
+
+://youtu.be/-9bd5AVo9o8
 - https://youtu.be/8eOEhphQz6k
 
 :::note
-Due to GPTs limited token memory the AI can start hallucinating if the code becomes too long. This can lower the generated code quality. Consider splitting your big function into smaller functions that handle one task each. <br/><br/>
-This also has the benefit of making it easier to prompt, minimizing the risk of the AI misunderstanding your instructions.
+GPTのトークンメモリが限られているため、コードが長くなりすぎるとAIが幻覚を起こすことがあります。これは生成されたコードの品質を低下させる可能性があります。大きな関数を、それぞれ一つのタスクを処理する小さな関数に分割することを検討してください。<br/><br/>
+これにより、プロンプトが容易になり、AIが指示を誤解するリスクを最小限に抑えることができます。
 :::
 
 ### `/Read from database`
@@ -95,11 +97,11 @@ This also has the benefit of making it easier to prompt, minimizing the risk of 
 
 </div>
 
-The `/Read from database` command is used to make queries to the connected Noodl database. It’s primed with your database schema, and can therefore create complex queries from simple text prompts. It can also go beyond a regular database query, allowing you to do calculations and process the returned data if needed.
+`/Read from database`コマンドは、接続されたNoodlデータベースへのクエリを作成するために使用されます。これはデータベーススキーマでプライムされているため、シンプルなテキストプロンプトから複雑なクエリを作成できます。また、通常のデータベースクエリを超えて、必要に応じて返されたデータの計算や処理を行うこともできます。
 
-After the initial prompt, an AI Query node will be created in the currently active node graph. Technically, it’s built on top of the AI Function node created with the `/Function` command, but with different internal rules. From a user perspective it works in the same way though, having identical features in the [**AI Chat** and **Properties** tabs](#function).
+初期プロンプトの後、現在アクティブなノードグラフにAI Queryノードが作成されます。技術的には、`/Function`コマンドで作成されたAI Functionノードの上に構築されていますが、内部ルールは異なります。ただし、ユーザーの視点からは同じ方法で動作し、[**AI Chat**および**Properties**タブ](#function)で同じ機能を持っています。
 
-Here are some examples of prompting the `/Read from database` command:
+`/Read from database`コマンドをプロンプトする例はこちらです：
 
 - https://youtu.be/CxdyIqMq8gE
 - https://youtu.be/nr4BI_pvoFA
@@ -112,11 +114,11 @@ Here are some examples of prompting the `/Read from database` command:
 
 </div>
 
-The `/Write do database` command is used to create or update data in the connected Noodl database. It is primed with your database schema, and can therefore do complex updates to the database from simple text prompts. It can also go beyond a regular database modification, allowing you to process the data before it is saved if needed.
+`/Write to database`コマンドは、接続されたNoodlデータベースにデータを作成または更新するために使用されます。これはデータベーススキーマでプライムされているため、シンプルなテキストプロンプトからデータベースへの複雑な更新を行うことができます。また、通常のデータベース変更を超えて、必要に応じて保存される前にデータを処理することもできます。
 
-After the initial prompt, an AI Query node will be created in the currently active node graph. Technically, it’s built on top of the AI Function node created with the `/Function` command, but with different internal rules. From a user perspective it works in the same way though, having identical features in the [**AI Chat** and **Properties** tabs](#function).
+初期プロンプトの後、現在アクティブなノードグラフにAI Queryノードが作成されます。技術的には、`/Function`コマンドで作成されたAI Functionノードの上に構築されていますが、内部ルールは異なります。ただし、ユーザーの視点からは同じ方法で動作し、[**AI Chat**および**Properties**タブ](#function)で同じ機能を持っています。
 
-Here are some examples of prompting the `/Write to database` command:
+`/Write to database`コマンドをプロンプトする例はこちらです：
 
 - https://youtu.be/nr4BI_pvoFA
 
@@ -129,24 +131,16 @@ Here are some examples of prompting the `/Write to database` command:
 </div>
 
 :::note
-This is an experimental command and is still both limited and unpolished.
+これは実験的なコマンドであり、まだ限定的で未熟です。
 :::
 
-The `/UI` command is used to generate visual nodes from a text prompt. Currently it supports the Group, Columns, Button, Text Input, Checkbox, Image and Dropdown nodes, with some limited styling. It can also generate components from your design system, if they are AI annotated.
+`/UI`コマンドは、テキストプロンプトから視覚的なノードを生成するために使用されます。現在、Group、Columns、Button、Text Input、Checkbox、Image、Dropdownノードをサポートしており、限定的なスタイリングが可能です。また、デザインシステムからのコンポーネントをAIアノテーションがある場合に生成することもできます。
 
-After the initial prompt you will see nodes start to generate at the bottom of the visual tree. They are placed in a Group node with the dimension mode set to `Explicit width & content height`.
+初期プロンプトの後、視覚ツリーの下部でノードの生成が始まります。これらは`Explicit width & content height`に設定されたGroupノード内に配置されます。
 
-#### Annotating your components for AI use
+#### AI使用のためのコンポーネントのアノテーション
 
-You can help the `/UI` command generate more useful results by adding AI metadata to your visual components. As the `/UI` command is still in an experimental phase this is done manually with Noodls comment feature. Both the UX and the command performance will change in the future, but we still want to share our current progress to get feedback from the community.
-
-AI metadata can be added to any visual component by following these steps, if you already have a design system in place, you can skip steps 1 and 2:
-
-1. Create a visual component and open its node graph. Build and design it the way you see fit for your use case. You could use the `/UI` command for a quick boilerplate to start from.
-2. Add a Component Inputs node with connections to the properties that should be changeable from outside of the component.
-3. Open the Node Picker and create a new comment. Start with the text `AI:`.
-4. Add a description of how the component should be used
-5. Add a list of attributes to the comment. These represent all the Component Inputs that the AI should know about, and be able to change. Each attribute should exactly match the name of the Component Inputs property, followed by any possible options and values it can have. The AI will only touch properties listed here, and ignore the rest.
+`/UI`コマンドがより有用な結果を生成するのを助けるために、視覚的なコンポーネントにAIメタデータを追加できます。`/UI`コマンドはまだ実験段階にあり、この機能はNoodlのコメント機能を使用して手動で行われます。UXとコマンドのパフォーマンスは将来変更されますが、コミュニティからのフィードバックを得るために現在の進捗状況を共有したいと考えています。
 
 <div className="ndl-image-with-background xl">
 
@@ -154,9 +148,11 @@ AI metadata can be added to any visual component by following these steps, if yo
 
 </div>
 
-The `/UI` command will now consider your component when generating prompted layouts. This works by injecting your annotation into the command primer, so (as with most things GPT) you might find that you need to tweak the description for optimal results.
+`/UI`コマンドは、プロンプトされたレイアウトを生成する際に、あなたのコンポーネントを考慮するようになります。これは、コマンドプライマーにアノテーションを注入することによって機能します（GPTの多くのことと同様に）、最適な結果を得るために説明を調整する必要があるかもし
 
-This method allows you fine grained control over your design system, while still leveraging the capabilities of LLMs for the bigger picture, giving you useful (and reusable) results in a real world setting.
+れません。
+
+この方法は、デザインシステムを細かく制御することを可能にしながら、大規模言語モデルの能力を活用して、実際の環境で有用（かつ再利用可能）な結果を提供します。
 
 ### `/Image`
 
@@ -167,10 +163,10 @@ This method allows you fine grained control over your design system, while still
 </div>
 
 :::note
-This is an experimental command and is still both limited and unpolished.
+これは実験的なコマンドであり、まだ限定的で未熟です。
 :::
 
-The `/Image` command creates a single Image node and populates it with a Dall-E generated image. The images are saved in the project folder.
+`/Image`コマンドは、単一のImageノードを作成し、それにDall-Eで生成された画像を配置します。画像はプロジェクトフォルダに保存されます。
 
-> All your prompts will be sent to OpenAI. This includes any AI annotations in your components, as well as your data models (but not any of the data in your database). However, this will not be used to train OpenAIs models.<br/><br/>
-> You can read more about OpenAIs data usage policy [here](https://openai.com/policies/api-data-usage-policies).
+> すべてのプロンプトはOpenAIに送信されます。これには、コンポーネントのAIアノテーションやデータモデルも含まれますが、データベースのデータは含まれません。ただし、これはOpenAIsモデルのトレーニングには使用されません。<br/><br/>
+> OpenAIsのデータ使用ポリシーについては[こちら](https://openai.com/policies/api-data-usage-policies)をご覧ください。

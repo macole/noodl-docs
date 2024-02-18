@@ -1,14 +1,14 @@
 ---
 hide_title: true
-title: Horizontal List with Snapping
+title: 横向きリストとスナッピング
 ---
 
-# Horizontal List with Snapping
+# 横向きリストとスナッピング
 
-This short build along shows how to create a Horizontal list with Cards. It will show you how to work with advanced **Scrolling** in lists.
+この短いビルドアロングでは、カードを使った横向きリストの作成方法を紹介します。リストでの高度な**スクロール**の扱い方を学べます。
 
 :::note
-This video is from a deprecated commercial version of Noodl and includes some features not present in the open source version, notably workspaces and built-in Git hosting
+このビデオは廃止された商用バージョンのNoodlからのもので、オープンソースバージョンには存在しないいくつかの機能、特にワークスペースや組み込みのGitホスティングが含まれています
 :::
 
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/x0nWHv2uCHI" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>

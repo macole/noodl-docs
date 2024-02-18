@@ -1,48 +1,25 @@
----
-id: javascript
-title: Javascript in Noodl
-hide_title: true
----
+# NoodlでのJavascript
 
-import CopyToClipboardButton from "../../../src/components/copytoclipboardbutton";
+## このガイドで学べること
 
-# Javascript in Noodl
+このガイドでは、NoodlでのJavascriptの使用方法について紹介します。
+ほとんどの機能はNoodlのノードを使用して達成できますが、Javascriptを使いこなせる場合、直接Javascriptコードを追加する方が便利な場合があります。
+Noodlは、[Function](/nodes/javascript/function)ノードと[Script](/nodes/javascript/script)ノードを使用してノードとコードを簡単に組み合わせることができます。
 
-<div className="ndl-image-with-background l">
+### 概要
 
-![](/docs/guides/business-logic/javascript/script-inline-code.png ":class=img-size-l")
+まず、シンプルな単一関数のJavascriptコードに優れた**Function**ノードについて説明し、その後、**Script**ノードを使用したより広範なJavascriptの例を示します。
+これら二つのノードは、[Javascriptを使用したビジネスロジックガイド](/docs/guides/business-logic/client-side-biz-logic-js)で組み合わせて使用されています。
 
-</div>
+## **Function**ノードの使用
 
-## What you will learn in this guide
+NoodlでJavascriptを書く最も簡単な方法は、**Function**ノードを使用することです。
+コードエディタを開いてコードを書くだけです！早速試してみましょう。
 
-This guide will introduce you to how to use Javascript in Noodl.
-While almost everything can be achieved in Noodl using Nodes,
-if you know your way around Javascript it's sometimes just more convenient to add in Javascript code directly.
-Noodl make the mix of nodes and code very easy using the [Function](/nodes/javascript/function) and [Script](/nodes/javascript/script) nodes.
+"Hello World"テンプレートを使用して新しいプロジェクトを作成します。テキストノードの前に二つの[Text Input](/nodes/ui-controls/text-input)ノードを追加します。
+それらに"First String"と"Second String"のラベルを付けます。次に、**Function**ノードを追加します。この関数ノードに"Merge Strings"と名付けます。
 
-### Overview
-
-The guide will first go through the **Function** node,
-which is excellent for simple, single function, Javascript code.
-Then it will show a more extensive Javascript example using the **Script** node.
-The two nodes can also be seen used combined in the [Business Logic using Javascript Guide](/docs/guides/business-logic/client-side-biz-logic-js)
-
-## Using the **Function** node
-
-The easiest way to write Javascript in Noodl is using the **Function** node.
-There is literally no overhead at all - you just open the code editor and write code! Let's try it!
-
-Create a new project using the "Hello World" template. Add in two [Text Input](/nodes/ui-controls/text-input) nodes before the text node.
-Give them the labels "First String" and "Second String". Then add in a **Function** node. Call the function node "Merge Strings".
-
-<div className="ndl-image-with-background l">
-
-![](/docs/guides/business-logic/javascript/function-node-1.png)
-
-</div>
-
-Now click the **Function** node and edit the script. Paste in the Javascript below:
+以下のJavascriptを編集して、以下のコードを貼り付けます：
 
 ```javascript
 if (Inputs.String1 !== undefined && Inputs.String2 !== undefined) {
@@ -60,52 +37,29 @@ if (Inputs.String1 !== undefined && Inputs.String2 !== undefined) {
 }
 ```
 
-## Inputs and Outputs in the Function node
+## **Function**ノードの入力と出力
 
-This little function merges two strings called `String1` and `String2`.
-They are declared as `Inputs.String1` and `Inputs.String2` and will become inputs on the **Function** node.
-You can also declare inputs manually on the function node - if you click it you will see that you can add inputs and outputs.
-By adding them manually you can be a bit more precise on which type an input is,
-but generally is not needed. One reason to explicitly state type of input is for example when you connect a **Function** node to a **Component Inputs**.
-By knowing the type Noodl can present the right control in the property of the Component.
+この小さな関数は、`String1`と`String2`と呼ばれる二つの文字列をマージします。
+それらは`Inputs.String1`と`Inputs.String2`として宣言され、**Function**ノードの入力になります。
+出力には、`Outputs.MergedString`が定義されています。
 
-There is also an output defined in the code, `Outputs.MergedString`.
+## **Function**ノードの実行時期
 
-We can now connect the **Function** node.
-Connect the **Text** property from the **Text Inputs** to `String1` and `String2` and connect the output `MergedString` to the **Text**.
-Now if you start writing in the **Text Fields** you will see the two strings merged on the screen.
+**Function**ノードを実行する方法は2つあります。
 
-<div className="ndl-image-with-background l">
+1. **Run**シグナルが接続されていない場合、その入力が変更されたときに**Function**が実行されます。これが現在の例でのケースです。
+2. **Run**シグナルが接続されている場合、**Function**はトリガーされたときにのみ実行されます。
 
-![](/docs/guides/business-logic/javascript/function-node-2.png)
+ユーザーがボタンをクリックしたら文字列をマージするように変更しましょう。
+したがって、**Text Inputs**の後に[Button](/nodes/ui-controls/button)を追加します。それに**Merge**というラベルを付けます。
+そして、**Click**を関数の**Run**に接続します。
 
-</div>
+## 出力にシグナルを送信する
 
-## Running the **Function** node on change or on a signal
+**Function**ノードはシグナルも送信できます。これは、多くのシナリオで非常に便利です。たとえば、**Function**が実行された後に何かをトリガーしたい場合などです。
+例えば、マージした文字列を保存したい場合、[Set Variable](/nodes/data/variable/set-variable)ノードをトリガーすることができます。
 
-There are two ways to make the **Function** run.
-
-1. If **Run** signal is not connected, the **Function** will run as soon as any of its inputs are changed. This is the case with our current example.
-2. If **Run** signal is connected, the **Function** will only run when triggered.
-
-Let's try to change to number two. We only want to merge the string once the user clicks a button.
-So add a [Button](/nodes/ui-controls/button) after the **Text Inputs**. Give it the label **Merge**.
-Then connect **Click** to **Run** on the function.
-
-<div className="ndl-image-with-background l">
-
-![](/docs/guides/business-logic/javascript/function-node-3.png)
-
-</div>
-
-## Sending Signals on Outputs
-
-A **Function** node can also send signals. This is very useful for many scenarions,
-for example to trigger something that should happen once the **Function** is executed.
-For example, if we would want to store our merged string, we would want to trigger a [Set Variable](/nodes/data/variable/set-variable) node.
-Let's add in the signal, once the merging is done:
-
-Now click the **Function** node and edit the script. Paste in the Javascript below:
+コードにシグナルを追加してみましょう。マージが完了したら：
 
 ```javascript
 if (Inputs.String1 !== undefined && Inputs.String2 !== undefined) {
@@ -124,96 +78,46 @@ if (Inputs.String1 !== undefined && Inputs.String2 !== undefined) {
 }
 ```
 
-Note the additional line `Outputs.Done()`. That's all you need to send a signal.
-So add in a **Set Variable** node and save the value in an **Variable** called `Merged String`.
-You might think that connecting directly from the **Button** to the **Do** action on the **Set Variable** might have worked, but it actually doesn't.
-You cannot know if the **Function** node have executed so the **Do** signal may trigger at the wrong time.
-Instead explicitly triggering `Done` once you've set the output to the correct value takes care of this.
+## **Script**ノードを使用したJavaScript
 
-Another common way of using outgoing signals could be to trigger two different paths going forward.
-Perhaps the **Function** validates a data value and triggers a `Valid` signal if the value is ok,
-that saves then triggers a database save, while a `Invalid` signal would open an error popup.
+このガイドのこの部分では、[Script](/nodes/javascript/script)ノードの機能について説明します。
+**Script**ノードは、ノードと接続よりもコードで表現する方が簡単なロジックや計算を実装するのに最適な方法です。
+また、`Date`や`Math`など、ブラウザーで利用可能なJavaScript APIにアクセスするのにも最適です。
 
-Now let's look at the more powerful **Script** node.
+**Script**ノードは、[Function](/nodes/javascript/function)ノードよりも少し強力です。**Script**ノードには、複数のメソッドと関数があり、ノードが作成および破棄されたときに呼び出されるコールバックが明確に定義されています。
+入力を処理するための
 
-## JavaScript using the **Script** node
+よりシンプルなJavaScriptの場合、通常、**Function**ノードの方がシンプルな選択肢です。
 
-This part of the guide will cover the functionality of the [Script](/nodes/javascript/script) node.
-The **Script** node is a great way to implement logic and calculations that are easier to express in code than in nodes and connections.
-It's also a great way to get access to useful JavaScript APIs in the browser, for example `Date` for date functionality or `Math` for advanced math-functionality.
+**Script**ノードは、他のノードと同様に、入力と出力を他のノードに接続できます。
+すべての入力と出力は、開発者がJavaScriptコードで使用できます。
+**Script**ノードでは、ブラウザ環境で通常使用可能なJavaScript関数を呼び出すことができます。
 
-The **Script** node is a bit more powerful than the [Function](/nodes/javascript/function) node that also can be used to write JavaScript.
-The **Script** node can have multiple methods and functions, as well as a well defined lifespan with callbacks when the node is created and destroyed.
-For simpler JavaScript for processing inputs, usually the **Function** node is a simpler choice as you have seen above.
+## スクリプトソースファイル
 
-A **Script** node works as any other node in Noodl, in the sense that it has inputs and outputs that can be connected to other nodes.
-All inputs and outputs are available to the developer in their JavaScript code.
-In a **Script** node you can call any JavaScript function normally available in a browser environment.
+JavaScriptコードをNoodlの組み込みエディタで直接編集することも、外部ファイルを使用して外部エディタで編集することもできます。
+インラインエディタでコードスニペットを書くのは簡単ですが、大きなファイルや複数のファイル、モジュールを扱う場合は、外部ファイルオプションがより良い選択肢になるかもしれません。
 
-## The Script source file
+外部ファイルは、Noodlがそれを見つけるためにプロジェクトフォルダ内に配置する必要があります。ファイルをプロジェクトフォルダにコピーするには、ファイルをNoodlウィンドウにドラッグします。
 
-You can either edit the JavaScript code directly in the built-in editor in Noodl or you can use an external file with an external editor.
-While it's easy to write code snippets in the inline editor, the external file option might be better if you are working on larger files or even multiple files and modules.
+## 入力と出力
 
-<div className="ndl-image-with-background l">
-
-![](/docs/guides/business-logic/javascript/script-inline-code.png ":class=img-size-l")
-
-</div>
-
-An external file needs to be located in your project folder for Noodl to find it. You can copy a file to your project folder by dragging the file onto the Noodl window.
-
-<div className="ndl-image-with-background l">
-
-![](/docs/guides/business-logic/javascript/script-pick-file.png ":class=img-size-l")
-
-</div>
-
-The source code provided for the **Script** is executed as soon as the node is created. In order to specify inputs, outputs and receive and send signals from the node the `Node` object must be used.
-
-## Inputs and outputs
-
-There are a number of ways to specify the inputs and outputs of the **Script** node. One way is to use the property panel and explicitly add them there. You can also provide the type.
-
-<div className="ndl-image-with-background">
-
-![](/docs/guides/business-logic/javascript/function-3.png)
-
-</div>
-
-Another way is to specify them programmatically in the source code. The inputs are defined in the `Script.Inputs` object. Each input also specifies what type it is. The available types are:
+入力と出力を指定する方法はいくつかあります。一つの方法は、プロパティパネルを使用して明示的に追加することです。また、ソースコードでプログラム的に指定することもできます。入力は`Script.Inputs`オブジェクトで定義されます。各入力は、そのタイプも指定します。利用可能なタイプは以下の通りです：
 
 - `number`
 - `string`
 - `boolean`
 - `color`
 - `object`
-- `array`. This is for Noodl Arrays, not JavaScript arrays.
-- `reference`. A reference to a Noodl node, accessible through the _This_ output of visual nodes.
+- `array`。これはNoodlの配列で、JavaScriptの配列ではありません。
+- `reference`。視覚ノードの_This_出力を通じてアクセス可能なNoodlノードへの参照。
 - `cloudfile`
 
-Note that there is no signal type for inputs, as the signals are handled by using the `Script.Signals` object (more on that later).
+出力も入力と同じように機能しますが、`signal`というタイプを使用できるもう一つのタイプがあります。`signal`タイプは、特定の値を出力するのではなく、出力でパルスをトリガーするために使用されます。以下は、二つの入力と一つの出力を持つ**Script**ノードの例です。
 
-The outputs work in the same way as the inputs except that there's one more type you can use: `signal`. The signal type is used for triggering a pulse on an output rather than outputting a specific value. Below we have added outputs to a **Script** node.
+## 入力シグナル
 
-Since the inputs and outputs are members of an object, they should be separated by a comma. Below is an example of a **Script** node with two inputs and one output.
-
-```javascript
-Script.Inputs = {
-  RangeLow: "number",
-  RangeHigh: "number",
-};
-
-Script.Outputs = {
-  RandomNumber: "number",
-};
-```
-
-Lets use the two inputs `RangeLow` and `RangeHigh` to generate a random number on the `RandomNumber` output. To execute the code, we will introduce a signal, `Generate`.
-
-## Input signals
-
-Input signals are mapped to functions in the `Script.Signals` object in the JavaScript node. A signal function is called when the signal with the same name is triggered. Here's the implementation of the `Generate` signal. You can copy this code and add it to the **Script** source code.
+入力シグナルは、`Script.Signals`オブジェクト内の関数にマップされます。シグナル関数は、同じ名前のシグナルがトリガーされたときに呼び出されます。ここでは、`Generate`シグナルの実装を示します。このコードをコピーして**Script**ソースコードに追加できます。
 
 ```javascript
 Script.Signals.Generate = function () {
@@ -224,26 +128,19 @@ Script.Signals.Generate = function () {
 };
 ```
 
-Let's connect the the inputs, outputs and signals to some nodes.
+入力、出力、シグナルをいくつかのノードに接続しましょう。
 
-<div className="ndl-image-with-background l">
+## 入力の読み取りと出力の設定
 
-![](/docs/guides/business-logic/javascript/random1.gif)
+`Script.Inputs`オブジェクトを通じて直接入力を読み取ることができます。通常は、`Script.Inputs.AnInput`のようにします。
 
-<CopyToClipboardButton json={{"nodes":[{"id":"20e7a891-e750-3d60-058f-804e324722eb","type":"Javascript2","x":-588.8750006232499,"y":331.12222156165456,"parameters":{"code":"Script.Inputs = {\n    RangeLow: \"number\",\n    RangeHigh: \"number\",\n}\n\nScript.Outputs = {\n    RandomNumber: \"number\",\n}\n\nScript.Signals.Generate = function() {\n  let randomNumber = Math.random() * (Script.Inputs.RangeHigh - Script.Inputs.RangeLow) + Script.Inputs.RangeLow;\n  Script.Outputs.RandomNumber = randomNumber;\n}\n","RangeLow":0},"ports":[],"children":[]},{"id":"42ca61a1-d015-69dc-48ed-a13e76818194","type":"Group","x":-365.17777825429016,"y":268.1043044317845,"parameters":{"backgroundColor":"#FFFFFF","paddingTop":{"value":20,"unit":"px"},"paddingLeft":{"value":20,"unit":"px"},"paddingRight":{"value":20,"unit":"px"}},"ports":[],"children":[{"id":"a15e91b8-5f23-47ce-446c-fea6760a8058","type":"Group","x":-345.17777825429016,"y":314.1043044317845,"parameters":{"flexDirection":"row","sizeMode":"contentHeight","marginBottom":{"value":10,"unit":"px"}},"ports":[],"children":[{"id":"c2e35d8b-c32a-8d1b-754e-6d33a90e9a8f","type":"Text","label":"Click Text","x":-325.17777825429016,"y":360.1043044317845,"parameters":{"text":"Click here to generate number","fontSize":{"value":15,"unit":"px"},"alignY":"bottom","sizeMode":"contentSize"},"ports":[],"children":[]}]},{"id":"94d50d6a-1dc6-876f-39fb-2dfddf0749ef","type":"Group","label":"Arena","x":-345.17777825429016,"y":456.1043044317845,"parameters":{"borderStyle":"solid","borderWidth":{"value":2,"unit":"px"},"marginBottom":{"value":0,"unit":"px"},"flexDirection":"column","sizeMode":"explicit","height":{"value":35,"unit":"px"}},"ports":[],"children":[{"id":"7ccbd282-8a7a-1589-edac-acacf54cea24","type":"Circle","x":-325.17777825429016,"y":552.1043044317845,"parameters":{"size":30,"position":"absolute"},"ports":[],"children":[]}]}]},{"id":"60c3158a-64a2-7664-abb1-02dae2731e9d","type":"Expression","label":"arenawidth-circlewidth","x":-590.8015248634624,"y":443.9881840161512,"parameters":{"expression":"arenawidth-circlewidth"},"ports":[],"children":[]}],"connections":[{"fromId":"94d50d6a-1dc6-876f-39fb-2dfddf0749ef","fromProperty":"boundingWidth","toId":"60c3158a-64a2-7664-abb1-02dae2731e9d","toProperty":"arenawidth"},{"fromId":"7ccbd282-8a7a-1589-edac-acacf54cea24","fromProperty":"boundingWidth","toId":"60c3158a-64a2-7664-abb1-02dae2731e9d","toProperty":"circlewidth"},{"fromId":"60c3158a-64a2-7664-abb1-02dae2731e9d","fromProperty":"result","toId":"20e7a891-e750-3d60-058f-804e324722eb","toProperty":"RangeHigh"},{"fromId":"20e7a891-e750-3d60-058f-804e324722eb","fromProperty":"RandomNumber","toId":"7ccbd282-8a7a-1589-edac-acacf54cea24","toProperty":"transformX"},{"fromId":"c2e35d8b-c32a-8d1b-754e-6d33a90e9a8f","fromProperty":"onClick","toId":"20e7a891-e750-3d60-058f-804e324722eb","toProperty":"Generate"}],"comments":[]}}/>
-</div>
-
-## Reading inputs and setting outputs
-
-You can read the inputs directly through the members of the `Script.Inputs` object, typically `Script.Inputs.AnInput`.
-
-There are two ways to set the outputs. Set the value by setting the appropriate property of the `Script.Outputs` object:
+出力を設定する方法は2つあります。`Script.Outputs`オブジェクトの適切なプロパティを設定することで値を設定します：
 
 ```javascript
 Script.Outputs.RandomNumber = randomNumber;
 ```
 
-Set many outputs at the same time using the `Script.setOutputs` function:
+`Script.setOutputs`関数を使用して、一度に多くの出力を設定します：
 
 ```javascript
 Script.setOutputs({
@@ -252,22 +149,22 @@ Script.setOutputs({
 });
 ```
 
-This is useful when you have an object that contains multiple values you want to send at once.
+これは、一度に送信したい複数の値
 
-Finally if you want to send a signal on an output you need to use the output as a function, calling it when you want to send the signal.
+を含むオブジェクトがある場合に便利です。
+
+最後に、出力でシグナルを送信する場合は、関数として出力を使用し、シグナルを送信したいときに呼び出す必要があります。
 
 ```javascript
 Script.Outputs.MySignalOutput();
 ```
 
-Now let's add a bit more code to our JavaScript example. Instead of the `Generate` signal we will implement `Start` and `Stop` signals and have the **JavaScript** node generate new numbers continuously. We will start a timer in `Start` that will trigger after a random time, influenced by the `Lambda` input. The higher the `Lambda` the shorter the time and the higher the rate of generated numbers.
+さて、JavaScriptの例にもう少しコードを追加しましょう。`Generate`シグナルの代わりに`Start`と`Stop`シグナルを実装し、**JavaScript**ノードが継続的に新しい数値を生成するようにします。`Lambda`入力に影響されるランダムな時間後にトリガーされるタイマーを`Start`で開始します。`Lambda`が高いほど、時間が短くなり、生成される数値のレートが高くなります。
 
-?> See the <a href="https://en.wikipedia.org/wiki/Poisson_point_process" target="_blank">Poisson process</a> for the math behind generating a random number using a Poisson distribution.
+タイマーがトリガーされると、ノードに提供された範囲に基づいてランダムな数値が生成されます。最後に、新しい数値が生成されたことを通知するシグナルが送信され、新しいタイムアウトでタイマーが再スタートします。
+`Stop`シグナルがトリガーされると、タイマーは停止します。
 
-When the timer is triggered, a random number is generated based on the ranges provided to the node. Finally a signal to notify that a new number has been generated is sent and the timer is restarted with a new timeout.
-When the `Stop` signal is triggered the timer is stopped.
-
-Here's the code that generates the random numbers with a Poisson distributed time in between them.
+ここに、ポアソン分布の時間間隔でランダムな数値を生成するコードがあります：
 
 ```javascript
 Script.Inputs = {
@@ -289,30 +186,30 @@ function generateRandNum(rangeLow, rangeHigh) {
 
 function calculateIntervalMs(lambda) {
   let interval = -Math.log(1.0 - Math.random()) / lambda;
-  // translate from seconds to milliseconds
+  // 秒からミリ秒に変換
   return interval * 1000;
 }
 
 Script.Signals.Start = function () {
   console.log("Start");
   let timeOutFunction = () => {
-    // generate the random number
+    // ランダムな数値を生成
     let randNum = generateRandNum(
       Script.Inputs.RangeLow,
       Script.Inputs.RangeHigh
     );
-    // set it on the output "RandomNumber"
+    // 出力"RandomNumber"に設定
     Script.setOutputs({ RandomNumber: randNum });
-    // Trigger the signal "Trigger"
+    // シグナル"Trigger"をトリガー
     Script.Outputs.Trigger();
-    // restart the timer at a new interval
+    // 新しいインターバルでタイマーを再スタート
     timer = setTimeout(
       timeOutFunction,
       calculateIntervalMs(Script.Inputs.Lambda)
     );
   };
 
-  // start the first timer
+  // 最初のタイマーを開始
   let interval = calculateIntervalMs(Script.Inputs.Lambda);
 
   timer = setTimeout(timeOutFunction, interval);
@@ -324,9 +221,9 @@ Script.Signals.Stop = function () {
 };
 ```
 
-## Changed inputs
+## 入力が変更されたときにコードを実行する
 
-You can run code whenever an input is changed. In this particular case, when the `Lambda` input of the random number generator is changed, the timer interval should be updated to avoid waiting for the next timer to time out for the change to take effect. To handle a case like this, a function with the same name as the input, `Lambda`, is added in the `Script.Setters` object. An additional state variable, `started`, is added to make sure that changing the value when the timer is stopped won't cause it to start.
+特定のケースでは、ランダム数値生成器の`Lambda`入力が変更されたときに、タイマーの間隔を即座に更新して、次のタイマーがタイムアウトするのを待たずに変更を有効にする必要があります。このようなケースを処理するには、`Lambda`という名前の関数を`Script.Setters`オブジェクトに追加します。タイマーが停止しているときに値を変更しても開始されないように、追加の状態変数`started`を追加します。
 
 ```javascript
 var started = false;
@@ -338,9 +235,9 @@ Script.Setters.Lambda = function (value) {
 };
 ```
 
-## The final code
+## 最終的なコード
 
-After some small refactoring the final code looks as below:
+いくつかの小さなリファクタリングの後、最終的なコードは以下のようになります：
 
 ```javascript
 Script.Inputs = {
@@ -363,29 +260,29 @@ function generateRandNum(rangeLow, rangeHigh) {
 
 function calculateIntervalMs(lambda) {
   let interval = -Math.log(1.0 - Math.random()) / lambda;
-  // translate from seconds to milliseconds
+  // 秒からミリ秒に変換
   return interval * 1000;
 }
 
 function startTimer() {
   let timeOutFunction = () => {
-    // generate the random number
+    // ランダムな数値を生成
     let randNum = generateRandNum(
       Script.Inputs.RangeLow,
       Script.Inputs.RangeHigh
     );
-    // set it on the output "RandomNumber"
+    // 出力"RandomNumber"に設定
     Script.setOutputs({ RandomNumber: randNum });
-    // Trigger the signal "Trigger"
+    // シグナル"Trigger"をトリガー
     Script.Outputs.Trigger();
-    // restart the timer at a new interval
+    // 新しいインターバルでタイマーを再スタート
     timer = setTimeout(
       timeOutFunction,
       calculateIntervalMs(Script.Inputs.Lambda)
     );
   };
 
-  // start the first timer
+  // 最初のタイマーを開始
   let interval = calculateIntervalMs(Script.Inputs.Lambda);
 
   timer = setTimeout(timeOutFunction, interval);
@@ -410,546 +307,27 @@ Script.Setters.Lambda = function (value) {
 };
 ```
 
-## Using script nodes
+## **Script**ノードの使用
 
-Connecting to the the inputs and outputs, the **Script** nodes can be used as any other nodes in Noodl. As an example, the Random Generator **Script** node has been combined with a simple UI to control the inputs. The output of the random generator is used to move a circle on the screen and trigger state changes. We have also copy & pasted the **Script** node and use it two times. This works great, but remember that the JavaScript code is cloned if you are using an inline source so changing the code in one **Script** node does not affect the other. It's often a good idea to encapsulate a reusable **Script** node in a Noodl component.
+入力と出力に接続することで、**Script**ノードは他のノードと同様にNoodlで使用できます。例として、ランダムジェネレーター**Script**ノードを単純なUIと組み合わせて、入力を制御しています。ランダムジェネレーターの出力は、画面上の円を動かし、状
 
-<div className="ndl-image-with-background l">
+態変更をトリガーするために使用されています。また、**Script**ノードをコピー＆ペーストして2回使用しています。これはうまく機能しますが、インラインソースを使用している場合は、JavaScriptコードが複製されるため、一方の**Script**ノードのコードを変更しても他方には影響しないことに注意してください。再利用可能な**Script**ノードをNoodlコンポーネントでカプセル化するのはよくあるアイデアです。
 
-![](/docs/guides/business-logic/javascript/random3.gif)
+## デバッグ
 
-<CopyToClipboardButton
-  json={{
-    nodes: [
-      {
-        id: "e1b76139-42b1-f1aa-d935-8697c02446e5",
-        type: "Group",
-        x: 550.8894402215635,
-        y: 769.5545779864274,
-        parameters: {
-          backgroundColor: "#FFFFFF",
-          paddingTop: { value: 20, unit: "px" },
-          paddingLeft: { value: 20, unit: "px" },
-          paddingRight: { value: 20, unit: "px" },
-        },
-        ports: [],
-        children: [
-          {
-            id: "7d179c30-3108-a71d-76bf-0f760b7f9417",
-            type: "Group",
-            x: 570.8894402215635,
-            y: 815.5545779864274,
-            parameters: {
-              flexDirection: "row",
-              sizeMode: "contentHeight",
-              marginBottom: { value: 10, unit: "px" },
-            },
-            ports: [],
-            children: [
-              {
-                id: "801c4a96-5219-b818-4564-87a704f84837",
-                type: "Text",
-                label: "Rate controller text",
-                x: 590.8894402215635,
-                y: 861.5545779864274,
-                parameters: {
-                  text: "Random generator is",
-                  fontSize: { value: 15, unit: "px" },
-                  alignY: "bottom",
-                  sizeMode: "contentSize",
-                },
-                ports: [],
-                children: [],
-              },
-              {
-                id: "f54f6144-306d-9339-4e9c-a1fd70d0910d",
-                type: "Group",
-                label: "On/Off Spinner",
-                x: 590.8894402215635,
-                y: 921.5545779864274,
-                parameters: {
-                  sizeMode: "explicit",
-                  height: { value: 20, unit: "px" },
-                  clip: true,
-                  alignY: "bottom",
-                  marginLeft: { value: 10, unit: "px" },
-                  flexDirection: "none",
-                  width: { value: 30, unit: "px" },
-                },
-                ports: [],
-                children: [
-                  {
-                    id: "8d21ec9d-7d28-d1e1-6435-ed102c432236",
-                    type: "Text",
-                    label: "Off",
-                    x: 610.8894402215635,
-                    y: 1017.5545779864274,
-                    parameters: {
-                      text: "Off",
-                      color: "#006394",
-                      fontSize: { value: 15, unit: "px" },
-                      sizeMode: "contentSize",
-                      alignY: "bottom",
-                    },
-                    ports: [],
-                    children: [],
-                  },
-                  {
-                    id: "6ec39536-2ae0-13da-31a9-0c95693eb91a",
-                    type: "Text",
-                    label: "On",
-                    x: 610.8894402215635,
-                    y: 1113.5545779864274,
-                    parameters: {
-                      text: "On",
-                      fontSize: { value: 15, unit: "px" },
-                      color: "#006394",
-                      sizeMode: "contentSize",
-                      alignY: "bottom",
-                    },
-                    ports: [],
-                    children: [],
-                  },
-                ],
-              },
-            ],
-          },
-          {
-            id: "83c96b0c-c3b3-c331-4c9c-ea903740c149",
-            type: "Group",
-            label: "Text and Rate controller",
-            x: 570.8894402215635,
-            y: 1209.5545779864274,
-            parameters: {
-              flexDirection: "row",
-              sizeMode: "contentHeight",
-              marginBottom: { value: 10, unit: "px" },
-            },
-            ports: [],
-            children: [
-              {
-                id: "3e8aa8af-5940-099e-9aa4-04aafc48f785",
-                type: "Text",
-                label: "Set rate",
-                x: 590.8894402215635,
-                y: 1283.5545779864274,
-                parameters: {
-                  text: "Set rate",
-                  fontSize: { value: 15, unit: "px" },
-                  alignY: "center",
-                  sizeMode: "contentSize",
-                  marginRight: { value: 20, unit: "px" },
-                },
-                ports: [],
-                children: [],
-              },
-              {
-                id: "e30dd54b-7feb-d649-f3f9-e8f89ed96f7e",
-                type: "Group",
-                label: "Rate Controller",
-                x: 590.8894402215635,
-                y: 1343.5545779864274,
-                parameters: {
-                  sizeMode: "explicit",
-                  height: { value: 30, unit: "px" },
-                  flexDirection: "none",
-                  width: { value: 200, unit: "px" },
-                },
-                ports: [],
-                children: [
-                  {
-                    id: "e6d5752f-cedd-429d-3d3d-173d747c8c85",
-                    type: "Group",
-                    label: "Rate controller Bg",
-                    x: 610.8894402215635,
-                    y: 1403.5545779864274,
-                    parameters: {
-                      height: { value: 20, unit: "px" },
-                      backgroundColor: "#C6C6C6",
-                      borderRadius: { value: 10, unit: "px" },
-                      alignY: "center",
-                    },
-                    ports: [],
-                    children: [],
-                  },
-                  {
-                    id: "241b0a6f-b409-7cbd-dc61-3bc39c020667",
-                    type: "Drag",
-                    x: 610.8894402215635,
-                    y: 1499.5545779864274,
-                    parameters: {},
-                    ports: [],
-                    children: [
-                      {
-                        id: "31252340-8be5-166c-4c16-f3d178135139",
-                        type: "Group",
-                        label: "Drag handle",
-                        x: 630.8894402215635,
-                        y: 1581.5545779864274,
-                        parameters: {
-                          height: { value: 20, unit: "px" },
-                          width: { value: 5, unit: "px" },
-                          backgroundColor: "#434B53",
-                          paddingLeft: { value: 0, unit: "px" },
-                          marginLeft: { value: 10, unit: "px" },
-                          marginRight: { value: 10, unit: "px" },
-                          borderRadius: { value: 2, unit: "px" },
-                          alignY: "center",
-                        },
-                        ports: [],
-                        children: [],
-                      },
-                    ],
-                  },
-                ],
-              },
-            ],
-          },
-          {
-            id: "f227417b-8cd3-3c03-5501-1b85add9566c",
-            type: "Group",
-            label: "Arena",
-            x: 570.8894402215635,
-            y: 1641.5545779864274,
-            parameters: {
-              borderStyle: "solid",
-              borderWidth: { value: 2, unit: "px" },
-              marginBottom: { value: 10, unit: "px" },
-              flexDirection: "none",
-            },
-            ports: [],
-            children: [
-              {
-                id: "521f5c37-4508-f725-d67d-44f0227e3aa9",
-                type: "Circle",
-                x: 590.8894402215635,
-                y: 1737.5545779864274,
-                parameters: { size: 30, position: "absolute" },
-                ports: [],
-                children: [],
-              },
-            ],
-          },
-        ],
-      },
-      {
-        id: "238629f6-8594-ac78-ba25-a8141cebf4f6",
-        type: "States",
-        x: 110.74283186907337,
-        y: 946.5074351399836,
-        parameters: {
-          states: "Off,On",
-          values: "Off y position,On y Position",
-          "value-Off-Off y position": 0,
-          "value-On-Off y position": -20,
-          "value-Off-On y Position": 20,
-          "value-On-On y Position": 0,
-        },
-        ports: [],
-        children: [],
-      },
-      {
-        id: "606ead21-564f-f2d3-8311-30eb63af8eab",
-        type: "Javascript2",
-        label: "Poisson Process",
-        x: 360.9506961673602,
-        y: 1177.1836206411483,
-        parameters: {
-          code: 'Script.Inputs = {\n  Lambda: "number",\n  RangeLow: "number",\n  RangeHigh: "number",\n}\n\nScript.Outputs = {\n  Trigger: "signal",\n  RandomNumber: "number",\n}\n\nvar timer;\nvar started = false;\n\nfunction generateRandNum(rangeLow, rangeHigh) {\n  return Math.random() * (rangeHigh - rangeLow) + rangeLow;\n}\n\nfunction calculateIntervalMs(lambda) {\n  let interval = -Math.log(1.0 - Math.random()) / lambda;\n  // translate from seconds to milliseconds\n  return interval * 1000;\n}\n\nfunction startTimer() {\n  let timeOutFunction = () => {\n    // generate the random number\n    let randNum = generateRandNum(\n      Script.Inputs.RangeLow,\n      Script.Inputs.RangeHigh\n    );\n    // set it on the output "RandomNumber"\n    Script.setOutputs({ RandomNumber: randNum });\n    // Trigger the signal "Trigger"\n    Script.Outputs.Trigger()\n    // restart the timer at a new interval\n    timer = setTimeout(\n      timeOutFunction,\n      calculateIntervalMs(Script.Inputs.Lambda)\n    );\n  };\n\n  // start the first timer\n  let interval = calculateIntervalMs(Script.Inputs.Lambda);\n\n  timer = setTimeout(timeOutFunction, interval);\n}\n\nScript.Signals = {\n  Start() {\n    started = true;\n    startTimer();\n  },\n  Stop() {\n    clearTimeout(timer);\n    started = false;\n  }\n}\n\nScript.Setters.Lambda = function (value) {\n  if (started === true) {\n    clearTimeout(timer);\n    startTimer();\n  }\n}\n',
-          Lambda: 2,
-          RangeLow: 0,
-        },
-        ports: [],
-        children: [],
-      },
-      {
-        id: "cdd08f56-26b6-c81f-729b-ef7220190933",
-        type: "Expression",
-        label: "Lambda value",
-        x: 943.791823827788,
-        y: 1223.6044302506757,
-        parameters: { expression: "xpos/(DrageAreaWidth - 25)*3 + 0.1" },
-        ports: [],
-        children: [],
-      },
-      {
-        id: "26b6b95e-48c9-d4a5-2255-124bef51428b",
-        type: "Expression",
-        x: 297.4155454673813,
-        y: 1508.2775409338583,
-        parameters: { expression: "ArenaWidth - CircleRadius" },
-        ports: [],
-        children: [],
-      },
-      {
-        id: "99c3a02d-7b32-d31e-40d0-fc6bd485f2d3",
-        type: "Transition",
-        x: 272.28959152461647,
-        y: 1742.5301598853775,
-        parameters: {},
-        ports: [],
-        children: [],
-      },
-      {
-        id: "9a29693e-97b7-e24a-c39f-95745e15289a",
-        type: "Javascript2",
-        label: "Poisson Process",
-        x: 973.3810754787316,
-        y: 1711.8056993389462,
-        parameters: {
-          code: 'Script.Inputs = {\n  Lambda: "number",\n  RangeLow: "number",\n  RangeHigh: "number",\n}\n\nScript.Outputs = {\n  Trigger: "signal",\n  RandomNumber: "number",\n}\n\nvar timer;\nvar started = false;\n\nfunction generateRandNum(rangeLow, rangeHigh) {\n  return Math.random() * (rangeHigh - rangeLow) + rangeLow;\n}\n\nfunction calculateIntervalMs(lambda) {\n  let interval = -Math.log(1.0 - Math.random()) / lambda;\n  // translate from seconds to milliseconds\n  return interval * 1000;\n}\n\nfunction startTimer() {\n  let timeOutFunction = () => {\n    // generate the random number\n    let randNum = generateRandNum(\n      Script.Inputs.RangeLow,\n      Script.Inputs.RangeHigh\n    );\n    // set it on the output "RandomNumber"\n    Script.setOutputs({ RandomNumber: randNum });\n    // Trigger the signal "Trigger"\n    Script.Outputs.Trigger()\n    // restart the timer at a new interval\n    timer = setTimeout(\n      timeOutFunction,\n      calculateIntervalMs(Script.Inputs.Lambda)\n    );\n  };\n\n  // start the first timer\n  let interval = calculateIntervalMs(Script.Inputs.Lambda);\n\n  timer = setTimeout(timeOutFunction, interval);\n}\n\nScript.Signals = {\n  Start() {\n    started = true;\n    startTimer();\n  },\n  Stop() {\n    clearTimeout(timer);\n    started = false;\n  }\n}\n\nScript.Setters.Lambda = function (value) {\n  if (started === true) {\n    clearTimeout(timer);\n    startTimer();\n  }\n}\n',
-          Lambda: 2,
-          RangeLow: 0,
-        },
-        ports: [],
-        children: [],
-      },
-      {
-        id: "db634033-b137-02ea-5d50-706c06432557",
-        type: "Expression",
-        x: 952.9005306361687,
-        y: 1948.8030166078263,
-        parameters: { expression: "ArenaHeight-CircleRadius" },
-        ports: [],
-        children: [],
-      },
-      {
-        id: "0a89a18b-cfe3-c6f9-18bc-221a7ffb2182",
-        type: "Transition",
-        x: 910.411880595271,
-        y: 1523.391447982002,
-        parameters: {},
-        ports: [],
-        children: [],
-      },
-      {
-        id: "7249be82-0072-c1ab-1e4c-c0c60903f8cf",
-        type: "States",
-        label: "Circle Color",
-        x: 291.63095980838676,
-        y: 1874.4551715183388,
-        parameters: {
-          states: "Color 1,Color 2,Color 3,Color 4",
-          values: "Circle Color",
-          "type-Circle Color": "color",
-          "value-Color 1-Circle Color": "#A92952",
-          "value-Color 2-Circle Color": "#F0BF56",
-          "value-Color 3-Circle Color": "#006394",
-          "value-Color 4-Circle Color": "#5E4275",
-        },
-        ports: [],
-        children: [],
-      },
-      {
-        id: "31a54762-a486-533b-6041-e2b99c000ee4",
-        type: "States",
-        x: 659.6426944801517,
-        y: 2001.0264630214242,
-        parameters: {
-          states: "Small,Big",
-          values: "Radius",
-          "value-Small-Radius": 30,
-          "value-Big-Radius": 50,
-        },
-        ports: [],
-        children: [],
-      },
-    ],
-    connections: [
-      {
-        fromId: "238629f6-8594-ac78-ba25-a8141cebf4f6",
-        fromProperty: "Off y position",
-        toId: "8d21ec9d-7d28-d1e1-6435-ed102c432236",
-        toProperty: "transformY",
-      },
-      {
-        fromId: "238629f6-8594-ac78-ba25-a8141cebf4f6",
-        fromProperty: "On y Position",
-        toId: "6ec39536-2ae0-13da-31a9-0c95693eb91a",
-        toProperty: "transformY",
-      },
-      {
-        fromId: "f54f6144-306d-9339-4e9c-a1fd70d0910d",
-        fromProperty: "onClick",
-        toId: "238629f6-8594-ac78-ba25-a8141cebf4f6",
-        toProperty: "toggle",
-      },
-      {
-        fromId: "241b0a6f-b409-7cbd-dc61-3bc39c020667",
-        fromProperty: "positionX",
-        toId: "cdd08f56-26b6-c81f-729b-ef7220190933",
-        toProperty: "xpos",
-      },
-      {
-        fromId: "e6d5752f-cedd-429d-3d3d-173d747c8c85",
-        fromProperty: "boundingWidth",
-        toId: "cdd08f56-26b6-c81f-729b-ef7220190933",
-        toProperty: "DrageAreaWidth",
-      },
-      {
-        fromId: "238629f6-8594-ac78-ba25-a8141cebf4f6",
-        fromProperty: "reached-On",
-        toId: "606ead21-564f-f2d3-8311-30eb63af8eab",
-        toProperty: "Start",
-      },
-      {
-        fromId: "238629f6-8594-ac78-ba25-a8141cebf4f6",
-        fromProperty: "reached-Off",
-        toId: "606ead21-564f-f2d3-8311-30eb63af8eab",
-        toProperty: "Stop",
-      },
-      {
-        fromId: "cdd08f56-26b6-c81f-729b-ef7220190933",
-        fromProperty: "result",
-        toId: "606ead21-564f-f2d3-8311-30eb63af8eab",
-        toProperty: "Lambda",
-      },
-      {
-        fromId: "521f5c37-4508-f725-d67d-44f0227e3aa9",
-        fromProperty: "boundingWidth",
-        toId: "26b6b95e-48c9-d4a5-2255-124bef51428b",
-        toProperty: "CircleRadius",
-      },
-      {
-        fromId: "26b6b95e-48c9-d4a5-2255-124bef51428b",
-        fromProperty: "result",
-        toId: "606ead21-564f-f2d3-8311-30eb63af8eab",
-        toProperty: "RangeHigh",
-      },
-      {
-        fromId: "606ead21-564f-f2d3-8311-30eb63af8eab",
-        fromProperty: "RandomNumber",
-        toId: "99c3a02d-7b32-d31e-40d0-fc6bd485f2d3",
-        toProperty: "targetValue",
-      },
-      {
-        fromId: "99c3a02d-7b32-d31e-40d0-fc6bd485f2d3",
-        fromProperty: "currentValue",
-        toId: "521f5c37-4508-f725-d67d-44f0227e3aa9",
-        toProperty: "transformX",
-      },
-      {
-        fromId: "cdd08f56-26b6-c81f-729b-ef7220190933",
-        fromProperty: "result",
-        toId: "9a29693e-97b7-e24a-c39f-95745e15289a",
-        toProperty: "Lambda",
-      },
-      {
-        fromId: "f227417b-8cd3-3c03-5501-1b85add9566c",
-        fromProperty: "boundingWidth",
-        toId: "26b6b95e-48c9-d4a5-2255-124bef51428b",
-        toProperty: "ArenaWidth",
-      },
-      {
-        fromId: "f227417b-8cd3-3c03-5501-1b85add9566c",
-        fromProperty: "boundingHeight",
-        toId: "db634033-b137-02ea-5d50-706c06432557",
-        toProperty: "ArenaHeight",
-      },
-      {
-        fromId: "521f5c37-4508-f725-d67d-44f0227e3aa9",
-        fromProperty: "boundingHeight",
-        toId: "db634033-b137-02ea-5d50-706c06432557",
-        toProperty: "CircleRadius",
-      },
-      {
-        fromId: "db634033-b137-02ea-5d50-706c06432557",
-        fromProperty: "result",
-        toId: "9a29693e-97b7-e24a-c39f-95745e15289a",
-        toProperty: "RangeHigh",
-      },
-      {
-        fromId: "9a29693e-97b7-e24a-c39f-95745e15289a",
-        fromProperty: "RandomNumber",
-        toId: "0a89a18b-cfe3-c6f9-18bc-221a7ffb2182",
-        toProperty: "targetValue",
-      },
-      {
-        fromId: "0a89a18b-cfe3-c6f9-18bc-221a7ffb2182",
-        fromProperty: "currentValue",
-        toId: "521f5c37-4508-f725-d67d-44f0227e3aa9",
-        toProperty: "transformY",
-      },
-      {
-        fromId: "238629f6-8594-ac78-ba25-a8141cebf4f6",
-        fromProperty: "reached-Off",
-        toId: "9a29693e-97b7-e24a-c39f-95745e15289a",
-        toProperty: "Stop",
-      },
-      {
-        fromId: "238629f6-8594-ac78-ba25-a8141cebf4f6",
-        fromProperty: "reached-On",
-        toId: "9a29693e-97b7-e24a-c39f-95745e15289a",
-        toProperty: "Start",
-      },
-      {
-        fromId: "7249be82-0072-c1ab-1e4c-c0c60903f8cf",
-        fromProperty: "Circle Color",
-        toId: "521f5c37-4508-f725-d67d-44f0227e3aa9",
-        toProperty: "fillColor",
-      },
-      {
-        fromId: "606ead21-564f-f2d3-8311-30eb63af8eab",
-        fromProperty: "Trigger",
-        toId: "7249be82-0072-c1ab-1e4c-c0c60903f8cf",
-        toProperty: "toggle",
-      },
-      {
-        fromId: "9a29693e-97b7-e24a-c39f-95745e15289a",
-        fromProperty: "Trigger",
-        toId: "31a54762-a486-533b-6041-e2b99c000ee4",
-        toProperty: "toggle",
-      },
-      {
-        fromId: "31a54762-a486-533b-6041-e2b99c000ee4",
-        fromProperty: "Radius",
-        toId: "521f5c37-4508-f725-d67d-44f0227e3aa9",
-        toProperty: "size",
-      },
-    ],
-    comments: [],
-  }}
-/>
+どんなコーディングにも、遅かれ早かれコードに誤りが発生します。Noodlは、構文エラーと実行時エラーの両方をキャッチし、エラーを引き起こした**Script**ノードをハイライトします。また、警告ポップアップでエラーを見つけることもできます。
 
-</div>
+上の画像に示されているように、コード内の構文エラーは、ノードの入力と出力が無効になる原因となる場合があります。構文エラーを修正すると、接続が復元されます。
 
-## Debugging
+ウェブデバッガーをビューアーウィンドウから起動して、デバッグアイコンをクリックすることでデバッグを開始できます。
 
-As with any coding, you will sooner or later make a mistake in your code. Noodl will catch both syntax errors and runtime errors and highlight the **Script** node causing the error. You can also find errors in the warnings popup.
+**Script**ノードが作成されたときや破棄されたときにコードを実行する
 
-<div className="ndl-image-with-background l">
+Scriptノードは、それが属するNoodlコンポーネントが作成されたときに作成されます。コンポーネントは、アプリが最初に起動されたとき、ナビゲーションが行われたとき、[Repeater](/nodes/ui-controls/repeater)ノードがアイテムを作成したときに作成されます。`Script.OnInit`関数は、Scriptノードが作成されたときにNoodlによって自動的に呼び出されます。
 
-![](/docs/guides/business-logic/javascript/script-error.png)
+コンポーネントは、ナビゲーションを行うときや、Repeaterノードが使用するリストからアイテムを削除するときに破棄されることがあります。これは、`Script.OnDestroy`関数を実行します。
 
-</div>
-
-As seen in the image above, syntax errors in the code can cause inputs and outputs of the node to becomes invalid. Fixing the syntax error will restore the connections.
-
-To debug your javascript you can launch the web debugger from the viewer window by clicking the bug icon.
-
-<div className="ndl-image-with-background l">
-
-![](/docs/guides/business-logic/javascript/open-debugger.png)
-
-</div>
-
-In the web debugger you can find any external source files that your are using in your script nodes, but if you want to set a breakpoint in an internal file you can use the `debugger` command. Here's an example:
-
-```javascript
-Script.Signals.Stop = function () {
-  debugger; // This will cause the debugger to break here when running
-  clearTimeout(timer);
-  timer = undefined;
-};
-```
-
-### Running code when a Script node is created or destroyed
-
-A Script node is created when the Noodl component that it belongs to is created. Components are created when the app is first launched, when navigation happens, and when a [Repeater](/nodes/ui-controls/repeater) node creates items. The `Script.OnInit` function is automatically called by Noodl when the Script node is created.
-
-Components can be destroyed when doing navigation or when removing items from a list used by a Repeater node. This will run the `Script.OnDestroy` function.
-
-Here's an example that sets up an event listener on the `body` element and removes it when the node is destroyed to avoid memory leaks.
+以下は、`body`要素にイベントリスナーを設定し、ノードが破棄されたときにそれを削除してメモリリークを避ける例です。
 
 ```js
 function setPosition(e) {

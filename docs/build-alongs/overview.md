@@ -1,11 +1,11 @@
 ---
 hide_title: true
-title: Build Alongs
+title: ビルドアロング
 ---
 
-# Build Alongs
+# ビルドアロング
 
-One relaxed way of learning Noodl is to watch and learn from the experts. Here are a list of 'build-along' type of movies that shows in detail how to build something in Noodl. Enjoy!
+Noodlを学ぶリラックスした方法の一つは、専門家から見て学ぶことです。ここでは、Noodlで何かを構築する方法を詳細に示す「ビルドアロング」タイプの動画のリストを紹介します。お楽しみください！
 
 
 

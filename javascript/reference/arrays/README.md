@@ -6,8 +6,8 @@ title: Noodl.Arrays
 
 # Noodl.Arrays
 
-**Only available on the frontend**  
-The third part of the global data model in Noodl are arrays. Each array is reference by its **Id** using the `Noodl.Arrays`prefix, similar to objects and variables. You can learn more about arrays in the [arrays guide](/docs/guides/data/arrays). Changing an array will trigger an update of all **Array** node with the corresponding **Id**.
+**フロントエンドでのみ利用可能**  
+Noodlのグローバルデータモデルの第三部分は、配列です。各配列は`Noodl.Arrays`プレフィックスを使用して、その**Id**によって参照されます。これはオブジェクトや変数と似ています。配列についての詳細は、[配列ガイド](/docs/guides/data/arrays)で学ぶことができます。配列を変更すると、対応する**Id**を持つすべての**Array**ノードの更新がトリガーされます。
 
 <div className="ndl-image-with-background xl">
 
@@ -16,25 +16,23 @@ The third part of the global data model in Noodl are arrays. Each array is refer
 </div>
 
 :::note
-Generally arrays in Noodl are expected to contain objects. There is nothing stopping you putting other stuff in arrays but
+一般的に、Noodlの配列にはオブジェクトが含まれることを想定しています。他のものを配列に入れることを阻止するものはありませんが、
 :::
 
 ```javascript
-// This will change the array with id MyArray and update all Arrays nodes
-// with that id.
+// これにより、IdがMyArrayの配列が変更され、そのIdを持つすべてのArraysノードが更新されます。
 Noodl.Arrays.MyArray = [{ Hello: "There" }];
 
-// Use this if you have spaces in your array id
-Noodl.Arrays["Recepie List"] = [{ Name: "Fancy Burger" }];
+// 配列のIdにスペースがある場合はこれを使用します
+Noodl.Arrays["レシピリスト"] = [{ Name: "ファンシーバーガー" }];
 
-// Reading arrays
+// 配列の読み取り
 console.log(Noodl.Arrays.MyArray);
 
-// WARNING, you can access arrays like this but this will not trigger an update
-// in Noodl. You should avoid modifying arrays like this.
+// 警告、このように配列にアクセスすることはできますが、これによってNoodlでの更新はトリガーされません。
+// このように配列を変更することは避けるべきです。
 Noodl.Arrays.MyArray.push({ Hello: "Again" });
 
-// Instead, create a new array. This will trigger an update
-// on all Array nodes with id MyArray
+// 代わりに、新しい配列を作成します。これにより、IdがMyArrayのすべてのArrayノードに更新がトリガーされます。
 Noodl.Arrays.MyArray = Noodl.Arrays.MyArray.concat([{ Hello: "Again" }]);
 ```

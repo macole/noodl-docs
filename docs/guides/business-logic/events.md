@@ -1,65 +1,63 @@
----
-title: Events
-hide_title: true
----
-# Events
+# イベント
 
-## Overview
-This guide covers an important concept in Noodl called Events. Events are used to send and recive signals with accompanying data. Signals are sent from one part of the node graph to one or many other locations in the graph. This is often useful when a user interaction occurs in one place of the app, such as the click of a button, that should trigger an action in a different place, e.g. a popup showing.
+## 概要
+このガイドでは、Noodlでの重要な概念であるイベントについて説明します。イベントは、伴うデータを持つシグナルを送受信するために使用されます。シグナルは、ノードグラフの一部から他の場所へ送信されます。これは、ボタンのクリックなどのアプリのある場所でユーザーの操作が発生し、異なる場所でアクションをトリガーする必要がある場合などに便利です（例: ポップアップが表示される）。
 
-## What you will learn in this guide
-This guide will teach you how to use the [Send Event](/nodes/events/send-event) and [Receive Event](/nodes/events/receive-event) nodes to pass signals and data from one place in your node graph to another.
+## このガイドで学べること
+このガイドでは、[Send Event](/nodes/events/send-event)ノードと[Receive Event](/nodes/events/receive-event)ノードを使用して、ノードグラフ内のある場所から別の場所へシグナルとデータを渡す方法を学びます。
 
-This concept includes two nodes, the **Send Event** node and the **Receive Event** node. As the name implies, the **Send Event** node is used when you want to send an event. Below is an example of an event being sent when a **Text** node is clicked.
+この概念には2つのノード、**Send Event**ノードと**Receive Event**ノードが含まれます。名前が示すように、**Send Event**ノードはイベントを送信したいときに使用されます。以下は、**Text**ノードがクリックされたときにイベントが送信される例です。
 
 ![](/docs/guides/business-logic/events/send-event.png ':class=img-size-l')
 
-## Sending and receiving events
+## イベントの送受信
 
-In the example above, the **Click** signal of the **Text** node is connected to the **Send** input of the **Send Event** node. This will trigger the an event to be sent when the text is clicked.
+上の例では、**Text**ノードの**Click**シグナルが**Send Event**ノードの**Send**入力に接続されています。これにより、テキストがクリックされたときにイベントが送信されるトリガーとなります。
 
-An event is sent to a certain **Channel** which is specified in the properties of the **Send Event** node. In this case the name of the channel is **Show Popup**.
+イベントは特定の**チャンネル**へ送信され、このチャンネルは**Send Event**ノードのプロパティで指定されます。この場合、チャンネルの名前は**Show Popup**です。
 
 ![](/docs/guides/business-logic/events/channel-prop.png ':class=img-size-m')
 
-The event signal is passed to all **Receive Event** nodes that share the same **Channel**. In the example below the event that was sent above is received.
+イベントシグナルは、同じ**チャンネル**を共有するすべての**Receive Event**ノードに渡されます。以下の例では、上で送信されたイベントが受信されています。
 
 ![](/docs/guides/business-logic/events/receive-event.png ':class=img-size-l')
 
-To illustrate this you can see below how when the click signal is sent via the **Send Event** node, it is passed to the **Received** output of the **Event Receiver** node.
+以下に示すように、クリックシグナルが**Send Event**ノードを介して送信されると、**Event Receiver**ノードの**Received**出力に渡されます。
 
 ![](/docs/guides/business-logic/events/events-demo.gif ':class=img-size-l')
 
-## Passing payload data
+## ペイロードデータの渡し方
 
-So far we have seen the basic concept of the events mechanism in Noodl. Next, let's take a look at how you can pass data via payload connections to your event nodes. You start by adding ports to the **Send Event** node. You can add any number of ports for the data that you want to pass with the event.
+これまでNoodlのイベントメカニズムの基本概念を見てきました。次に、ペイロード接続を介してイベントノードにデータを渡す方法を見ていきましょう。まず、**Send Event**ノードにポートを追加することから始めます。イベントで渡したいデータの数だけポートを追加できます。
 
 ![](/docs/guides/business-logic/events/add-port.gif ':class=img-size-l')
 
-Now you can connect data to the input ports that you created on the **Send Event** node. When the **Send** signal is received, the values on all inputs of the **Send Event** node will be captured and passed to the **Receive Event**.
+次に、**Send Event**ノードに作成した入力ポートにデータを接続できます。**Send**シグナルが受信されると、**Send Event**ノードのすべての入力の値がキャプチャされ、**Receive Event**に渡されます。
 
 ![](/docs/guides/business-logic/events/connect-to-port.png ':class=img-size-l')
 
-When the **Receive Event** node outputs the **Received** signal it will also update all other outputs. The payload ports added on the **Send Event** node will become available on all **Receive Event** nodes that share the same channel as the **Send Event** node.
+**Receive Event**ノードが**Received**シグナルを出力すると、他のすべての出力も更新されます。**Send Event**ノードに追加されたペイロードポートは、**Send Event**ノードと同じチャンネルを共有するすべての**Receive Event**ノードで利用可能になります。
 
 ![](/docs/guides/business-logic/events/receiver-outputs.png ':class=img-size-l')
 
-## Propagation
+## 伝播
 
-Event propagation means how an event is sent in the graph, i.e. which **Receive Event** nodes an event is sent to. The default propagation mode is **Global** which means _all_ receivers will be triggered. You can however change the propagation via the **Send To** property of the **Send Event** node.
+
+
+イベントの伝播とは、イベントがグラフ内でどのように送信されるか、つまりどの**Receive Event**ノードがイベントを受信するかを意味します。デフォルトの伝播モードは**グローバル**で、これは_すべて_のレシーバーがトリガーされることを意味します。しかし、**Send Event**ノードの**Send To**プロパティを変更することで、伝播を変更できます。
 
 ![](/docs/guides/business-logic/events/send-to.png ':class=img-size-m')
 
-The **Children** mode will send the events to all the children in the component where the **Send Event** node is. So in the example below, the event will first be sent to **My Child Comp** followed by any children that node may have. When all descendants of **My Child Comp** node have received the event it will pass it to all children that are dynamically created by the **Repeater** node, and their descendants.
+**Children**モードは、**Send Event**ノードが存在するコンポーネントのすべての子にイベントを送信します。したがって、以下の例では、まず**My Child Comp**にイベントが送信され、そのノードが持つ可能性のあるすべての子に送信されます。**My Child Comp**ノードのすべての子孫にイベントが送信された後、**Repeater**ノードによって動的に作成された子インスタンスにイベントが渡されます。
 
 ![](/docs/guides/business-logic/events/send-to-children.png ':class=img-size-l')
 
-The **Siblings** mode will pass the event to all other nodes that are on the same level as the node where the originating **Send Event** node is. So if for instance the **My Child Comp** in the graph below contains a **Send Event** node that sends an event to its siblings all other **My Child Comp** nodes will receive it, except for the one sending the event, followed by the child instances dynamically created by the **Repeater** node.
+**Siblings**モードは、イベントを同じレベルにある他のすべてのノードに送信します。したがって、以下のグラフ内の**My Child Comp**に**Send Event**ノードが含まれている場合、イベントを送信する**My Child Comp**を除く、すべての**My Child Comp**ノードが受信し、その後**Repeater**ノードによって動的に作成された子インスタンスが受信します。
 
 ![](/docs/guides/business-logic/events/send-to-siblings.png ':class=img-size-l')
 
-The last propagation mode is **Parent**. This mode will send events up the node graph hierarchy. The **My Other Child** in the example graph below contains a **Send Event** node that is using the **Parent** propagation mode. When an event is sent from **My Other Child**, the parent **My Child Comp** node with receive it, followed by the node we are in and then the event would be passed on to the parent of this node. The propagation follows the visual hierarchy chain.
+最後の伝播モードは**Parent**です。このモードは、イベントをノードグラフ階層を上に送信します。以下の例のグラフ内の**My Other Child**に**Send Event**ノードが含まれており、**Parent**伝播モードを使用しています。**My Other Child**からイベントが送信されると、親の**My Child Comp**ノードが受信し、次にこのノードが受信し、その後このノードの親にイベントが渡されます。伝播は視覚階層チェーンに沿って行われます。
 
 ![](/docs/guides/business-logic/events/send-to-parent.png ':class=img-size-l')
 
-The final thing to know about propagation is the **Consume** property of the **Receive Event** node. If that property is checked it means that when that particular node receives an event it will stop the propagation. So no other **Receive Event** nodes after that one will receive this specific event.
+伝播に関して知っておくべき最後のことは、**Receive Event**ノードの**Consume**プロパティです。このプロパティがチェックされている場合、特定のノードがイベントを受信すると、そのイベントの伝播が停止します。つまり、そのノードの後にある他の**Receive Event**ノードは、この特定のイベントを受信しません。
