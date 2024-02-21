@@ -1,16 +1,16 @@
 ---
 hide_title: true
 hide_table_of_contents: true
-title: External Link node
+title: External Linkノード
 ---
 
 {/*##head##*/}
 
-# External Link
+# External Linkノード
 
-This node is used to trigger a navigation to a page outside of your app.
+このノードは、アプリの外部のページへのナビゲーションをトリガーするために使用されます。
 
-It also supports common URL schemes, like `mailto:` and `tel:`.
+また、`mailto:` や `tel:` のような一般的なURLスキームもサポートしています。
 
 <div className="ndl-image-with-background l">
 
@@ -18,17 +18,17 @@ It also supports common URL schemes, like `mailto:` and `tel:`.
 
 </div>
 
-Note that **External Link** does not work in the Noodl Viewer. You need to run the app in a browser for it to work.
+**External Link**はNoodl Viewerでは動作しないことに注意してください。これを動作させるには、ブラウザでアプリを実行する必要があります。
 
 {/*##head##*/}
 
-## Inputs
+## 入力
 
-| Data                                              | Description                                                                                                                                                                                                                   |
+| データ                                              | 説明                                                                                                                                                                                                                   |
 | ------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-data">Link</span>            | {/*##input:link##*/}The URL that should be opened when the **Do** signal is triggered. The URL should include the full scheme, e.g. `http://`, `mailto:`, etc. {/*##input##*/}                                                        |
-| <span className="ndl-data">Open in New Tab</span> | {/*##input:openInNewTab##*/}If this property is set to <span className="ndl-data">true</span> the link will be opened in a new browser tab. Otherwise it will open (and replace) the current Noodl app in the browser.{/*##input##*/} |
+| <span className="ndl-data">Link</span>            | {/*##input:link##*/}**Do**シグナルがトリガーされたときに開かれるべきURLです。URLにはスキーム全体を含める必要があります。例: `http://`, `mailto:` など。{/*##input##*/}                                                        |
+| <span className="ndl-data">新しいタブで開く</span> | {/*##input:openInNewTab##*/}このプロパティが<span className="ndl-data">true</span>に設定されている場合、リンクは新しいブラウザタブで開かれます。そうでない場合は、現在のNoodlアプリを置き換えて（そして開いて）ブラウザで開きます。{/*##input##*/} |
 
-| Signal                                 | Description                                                                                   |
+| シグナル                                 | 説明                                                                                   |
 | -------------------------------------- | --------------------------------------------------------------------------------------------- |
-| <span className="ndl-signal">Do</span> | {/*##input:do##*/}Recieving a signal to this input will navigate to the external link.{/*##input##*/} |
+| <span className="ndl-signal">Do</span> | {/*##input:do##*/}この入力へのシグナルを受け取ると、外部リンクへナビゲートします。{/*##input##*/} |

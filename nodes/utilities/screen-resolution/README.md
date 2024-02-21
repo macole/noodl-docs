@@ -1,14 +1,14 @@
 ---
 hide_title: true
 hide_table_of_contents: true
-title: Screen Resolution node
+title: Screen Resolutionノード
 ---
 
 {/*##head##*/}
 
-# Screen Resolution
+# Screen Resolutionノード
 
-This node outputs the <span className="ndl-data">width</span>, <span className="ndl-data">height</span> and <span className="ndl-data">aspect ratio</span> of the display area in CSS pixels.
+このノードは、表示領域の<span className="ndl-data">幅</span>、<span className="ndl-data">高さ</span>、および<span className="ndl-data">アスペクト比</span>をCSSピクセルで出力します。
 
 <div className="ndl-image-with-background l">
 
@@ -18,10 +18,10 @@ This node outputs the <span className="ndl-data">width</span>, <span className="
 
 {/*##head##*/}
 
-## Outputs
+## 出力
 
-| Data                                           | Description                               |
+| データ                                           | 説明                               |
 | ---------------------------------------------- | ----------------------------------------- |
-| <span className="ndl-data">Width</span>        | The width of the display area in pixels.  |
-| <span className="ndl-data">Height</span>       | The height of the display area in pixels. |
-| <span className="ndl-data">Aspect Ratio</span> | The width divided by the height.          |
+| <span className="ndl-data">幅</span>        | 表示領域の幅（ピクセル単位）。  |
+| <span className="ndl-data">高さ</span>       | 表示領域の高さ（ピクセル単位）。 |
+| <span className="ndl-data">アスペクト比</span> | 幅を高さで割った値。          |

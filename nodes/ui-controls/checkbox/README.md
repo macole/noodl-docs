@@ -1,14 +1,14 @@
 ---
 hide_title: true
 hide_table_of_contents: true
-title: Checkbox node
+title: Checkboxノード
 ---
 
 {/*##head##*/}
 
 # Checkbox
 
-This node places a customizable checkbox in the visual tree.
+このノードは、ビジュアルツリーにカスタマイズ可能なチェックボックスを配置します。
 
 <div className="ndl-image-with-background l">
 
@@ -16,7 +16,7 @@ This node places a customizable checkbox in the visual tree.
 
 </div>
 
-The checkbox will flip its state when clicked and its <span className="ndl-data">Checked</span> property can be connected to a data source, such as a <span className="ndl-data">variable</span> or <span className="ndl-data">object</span>.
+クリックされると状態が切り替わるチェックボックスは、<span className="ndl-data">変数</span>や<span className="ndl-data">オブジェクト</span>などのデータソースに<span className="ndl-data">チェック済み</span>プロパティを接続できます。
 
 <div className="ndl-image-with-background l">
 
@@ -26,7 +26,7 @@ The checkbox will flip its state when clicked and its <span className="ndl-data"
 
 {/*##head##*/}
 
-This control contains all logic such as accessibility etc. It can be styled in via it's properties, or you can use it only for the logic and create your own checkbox component in your own design system.
+このコントロールには、アクセシビリティなどのすべてのロジックが含まれています。プロパティを介してスタイリングすることも、ロジックのみを使用して独自のデザインシステムでチェックボックスコンポーネントを作成することもできます。
 
 <div className="ndl-image-with-background s">
 
@@ -34,20 +34,20 @@ This control contains all logic such as accessibility etc. It can be styled in v
 
 </div>
 
-## Inputs
+## 入力
 
-The main input of the Checkbox node is the <span className="ndl-data">Checked</span> input:
+Checkboxノードの主な入力は<span className="ndl-data">チェック済み</span>入力です：
 
 <div className="ndl-table-35-65">
 
-| Data                                               | Description                                                                                                                                                              |
-| -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| <span className="ndl-data">Checked</span>          | {/*##input:checked##*/}A boolean setting the checkbox in "checked" or "unchecked" state. This is the value of the checkbox and can be connected to a data source.{/*##input##*/} |
-| <span className="ndl-data">Background Color</span> | {/*##input:backgroundColor##*/}The background color when the checkbox is "checked"{/*##input##*/}.                                                                               |
+| データ                                             | 説明                                                                                                                               |
+| -------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| <span className="ndl-data">チェック済み</span>       | {/*##input:checked##*/}"チェック済み"または"未チェック"状態を設定するブール値。これはチェックボックスの値であり、データソースに接続できます。{/*##input##*/} |
+| <span className="ndl-data">背景色</span>           | {/*##input:backgroundColor##*/}"チェック済み"時の背景色。{/*##input##*/}                                                                                         |
 
 </div>
 
-It can be enabled and disabled using the <span className="ndl-data">Enabled</span> input:
+有効入力を使用して有効/無効にすることができます：
 
 <div className="ndl-table-35-65">
 
@@ -55,72 +55,74 @@ It can be enabled and disabled using the <span className="ndl-data">Enabled</spa
 
 </div>
 
-The Checkbox node has a set of label properties that can be set:
+Checkboxノードには設定できる一連のラベルプロパティがあります：
 
 <div className="ndl-table-35-65">
 
-| Data                                           | Description                                                                                      |
-| ---------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| <span className="ndl-data">Enable Label</span> | Sets whether the label is visible or not.                                                        |
-| <span className="ndl-data">Text Style</span>   | Set an existing text style to this node, or create a new text style from the current properties. |
-| <span className="ndl-data">Label</span>        | A text string that will be shown as the label on the button.                                     |
-| <span className="ndl-data">Spacing</span>      | The spacing between the label and the checkbox.                                                  |
+| データ                                             | 説明                                                                                                   |
+| ---------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| <span className="ndl-data">ラベルを有効にする</span> | ラベルが表示されるかどうかを設定します。                                                                 |
+| <span className="ndl-data">テキストスタイル</span>   | このノードに既存のテキストスタイルを設定するか、現在のプロパティから新しいテキストスタイルを作成します。 |
+| <span className="ndl-data">ラベル</span>           | ボタン上に表示されるテキスト文字列。                                                                     |
+| <span className="ndl-data">スペーシング</span>      | ラベルとチェックボックスの間隔。                                                                         |
 
 </div>
 
-Similarly, it has a set of icon properties:
+同様に、一連のアイコンプロパティがあります：
 
 <div className="ndl-table-35-65">
 
-| Data                                          | Description                                                                                         |
-| --------------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| <span className="ndl-data">Enable Icon</span> | Sets whether the icon is visible or not.                                                            |
-| <span className="ndl-data">Type</span>        | Use this to set if you want to use a predefined `icon` or a custom `image` from the project folder. |
-| <span className="ndl-data">Source</span>      | Where to get the icon.                                                                              |
-| <span className="ndl-data">Placement</span>   | Sets whether the icon should be to the `left` or to the `right` of the _Label_                      |
-| <span className="ndl-data">Size</span>        | The width of the icon in `px`.                                                                      |
-| <span className="ndl-data">Color</span>       | Sets the color of the icon. Only visible if _Type_ is set to `icon`.                                |
+| データ                                           | 説明                                                                                                   |
+| --------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| <span className="ndl-data">アイコンを有効にする</span> | アイコンが表示されるかどうかを設定します。                                                               |
+| <span className="ndl-data">タイプ</span>          | 事前定義された`アイコン`を使用するか、プロジェクトフォルダからカスタム`画像`を使用するかを設定します。   |
+| <span className="ndl-data">ソース</span>         | アイコンを取得する場所。                                                                                 |
+| <span className="ndl-data">配置</span>           | アイコンが`ラベル`の`左`または`右`に配置されるかどうかを設定します。                                     |
+| <span className="ndl-data">サイズ</span>          | アイコンの幅（`px`単位）。                                                                               |
+| <span className="ndl-data">色</span>             | アイコンの色を設定します。_タイプ_が`アイコン`に設定されている場合にのみ表示されます。                    |
 
 </div>
 
 <div className="ndl-table-35-65">
 
-| Signal                                    | Description                                                                                                                                                                                           |
-| ----------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-signal">Check</span>   | Reflects the same action as the user checked the Checkbox.                                                                                                                                            |
-| <span className="ndl-signal">Uncheck</span> | Reflects the same action as the user unchecked the Checkbox.                                                                                                                                                                                      |
+| シグナル                                         | 説明                                                                                                                         |
+| --------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| <span className="ndl-signal">チェックする</span>   | ユーザーがチェックボックスをチェックしたのと同じアクションを反映します。                                                     |
+| <span className="ndl-signal">チェックを外す</span> | ユーザーがチェックボックスのチェックを外したのと同じアクションを反映します。                                                 |
 
 </div>
 
-### Visual
+### ビジュアル
 
-This node supports the following [Visual Input Properties](/nodes/shared-props/inputs/visual-input-properties/):
+このノードは、以下の[ビジュアル入力プロパティ](/nodes/shared-props/inputs/visual-input-properties/)をサポートしています:
 
-- [Margin](/nodes/shared-props/inputs/visual-input-properties/#margin)
-- [Alignment](/nodes/shared-props/inputs/visual-input-properties/#alignment)
-- [Dimensions](/nodes/shared-props/inputs/visual-input-properties/#dimensions)
-- [Layout, Position](/nodes/shared-props/inputs/visual-input-properties/#-position)
-- [Style](/nodes/shared-props/inputs/visual-input-properties/#style)
-- [Border Style](/nodes/shared-props/inputs/visual-input-properties/#border-style)
-- [Corner Radius](/nodes/shared-props/inputs/visual-input-properties/#corner-radius)
-- [Box Shadow](/nodes/shared-props/inputs/visual-input-properties/#box-shadow)
-- [Placement](/nodes/shared-props/inputs/visual-input-properties/#placement)
-- [Other](/nodes/shared-props/inputs/visual-input-properties/#other)
-- [Advanced HTML](/nodes/shared-props/inputs/visual-input-properties/#advanced-html)
+- [マージン](/nodes/shared-props/inputs/visual-input-properties/#margin)
+- [配置](/nodes/shared-props/inputs/visual-input-properties/#alignment)
+- [寸法](/nodes/shared-props/inputs/visual-input-properties/#dimensions)
+- [レイアウト, 位置](/nodes/shared-props/inputs/visual-input-properties/#-position)
+- [スタイル](/nodes/shared-props/inputs/visual-input-properties/#style)
+- [ボーダースタイル](/nodes/shared-props/inputs/visual-input-properties/#border-style)
+- [コーナーの半径](/nodes/shared-props/inputs/visual-input-properties/#corner-radius)
+- [ボックスシャドウ
 
-## Outputs
+](/nodes/shared-props/inputs/visual-input-properties/#box-shadow)
+- [配置](/nodes/shared-props/inputs/visual-input-properties/#placement)
+- [その他](/nodes/shared-props/inputs/visual-input-properties/#other)
+- [高度なHTML](/nodes/shared-props/inputs/visual-input-properties/#advanced-html)
 
-The main output of the Checkbox node is the <span className="ndl-data">Checked</span> output.
+## 出力
+
+Checkboxノードの主な出力は<span className="ndl-data">チェック済み</span>出力です。
 
 <div className="ndl-table-35-65">
 
-| Data                                      | Description                                                                                                                                                                                                                                    |
-| ----------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-data">Checked</span> | {/*##output:checked##*/}A boolean output that is true when this checkbox control is checked and false if not. This is useful when using this control as a base for your own component that will represent visually that it is checked.{/*##output##*/} |
+| データ                                            | 説明                                                                                                                                     |
+| ----------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| <span className="ndl-data">チェック済み</span>     | {/*##output:checked##*/}このチェックボックスコントロールがチェックされている場合はtrue、そうでない場合はfalseのブール出力です。これは、チェックされたことを視覚的に表す独自のコンポーネントを使用する場合に便利です。{/*##output##*/} |
 
 </div>
 
-It also features a set of <span className="ndl-signal">signals</span>:
+また、一連の<span className="ndl-signal">シグナル</span>が備わっています：
 
 <div className="ndl-table-35-65">
 
@@ -128,9 +130,9 @@ It also features a set of <span className="ndl-signal">signals</span>:
 
 </div>
 
-### States
+### ステート
 
-Apart from triggering <span className="ndl-signal">signals</span> the Checkbox node also notifies of its state through <span className="ndl-data">data</span> outputs:
+<span className="ndl-signal">シグナル</span>をトリガーするだけでなく、Checkboxノードは<span className="ndl-data">データ</span>出力を通じてその状態も通知します：
 
 <div className="ndl-table-35-65">
 
@@ -138,13 +140,13 @@ Apart from triggering <span className="ndl-signal">signals</span> the Checkbox n
 
 </div>
 
-### Visual
+### ビジュアル
 
-This node supports the following [Visual Output Properties](/nodes/shared-props/outputs/visual-output-properties/):
+このノードは、以下の[ビジュアル出力プロパティ](/nodes/shared-props/outputs/visual-output-properties/)をサポートしています:
 
-- [Bounding Box](/nodes/shared-props/outputs/visual-output-properties/#bounding-box)
-- [Mounted](/nodes/shared-props/outputs/visual-output-properties/#mounted)
-- [Other](/nodes/shared-props/outputs/visual-output-properties/#other)
+- [バウンディングボックス](/nodes/shared-props/outputs/visual-output-properties/#bounding-box)
+- [マウント](/nodes/shared-props/outputs/visual-output-properties/#mounted)
+- [その他](/nodes/shared-props/outputs/visual-output-properties/#other)
 
 <div className="hidden-props-for-editor">
 

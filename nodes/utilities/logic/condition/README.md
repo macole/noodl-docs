@@ -1,14 +1,14 @@
 ---
 hide_title: true
 hide_table_of_contents: true
-title: Condition node
+title: Conditionノード
 ---
 
 {/*##head##*/}
 
-# Condition
+# Conditionノード
 
-This node evaluates a condition and sends one of two <span className="ndl-signal">signals</span> depending on if the condition is <span className="ndl-data">true</span> or <span className="ndl-data">false</span>.
+このノードは条件を評価し、条件が<span className="ndl-data">true</span>か<span className="ndl-data">false</span>かに応じて2つの<span className="ndl-signal">シグナル</span>のうちの1つを送信します。
 
 <div className="ndl-image-with-background l">
 
@@ -16,7 +16,7 @@ This node evaluates a condition and sends one of two <span className="ndl-signal
 
 </div>
 
-The input <span className="ndl-data">Condition</span> will be treated as a <span className="ndl-data">boolean</span>, and the evaluation happens when the input changes, unless an explict <span className="ndl-signal">signal</span> is connected to the <span className="ndl-signal">Evaluate</span> input.
+入力<span className="ndl-data">Condition</span>は<span className="ndl-data">boolean</span>として扱われ、<span className="ndl-signal">Evaluate</span>入力に明示的な<span className="ndl-signal">シグナル</span>が接続されていない限り、入力が変更されたときに評価が行われます。
 
 {/*##head##*/}
 
@@ -26,24 +26,24 @@ The input <span className="ndl-data">Condition</span> will be treated as a <span
 
 </div>
 
-## Inputs
+## 入力
 
-| Data                                        | Description                                                                                                                                                                                                                                             |
+| データ                                        | 説明                                                                                                                                                                                                                                             |
 | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-data">Condition</span> | {/*##input:condition##*/}A boolean that decides which output signal (**On true** or **On false**) that should be triggered when the **Evaluate** signal is triggered or when the condition changes, if the **Evaluate** signal is not connected.{/*##input##*/} |
+| <span className="ndl-data">Condition</span> | {/*##input:condition##*/}**Evaluate**シグナルがトリガーされたとき、または**Evaluate**シグナルが接続されていない場合は条件が変更されるたびに、どちらの出力シグナル（**On true**または**On false**）がトリガーされるかを決定するbooleanです。{/*##input##*/} |
 
-| Signal                                       | Description                                                                                                                                                                                                      |
+| シグナル                                       | 説明                                                                                                                                                                                                      |
 | -------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-signal">Evaluate</span> | {/*##input:evaluate##*/}Evaluates the **Condition** input and triggers the respective output signal. If no signal is connected to Evaluate, the node will evaluate the input everytime the input changes.{/*##input##*/} |
+| <span className="ndl-signal">Evaluate</span> | {/*##input:evaluate##*/}**Condition**入力を評価し、それぞれの出力シグナルをトリガーします。**Evaluate**にシグナルが接続されていない場合、ノードは入力が変更されるたびに入力を評価します。{/*##input##*/} |
 
-## Outputs
+## 出力
 
-| Data                                       | Description                                                                                                                                                                                       |
+| データ                                       | 説明                                                                                                                                                                                       |
 | ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-data">Is True</span>  | {/*##output:result##*/}A <span className="ndl-data">boolean</span> that is <span className="ndl-data">true</span> when the latest evaluated value on the **Condition** input is true. {/*##output##*/}    |
-| <span className="ndl-data">Is False</span> | {/*##output:isfalse##*/}A <span className="ndl-data">boolean</span> that is <span className="ndl-data">false</span> when the latest evaluated value on the **Condition** input is false. {/*##output##*/} |
+| <span className="ndl-data">Is True</span>  | {/*##output:result##*/}最後に評価された**Condition**入力がtrueの場合に<span className="ndl-data">true</span>になる<span className="ndl-data">boolean</span>です。{/*##output##*/}    |
+| <span className="ndl-data">Is False</span> | {/*##output:isfalse##*/}最後に評価された**Condition**入力がfalseの場合に<span className="ndl-data">false</span>になる<span className="ndl-data">boolean</span>です。{/*##output##*/} |
 
-| Signal                                       | Description                                                                                                                            |
+| シグナル                                       | 説明                                                                                                                            |
 | -------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-signal">On True</span>  | {/*##output:ontrue##*/}Triggered when **Evaluate** is triggered and **Condition** is <span className="ndl-data">true.</span>{/*##output##*/}   |
-| <span className="ndl-signal">On False</span> | {/*##output:onfalse##*/}Triggered when **Evaluate** is triggered and **Condition** is <span className="ndl-data">false.</span>{/*##output##*/} |
+| <span className="ndl-signal">On True</span>  | {/*##output:ontrue##*/}**Evaluate**がトリガーされ、**Condition**が<span className="ndl-data">true</span>の場合にトリガーされます。{/*##output##*/}   |
+| <span className="ndl-signal">On False</span> | {/*##output:onfalse##*/}**Evaluate**がトリガーされ、**Condition**が<span className="ndl-data">false</span>の場合にトリガーされます。{/*##output##*/} |

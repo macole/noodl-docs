@@ -1,14 +1,14 @@
 ---
 hide_title: true
 hide_table_of_contents: true
-title: Page Inputs node
+title: Page Inputsノード
 ---
 
 {/*##head##*/}
 
-# Page Inputs
+# Page Inputsノード
 
-This node is used to pass parameters in the URL when navigating between pages in a [Page Router](/nodes/navigation/page-router).
+このノードは、[Page Router](/nodes/navigation/page-router)内のページ間をナビゲートする際にURL内でパラメータを渡すために使用されます。
 
 <div className="ndl-image-with-background l">
 
@@ -16,10 +16,10 @@ This node is used to pass parameters in the URL when navigating between pages in
 
 </div>
 
-One common use for this is when you want certain input parameters to be available in sharable links.
+これの一般的な使用例は、特定の入力パラメータを共有リンクで利用可能にしたい場合です。
 
 {/*##head##*/}
 
 @include "../_common-navigation.md"
 
-<span className="hidden-props-for-editor">{/*##output:pm-\*##*/}A page parameter that will be available as an input on any **Navigate** node that navigates to its associated **Page**.{/*##output##*/}</span>
+<span className="hidden-props-for-editor">{/*##output:pm-\*##*/}関連付けられた**Page**へナビゲートする任意の**Navigate**ノード上で入力として利用可能になるページパラメータです。{/*##output##*/}</span>

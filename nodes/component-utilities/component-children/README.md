@@ -1,18 +1,16 @@
 ---
 hide_title: true
 hide_table_of_contents: true
-title: Component Children node
+title: Component Childrenノード
 ---
 
 {/*##head##*/}
 
-# Component Children
+# Component Childrenノード
 
-Used to mark where children of instances of this component will be placed.
+このコンポーネントのインスタンスの子を配置する場所を示すために使用されます。
 
-Any instance of a component that have a **Component Children** placed in its hierarchy will be
-able to have children. These children will appear as though they were inserted at the location of
-the **Component Children** node.
+**Component Children**がその階層に配置されたコンポーネントの任意のインスタンスは、子を持つことができます。これらの子は、**Component Children**ノードの位置に挿入されたかのように表示されます。
 
 <div className="ndl-image-with-background">
 
@@ -22,5 +20,5 @@ the **Component Children** node.
 
 {/*##head##*/}
 
-To fully understand this concept it's important to understand node hierarchies.
-Visual nodes can be placed in a hierarchy which will cause them to be layouted and drawn appropriately.
+この概念を完全に理解するには、ノード階層について理解することが重要です。
+視覚ノードは階層に配置され、適切にレイアウトされて描画されます。

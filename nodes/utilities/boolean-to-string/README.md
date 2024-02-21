@@ -1,14 +1,14 @@
 ---
 hide_title: true
 hide_table_of_contents: true
-title: Boolean To String node
+title: Boolean To Stringノード
 ---
 
 {/*##head##*/}
 
-# Boolean To String
+# Boolean To Stringノード
 
-This node takes a <span className="ndl-data">boolean</span> input and converts it into the strings <span className="ndl-data">true</span> or <span className="ndl-data">false</span>.
+このノードは、<span className="ndl-data">boolean</span>入力を取り、文字列<span className="ndl-data">true</span>または<span className="ndl-data">false</span>に変換します。
 
 <div className="ndl-image-with-background l">
 
@@ -18,20 +18,20 @@ This node takes a <span className="ndl-data">boolean</span> input and converts i
 
 {/*##head##*/}
 
-## Inputs
+## 入力
 
-| Data                                               | Description                                                                                       |
+| データ                                               | 説明                                                                                       |
 | -------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| <span className="ndl-data">Selector</span>         | {/*##input:selector##*/}This is the boolean value that will select which string to output.{/*##input##*/} |
-| <span className="ndl-data">String for true</span>  | {/*##input:trueString##*/}The string to output if the selector is true.{/*##input##*/}                    |
-| <span className="ndl-data">String for false</span> | {/*##input:falseString##*/}The string to output if the selecor is false.{/*##input##*/}                   |
+| <span className="ndl-data">セレクター</span>         | {/*##input:selector##*/}どちらの文字列を出力するかを選択するboolean値です。{/*##input##*/} |
+| <span className="ndl-data">trueの場合の文字列</span>  | {/*##input:trueString##*/}セレクターがtrueの場合に出力する文字列です。{/*##input##*/}                    |
+| <span className="ndl-data">falseの場合の文字列</span> | {/*##input:falseString##*/}セレクターがfalseの場合に出力する文字列です。{/*##input##*/}                   |
 
-## Outputs
+## 出力
 
-| Data                                            | Description                                                                                                                                      |
+| データ                                            | 説明                                                                                                                                      |
 | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| <span className="ndl-data">Current Value</span> | {/*##output:currentValue##*/}The selected string, i.e. either **String for true** or **String for false** depending on the **Selector**.{/*##output##*/} |
+| <span className="ndl-data">現在の値</span> | {/*##output:currentValue##*/}選択された文字列、つまり**セレクター**に応じて**trueの場合の文字列**または**falseの場合の文字列**です。{/*##output##*/} |
 
-| Signal                                               | Description                                                                                   |
+| シグナル                                               | 説明                                                                                   |
 | ---------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| <span className="ndl-signal">Selector Changed</span> | {/*##output:inputChanged##*/}This signal is sent when the **Selector** changes value.{/*##output##*/} |
+| <span className="ndl-signal">セレクター変更時</span> | {/*##output:inputChanged##*/}**セレクター**の値が変更されたときに送信されるシグナルです。{/*##output##*/} |

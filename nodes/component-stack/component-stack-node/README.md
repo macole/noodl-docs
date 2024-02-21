@@ -1,77 +1,72 @@
 ---
 hide_title: true
 hide_table_of_contents: true
-title: Component Stack node
+title: コンポーネントスタックノード
 ---
 
 {/*##head##*/}
 
-# Component Stack
+# コンポーネントスタック
 
-The **Component Stack** node is used to navigate between components in an area on the screen. It is typically used together with the navigation nodes [Push Component To Stack](/nodes/component-stack/push-component) and [Pop Component Stack](/nodes/component-stack/pop-component).
-
+**コンポーネントスタック**ノードは、画面上のエリアでコンポーネント間をナビゲートするために使用されます。通常、ナビゲーションノード[Push Component To Stack](/nodes/component-stack/push-component)および[Pop Component Stack](/nodes/component-stack/pop-component)と一緒に使用されます。
 <div className="ndl-image-with-background">
 
 ![](/nodes/component-stack/component-stack/component-stack1.png)
 
 </div>
 
-Unlike the somewhat similar [Page Router](/nodes/navigation/page-router) the **Component Stack** is optimized for app type navigation (in contrast to web type) and does not use URLs and routing as part of the navigation.
+URLやルーティングをナビゲーションの一部として使用しない点で、やや似ている[Page Router](/nodes/navigation/page-router)とは異なり、**コンポーネントスタック**はアプリタイプのナビゲーション（ウェブタイプとは対照的に）に最適化されています。
 
-The **Component Stack** works as a regular stack, meaning you can _Push_ (put a component at the top of the stack) and _Pop_ (remove the topmost component from the stack). You can also chose to _replace_ all components with the a new component (see [Push Component To Stack](/nodes/component-stack/push-component).
+**コンポーネントスタック**は通常のスタックとして機能し、_Push_（コンポーネントをスタックの上に置く）と_Pop_（スタックの最上位のコンポーネントを削除する）ができます。新しいコンポーネントで全てのコンポーネントを_置き換える_こともできます（[Push Component To Stack](/nodes/component-stack/push-component)を参照）。
 
-When pushing the **Component Stack** will create a new instance of the component. Only the top component will be shown. This means that you can have multiple instances of the same component on the stack at the same time. You can use the **Reset** action to clear the stack.
+**コンポーネントスタック**をプッシュすると、コンポーネントの新しいインスタンスが作成されます。表示されるのは最上位のコンポーネントのみです。これは、スタック上に同じコンポーネントの複数のインスタンスを同時に持つことができることを意味します。**リセット**アクションを使用してスタックをクリアできます。
 
-## Adding Component Entries to Push and Pop
+## プッシュとポップにコンポーネントエントリを追加
 
-A Component Stack should have a number of _component entries_ that it can push or pop. You add components entries by clicking on _Add Component_ button, giving the entry a name and select a component. These entries will then be available in the [Push Component To Stack](/nodes/component-stack/push-component) and [Pop Component Stack](/nodes/component-stack/pop-component) nodes.
+コンポーネントスタックには、プッシュまたはポップできる複数の_コンポーネントエントリ_が必要です。_Add Component_ボタンをクリックしてエントリに名前を付け、コンポーネントを選択することでコンポーネントエントリを追加します。これらのエントリは、[Push Component To Stack](/nodes/component-stack/push-component)および[Pop Component Stack](/nodes/component-stack/pop-component)ノードで利用可能になります。
 
-## Visual Layout
+## ビジュアルレイアウト
 
-With the **clip** property set to <span className="ndl-data">false</span>, the **Component Stack** will automatically take up as much space as available and expand beyond that if its component currently showing is larger. If the **clip** property is set to <span className="ndl-data">true</span> it fill up any available space in its parent container and clip its components if they are larger than that.
+**clip**プロパティが<span className="ndl-data">false</span>に設定されている場合、**コンポーネントスタック**は利用可能なスペースを自動的に取り、表示中のコンポーネントがそれより大きい場合はそれを超えて拡張します。**clip**プロパティが<span className="ndl-data">true</span>に設定されている場合、親コンテナーの利用可能なスペースを埋め、それより大きい場合はそのコンポーネントをクリップします。
 
-If you want to control the size of the **Component Stack** beyond that, you should put it as a child in a [Group](/nodes/basic-elements/group/README.md) node.
+**コンポーネントスタック**のサイズをそれ以上に制御したい場合は、[Group](/nodes/basic-elements/group/README.md)ノードの子として配置する必要があります。
 
 {/*##head##*/}
 
-## Inputs
+## 入力
 
-| Data                                               | Description                                                                                                                                                                                                                                                                                                       |
+| データ                                               | 説明                                                                                                                                                                                                                                                                                                       |
 | -------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-data">Name</span>             | {/*##input:name##*/}This is the name of the **Component Stack**. If you have multiple **Component Stacks** in your project you use the name to identify it in the [Push Component To Stack](/nodes/component-stack/push-component) and [Pop Component Stack](/nodes/component-stack/pop-component) nodes. {/*##input##*/} |
-| <span className="ndl-data">Start Page</span>       | The Component which will be shown by **Component Stack** at the start.                                                                                                                                                                                                                                            |
-| <span className="ndl-data">Clip Content</span>     | {/*##input:clip##*/}If this property is set to `true` the **Component Stack** will clip any component that is extending beyond its size. If set to `false` the size of the **Component Stack** will grow if needed to fit its component.{/*##input##*/}                                                                   |
-| <span className="ndl-data">Background Color</span> | {/*##input:backgroundColor##*/}The color that will be shown when there is no component covering the **Component Stack** or when the component is transparent.{/*##input##*/}                                                                                                                                              |
-| <span className="ndl-data">Mounted</span>          | {/*##input:mounted##*/}This property is used to completely remove the node from the DOM. If this property is set to false the node is removed from the DOM. It differs from the _Visible_ property where the node is still part of the DOM but invisible.{/*##input##*/}                                                  |
+| <span className="ndl-data">名前</span>             | {/*##input:name##*/}これは**コンポーネントスタック**の名前です。プロジェクトに複数の**コンポーネントスタック**がある場合は、[Push Component To Stack](/nodes/component-stack/push-component)および[Pop Component Stack](/nodes/component-stack/pop-component)ノードでそれを識別するために名前を使用します。{/*##input##*/} |
+| <span className="ndl-data">スタートページ</span>       | **コンポーネントスタック**が開始時に表示するコンポーネント。                                                                                                                                                                                                                                            |
+| <span className="ndl-data">コンテンツをクリップする</span>     | {/*##input:clip##*/}このプロパティが`true`に設定されている場合、**コンポーネントスタック**はサイズを超えて拡張するコンポーネントをクリップします。`false`に設定されている場合、**コンポーネントスタック**のサイズは必要に応じてコンポーネントに合わせて拡大します。{/*##input##*/}                                                                   |
+| <span className="ndl-data">背景色</span> | {/*##input:backgroundColor##*/}コンポーネントが**コンポーネントスタック**を覆っていない場合、またはコンポーネントが透明の場合に表示される色。{/*##input##*/}                                                                                                                                              || <span className="ndl-data">マウントされている</span>          | {/*##input:mounted##*/}このプロパティは、ノードをDOMから完全に削除するために使用されます。このプロパティがfalseに設定されている場合、ノードはDOMから削除されます。_Visible_プロパティとは異なり、ノードはDOMの一部ですが見えなくなります。{/*##input##*/}                                                  || シグナル                                    | 説明                                                                                                                                                                             || ----------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <span className="ndl-signal">リセット</span> | {/*##input:reset##*/}このアクションをトリガーすると、**コンポーネントスタック**がリセットされ、スタック上のすべてのコンポーネントが削除され、**スタートページ**のみがスタック上に残ります。{/*##input##*/} |
 
-| Signal                                    | Description                                                                                                                                                                             |
-| ----------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-signal">Reset</span> | {/*##input:reset##*/}Triggering this action resets the **Component Stack** meaning all components on the stack will be removed and only the **Start Page** will be on the stack.{/*##input##*/} |
-
-| Deprecated                                         | Description                                                                             |
+| 非推奨                                         | 説明                                                                             |
 | -------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| <span className="ndl-deprecated">Use Routes</span> | {/*##input:useRoutes##*/}**This Property is deprecated and should not be used.**{/*##input##*/} |
+| <span className="ndl-deprecated">ルートを使用する</span> | {/*##input:useRoutes##*/}**このプロパティは非推奨であり、使用すべきではありません。**{/*##input##*/} |
 
-### Visual
+### ビジュアル
 
-This node supports the following [Visual Input Properties](/nodes/shared-props/inputs/visual-input-properties):
+このノードは、次の[ビジュアル入力プロパティ](/nodes/shared-props/inputs/visual-input-properties)をサポートしています：
 
--   [Advanced HTML](/nodes/shared-props/inputs/visual-input-properties#advanced-html)
+-   [高度なHTML](/nodes/shared-props/inputs/visual-input-properties#advanced-html)
 
-## Outputs
+## 出力
 
-| Data                                                 | Description                                                                                                                        |
+| データ                                                 | 説明                                                                                                                        |
 | ---------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-data">Top Component Name</span> | {/*##output:topPageName##*/}This property holds the name of the current component that is on the top of the stack.{/*##output##*/}         |
-| <span className="ndl-data">Stack Depth</span>        | {/*##output:stackDepth##*/}This property equals to the number of components that are currently on the **Component Stack**.{/*##output##*/} |
+| <span className="ndl-data">最上位コンポーネント名</span> | {/*##output:topPageName##*/}このプロパティは、スタックの最上位にある現在のコンポーネントの名前を保持します。{/*##output##*/}         |
+| <span className="ndl-data">スタックの深さ</span>        | {/*##output:stackDepth##*/}このプロパティは、現在**コンポーネントスタック**上にあるコンポーネントの数に等しいです。{/*##output##*/} |
 
-### Visual
+### ビジュアル
 
-This node supports the following [Visual Output Properties](/nodes/shared-props/outputs/visual-output-properties):
+このノードは、次の[ビジュアル出力プロパティ](/nodes/shared-props/outputs/visual-output-properties)をサポートしています：
 
--   [Bounding Box](/nodes/shared-props/outputs/visual-output-properties#bounding-box)
--   [Mounted](/nodes/shared-props/outputs/visual-output-properties#mounted)
--   [Other](/nodes/shared-props/outputs/visual-output-properties#other)
+-   [バウンディングボックス](/nodes/shared-props/outputs/visual-output-properties#bounding-box)
+-   [マウントされている](/nodes/shared-props/outputs/visual-output-properties#mounted)
+-   [その他](/nodes/shared-props/outputs/visual-output-properties#other)
 
 <div className="hidden-props-for-editor">
 

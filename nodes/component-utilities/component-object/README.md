@@ -1,14 +1,14 @@
 ---
 hide_title: true
 hide_table_of_contents: true
-title: Component Object node
+title: Component Objectノード
 ---
 
 {/*##head##*/}
 
-# Component Object
+# Component Objectノード
 
-This node is a shared set of properties that can be accessed from a component as well as from any child components. It can be used to implement things such as radio groups, tabs, accordion lists and other visual elements that need to coordinate. It is also a useful general tool for any kind communication between a set of components.
+このノードは、コンポーネントおよびその子コンポーネントからアクセスできるプロパティの共有セットです。ラジオグループ、タブ、アコーディオンリストなどの視覚要素や、コンポーネントのセット間でのあらゆる種類の通信に役立つ一般的なツールとして使用できます。
 
 <div className="ndl-image-with-background l">
 
@@ -16,7 +16,7 @@ This node is a shared set of properties that can be accessed from a component as
 
 </div>
 
-The <span className="ndl-node">Component Object</span> node works much like the <span className="ndl-node">[Object](/nodes/data/object/object-node)</span> node where you add properties that become inputs or outputs to the node.
+<span className="ndl-node">Component Object</span>ノードは、プロパティを追加してノードの入力または出力になる点で、<span className="ndl-node">[Object](/nodes/data/object/object-node)</span>ノードと非常に似ています。
 
 {/*##head##*/}
 
@@ -26,26 +26,26 @@ The <span className="ndl-node">Component Object</span> node works much like the 
 
 </div>
 
-Unlike the <span className="ndl-node">[Object](/nodes/data/object/object-node)</span> node it does not have an <span className="ndl-data">Id</span>. Instead all <span className="ndl-node">Component Object</span> nodes within the same component share the same data.
+<span className="ndl-node">[Object](/nodes/data/object/object-node)</span>ノードとは異なり、<span className="ndl-data">Id</span>を持ちません。代わりに、同じコンポーネント内のすべての<span className="ndl-node">Component Object</span>ノードは同じデータを共有します。
 
-## Inputs
+## 入力
 
-| Data                                            | Description                                                                                                                                                                                                                                                                                                                                                                                          |
-| ----------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-data">Property name</span> | {/*##input:value-\*##*/}The value of a specific property of the Component Object. A Component Object node can have any amount of properties. They must be named in the Property Panel. When this input is changed all other Component Object nodes in the same component are updated.{/*##input##*/} Each property will get one input and output to set/get their current value. See below for more details. |
+| データ                                               | 説明                                                                                                                                                                                                                                                                                                                                                                           |
+| ---------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| <span className="ndl-data">プロパティ名</span>        | {/*##input:value-\*##*/}Component Objectの特定のプロパティの値です。Component Objectノードは任意の数のプロパティを持つことができます。これらはプロパティパネルで名前をつける必要があります。この入力が変更されると、同じコンポーネント内の他のすべてのComponent Objectノードが更新されます。{/*##input##*/}各プロパティは、その現在の値を設定/取得するための1つの入力と出力を持ちます。詳細については以下を参照してください。 |
 
-| Signal                                    | Description                                                                                                                                                                                                                                                                                                                |
-| ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-signal">Fetch</span> | {/*##input:fetch##*/}The fetch signal input can be used to explicitly signal when the data of a **Component Object** should be fetched. If a connection is made to this input the node will not automatically receive changes on it's properties, it will only get the new data when the fetch signal is triggered.{/*##input##*/} |
+| シグナル                                      | 説明                                                                                                                                                                                                                                                                                                                                  |
+| --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| <span className="ndl-signal">フェッチ</span>  | {/*##input:fetch##*/}フェッチシグナル入力は、**Component Object**のデータを明示的にフェッチするタイミングを指定するために使用できます。この入力に接続が行われると、ノードは自動的にプロパティの変更を受け取らなくなり、フェッチシグナルがトリガーされたときにのみ新しいデータを取得します。{/*##input##*/} |
 
-## Outputs
+## 出力
 
-| Data                  | Description                                                                                                                                             |
-| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Custom properties** | {/*##output:value-\*##*/}A Component Object node can have any amount of properties. Each property will get one output to get the current value.{/*##output##*/} |
+| データ                      | 説明                                                                                                                                                       |
+| --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **カスタムプロパティ**      | {/*##output:value-\*##*/}Component Objectノードは任意の数のプロパティを持つことができます。各プロパティは、現在の値を取得するための1つの出力を持ちます。{/*##output##*/} |
 
-| Signal                                                       | Description                                                                                                                                                                                                                                                                                                           |
-| ------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-signal">Changed</span>                  | {/*##output:changed##*/}An event is triggered when any of the properties have changed.{/*##output##*/}                                                                                                                                                                                                                        |
-| <span className="ndl-signal">Fetched</span>                  | {/*##output:fetched##*/}An event is triggered on this output when a fetch is completed as a result of a **Fetch** sent on to the node.{/*##output##*/}                                                                                                                                                                        |
-| <span className="ndl-signal">Changed Property Signals</span> | {/*##output:changed-\*##*/}One changed signal output will be created for every property. They will emit a signal when the property changes value when this or some other **Component Object** or [Parent Component Object](/nodes/component-utilities/parent-component-object) node triggers the _Set_ input.{/*##output##*/} |
+| シグナル                                                     | 説明                                                                                                                                                                                                                                                                                                                       |
+| ------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <span className="ndl-signal">変更された</span>                  | {/*##output:changed##*/}プロパティのいずれかが変更されたときにイベントがトリガーされます。{/*##output##*/}                                                                                                                                                                                                                       |
+| <span className="ndl-signal">フェッチされた</span>              | {/*##output:fetched##*/}ノードに**フェッチ**が送信された結果としてフェッチが完了したときに、この出力でイベントがトリガーされます。{/*##output##*/}                                                                                                                                                                               |
+| <span className="ndl-signal">変更されたプロパティシグナル</span> | {/*##output:changed-\*##*/}各プロパティには、変更されたシグナル出力が1つ作成されます。これらは、このまたは他の**Component Object**または[Parent Component Object](/nodes/component-utilities/parent-component-object)ノードが_Set_入力をトリガーするときに、プロパティの値が変更されたときにシグナルを発信します。{/*##output##*/}

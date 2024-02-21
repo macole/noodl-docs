@@ -1,14 +1,14 @@
 ---
 hide_title: true
 hide_table_of_contents: true
-title: Parent Component Object node
+title: Parent Component Objectノード
 ---
 
 {/*##head##*/}
 
-# Parent Component Object
+# Parent Component Objectノード
 
-**Parent Component Object** is always used in combination with a [Component Object](/nodes/component-utilities/component-object). A **Parent Component Object** will search upwards in the component tree until it finds a **Component Object** node and mirror that node. Any change being done to one node will be reflected in the other nodes. Multiple **Parent Component Object** nodes in the same component will always mirror the same **Component Object**.
+**Parent Component Object**は常に[Component Object](/nodes/component-utilities/component-object)と組み合わせて使用されます。**Parent Component Object**は、コンポーネントツリーを上に検索し、**Component Object**ノードを見つけてそのノードをミラーします。一方のノードに行われた変更は、他のノードにも反映されます。同じコンポーネント内の複数の**Parent Component Object**ノードは常に同じ**Component Object**をミラーします。
 
 <div className="ndl-image-with-background">
 
@@ -16,31 +16,31 @@ title: Parent Component Object node
 
 </div>
 
-The node is used much like an [Object](/nodes/data/object/object-node) where you can output properties on the node. The node does not have an **Id** instead the data is shared with the parent component. This node is very useful in patterns such as radio groups where child components may need to access the **Component Object** of its parent.
+このノードは、ノード上のプロパティを出力できる[Object](/nodes/data/object/object-node)のように使用されます。このノードには**Id**がなく、代わりにデータは親コンポーネントと共有されます。このノードは、子コンポーネントが親の**Component Object**にアクセスする必要があるラジオグループなどのパターンで非常に便利です。
 {/*##head##*/}
 
-## Inputs
+## 入力
 
-### Properties
+### プロパティ
 
-| Data                                         | Description                                                                                                                                                                                                                              |
-| -------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-data">Properties</span> | {/*##input:value-\*##*/}The properties to set on the closest parent [Component Object](/nodes/component-utilities/component-object). When this input is changed via a connection the parent **Component Object** will be updated.{/*##input##*/} |
+| データ                                              | 説明                                                                                                                                                                                                                          |
+| --------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <span className="ndl-data">プロパティ</span>         | {/*##input:value-\*##*/}最も近い親[Component Object](/nodes/component-utilities/component-object)に設定するプロパティです。この入力が接続を介して変更されると、親**Component Object**が更新されます。{/*##input##*/} |
 
-| Signal                                    | Description                                                                                                                                                                                                                                                                                                                                                                                            |
-| ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| <span className="ndl-signal">Fetch</span> | {/*##input:fetch##*/}Normally when a **Parent Component State** is created, the property outputs are immediately updated. If you want to control how the data is updated you can connect to the _Fetch_ signal input. Then you need to explictly send a signal to fetch the data.{/*##input##*/}<br/><br/>With **Fetch** connected the output data won't change until **Fetch** is explicitly triggered again. |
+| シグナル                                      | 説明                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| --------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <span className="ndl-signal">フェッチ</span>   | {/*##input:fetch##*/}通常、**Parent Component State**が作成されると、プロパティの出力はすぐに更新されます。データの更新方法を制御したい場合は、_フェッチ_シグナル入力に接続できます。その場合、データをフェッチするために明示的にシグナルを送信する必要があります。{/*##input##*/}<br/><br/>**フェッチ**が接続されている場合、出力データは**フェッチ**が再度明示的にトリガーされるまで変更されません。 |
 
-## Outputs
+## 出力
 
-### Properties
+### プロパティ
 
-| Data                                                | Description                                                                                                                                          |
-| --------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-data">Parent Properties</span> | {/*##output:value-\*##*/}The values of the properties of the closest parent [Component Object](/nodes/component-utilities/component-object).{/*##output##*/} |
+| データ                                                      | 説明                                                                                                                                                              |
+| ----------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <span className="ndl-data">親プロパティ</span>               | {/*##output:value-\*##*/}最も近い親[Component Object](/nodes/component-utilities/component-object)のプロパティの値です。{/*##output##*/}                         |
 
-| Signal                                                       | Description                                                                                                                                                                                                                                                                 |
-| ------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-signal">Changed</span>                  | {/*##output:changed##*/}This event is triggered when any of the properties have changed.{/*##output##*/}                                                                                                                                                                            |
-| <span className="ndl-signal">Fetched</span>                  | {/*##output:fetched##*/}Signal when this node has bound itself to a [Component Object](/nodes/component-utilities/component-object). Triggers immediately if the **Fetch** inputs isn't connected, and will otherwise trigger when the **Fetch** input is signaled.{/*##output##*/} |
-| <span className="ndl-signal">Changed Property Signals</span> | {/*##output:changed-\*##*/}One changed signal output will be created for every property. They will emit a signal when the property changes value.{/*##output##*/}                                                                                                                   |
+| シグナル                                                     | 説明                                                                                                                                                                                                                                                                                 |
+| ------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <span className="ndl-signal">変更された</span>                  | {/*##output:changed##*/}プロパティのいずれかが変更されたときにこのイベントがトリガーされます。{/*##output##*/}                                                                                                                                                                              |
+| <span className="ndl-signal">フェッチされた</span>              | {/*##output:fetched##*/}[Component Object](/nodes/component-utilities/component-object)に自身をバインドしたときのシグナルです。**フェッチ**入力が接続されていない場合はすぐにトリガーされ、そうでない場合は**フェッチ**入力がシグナルされたときにトリガーされます。{/*##output##*/} |
+| <span className="ndl-signal">変更されたプロパティシグナル</span> | {/*##output:changed-\*##*/}各プロパティに対して1つの変更されたシグナル出力が作成されます。プロパティの値が変更されたときにシグナルを発信します。{/*##output##*/}                                                                                                                       |

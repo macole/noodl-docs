@@ -1,14 +1,14 @@
 ---
 hide_title: true
 hide_table_of_contents: true
-title: Insert Into Array node
+title: Insert Into Arrayノード
 ---
 
 {/*##head##*/}
 
 # Insert Object Into Array
 
-This node is used to insert an _Object_ into an _Array_. Both the Array and the Object are referred to through their _Id_. The insert happens when the _Do_ action is triggered.
+このノードは_Object_を_Array_に挿入するために使用されます。ArrayもObjectもそれぞれの_Id_を通じて参照されます。挿入は_Do_アクションがトリガーされたときに行われます。
 
 <div className="ndl-image-with-background l">
 
@@ -18,19 +18,19 @@ This node is used to insert an _Object_ into an _Array_. Both the Array and the 
 
 {/*##head##*/}
 
-## Inputs
+## 入力
 
-| Data                                        | Description                                                                         |
+| データ                                        | 説明                                                                         |
 | ------------------------------------------- | ----------------------------------------------------------------------------------- |
-| <span className="ndl-data">Array Id</span>  | {/*##input:collectionId##*/}The _Id_ of the Array to insert the Object into.{/*##input##*/} |
-| <span className="ndl-data">Object Id</span> | {/*##input:modifyId##*/}The _Id_ of the Object to insert into the Array.{/*##input##*/}     |
+| <span className="ndl-data">Array Id</span>  | {/*##input:collectionId##*/}Objectを挿入するArrayの_Id_です。{/*##input##*/} |
+| <span className="ndl-data">Object Id</span> | {/*##input:modifyId##*/}Arrayに挿入するObjectの_Id_です。{/*##input##*/}     |
 
-| Signal                                 | Description                                                                                                                                                                     |
+| シグナル                                 | 説明                                                                                                                                                                     |
 | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-signal">Do</span> | {/*##input:do##*/}Sending a signal to this input inserts the Object with the _Id_ set on the input _Object Id_ into the Array with the _Id_ set on the input _Array Id_.{/*##input##*/} |
+| <span className="ndl-signal">Do</span> | {/*##input:do##*/}この入力にシグナルを送ると、入力_Object Id_に設定された_Id_のObjectが、入力_Array Id_に設定された_Id_のArrayに挿入されます。{/*##input##*/} |
 
-## Outputs
+## 出力
 
-| Signal                                   | Description                                                                   |
+| シグナル                                   | 説明                                                                   |
 | ---------------------------------------- | ----------------------------------------------------------------------------- |
-| <span className="ndl-signal">Done</span> | {/*##output:done##*/}This signal is sent when the insertion is ready.{/*##output##*/} |
+| <span className="ndl-signal">Done</span> | {/*##output:done##*/}挿入が準備できたときに送信されるシグナルです。{/*##output##*/} |

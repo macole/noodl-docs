@@ -1,14 +1,14 @@
 ---
 hide_title: true
 hide_table_of_contents: true
-title: Close Popup node
+title: Close Popupノード
 ---
 
 {/*##head##*/}
 
-# Close Popup
+# Close Popupノード
 
-This node is used to close a popup that have previously been shown with the <span className="ndl-node">Show Popup</span> node. Sending a signal to the <span className="ndl-signal">Close</span> input will close the popup and remove the component instance.
+このノードは、以前に<span className="ndl-node">Show Popup</span>ノードで表示されたポップアップを閉じるために使用されます。<span className="ndl-signal">Close</span>入力へのシグナル送信により、ポップアップが閉じられ、コンポーネントインスタンスが削除されます。
 
 <div className="ndl-image-with-background l">
 
@@ -16,13 +16,13 @@ This node is used to close a popup that have previously been shown with the <spa
 
 </div>
 
-You can also pass data back to the component that triggered the popup by adding <span className="ndl-data">Result</span> values and <span className="ndl-signal">Close Action</span> signals. This is typically used for popups that propmt the user for some kind of input or action, like **Name**, **Confirm** or **Cancel**.
+<span className="ndl-data">Result</span>値と<span className="ndl-signal">Close Action</span>シグナルを追加することで、ポップアップをトリガーしたコンポーネントにデータを返すこともできます。これは、ユーザーに何らかの入力やアクションを促すポップアップ、例えば**名前**、**確認**、または**キャンセル**などで典型的に使用されます。
 
 {/*##head##*/}
 
-### Results and close actions
+### 結果と閉じるアクション
 
-Sending data back to the triggering component is done by adding **Result** values and **Close Action** signals. The result values become inputs where you can pass data back, and the actions become signal inputs that can be used to send signals back. This is typically useful for popups that take some sort of input, e.g. **Name** and where the user can perform different actions, e.g. **Confirm** or **Cancel**.
+トリガー元のコンポーネントにデータを送り返すには、**Result**値と**Close Action**シグナルを追加します。結果値はデータを返すための入力となり、アクションはシグナルを返すためのシグナル入力になります。これは、例えば**名前**のような入力を取るポップアップや、ユーザーが**確認**や**キャンセル**のような異なるアクションを実行できる場合に特に便利です。
 
 <div className="ndl-image-with-background">
 
@@ -30,11 +30,11 @@ Sending data back to the triggering component is done by adding **Result** value
 
 </div>
 
-After specifying results and close actions in the properties the corresponding inputs become available on the **Close Popup** node.
+プロパティで結果と閉じるアクションを指定した後、対応する入力が**Close Popup**ノードに利用可能になります。
 
 :::info
 
-**Close Popup** has to be called in the same component that **Open Popup** opened.
+**Close Popup**は**Open Popup**が開いた同じコンポーネント内で呼び出す必要があります。
 
 :::
 
@@ -44,7 +44,7 @@ After specifying results and close actions in the properties the corresponding i
 
 </div>
 
-These **Result** values and **Close Actions** will also become available as outputs on the [Show Popup](/nodes/popups/show-popup) nodes that have the component containing the **Close Popup** node as target.
+これらの**Result**値と**Close Actions**は、**Close Popup**ノードを含むコンポーネントを対象とする[Show Popup](/nodes/popups/show-popup)ノードの出力としても利用可能になります。
 
 <div className="ndl-image-with-background l">
 
@@ -52,17 +52,17 @@ These **Result** values and **Close Actions** will also become available as outp
 
 </div>
 
-## Inputs
+## 入力
 
-| Signal                                            | Description                                                                                                               |
+| シグナル                                            | 説明                                                                                                               |
 | ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-signal">Close</span>         | {/*##input:close##*/}Send a signal here to close the popup. If no close actions are specified this should be used.{/*##input##*/} |
-| <span className="ndl-signal">Close Actions</span> | All close actions specified on this node will become available as signal inputs. See above for more details.              |
+| <span className="ndl-signal">Close</span>         | {/*##input:close##*/}ここにシグナルを送ると、ポップアップが閉じます。閉じるアクションが指定されていない場合は、これを使用する必要があります。{/*##input##*/} |
+| <span className="ndl-signal">Close Actions</span> | このノードで指定されたすべての閉じるアクションが、シグナル入力として利用可能になります。上記の詳細を参照してください。              |
 
-<span className="hidden-props-for-editor">{/*##input:closeAction-\*##*/}When the **Popup** is closed using this custom **Close Action**, the same signal be triggered on the **Show Popup** node that was used to open the **Popup**.{/*##input##*/}</span>
+<span className="hidden-props-for-editor">{/*##input:closeAction-\*##*/}このカスタム**Close Action**を使用して**Popup**が閉じられると、**Popup**を開くために使用された**Show Popup**ノードで同じシグナルがトリガーされます。{/*##input##*/}</span>
 
-| Data                                            | Description                                                                                           |
+| データ                                            | 説明                                                                                           |
 | ----------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| <span className="ndl-data">Result Values</span> | All result values specified on this node will become available as inputs. See above for more details. |
+| <span className="ndl-data">Result Values</span> | このノードで指定されたすべての結果値が、入力として利用可能になります。上記の詳細を参照してください。 |
 
-<span className="hidden-props-for-editor">{/*##input:result-\*##*/}When the **Popup** is closed, this result parameter will be forwarded as an output on the **Show Popup** node that was used to open the **Popup**.{/*##input##*/}</span>
+<span className="hidden-props-for-editor">{/*##input:result-\*##*/}**Popup**が閉じられると、この結果パラメータは、**Popup**を開くために使用された**Show Popup**ノードの出力として転送されます。{/*##input##*/}</span>

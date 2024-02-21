@@ -1,14 +1,14 @@
 ---
 hide_title: true
 hide_table_of_contents: true
-title: Icon node
+title: Iconノード
 ---
 
 {/*##head##*/}
 
 # Icon
 
-This node places an icon in the visual tree.
+このノードは、ビジュアルツリーにアイコンを配置します。
 
 <div className="ndl-image-with-background l">
 
@@ -16,14 +16,14 @@ This node places an icon in the visual tree.
 
 </div>
 
-You can use an icon from the built in library, or provide your own image source.
+組み込みライブラリからアイコンを使用するか、独自の画像ソースを提供できます。
 {/*##head##*/}
 
-## Dynamic icons
+## ダイナミックアイコン
 
-If you want to dynamically pass an icon from the icon library to the **Icon** node you do this through the <span class="ndl-data">Icon Source</span> input.
+アイコンライブラリから動的にアイコンを**Icon**ノードに渡したい場合、<span class="ndl-data">Icon Source</span>入力を通じてこれを行います。
 
-This input expects an object with a **class** (being the name of the icon library) and **code** (being the icon code that you see when you hover an icon in the icon picker). The easiest way of transforming a string to an icon object is to use a custom function containing the following code:
+この入力は、**class**（アイコンライブラリの名前）と**code**（アイコンピッカーでアイコンにホバーしたときに表示されるアイコンコード）を持つオブジェクトを期待しています。文字列をアイコンオブジェクトに変換する最も簡単な方法は、以下のコードを含むカスタム関数を使用することです：
 
 ```js
 Outputs.iconObject = {
@@ -32,36 +32,36 @@ Outputs.iconObject = {
 };
 ```
 
-This will automatically create an <span className="ndl-data">iconCode</span> input and an <span className="ndl-data">iconObject</span> output.
+これにより、<span className="ndl-data">iconCode</span>入力と<span className="ndl-data">iconObject</span>出力が自動的に作成されます。
 
-## Inputs
+## 入力
 
-| Data                                          | Description                                                                                         |
-| --------------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| <span className="ndl-data">Type</span>        | Use this to set if you want to use a predefined `icon` or a custom `image` from the project folder. |
-| <span className="ndl-data">Icon Source</span> | Where to get the icon.                                                                              |
-| <span className="ndl-data">Size</span>        | The width of the icon in `px`.                                                                      |
-| <span className="ndl-data">Color</span>       | Sets the color of the icon. Only visible if _Type_ is set to `icon`.                                |
+| データ                                          | 説明                                                                                         |
+| --------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| <span className="ndl-data">タイプ</span>        | 事前定義された`icon`を使用するか、プロジェクトフォルダーからカスタム`image`を使用するかを設定します。 |
+| <span className="ndl-data">アイコンソース</span> | アイコンを取得する場所。                                                                              |
+| <span className="ndl-data">サイズ</span>        | アイコンの幅（`px`単位）。                                                                          |
+| <span className="ndl-data">色</span>           | アイコンの色を設定します。_タイプ_が`icon`に設定されている場合のみ表示されます。                   |
 
-### Visual
+### ビジュアル
 
-This node supports the following [Visual Input Properties](/nodes/shared-props/inputs/visual-input-properties):
+このノードは、以下の[ビジュアル入力プロパティ](/nodes/shared-props/inputs/visual-input-properties)をサポートしています:
 
-- [Margin](/nodes/shared-props/inputs/visual-input-properties#margin)
-- [Padding](/nodes/shared-props/inputs/visual-input-properties#padding)
-- [Alignment](/nodes/shared-props/inputs/visual-input-properties#alignment)
-- [Layout, Position](/nodes/shared-props/inputs/visual-input-properties#-position)
-- [Style](/nodes/shared-props/inputs/visual-input-properties#style)
-- [Placement](/nodes/shared-props/inputs/visual-input-properties#placement)
-- [Advanced HTML](/nodes/shared-props/inputs/visual-input-properties#advanced-html)
+- [マージン](/nodes/shared-props/inputs/visual-input-properties#margin)
+- [パディング](/nodes/shared-props/inputs/visual-input-properties#padding)
+- [配置](/nodes/shared-props/inputs/visual-input-properties#alignment)
+- [レイアウト, 位置](/nodes/shared-props/inputs/visual-input-properties#-position)
+- [スタイル](/nodes/shared-props/inputs/visual-input-properties#style)
+- [配置](/nodes/shared-props/inputs/visual-input-properties#placement)
+- [高度なHTML](/nodes/shared-props/inputs/visual-input-properties#advanced-html)
 
-## Outputs
+## 出力
 
-This node supports the following [Visual Output Properties](/nodes/shared-props/outputs/visual-output-properties):
+このノードは、以下の[ビジュアル出力プロパティ](/nodes/shared-props/outputs/visual-output-properties)をサポートしています:
 
-- [Bounding Box](/nodes/shared-props/outputs/visual-output-properties#bounding-box)
-- [Mounted](/nodes/shared-props/outputs/visual-output-properties#mounted)
-- [Other](/nodes/shared-props/outputs/visual-output-properties#other)
+- [バウンディングボックス](/nodes/shared-props/outputs/visual-output-properties#bounding-box)
+- [マウント](/nodes/shared-props/outputs/visual-output-properties#mounted)
+- [その他](/nodes/shared-props/outputs/visual-output-properties#other)
 
 <div className="hidden-props-for-editor">
 

@@ -1,14 +1,14 @@
 ---
 hide_title: true
 hide_table_of_contents: true
-title: Array node
+title: Arrayノード
 ---
 
 {/*##head##*/}
 
 # Array
 
-Arrays are ordered lists of [Object](/nodes/data/object/object-node)s. See the guide on arrays [here](/docs/guides/data/arrays) for a more detailed introduction.
+Arrayは[Object](/nodes/data/object/object-node)の順序付きリストです。より詳細な紹介については、[こちら](/docs/guides/data/arrays)の配列ガイドを参照してください。
 
 <div className="ndl-image-with-background l">
 
@@ -16,31 +16,31 @@ Arrays are ordered lists of [Object](/nodes/data/object/object-node)s. See the g
 
 </div>
 
-You can create and modify the array using the [Create new Array](/nodes/data/array/create-new-array), [Insert Object Into Array](/nodes/data/array/insert-into-array) and [Remove Object From Array](/nodes/data/array/remove-from-array).
+Arrayは、[Create new Array](/nodes/data/array/create-new-array)、[Insert Object Into Array](/nodes/data/array/insert-into-array)、[Remove Object From Array](/nodes/data/array/remove-from-array)を使用して作成および変更できます。
 {/*##head##*/}
 
-## Inputs
+## 入力
 
-### General
+### 一般
 
-| Data                                    | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| データ                                    | 説明                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | --------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-data">Items</span> | {/*##input:items##*/}This input sets the source of the array.{/*##input##*/} You can for instance forward the content of a [Static Array](/nodes/data/array/static-array) node using this input. The content of the source array will be copied to this array by default and any changes to the source array will also be copied automatically. You can control this by making a signal connection to _Set_, in that case the items, i.e. content of the source array, will only be copied when a signal is received on _Set_. |
-| <span className="ndl-data">Id</span>    | {/*##input:id##*/}This is the _Id_ of the array, it works similair to objects and variables. It specifies the array that this node will act on via it's _Id_. All **Array** nodes with the same _Id_ will refer to the same array of objects.{/*##input##*/}                                                                                                                                                                                                                                                                   |
+| <span className="ndl-data">Items</span> | {/*##input:items##*/}この入力は、配列のソースを設定します。{/*##input##*/} たとえば、[Static Array](/nodes/data/array/static-array)ノードの内容をこの入力に転送できます。ソース配列の内容はデフォルトでこの配列にコピーされ、ソース配列への変更も自動的にコピーされます。_Set_へのシグナル接続を行うことで、これを制御できます。その場合、ソース配列のアイテム、つまり内容は、_Set_にシグナルが受信されたときにのみコピーされます。 |
+| <span className="ndl-data">Id</span>    | {/*##input:id##*/}これは配列の_Id_です。オブジェクトや変数と同様に機能します。_Id_を介してこのノードが操作する配列を指定します。同じ_Id_を持つすべての**Array**ノードは、同じオブジェクトの配列を参照します。{/*##input##*/}                                                                                                                                                                                                                                                                   |
 
-| Signal                                    | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| シグナル                                    | 説明                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| <span className="ndl-signal">Fetch</span> | {/*##input:fetch##*/}Normally when _Id_ is set, the items and count outputs are immediately updated with the content of the array referenced by the _Id_. If you want to control how the data is updated you can connect to the _Fetch_ signal input. Then you need to explictly send a signal here for the **Array** node to fetch the data. Before an array have been fetched none of the modify and set operations or source items will have any affect.{/*##input##*/} |
+| <span className="ndl-signal">Fetch</span> | {/*##input:fetch##*/}_Id_が設定されると、通常は_Items_と_Count_の出力が_Id_によって参照される配列の内容で即座に更新されます。データの更新方法を制御したい場合は、_Fetch_シグナル入力に接続できます。その場合、**Array**ノードがデータをフェッチするためにここに明示的にシグナルを送る必要があります。配列がフェッチされる前には、変更および設定操作またはソースアイテムは何の影響もありません。{/*##input##*/} |
 
-## Outputs
+## 出力
 
-| Data                                    | Description                                                                                                                                                                                                   |
+| データ                                    | 説明                                                                                                                                                                                                   |
 | --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-data">Id</span>    | {/*##output:id##*/}The _Id_ for this **Array**.{/*##output##*/}                                                                                                                                                       |
-| <span className="ndl-data">Items</span> | {/*##output:items##*/}This is an output that can be connected to others that can take **Array** inputs, such as the [Repeater](/nodes/ui-controls/repeater) node. It will hold an `Noodl.Array` type.{/*##output##*/} |
-| <span className="ndl-data">Count</span> | {/*##output:count##*/}The number of items in the **Array**.{/*##output##*/}                                                                                                                                           |
+| <span className="ndl-data">Id</span>    | {/*##output:id##*/}この**Array**の_Id_です。{/*##output##*/}                                                                                                                                                       |
+| <span className="ndl-data">Items</span> | {/*##output:items##*/}これは、[Repeater](/nodes/ui-controls/repeater)ノードなど、**Array**入力を取ることができる他のものに接続できる出力です。`Noodl.Array`タイプを保持します。{/*##output##*/} |
+| <span className="ndl-data">Count</span> | {/*##output:count##*/}**Array**内のアイテムの数です。{/*##output##*/}                                                                                                                                           |
 
-| Signal                                      | Description                                                                                                                                                                                                |
+| シグナル                                      | 説明                                                                                                                                                                                                |
 | ------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-signal">Changed</span> | {/*##output:changed##*/}This signal is triggered when the content of the array is changed, either by an action on this node or by some other node in the graph that operates on the same array Id.{/*##output##*/} |
-| <span className="ndl-signal">Fetched</span> | {/*##output:fetched##*/}Triggered when a _Fetch_ action has been performed and the data is ready.{/*##output##*/}                                                                                                  |
+| <span className="ndl-signal">Changed</span> | {/*##output:changed##*/}このシグナルは、このノードによるアクションまたはグラフ内の同じ配列Idを操作する他のノードによって配列の内容が変更されたときにトリガーされます。{/*##output##*/} |
+| <span className="ndl-signal">Fetched</span> | {/*##output:fetched##*/}_Fetch_アクションが実行され、データが準備できたときにトリガーされます。{/*##output##*/}                                                                                                  |

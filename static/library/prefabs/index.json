@@ -1,7 +1,7 @@
 [
   {
     "label": "Date Picker",
-    "desc": "A date picker component.",
+    "desc": "日付選択コンポーネント。",
     "icon": "library/prefabs/date-picker/date-picker.png",
     "project": "library/prefabs/date-picker/date-picker-1-3.zip",
     "docs": "/library/prefabs/date-picker/",
@@ -9,7 +9,7 @@
   },
   {
     "label": "Time Picker",
-    "desc": "A time picker component.",
+    "desc": "時間選択コンポーネント。",
     "icon": "library/prefabs/time-picker/time-picker.png",
     "project": "library/prefabs/time-picker/time-picker-1-2.zip",
     "docs": "/library/prefabs/time-picker/",
@@ -17,7 +17,7 @@
   },
   {
     "label": "Multi Choice with Pills",
-    "desc": "A multi select drop down, showing the selected items as pills.",
+    "desc": "選択したアイテムをピルとして表示するマルチセレクトドロップダウン。",
     "icon": "library/prefabs/multi-choice-with-pills/multi-choice-with-pills.png",
     "project": "library/prefabs/multi-choice-with-pills/multi-choice-with-pills-0-9.zip",
     "docs": "/library/prefabs/multi-choice-with-pills/",
@@ -25,7 +25,7 @@
   },
   {
     "label": "Multi Choice",
-    "desc": "A component that allows for multi selection in a group of checkboxes.",
+    "desc": "チェックボックスのグループ内で複数選択を可能にするコンポーネント。",
     "icon": "library/prefabs/multi-choice/multi-choice.png",
     "project": "library/prefabs/multi-choice/multi-choice-0-5.zip",
     "docs": "/library/prefabs/multi-choice/",
@@ -33,7 +33,7 @@
   },
   {
     "label": "Table",
-    "desc": "Component for creating tables from data.",
+    "desc": "データからテーブルを作成するコンポーネント。",
     "icon": "library/prefabs/table/table.png",
     "project": "library/prefabs/table/table-0-6.zip",
     "docs": "/library/prefabs/table/",
@@ -41,7 +41,7 @@
   },
   {
     "label": "Form",
-    "desc": "Component for creating dynamic forms.",
+    "desc": "動的フォームを作成するコンポーネント。",
     "icon": "library/prefabs/form/form.png",
     "project": "library/prefabs/form/form-0-4.zip",
     "docs": "/library/prefabs/form/",
@@ -49,7 +49,7 @@
   },
   {
     "label": "List With Icons",
-    "desc": "A simple list component with icons and labels.",
+    "desc": "アイコンとラベル付きのシンプルなリストコンポーネント。",
     "icon": "library/prefabs/list-with-icons/list-with-icons.png",
     "project": "library/prefabs/list-with-icons/list-with-icons-1-0.zip",
     "docs": "/library/prefabs/list-with-icons/",
@@ -57,7 +57,7 @@
   },
   {
     "label": "Navigation Menu",
-    "desc": "Component for creating navigation menus.",
+    "desc": "ナビゲーションメニューを作成するコンポーネント。",
     "icon": "library/prefabs/navigation-menu/navigation-menu.png",
     "project": "library/prefabs/navigation-menu/navigation-menu-0-1.zip",
     "docs": "/library/prefabs/navigation-menu/",
@@ -65,7 +65,7 @@
   },
   {
     "label": "Media Query",
-    "desc": "Contains a handy component to create responsive interfaces.",
+    "desc": "レスポンシブインターフェイスを作成するための便利なコンポーネントを含む。",
     "icon": "library/prefabs/media-query/media-query.png",
     "project": "library/prefabs/media-query/media-query-0-2.zip",
     "docs": "/library/prefabs/media-query/",
@@ -73,7 +73,7 @@
   },
   {
     "label": "Progress Circle",
-    "desc": "Contains an animating progress visualization in percentage.",
+    "desc": "パーセンテージでアニメーションする進行状況の視覚化を含む。",
     "icon": "library/prefabs/progress-circle/progress-circle.png",
     "project": "library/prefabs/progress-circle/progress-circle-0-1.zip",
     "docs": "/library/prefabs/progress-circle/",
@@ -81,7 +81,7 @@
   },
   {
     "label": "Popup Modal",
-    "desc": "Contains a classic popup modal for simple confirm popups.",
+    "desc": "シンプルな確認ポップアップ用のクラシックなポップアップモーダルを含む。",
     "icon": "library/prefabs/modal/modal.png",
     "project": "library/prefabs/modal/modal-0-1.zip",
     "docs": "/library/prefabs/modal/",
@@ -89,7 +89,7 @@
   },
   {
     "label": "Toast",
-    "desc": "Contains Toast messages for success, warnings, errors, and neutral.",
+    "desc": "成功、警告、エラー、中立のトーストメッセージを含む。",
     "icon": "library/prefabs/toast/toast.png",
     "project": "library/prefabs/toast/toast-0-1.zip",
     "docs": "/library/prefabs/toast/",
@@ -97,7 +97,7 @@
   },
   {
     "label": "Toggle Switch",
-    "desc": "A toggle switch UI component.",
+    "desc": "トグルスイッチUIコンポーネント。",
     "icon": "library/prefabs/toggle/toggle.png",
     "project": "library/prefabs/toggle/toggle-0-1.zip",
     "docs": "/library/prefabs/toggle/",
@@ -105,7 +105,7 @@
   },
   {
     "label": "Tab Bar",
-    "desc": "A tab bar component, useful for creating tab navigation.",
+    "desc": "タブナビゲーションを作成するためのタブバーコンポーネント。",
     "icon": "library/prefabs/tab-bar/tab-bar.png",
     "project": "library/prefabs/tab-bar/tab-bar-0-1.zip",
     "docs": "/library/prefabs/tab-bar/",
@@ -113,7 +113,7 @@
   },
   {
     "label": "Rating",
-    "desc": "An interactive star rating component.",
+    "desc": "インタラクティブなスターレーティングコンポーネント。",
     "icon": "library/prefabs/rating/rating.png",
     "project": "library/prefabs/rating/rating-0-2.zip",
     "docs": "/library/prefabs/rating/",
@@ -121,7 +121,7 @@
   },
   {
     "label": "Loading Spinner",
-    "desc": "A loading spinner that can be shown when requesting data etc.",
+    "desc": "データ要求時などに表示できるローディングスピナー。",
     "icon": "library/prefabs/loading-spinner/loading-spinner.png",
     "project": "library/prefabs/loading-spinner/loading-spinner-0-1.zip",
     "docs": "/library/prefabs/loading-spinner/",
@@ -129,7 +129,7 @@
   },
   {
     "label": "Tags",
-    "desc": "Display a list of tags, with nice auto generated colors.",
+    "desc": "自動生成された色付きのタグリストを表示。",
     "icon": "library/prefabs/tags/tags.png",
     "project": "library/prefabs/tags/tags-0-1.zip",
     "docs": "/library/prefabs/tags/",
@@ -137,7 +137,7 @@
   },
   {
     "label": "Selection Pills",
-    "desc": "A list of selection pills, select one or many.",
+    "desc": "1つまたは複数選択するセレクションピルのリスト。",
     "icon": "library/prefabs/selection-pills/selection-pills.png",
     "project": "library/prefabs/selection-pills/selection-pills-0-1.zip",
     "docs": "/library/prefabs/selection-pills/",
@@ -145,7 +145,7 @@
   },
   {
     "label": "Send Grid",
-    "desc": "A simple prefab for sending emails with Send Grid.",
+    "desc": "Send Gridを使ってメールを送信するシンプルなプリファブ。",
     "icon": "library/prefabs/sendgrid/sendgrid.png",
     "project": "library/prefabs/sendgrid/sendgrid-0-2.zip",
     "docs": "/library/prefabs/sendgrid/",
@@ -153,7 +153,7 @@
   },
   {
     "label": "Mail Gun",
-    "desc": "A simple prefab for sending emails with Mail Gun.",
+    "desc": "Mail Gunを使ってメールを送信するシンプルなプリファブ。",
     "icon": "library/prefabs/mailgun/mailgun.png",
     "project": "library/prefabs/mailgun/mailgun-0-2.zip",
     "docs": "/library/prefabs/mailgun/",
@@ -161,7 +161,7 @@
   },
   {
     "label": "Email Verification",
-    "desc": "Cloud functions for email verification and reset password.",
+    "desc": "メール認証とパスワードリセットのためのクラウド関数。",
     "icon": "library/prefabs/email-verification/email-verification.png",
     "project": "library/prefabs/email-verification/email-verification-0-4.zip",
     "docs": "/library/prefabs/email-verification/",
@@ -169,7 +169,7 @@
   },
   {
     "label": "OAuth2",
-    "desc": "Cloud functions for oauth2 user authentication.",
+    "desc": "oauth2ユーザー認証のためのクラウド関数。",
     "icon": "library/prefabs/oauth2/oauth2.png",
     "project": "library/prefabs/oauth2/oauth2-0-2.zip",
     "docs": "/library/prefabs/oauth2/",
@@ -177,7 +177,7 @@
   },
   {
     "label": "TOTP",
-    "desc": "Cloud functions for auth with timebased one time passwords like Google Auth.",
+    "desc": "Google Authのような時間ベースのワンタイムパスワードでの認証のためのクラウド関数。",
     "icon": "library/prefabs/totp/totp.png",
     "project": "library/prefabs/totp/totp-0-2.zip",
     "docs": "/library/prefabs/totp/",
@@ -185,7 +185,7 @@
   },
   {
     "label": "Stripe",
-    "desc": "Some helpers to make cloud functions for accepting payments and subscriptions.",
+    "desc": "支払いとサブスクリプションの受け入れのためのクラウド関数を作成するヘルパー。",
     "icon": "library/prefabs/stripe/stripe.png",
     "project": "library/prefabs/stripe/stripe-0-4.zip",
     "docs": "/library/prefabs/stripe/",
@@ -193,7 +193,7 @@
   },
   {
     "label": "Pagination",
-    "desc": "A component for pagination, showing available pages and letting user switch.",
+    "desc": "利用可能なページを表示し、ユーザーが切り替えられるようにするページネーションコンポーネント。",
     "icon": "library/prefabs/pagination/pagination.png",
     "project": "library/prefabs/pagination/pagination-0-2.zip",
     "docs": "/library/prefabs/pagination/",
@@ -201,7 +201,7 @@
   },
   {
     "label": "Pages And Rows",
-    "desc": "A component for pagination, letting user pick page and number of rows per page.",
+    "desc": "ユーザーがページとページあたりの行数を選択できるページネーションコンポーネント。",
     "icon": "library/prefabs/pagesandrows/pagesandrows.png",
     "project": "library/prefabs/pagesandrows/pagesandrows-0-2.zip",
     "docs": "/library/prefabs/pagesandrows/",
@@ -209,7 +209,7 @@
   },
   {
     "label": "Filters",
-    "desc": "A prefab for creating filter controls that work well with query records.",
+    "desc": "クエリレコードでうまく機能するフィルターコントロールを作成するプリファブ。",
     "icon": "library/prefabs/filters/filters.png",
     "project": "library/prefabs/filters/filters-0-1.zip",
     "docs": "/library/prefabs/filters/",
@@ -217,7 +217,7 @@
   },
   {
     "label": "Xano",
-    "desc": "Connects to Xano and handles queries, users and authTokens. Built by @gmaison.",
+    "desc": "Xanoに接続し、クエリ、ユーザー、authTokensを処理します。@gmaisonによって構築されました。",
     "icon": "library/prefabs/xano/xano-thumb.png",
     "project": "library/prefabs/xano/xano-prefab-1.zip",
     "docs": "/library/prefabs/xano/",
@@ -225,7 +225,7 @@
   },
   {
     "label": "Supabase",
-    "desc": "Connects to Supabase and handles queries, users and authTokens. Built by @gmaison and @RicoTrevisan.",
+    "desc": "Supabaseに接続し、クエリ、ユーザー、authTokensを処理します。@gmaisonと@RicoTrevisanによって構築されました。",
     "icon": "library/prefabs/supabase/thumb.png",
     "project": "library/prefabs/supabase/supabase-prefab-1.zip",
     "docs": "/library/prefabs/supabase/",

@@ -1,14 +1,14 @@
 ---
 hide_title: true
 hide_table_of_contents: true
-title: Component Inputs node
+title: Component Inputsノード
 ---
 
 {/*##head##*/}
 
 # Component Inputs
 
-This node is used to create inputs for reusable components.
+このノードは、再利用可能なコンポーネントのための入力を作成するために使用されます。
 
 <div className="ndl-image-with-background l">
 
@@ -16,7 +16,7 @@ This node is used to create inputs for reusable components.
 
 </div>
 
-A <span className="ndl-node">Component Input</span> node can have multiple ports connected to inputs on the nodes inside of the component.
+<span className="ndl-node">Component Inputs</span>ノードは、コンポーネント内のノードの入力に接続される複数のポートを持つことができます。
 
 <div className="ndl-image-with-background l">
 
@@ -26,7 +26,7 @@ A <span className="ndl-node">Component Input</span> node can have multiple ports
 
 {/*##head##*/}
 
-A very powerful feature of Noodl is the ability to create **Components** that act as reusable nodes in your application.
+Noodlの非常に強力な機能の一つは、アプリケーション内で再利用可能なノードとして機能する**コンポーネント**を作成する能力です。
 
 <div className="ndl-image-with-background">
 
@@ -34,12 +34,12 @@ A very powerful feature of Noodl is the ability to create **Components** that ac
 
 </div>
 
-A core concept of components is that they can have inputs and outputs like any of the built in nodes.
+コンポーネントの核となる概念は、組み込みのノードのように入力と出力を持つことができるということです。
 
-The inputs of a component originate from a **Component Inputs** node and are connected to any node in the component.
+コンポーネントの入力は**Component Inputs**ノードから始まり、コンポーネント内の任意のノードに接続されます。
 
-When a **Component Inputs** node is created, it doesn't have any ports. The ports must be added by inspecting the node (left clicking it) and then clicking the **+Port** button.
-You can create and name ports as you wish.
+**Component Inputs**ノードが作成されると、ポートは存在しません。ポートを追加するには、ノードを検査（左クリック）してから、**+Port**ボタンをクリックします。
+好きなようにポートを作成し、名前を付けることができます。
 
 <div className="ndl-image-with-background">
 
@@ -47,6 +47,6 @@ You can create and name ports as you wish.
 
 </div>
 
-You can have multiple **Component Input** nodes in a single component. If you have multiple **Component Input** nodes with ports that share the same name, they will be merged into one input. It's important that target ports have the same or compatible types. If not, the port may not show up in instances of the component.
+単一のコンポーネントに複数の**Component Inputs**ノードを持つことができます。同じ名前のポートを持つ複数の**Component Inputs**ノードがある場合、それらは一つの入力に統合されます。対象ポートは同じか互換性のあるタイプを持っていることが重要です。そうでない場合、ポートはコンポーネントのインスタンスで表示されない可能性があります。
 
-You can also create groups for your component inputs using the **+Group** button, inputs in a specific group will have that as header in the properties of the component instance node.
+また、**+Group**ボタンを使用して、Component Inputsのグループを作成することもできます。特定のグループの入力は、コンポーネントインスタンスノードのプロパティでヘッダとして持つことになります。

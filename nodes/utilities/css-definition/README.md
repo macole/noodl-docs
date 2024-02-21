@@ -1,14 +1,14 @@
 ---
 hide_title: true
 hide_table_of_contents: true
-title: CSS Definition node
+title: CSS Definitionノード
 ---
 
 {/*##head##*/}
 
-# CSS Definition
+# CSS Definitionノード
 
-This node lets you write your own global custom CSS. It outputs your style definitions in a style tag at the top of your web app.
+このノードを使用すると、独自のグローバルカスタムCSSを記述できます。スタイル定義をウェブアプリのトップにあるstyleタグに出力します。
 
 <div className="ndl-image-with-background l">
 
@@ -16,7 +16,7 @@ This node lets you write your own global custom CSS. It outputs your style defin
 
 </div>
 
-The Visual nodes all have built in Visual Properties. They feature all the styling options needed for the majority of apps. The CSS Definition node is used whenever those properties are not enough: if you want to use experimental or advanced CSS features, hacks or workarounds. It is written like plain CSS:
+ビジュアルノードにはすべてビルトインのビジュアルプロパティがあります。これらは、ほとんどのアプリに必要なスタイリングオプションを提供します。CSS Definitionノードは、これらのプロパティだけでは不十分な場合に使用されます：実験的または高度なCSS機能、ハック、または回避策を使用したい場合です。プレーンCSSのように記述されます：
 
 <div className="ndl-image-with-background l">
 
@@ -24,7 +24,7 @@ The Visual nodes all have built in Visual Properties. They feature all the styli
 
 </div>
 
-Classes can be attached to the Visual nodes in the Property Panel:
+クラスはプロパティパネルのビジュアルノードに添付できます：
 
 <div className="ndl-image-with-background l">
 
@@ -32,6 +32,6 @@ Classes can be attached to the Visual nodes in the Property Panel:
 
 </div>
 
-The CSS Definition is best used if a style class will be reused on multiple different Visual nodes. If you're only styling one Visual node you should do it in the CSS Style editor at the bottom of the Property Panel.
+CSS Definitionは、スタイルクラスが複数の異なるビジュアルノードで再利用される場合に最適に使用されます。1つのビジュアルノードのみをスタイリングする場合は、プロパティパネルの下部にあるCSSスタイルエディターで行うべきです。
 
 {/*##head##*/}

@@ -1,54 +1,54 @@
 ---
 hide_title: true
 hide_table_of_contents: true
-title: Image node
+title: Imageノード
 ---
 
 {/*##head##*/}
 
 # Image
 
-This node places an image in the visual tree. It features a wide range of design options and blend modes.
+このノードは、ビジュアルツリーに画像を配置します。幅広いデザインオプションとブレンドモードを特徴としています。
 
-The <span className="ndl-data">source</span> can be set from a URL or a file. You can drag images from your computer and drop them into Noodl to add them to the project folder. This will make them selectable as the <span className="ndl-data">source</span> in the <span className="ndl-node">Image</span> nodes Property Panel.
+<span className="ndl-data">ソース</span>はURLまたはファイルから設定できます。コンピュータから画像をドラッグしてNoodlにドロップすると、プロジェクトフォルダに追加され、<span className="ndl-node">Image</span>ノードのプロパティパネルで<span className="ndl-data">ソース</span>として選択できるようになります。
 
 {/*##head##*/}
 
-## Inputs
+## 入力
 
-| Data                                         | Description                                                                                                                                                                                                                  |
-| -------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-data">Source</span>     | The image source path. Choose an image in your project or point to a valid URL that can be accessed.                                                                                                                         |
-| <span className="ndl-data">Source Set</span> | Use this property to specify different image sources for different resolutions making it more responsive. Learn more [here](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images). |
+| データ                                         | 説明                                                                                                                                                                                                                      |
+| -------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <span className="ndl-data">ソース</span>     | 画像ソースパス。プロジェクト内の画像を選択するか、アクセス可能な有効なURLを指定します。                                                                                                                                     |
+| <span className="ndl-data">ソースセット</span> | 異なる解像度に対して異なる画像ソースを指定し、よりレスポンシブにするためのプロパティです。[こちら](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images)で詳しく学ぶことができます。 |
 
-### Visual
+### ビジュアル
 
-This node supports the following [Visual Input Properties](/nodes/shared-props/inputs/visual-input-properties):
+このノードは、以下の[ビジュアル入力プロパティ](/nodes/shared-props/inputs/visual-input-properties)をサポートしています:
 
--   [Margin](/nodes/shared-props/inputs/visual-input-properties#margin)
--   [Alignment](/nodes/shared-props/inputs/visual-input-properties#alignment)
--   [Dimensions](/nodes/shared-props/inputs/visual-input-properties#dimensions)
--   [Layout, Position](/nodes/shared-props/inputs/visual-input-properties#-position)
--   [Style](/nodes/shared-props/inputs/visual-input-properties#style)
--   [Border Style](/nodes/shared-props/inputs/visual-input-properties#border-style)
--   [Corner Radius](/nodes/shared-props/inputs/visual-input-properties#corner-radius)
--   [Box Shadow](/nodes/shared-props/inputs/visual-input-properties#box-shadow)
--   [Placement](/nodes/shared-props/inputs/visual-input-properties#placement)
--   [Dimension Constraints](/nodes/shared-props/inputs/visual-input-properties#dimension-constraints)
--   [Other](/nodes/shared-props/inputs/visual-input-properties#other)
--   [Advanced HTML](/nodes/shared-props/inputs/visual-input-properties#advanced-html)
+-   [マージン](/nodes/shared-props/inputs/visual-input-properties#margin)
+-   [配置](/nodes/shared-props/inputs/visual-input-properties#alignment)
+-   [寸法](/nodes/shared-props/inputs/visual-input-properties#dimensions)
+-   [レイアウト, 位置](/nodes/shared-props/inputs/visual-input-properties#-position)
+-   [スタイル](/nodes/shared-props/inputs/visual-input-properties#style)
+-   [ボーダースタイル](/nodes/shared-props/inputs/visual-input-properties#border-style)
+-   [コーナーの半径](/nodes/shared-props/inputs/visual-input-properties#corner-radius)
+-   [ボックスシャドウ](/nodes/shared-props/inputs/visual-input-properties#box-shadow)
+-   [配置](/nodes/shared-props/inputs/visual-input-properties#placement)
+-   [寸法制約](/nodes/shared-props/inputs/visual-input-properties#dimension-constraints)
+-   [その他](/nodes/shared-props/inputs/visual-input-properties#other)
+-   [高度なHTML](/nodes/shared-props/inputs/visual-input-properties#advanced-html)
 
-## Outputs
+## 出力
 
-Many of the UI nodes share the same outputs. Please refer to the [Visual Output Properties](/nodes/shared-props/outputs/visual-output-properties) documentation.
+多くのUIノードは同じ出力を共有しています。[ビジュアル出力プロパティ](/nodes/shared-props/outputs/visual-output-properties)のドキュメントを参照してください。
 
-This node supports the following properties:
+このノードは、以下のプロパティをサポートしています:
 
--   [Bounding Box](/nodes/shared-props/outputs/visual-output-properties/#bounding-box)
--   [Mounted](/nodes/shared-props/outputs/visual-output-properties/#mounted)
--   [Pointer Events](/nodes/shared-props/outputs/visual-output-properties/#pointer-events)
--   [Hover Events](/nodes/shared-props/outputs/visual-output-properties/#hover-events)
--   [Other](/nodes/shared-props/outputs/visual-output-properties/#other)
+-   [バウンディングボックス](/nodes/shared-props/outputs/visual-output-properties/#bounding-box)
+-   [マウント](/nodes/shared-props/outputs/visual-output-properties/#mounted)
+-   [ポインタイベント](/nodes/shared-props/outputs/visual-output-properties/#pointer-events)
+-   [ホバーイベント](/nodes/shared-props/outputs/visual-output-properties/#hover-events)
+-   [その他](/nodes/shared-props/outputs/visual-output-properties/#other)
 
 <div className="hidden-props-for-editor">
 

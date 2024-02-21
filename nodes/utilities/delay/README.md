@@ -1,14 +1,14 @@
 ---
 hide_title: true
 hide_table_of_contents: true
-title: Delay node
+title: Delayノード
 ---
 
 {/*##head##*/}
 
-# Delay
+# Delayノード
 
-This node lets you delay <span className="ndl-signal">signals</span> by the specified amount of milliseconds.
+このノードは、指定されたミリ秒数だけ<span className="ndl-signal">シグナル</span>を遅延させることができます。
 
 <div className="ndl-image-with-background l">
 
@@ -18,22 +18,22 @@ This node lets you delay <span className="ndl-signal">signals</span> by the spec
 
 {/*##head##*/}
 
-## Inputs
+## 入力
 
-| Signal                                      | Description                                                           |
+| シグナル                                      | 説明                                                           |
 | ------------------------------------------- | --------------------------------------------------------------------- |
-| <span className="ndl-signal">Start</span>   | Starts the timer. Does nothing if the timer is already running.       |
-| <span className="ndl-signal">Restart</span> | Starts the timer. Restarts the timer if the timer is already running. |
-| <span className="ndl-signal">Stop</span>    | Stops the timer if it's running. Does nothing otherwise.              |
+| <span className="ndl-signal">Start</span>   | タイマーを開始します。タイマーが既に動作している場合は何もしません。       |
+| <span className="ndl-signal">Restart</span> | タイマーを開始します。タイマーが既に動作している場合はタイマーを再起動します。 |
+| <span className="ndl-signal">Stop</span>    | タイマーが動作している場合はタイマーを停止します。それ以外の場合は何もしません。              |
 
-| Data                                          | Description                                                                                        |
+| データ                                          | 説明                                                                                        |
 | --------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| <span className="ndl-data">Duration</span>    | The duration of the timer in milliseconds.                                                         |
-| <span className="ndl-data">Start Delay</span> | The delay before the timer starts after the _Start_ input is triggered. Specified in milliseconds. |
+| <span className="ndl-data">期間</span>    | タイマーの期間（ミリ秒）。                                                         |
+| <span className="ndl-data">開始遅延</span> | _Start_入力がトリガーされた後にタイマーが開始するまでの遅延。ミリ秒で指定します。 |
 
-## Outputs
+## 出力
 
-| Signal                                       | Description                                |
+| シグナル                                       | 説明                                |
 | -------------------------------------------- | ------------------------------------------ |
-| <span className="ndl-signal">Started</span>  | Signal emitted when the timer starts.      |
-| <span className="ndl-signal">Finished</span> | Signal emitted when the timer is finished. |
+| <span className="ndl-signal">開始時</span>  | タイマーが開始したときに発せられるシグナル。      |
+| <span className="ndl-signal">終了時</span> | タイマーが終了したときに発せられるシグナル。 |

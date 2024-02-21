@@ -1,16 +1,16 @@
 ---
 hide_title: true
 hide_table_of_contents: true
-title: Page Router node
+title: Page Routerノード
 ---
 
 {/*##head##*/}
 
-# Page Router
+# Page Routerノード
 
-This node lets you navigate between your <span className="ndl-node">[Page](/nodes/navigation/page)</span> nodes using the <span className="ndl-node">[Navigate](/nodes/navigation/navigate)</span> or <span className="ndl-node">[Navigate To Path](/nodes/navigation/navigate-to-path)</span> nodes. You can also use the <span className="ndl-node">[External Link](/nodes/navigation/external-link)</span> node to navigate to a page outside your app.
+このノードを使用すると、<span className="ndl-node">[Navigate](/nodes/navigation/navigate)</span>や<span className="ndl-node">[Navigate To Path](/nodes/navigation/navigate-to-path)</span>ノードを使用して、<span className="ndl-node">[Page](/nodes/navigation/page)</span>ノード間をナビゲートできます。また、<span className="ndl-node">[External Link](/nodes/navigation/external-link)</span>ノードを使用して、アプリの外部のページにナビゲートすることもできます。
 
-Unlike the somewhat similar [Component Stack](/nodes/component-stack/component-stack-node) the **Page Router** is optimized for web type navigation (in contrast to app type) and uses URLs and routing as part of the navigation as well as the browser history.
+[Component Stack](/nodes/component-stack/component-stack-node)といくらか似ているが、**Page Router**はウェブタイプのナビゲーション（アプリタイプとは対照的に）に最適化されており、ナビゲーションの一部としてURLとルーティングを使用し、ブラウザの履歴を利用します。
 
 <div className="ndl-image-with-background">
 
@@ -18,15 +18,15 @@ Unlike the somewhat similar [Component Stack](/nodes/component-stack/component-s
 
 </div>
 
-Every <span className="ndl-node">Page Router</span> has a <span className="ndl-data">Start Page</span>. The pages are rendered inside of the <span className="ndl-node">Page Router</span>. You can use the <span className="ndl-data">Clip Behavior</span> option to decide how the <span className="ndl-node">Page Router</span> should wrap its content.
+すべての<span className="ndl-node">Page Router</span>には<span className="ndl-data">Start Page</span>があります。ページは<span className="ndl-node">Page Router</span>内にレンダリングされます。<span className="ndl-node">Page Router</span>がそのコンテンツをどのようにラップするかを決定するために、<span className="ndl-data">Clip Behavior</span>オプションを使用できます。
 
 {/*##head##*/}
 
-## Implementation
+## 実装
 
-The **Page Router** uses standard browser navigation which means that the user can use the browser **Back** button to navigate back in the **Page Router** history.
+**Page Router**は標準的なブラウザナビゲーションを使用しており、これはユーザーがブラウザの**Back**ボタンを使用して**Page Router**の履歴を戻ることができることを意味します。
 
-Note that the **Page Router** only navigates between [Pages](/nodes/navigation/page). **Pages** cannot be created through the Node Picker. You create them using **Create Page** in the component side bar.
+**Page Router**は[Pages](/nodes/navigation/page)間のみをナビゲートします。**Pages**はノードピッカーを通じて作成することはできません。コンポーネントサイドバーの**Create Page**を使用して作成します。
 
 <div className="ndl-image-with-background">
 
@@ -34,7 +34,7 @@ Note that the **Page Router** only navigates between [Pages](/nodes/navigation/p
 
 </div>
 
-After creating your **Pages** they are automatically added to your **Page Router** unless you have multiple **Page Routers** in your project. Then you'll have to add them manually to where they belong.
+**Pages**を作成すると、プロジェクトに複数の**Page Routers**がない限り、自動的に**Page Router**に追加されます。複数の**Page Routers**がある場合は、手動で所属する場所に追加する必要があります。
 
 <div className="ndl-image-with-background">
 
@@ -42,9 +42,9 @@ After creating your **Pages** they are automatically added to your **Page Router
 
 </div>
 
-## Start Page
+## スタートページ
 
-When creating and adding pages to your **Page Router** you will have to make one of the pages a starting page by opening the menu on the page item in the **Page Router** properties and selecting _Make Start Page"_.
+**Page Router**にページを作成して追加するときは、**Page Router**のプロパティ内のページ項目のメニューを開いて「_Make Start Page_」を選択することで、そのページのうちの1つをスタートページとして設定する必要があります。
 
 <div className="ndl-image-with-background">
 
@@ -52,63 +52,65 @@ When creating and adding pages to your **Page Router** you will have to make one
 
 </div>
 
-## Navigating
+## ナビゲーション
 
-### URLs to Page Routers and Pages
+### Page RoutersとPagesへのURL
 
-Noodl uses a URL to route a **Page Router** to a specific **Page**. A **Page Router** may optionally have a **URL Path**. Each page has also has a **URL Path** that will uniquely identify the URL route to that page.
+Noodlは、**Page Router**を特定の**Page**にルーティングするためにURLを使用します。**Page Router**にはオプションで**URL Path**を持つことができます。各ページには、そのページへのURLルートを一意に識別する**URL Path**もあります。
 
-Generally, the route to a **Page** looks like the following
+一般的に、**Page**へのルートは以下のようになります
 
 `<domainname>#/<route1>/<route2>/<route3>...`
 
-where `<domainname>` is the domain on where you host the app and each `<route>` points to either a **Page Router** or a **Page** within a **Page Router**. The `<route>` may also include a **Page Parameter** and **Query Parameters** (see below).
+ここで、`<domainname>`はアプリをホストしているドメインであり、各`<route>`は**Page Router**または**Page Router**内の**Page**のいずれかを指します。`<route>`には**Page Parameter**と**Query Parameters**も含まれる場合があります（以下参照）。
 
-For example a **Page Route** with the **URL Path** 'myrouter', with two possible pages with **URL Paths** _page1_ and _page2_, will have two possible routes: `myrouter/page1` and `#myrouter/page2`. Note the '#' character that is always added in the beginning of a route. If, for example, the Noodl App is deployed on the domain `app.mynoodlapps.com`, entering `https://app.mynoodlapps.com#myrouter/page2` in the browser will take make the **Page Router** with the **URL Path** _myrouter_ navigate to the **Page** with the **URL Path** _page2_.
+たとえば、**URL Path**が'myrouter'の**Page Route**があり、**URL Paths** _page1_ と _page2_ の2つの可能なページがある場合、2つの可能なルートがあります：`myrouter/page1` と `#myrouter/page2`です。ルートの始まりには常に'#'文字が追加されることに注意してください。例えば、Noodlアプリが`app.mynoodlapps.com`ドメインにデプロイされている場合、ブラウザに`https://app.mynoodlapps.com#myrouter/page2`を入力すると、**URL Path** _myrouter_ の**Page Router**が**URL Path** _page2_ の**Page**にナビゲートします。
 
-### Navigating using Navigation node
+### Navigationノードを使用したナビゲーション
 
-The most straight forward way of navigating between pages within an app is to use the [Navigate](/nodes/navigation/navigate) node. This node will navigate to the **Page** selected in the **Navigation** node. This will update the URL of the browser to the route pointing to that page. There is also a [Navigate To Path](/nodes/navigation/navigate-to-path) node that allows an explicit path to be set, that could for example perform navigation on multiple **Page Routers** at the same time by simply specifying a full URL path.
+アプリ内のページ間をナビゲートする最も直接的な方法は、[Navigate](/nodes/navigation/navigate)ノードを使用することです。このノードは、**Navigation**ノードで選択された**Page**にナビゲートします。これにより、そのページを指すルートにブラウザのURLが更新されます。また、[Navigate To Path](/nodes/navigation/navigate-to-path)ノードを使用すると、例えば複数の**Page Routers**を同時にナビゲートするために完全なURLパスを指定することができます。
 
-## Multiple Page Routers
+## 複数のPage Routers
 
-If needed, you can use multiple **Page Routers** at the same time. This could for example be used if you have multiple navigation flows within a higher level navigation flow. For example, you may have a top level navigation between the pages _Home_ _Settings_ and _Content_ and within each page have sub navigation into specific pages under each section.
+必要に応じて、複数の**Page Routers**を同時に使用できます。これは、たとえば、上位レベルのナビゲーションフロー内に
+
+複数のナビゲーションフローがある場合に使用できます。例えば、_Home_、_Settings_、_Content_のページ間でのトップレベルナビゲーションと、各セクション内の特定のページへのサブナビゲーションを持つ場合があります。
 
 ![](/nodes/navigation/page-router/multi-router.png)
 
 @include "../_common-navigation.md"
 
-## Visual Appearance
+## ビジュアルな外観
 
-The **Page Router** is a visual node. It will automatically expand to take all space available in the current layout, unless its **Clipping Behavior** is set to **Expand To Content Size** in which case it will have the same size as the **Page** its showing (if available).
+**Page Router**はビジュアルノードです。現在のレイアウトで利用可能なすべてのスペースを自動的に拡張しますが、その**Clipping Behavior**が**Expand To Content Size**に設定されている場合は、表示している**Page**のサイズと同じサイズになります（利用可能な場合）。
 
-## Inputs
+## 入力
 
-| Data                                               | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| データ                                               | 説明                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | -------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-data">Name</span>             | {/*##input:name##*/}The name of the **Page Router**. If you have multiple **Page Routers** the name will be used to identify them.{/*##input##*/}                                                                                                                                                                                                                                                                                                                                                          |
-| <span className="ndl-data">URL path</span>         | {/*##input:urlPath##*/}An optional path of the **Page Router** when routing a URL towards it.{/*##input##*/}                                                                                                                                                                                                                                                                                                                                                                                               |
-| <span className="ndl-data">Clip Behavior</span>    | {/*##input:clip##*/}This property controls the size and clipping behavior of the **Page Router**. It has three possible values: **Expand To Content Size**, **Scroll** or **Clip Content**.{/*##input##*/}<br/><br/>`Expand To Content Size`: Changes the size of the **Page Router** to fit the size of the **Page** it's currently showing.<br/>`Scroll`: Makes the **Page Router** take as much space as it can. Any **Page** inside it will be scrollable if it cannot fit inside the **Page Router**. |
-| <span className="ndl-data">Background Color</span> | {/*##input:backgroundColor##*/}The color that will be shown when there is no **Page** covering the **Page Router** or when the **Page** is transparent.{/*##input##*/}                                                                                                                                                                                                                                                                                                                                     |
-| <span className="ndl-data">Mounted</span>          | {/*##input:mounted##*/}This property is used to completely remove the node from the DOM. If this property is set to false the node is removed from the DOM. It differs from the _Visible_ property where the node is still part of the DOM but invisible.{/*##input##*/}                                                                                                                                                                                                                                   |
+| <span className="ndl-data">名前</span>             | {/*##input:name##*/}**Page Router**の名前です。複数の**Page Routers**がある場合、名前を使用してそれらを識別します。{/*##input##*/}                                                                                                                                                                                                                                                                                                                                                          |
+| <span className="ndl-data">URLパス</span>         | {/*##input:urlPath##*/}URLに向かってルーティングする際の**Page Router**のオプションのパスです。{/*##input##*/}                                                                                                                                                                                                                                                                                                                                                                                               |
+| <span className="ndl-data">クリップ動作</span>    | {/*##input:clip##*/}このプロパティは、**Page Router**のサイズとクリッピング動作を制御します。3つの可能な値があります: **Expand To Content Size**、**Scroll**、**Clip Content**。{/*##input##*/}<br/><br/>`Expand To Content Size`: **Page Router**のサイズを、現在表示している**Page**のサイズに合わせて変更します。<br/>`Scroll`: **Page Router**ができるだけ多くのスペースを取るようにします。**Page Router**内に収まらない**Page**はスクロール可能になります。 |
+| <span className="ndl-data">背景色</span> | {/*##input:backgroundColor##*/}**Page Router**を覆っている**Page**がないとき、または**Page**が透明の場合に表示される色です。{/*##input##*/}                                                                                                                                                                                                                                                                                                                                     |
+| <span className="ndl-data">マウント済み</span>          | {/*##input:mounted##*/}このプロパティは、ノードをDOMから完全に削除するために使用されます。このプロパティがfalseに設定されている場合、ノードはDOMから削除されます。_Visible_プロパティとは異なり、ノードはDOMの一部でありながらも見えなくなります。{/*##input##*/}                                                                                                                                                                                                                                   |
 
-| Signal                                    | Description                                                                                                      |
+| シグナル                                    | 説明                                                                                                      |
 | ----------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-signal">Reset</span> | {/*##input:reset##*/}Triggering this action will reset the **Page Router** making it show the start page.{/*##input##*/} |
+| <span className="ndl-signal">リセット</span> | {/*##input:reset##*/}このアクションをトリガーすると、**Page Router**がリセットされ、スタートページが表示されます。{/*##input##*/} |
 
-### Visual
+### ビジュアル
 
-This node also supports the [Advanced HTML](/nodes/shared-props/inputs/visual-input-properties#advanced-html) gadget from the [Visual Input Properties](/nodes/shared-props/inputs/visual-input-properties/).
+このノードは、[Visual Input Properties](/nodes/shared-props/inputs/visual-input-properties/)から[Advanced HTML](/nodes/shared-props/inputs/visual-input-properties#advanced-html)ガジェットもサポートしています。
 
-## Outputs
+## 出力
 
-| Data                                                 | Description                                                                                                         |
+| データ                                                 | 説明                                                                                                         |
 | ---------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-data">Current Page Title</span> | {/*##output:current page title##*/}The title of the page that is currently showing in this **Page Router**.{/*##output##*/} |
+| <span className="ndl-data">現在のページタイトル</span> | {/*##output:current page title##*/}この**Page Router**で現在表示されているページのタイトルです。{/*##output##*/} |
 
-### Visual
+### ビジュアル
 
-This node supports the following [Visual Output Properties](/nodes/shared-props/outputs/visual-output-properties/):
+このノードは、以下の[Visual Output Properties](/nodes/shared-props/outputs/visual-output-properties/)をサポートしています：
 
 -   [Bounding Box](/nodes/shared-props/outputs/visual-output-properties/#bounding-box)
 -   [Mounted](/nodes/shared-props/outputs/visual-output-properties/#mounted)

@@ -1,14 +1,14 @@
 ---
 hide_title: true
 hide_table_of_contents: true
-title: Set Component Object Properties node
+title: Set Component Object Propertiesノード
 ---
 
 {/*##head##*/}
 
-# Set Component Object Properties
+# Set Component Object Propertiesノード
 
-**Component Object** is a shared set of properties that can be accessed from a component as well as from any child components. This node is used to set properties on the **Component Object** these properties can be accessed via the [Component Object](/nodes/component-utilities/component-object) or the [Parent Component Object](/nodes/component-utilities/parent-component-object).
+**Component Object**は、コンポーネントおよびその子コンポーネントからアクセスできるプロパティの共有セットです。このノードは、**Component Object**上のプロパティを設定するために使用され、これらのプロパティは[Component Object](/nodes/component-utilities/component-object)または[Parent Component Object](/nodes/component-utilities/parent-component-object)を介してアクセスできます。
 
 <div className="ndl-image-with-background l">
 
@@ -18,18 +18,18 @@ title: Set Component Object Properties node
 
 {/*##head##*/}
 
-## Inputs
+## 入力
 
-| Signal                                 | Description                                                                                                                                                                                                                                                                   |
-| -------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-signal">Do</span> | {/*##input:do##*/}Stores any properties that are typed in the property panel or connected. All **Component Object** nodes in the same component, as well as any [Parent Component Object](/nodes/component-utilities/parent-component-object) nodes, will be updated. {/*##input##*/} |
+| シグナル                                   | 説明                                                                                                                                                                                                                                                        |
+| ------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <span className="ndl-signal">実行</span>   | {/*##input:do##*/}プロパティパネルに入力されたり接続されたりしたプロパティを保存します。同じコンポーネント内のすべての**Component Object**ノード、および任意の[Parent Component Object](/nodes/component-utilities/parent-component-object)ノードが更新されます。 {/*##input##*/} |
 
-| Data                                                | Description                                                                                                                                     |
-| --------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-data">Custom Properties</span> | {/*##input:prop-\*##*/}A property to set in the **Component Object**. You can list the properties you want to set in the property panel.{/*##input##*/} |
+| データ                                                    | 説明                                                                                                                                                 |
+| --------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <span className="ndl-data">カスタムプロパティ</span>       | {/*##input:prop-\*##*/}**Component Object**に設定するプロパティです。プロパティパネルに設定したいプロパティをリストアップできます。{/*##input##*/} |
 
-## Outputs
+## 出力
 
-| Signal                                   | Description                                                                                     |
-| ---------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| <span className="ndl-signal">Done</span> | {/*##output:done##*/}An signal is sent on this output when the set action is completed.{/*##output##*/} |
+| シグナル                                     | 説明                                                                                                   |
+| -------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| <span className="ndl-signal">完了</span>      | {/*##output:done##*/}設定アクションが完了したとき、この出力でシグナルが送信されます。{/*##output##*/} |

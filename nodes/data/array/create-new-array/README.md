@@ -1,14 +1,14 @@
 ---
 hide_title: true
 hide_table_of_contents: true
-title: Create New Array node
+title: Create New Arrayノード
 ---
 
 {/*##head##*/}
 
 # Create New Array
 
-Creates a new Array. The outgoing property _Id_ is the id of the newly created array. This can for example be connected to an [Array](/nodes/data/array/array-node) node or [Insert Object Into Array Node](/nodes/data/array/insert-into-array).
+新しいArrayを作成します。出力されるプロパティ_Id_は、新しく作成された配列のidです。これは、たとえば[Array](/nodes/data/array/array-node)ノードや[Insert Object Into Array Node](/nodes/data/array/insert-into-array)に接続することができます。
 
 <div className="ndl-image-with-background l">
 
@@ -18,22 +18,22 @@ Creates a new Array. The outgoing property _Id_ is the id of the newly created a
 
 {/*##head##*/}
 
-## Inputs
+## 入力
 
-| Data                                    | Description                                                                                                                                                                                                                         |
+| データ                                    | 説明                                                                                                                                                                                                                         |
 | --------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-data">Items</span> | {/*##input:items##*/}An array containing initial items of the new array. It will be read when the _Do_ signal is triggered. In other words, the new Array will be a copy of the provided Array, containing the same Objects.{/*##input##*/} |
+| <span className="ndl-data">Items</span> | {/*##input:items##*/}新しい配列の初期アイテムを含む配列です。_Do_シグナルがトリガーされたときに読み取られます。言い換えると、新しいArrayは提供されたArrayのコピーになり、同じObjectsを含みます。{/*##input##*/} |
 
-| Signal                                 | Description                                                                                                                                                                                                                 |
+| シグナル                                 | 説明                                                                                                                                                                                                                 |
 | -------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-signal">Do</span> | {/*##input:do##*/}Sending a signal to this input creates the new Array. The _Id_ of the newly created array will be set on the _Id_ output. Each triggering will create a new Array, hence changing the _Id_ output.{/*##input##*/} |
+| <span className="ndl-signal">Do</span> | {/*##input:do##*/}この入力にシグナルを送ると新しいArrayが作成されます。新しく作成された配列の_Id_が_Id_出力に設定されます。トリガーするたびに新しいArrayが作成され、_Id_出力が変更されます。{/*##input##*/} |
 
-## Outputs
+## 出力
 
-| Data                                 | Description                                                                                          |
+| データ                                 | 説明                                                                                          |
 | ------------------------------------ | ---------------------------------------------------------------------------------------------------- |
-| <span className="ndl-data">Id</span> | {/*##output:id##*/}The Id of the newly created Array. You use this Id to refer to the Array.{/*##output##*/} |
+| <span className="ndl-data">Id</span> | {/*##output:id##*/}新しく作成されたArrayのIdです。このIdを使用してArrayを参照します。{/*##output##*/} |
 
-| Signal                                   | Description                                                                                |
+| シグナル                                   | 説明                                                                                |
 | ---------------------------------------- | ------------------------------------------------------------------------------------------ |
-| <span className="ndl-signal">Done</span> | {/*##output:done##*/}This signal will be sent when the new Array has been created.{/*##output##*/} |
+| <span className="ndl-signal">Done</span> | {/*##output:done##*/}新しいArrayが作成されたときに送信されるシグナルです。{/*##output##*/} |

@@ -1,14 +1,14 @@
 ---
 hide_title: true
 hide_table_of_contents: true
-title: Date To String node
+title: Date To Stringノード
 ---
 
 {/*##head##*/}
 
-# Date To String
+# Date To Stringノード
 
-This node translates a <span className="ndl-data">date</span> type input and outputs a <span className="ndl-data">string</span> based on your specified format.
+このノードは、<span className="ndl-data">date</span>タイプの入力を指定された形式に基づいて<span className="ndl-data">string</span>に変換して出力します。
 
 <div className="ndl-image-with-background l">
 
@@ -16,45 +16,45 @@ This node translates a <span className="ndl-data">date</span> type input and out
 
 </div>
 
-The format is specified as a <span className="ndl-data">string</span> that can include the following special syntax: `{date}`, `{month}`, `{monthShort}`, `{year}`, `{hours}`, `{minutes}` and `{seconds}`.
+形式は、次の特別な構文を含むことができる<span className="ndl-data">string</span>として指定されます：`{date}`, `{month}`, `{monthShort}`, `{year}`, `{hours}`, `{minutes}`, `{seconds}`。
 
 {/*##head##*/}
 
-- `{date}` The numeric date part.
-- `{month}` The numeric month 1 = January, 12 = December.
-- `{monthShort}` The numeric month 1 = Jan, 12 = Dec.
-- `{year}` The numeric year.
-- `{hours}` The numeric hour, between 0..23
-- `{minutes}` The numeric minute, between 0..60
-- `{seconds}` The numeric second, between 0..60
+- `{date}` 日付の数値部分。
+- `{month}` 数値月 1 = 1月、12 = 12月。
+- `{monthShort}` 短縮形の数値月 1 = 1月、12 = 12月。
+- `{year}` 年の数値。
+- `{hours}` 時間の数値、0..23の間。
+- `{minutes}` 分の数値、0..60の間。
+- `{seconds}` 秒の数値、0..60の間。
 
-The default format is this:
+デフォルトの形式は次のとおりです：
 
 ```
 {year}-{month}-{date}
 ```
 
-## Inputs
+## 入力
 
 <div className="ndl-table-35-65">
 
-| Data                                     | Description                                                          |
+| データ                                     | 説明                                                          |
 | ---------------------------------------- | -------------------------------------------------------------------- |
-| <span className="ndl-data">Format</span> | This is where the format string is specified, see above for details. |
-| <span className="ndl-data">Date</span>   | The date input to format.                                            |
+| <span className="ndl-data">形式</span> | 形式の文字列を指定する場所です。詳細については上記を参照してください。 |
+| <span className="ndl-data">日付</span>   | 形式を指定する日付入力。                                            |
 
 </div>
 
-## Outputs
+## 出力
 
 <div className="ndl-table-35-65">
 
-| Data                                            | Description                |
+| データ                                            | 説明                |
 | ----------------------------------------------- | -------------------------- |
-| <span className="ndl-data">\*Date String</span> | The formatted date string. |
+| <span className="ndl-data">\*日付文字列</span> | 形式指定された日付文字列。 |
 
-| Signal                                           | Description                                            |
+| シグナル                                           | 説明                                            |
 | ------------------------------------------------ | ------------------------------------------------------ |
-| <span className="ndl-signal">Date Changed</span> | Sends a signal when the formatted date string changed. |
+| <span className="ndl-signal">日付変更時</span> | 形式指定された日付文字列が変更されたときにシグナルを送信します。 |
 
 </div>

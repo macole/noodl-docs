@@ -1,14 +1,14 @@
 ---
 hide_title: true
 hide_table_of_contents: true
-title: Response node
+title: レスポンスノード
 ---
 
 {/*##head##*/}
 
-# Response
+# レスポンス
 
-The **Response** node is used to complete a cloud function and return the result to the client. There can be many **Response** nodes in a cloud function and they can either return a **Success** or **Failure** result.
+**レスポンス**ノードは、クラウド関数を完了し、結果をクライアントに返すために使用されます。クラウド関数には複数の**レスポンス**ノードが存在し、**成功**または**失敗**の結果を返すことができます。
 
 <div className="ndl-image-with-background l">
 
@@ -16,7 +16,7 @@ The **Response** node is used to complete a cloud function and return the result
 
 </div>
 
-The response is sent when a signal is received on the **Send** input. You can specify if it's a successful or failed result in the properties using the **Status** property.
+**送信**入力にシグナルが受信されたときにレスポンスが送信されます。**ステータス**プロパティを使用して、成功した結果か失敗した結果かを指定できます。
 
 <div className="ndl-image-with-background l">
 
@@ -26,9 +26,9 @@ The response is sent when a signal is received on the **Send** input. You can sp
 
 {/*##head##*/}
 
-If the status is **Failure** you can provide an error message that will be returned to the calling [Cloud Function](/nodes/data/cloud-data/cloud-function) node.
+ステータスが**失敗**の場合は、呼び出し元の[クラウド関数](/nodes/data/cloud-data/cloud-function)ノードに返されるエラーメッセージを提供できます。
 
-If the status is **Success** you can provide a number of result parameters that will be returned to the calling client [Cloud Function](/nodes/data/cloud-data/cloud-function) as outputs.
+ステータスが**成功**の場合は、呼び出し元クライアント[クラウド関数](/nodes/data/cloud-data/cloud-function)の出力として返される結果パラメーターを提供できます。
 
 <div className="ndl-image-with-background l">
 
@@ -36,13 +36,12 @@ If the status is **Success** you can provide a number of result parameters that 
 
 </div>
 
-## Inputs
+## 入力
 
-| Data                                            | Description                                                                                                                                                                                                                                                                            |
+| データ                                            | 説明                                                                                                                                                                                                                                                                            |
 | ----------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-data">Status</span> | Specifies if this is a successful or failed response, **Success** or **Failure** that will be sent to the calling client when the **Send** signal is received. |
-| <span className="ndl-data">Error Message</span> | If this **Response** node have a **Failure** status you can provide an error message using this property that will be sent back to the client and the calling **Cloud Function** node. |
+| <span className="ndl-data">ステータス</span> | **成功**または**失敗**のいずれかを指定し、**送信**シグナルを受信したときに呼び出し元クライアントに送信されるレスポンスです。 |
+| <span className="ndl-data">エラーメッセージ</span> | この**レスポンス**ノードのステータスが**失敗**の場合、クライアントと呼び出し元の**クラウド関数**ノードに返送されるエラーメッセージをこのプロパティを使用して提供できます。 |
 
-### Parameters
-You can add parameters using the properties of this node, if the **Status** is set to **Success**. Parameters will show up when using the [Cloud Function](/nodes/data/cloud-data/cloud-function) node as outputs. When the **Send** signal is received on a **Response** node it will send back the result parameters which will be emitted on the outputs of the cloud function node that made the call.
-
+### パラメーター
+このノードのプロパティを使用してパラメーターを追加できます。**ステータス**が**成功**に設定されている場合、パラメーターは[クラウド関数](/nodes/data/cloud-data/cloud-function)ノードを使用するときに出力として表示されます。**レスポンス**ノードで**送信**シグナルを受信すると、結果パラメーターが返送され、呼び出しを行ったクラウド関数ノードの出力で発信されます。

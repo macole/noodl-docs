@@ -1,14 +1,14 @@
 ---
 hide_title: true
 hide_table_of_contents: true
-title: Array Filter node
+title: Array Filterノード
 ---
 
 {/*##head##*/}
 
 # Array Filter
 
-This node will take an array of items as input and output a filtered version of the items. Look at the Filter section below to find information on how to create filters.
+このノードは、アイテムの配列を入力として受け取り、フィルタリングされたバージョンのアイテムを出力します。フィルタを作成する方法については、以下のフィルタセクションを参照してください。
 
 <div className="ndl-image-with-background l">
 
@@ -18,25 +18,25 @@ This node will take an array of items as input and output a filtered version of 
 
 {/*##head##*/}
 
-## Inputs
+## 入力
 
-### General
+### 一般
 
-| Data                                        | Description                                                                                                                   |
+| データ                                        | 説明                                                                                                                   |
 | ------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-data">Enabled</span>   | {/*##input:enabled##*/}The filtering is enabled by default, if disabled the array will simply pass through unfiltered.{/*##input##*/} |
-| <span className="ndl-data">Items</span>     | {/*##input:items##*/}The array that should be filtered.{/*##input##*/}                                                                |
-| <span className="ndl-data">Use Limit</span> | {/*##input:filterEnableLimit##*/}Enables or disables limiting the number of objects in the outputted items array.{/*##input##*/}      |
-| <span className="ndl-data">Limit</span>     | {/*##input:filterLimit##*/}Specify the maximum number of objects in the filtered output.{/*##input##*/}                               |
-| <span className="ndl-data">Skip</span>      | {/*##input:filterSkip##*/}Specify the number of objects to skip from the beginning of the filtered output.{/*##input##*/}             |
+| <span className="ndl-data">Enabled</span>   | {/*##input:enabled##*/}フィルタリングはデフォルトで有効になっています。無効にした場合、配列はフィルタリングされずにそのまま通過します。{/*##input##*/} |
+| <span className="ndl-data">Items</span>     | {/*##input:items##*/}フィルタリングされるべき配列。{/*##input##*/}                                                                |
+| <span className="ndl-data">Use Limit</span> | {/*##input:filterEnableLimit##*/}出力されるアイテム配列のオブジェクト数を制限するかどうかを有効/無効にします。{/*##input##*/}      |
+| <span className="ndl-data">Limit</span>     | {/*##input:filterLimit##*/}フィルタリングされた出力の最大オブジェクト数を指定します。{/*##input##*/}                               |
+| <span className="ndl-data">Skip</span>      | {/*##input:filterSkip##*/}フィルタリングされた出力の先頭からスキップするオブジェクト数を指定します。{/*##input##*/}             |
 
-| Signal                                     | Description                                                                                                                                                                                                                                                       |
+| シグナル                                     | 説明                                                                                                                                                                                                                                                       |
 | ------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-signal">Filter</span> | {/*##input:filter##*/}By default the node will filter as soon as there is a new array on the _Items_ input or if that array changes. But if there is a connection to the _Filter_ input it will wait until a signal is sent here to perform the filtering.{/*##input##*/} |
+| <span className="ndl-signal">Filter</span> | {/*##input:filter##*/}_Items_ 入力に新しい配列がある場合やその配列が変更された場合、デフォルトではノードはすぐにフィルタリングを実行します。しかし、_Filter_ 入力に接続がある場合は、ここにシグナルが送信されるまでフィルタリングの実行を待ちます。{/*##input##*/} |
 
-### Filter
+### フィルタ
 
-By default the **Array Filter** node will pass through all objects of the input array. You can filter on **Object** properties. Add which properties you want to filter on.
+デフォルトでは、**Array Filter**ノードは入力配列のすべてのオブジェクトを通過させます。**Object**プロパティでフィルタリングすることができます。フィルタリングしたいプロパティを追加してください。
 
 <div className="ndl-image-with-background">
 
@@ -44,26 +44,26 @@ By default the **Array Filter** node will pass through all objects of the input 
 
 </div>
 
-For each filter property you can specify:
+各フィルタプロパティについて、以下を指定できます：
 
-**Type**
-The type you want for the filter, can be _Number_, _String_ or _Boolean_.
+**タイプ**
+フィルタのタイプで、_Number_、_String_、_Boolean_ があります。
 
-**Op**
-The available operations of the filter depend on the type that is set.
+**オペレーション**
+フィルタの利用可能な操作は、設定されたタイプに依存します。
 
--   _Equals_ Include in filter if the property equals the provided value. Available for all types.
--   _Not Equals_ Include in filter if the property does NOT equal the provided value. Available for all types.
--   _Greater than_ Include in filter if the property is greater than the provided value. Only available if type is _Number_.
--   _Less than_ Include in filter if the property is less than the provided value. Only available if type is _Number_.
--   _Greater than or equal_ Include in filter if the property is greater than or equal to the provided value. Only available if type is _Number_.
--   _Less than or equal_ Include in filter if the property is less than or equal to the provided value. Only available if type is _Number_.
--   _Matches Regexp_ Match a regexp to the provided value. Available if type is _String_
+-   _Equals_ プロパティが提供された値と等しい場合にフィルタに含めます。すべてのタイプで利用可能。
+-   _Not Equals_ プロパティが提供された値と等しくない場合にフィルタに含めます。すべてのタイプで利用可能。
+-   _Greater than_ プロパティが提供された値より大きい場合にフィルタに含めます。_Number_ タイプの場合のみ利用可能。
+-   _Less than_ プロパティが提供された値より小さい場合にフィルタに含めます。_Number_ タイプの場合のみ利用可能。
+-   _Greater than or equal_ プロパティが提供された値以上の場合にフィルタに含めます。_Number_ タイプの場合のみ利用可能。
+-   _Less than or equal_ プロパティが提供された値以下の場合にフィルタに含めます。_Number_ タイプの場合のみ利用可能。
+-   _Matches Regexp_ 提供された値に正規表現をマッチさせます。_String_ タイプの場合に利用可能。
 
-?> To perform a free text search on strings, use the _Matches Regexp_ operation and set the _Value_ to the partial string you want to search for.
+?> 文字列に対するフリーテキスト検索を行うには、_Matches Regexp_ 操作を使用し、検索したい部分文字列を_値_に設定します。
 
-**Value**
-{/*##input:filterFilterValue-\*##*/}The value used to test against in the filter operation.{/*##input##*/}
+**値**
+{/*##input:filterFilterValue-\*##*/}フィルタ操作でテストに使用される値。{/*##input##*/}
 
 <div className="ndl-image-with-background">
 
@@ -71,10 +71,9 @@ The available operations of the filter depend on the type that is set.
 
 </div>
 
-### Sort
+### ソート
 
-By default the **Array Filter** node does not sort the output, it will be in the same order as the input. You can specify sorting. Like filters you simply add which properties you want to sort on.
-For each property you can choose the sorting order.
+デフォルトでは、**Array Filter**ノードは出力をソートしません。入力と同じ順序になります。ソートを指定することができます。フィルタと同様に、ソートしたいプロパティを単純に追加します。各プロパティについて、ソート順を選択できます。
 
 <div className="ndl-image-with-background">
 
@@ -82,16 +81,16 @@ For each property you can choose the sorting order.
 
 </div>
 
-## Outputs
+## 出力
 
-### General
+### 一般
 
-| Data                                            | Description                                                                                                                                         |
+| データ                                            | 説明                                                                                                                                         |
 | ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-data">Items</span>         | {/*##output:items##*/}The filtered and sorted array.{/*##output##*/}                                                                                        |
-| <span className="ndl-data">Count</span>         | {/*##output:count##*/}The number of objects in the filtered array.{/*##output##*/}                                                                          |
-| <span className="ndl-data">First Item Id</span> | {/*##output:firstItemId##*/}The _Id_ of the first object in the filtered array, or _undefined_ if there are no items in the filtered array.{/*##output##*/} |
+| <span className="ndl-data">Items</span>         | {/*##output:items##*/}フィルタリングされ、ソートされた配列。{/*##output##*/}                                                                                        |
+| <span className="ndl-data">Count</span>         | {/*##output:count##*/}フィルタリングされた配列のオブジェクト数。{/*##output##*/}                                                                          |
+| <span className="ndl-data">First Item Id</span> | {/*##output:firstItemId##*/}フィルタリングされた配列の最初のオブジェクトの_Id_、またはフィルタリングされた配列にアイテムがない場合は_undefined_。{/*##output##*/} |
 
-| Signal                                       | Description                                                                                                                                         |
+| シグナル                                       | 説明                                                                                                                                         |
 | -------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-signal">Filtered</span> | {/*##output:filtered##*/}Signal emitted when the array has been filtered, either due to a _Filter_ signal sent or if the array has changed.{/*##output##*/} |
+| <span className="ndl-signal">Filtered</span> | {/*##output:filtered##*/}_Filter_シグナルが送信されたり、配列が変更されたりしたときに配列がフィルタリングされた後に発生するシグナル。{/*##output##*/} |

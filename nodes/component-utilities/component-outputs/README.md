@@ -1,14 +1,14 @@
 ---
 hide_title: true
 hide_table_of_contents: true
-title: Component Outputs node
+title: Component Outputsノード
 ---
 
 {/*##head##*/}
 
-# Component Outputs
+# Component Outputsノード
 
-This node is used to create outputs for reusable components.
+このノードは、再利用可能なコンポーネントの出力を作成するために使用されます。
 
 <div className="ndl-image-with-background l">
 
@@ -16,7 +16,7 @@ This node is used to create outputs for reusable components.
 
 </div>
 
-A <span className="ndl-node">Component Output</span> node can have as many ports as needed and can make output properties from the nodes available on the custom component.
+<span className="ndl-node">Component Output</span>ノードは、必要なだけ多くのポートを持つことができ、カスタムコンポーネント上でノードからの出力プロパティを利用可能にします。
 
 <div className="ndl-image-with-background l">
 
@@ -26,7 +26,7 @@ A <span className="ndl-node">Component Output</span> node can have as many ports
 
 {/*##head##*/}
 
-A very powerful feature of Noodl is the ability to create **Components** that act as reusable nodes in your application. A core concept of components is that they can have inputs and outputs like any of the built in nodes.
+Noodlの非常に強力な機能は、アプリケーションで再利用可能なノードとして機能する**コンポーネント**を作成する能力です。コンポーネントの核心的な概念は、内蔵ノードと同様に、入力と出力を持つことができるということです。
 
 <div className="ndl-image-with-background">
 
@@ -34,11 +34,9 @@ A very powerful feature of Noodl is the ability to create **Components** that ac
 
 </div>
 
-The outputs of a component are derived from a **Component Outputs** node and are
-connected to any other node in the component.
+コンポーネントの出力は**Component Outputs**ノードから派生し、コンポーネント内の他の任意のノードに接続されます。
 
-When a **Component Outputs** node is created, it doesn't have any ports. The ports must be added by inspecting the node (left clicking it) and then clicking the **+Port** button.
-You can create and name ports as you wish.
+**Component Outputs**ノードが作成されると、ポートは何もありません。ポートを追加するには、ノードを検査（左クリック）し、**+Port**ボタンをクリックする必要があります。必要に応じてポートを作成し、名前を付けることができます。
 
 <div className="ndl-image-with-background">
 
@@ -46,9 +44,8 @@ You can create and name ports as you wish.
 
 </div>
 
-Once you have created your output ports on the **Component Outputs** node, you can connect any port from any node in your component node graph to the **Component Outputs**. These connected ports will now be available as outputs from the component when it is used in other places in your Noodl application.
+**Component Outputs**ノードに出力ポートを作成したら、コンポーネントノードグラフ内の任意のノードの任意のポートを**Component Outputs**に接続できます。これらの接続されたポートは、Noodlアプリケーションの他の場所でコンポーネントが使用されるときに、コンポーネントからの出力として利用可能になります。
 
-You may have multiple **Component Outputs** nodes in a single component. If you have multiple nodes with
-ports of the same name, they will be merged into one output.
+1つのコンポーネントに複数の**Component Outputs**ノードを持つことができます。同じ名前のポートを持つ複数のノードがある場合、それらは1つの出力に統合されます。
 
-You can also create groups of component outputs by using the **+Group** button, you can drag outputs up and down in the list. The label of the groups will be shown in connection panel of the component instance node.
+**+Group**ボタンを使用してコンポーネント出力のグループを作成することもできます。リスト内で出力を上下にドラッグできます。グループのラベルは、コンポーネントインスタンスノードの接続パネルに表示されます。

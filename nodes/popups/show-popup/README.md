@@ -1,14 +1,14 @@
 ---
 hide_title: true
 hide_table_of_contents: true
-title: Show Popup node
+title: Show Popupノード
 ---
 
 {/*##head##*/}
 
-# Show Popup
+# Show Popupノード
 
-This node is used to display a component as a modal popup on top of the entire window.
+このノードは、ウィンドウ全体の上にモーダルポップアップとしてコンポーネントを表示するために使用されます。
 
 <div className="ndl-image-with-background">
 
@@ -16,7 +16,7 @@ This node is used to display a component as a modal popup on top of the entire w
 
 </div>
 
-The <span className="ndl-node">Show Popup</span> node lets you specify which component will be popped up when signaled with the <span className="ndl-signal">Show</span> input. Any <span className="ndl-node">Component Inputs</span> that the specified component has will be available as inputs to the <span className="ndl-node">Show Popup</span> node.
+<span className="ndl-node">Show Popup</span>ノードを使用すると、<span className="ndl-signal">Show</span>入力でシグナルされたときにポップアップされるコンポーネントを指定できます。指定されたコンポーネントが持つ任意の<span className="ndl-node">Component Inputs</span>は、<span className="ndl-node">Show Popup</span>ノードの入力として利用可能になります。
 
 <div className="ndl-image-with-background l">
 
@@ -26,7 +26,7 @@ The <span className="ndl-node">Show Popup</span> node lets you specify which com
 
 {/*##head##*/}
 
-When a popup is closed with the [Close Popup](/nodes/popups/close-popup) node it is possible to send back signals and values via **Results** and **Close Actions**. These will become available as outputs for the **Show Popup** node if the target popup component contains **Close Popup** nodes.
+[Close Popup](/nodes/popups/close-popup)ノードでポップアップが閉じられると、**Results**と**Close Actions**を介してシグナルと値を送り返すことが可能です。これらは、ターゲットポップアップコンポーネントが**Close Popup**ノードを含む場合、**Show Popup**ノードの出力として利用可能になります。
 
 <div className="ndl-image-with-background l">
 
@@ -34,33 +34,33 @@ When a popup is closed with the [Close Popup](/nodes/popups/close-popup) node it
 
 </div>
 
-## Inputs
+## 入力
 
-| Data                                     | Description                                                                                                                             |
+| データ                                     | 説明                                                                                                                             |
 | ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-data">Target</span> | {/*##input:target##*/}A component that will be cloned and put on top of the entire window when the **Show** signals is received.{/*##input##*/} |
+| <span className="ndl-data">ターゲット</span> | {/*##input:target##*/}クローンされてウィンドウ全体の上に配置されるコンポーネントです。**Show**シグナルが受信されたときに表示されます。{/*##input##*/} |
 
-| Signal                                   | Description                                                      |
+| シグナル                                   | 説明                                                      |
 | ---------------------------------------- | ---------------------------------------------------------------- |
-| <span className="ndl-signal">Show</span> | {/*##input:show##*/}Send a signal here to show the popup.{/*##input##*/} |
+| <span className="ndl-signal">Show</span> | {/*##input:show##*/}ここにシグナルを送ってポップアップを表示します。{/*##input##*/} |
 
-| Mixed                | Description                                                                         |
+| ミックス                | 説明                                                                         |
 | -------------------- | ----------------------------------------------------------------------------------- |
-| **Component Inputs** | Any **Component Inputs** that the popup component have will be available as inputs. |
+| **Component Inputs** | ポップアップコンポーネントが持つ任意の**Component Inputs**が入力として利用可能になります。 |
 
-<span className="hidden-props-for-editor">{/*##input:popupParam-\*##*/}A parameter input originating from a **Component Input** in the **Target** component. It's value will be forwarded to the component.{/*##input##*/}</span>
+<span className="hidden-props-for-editor">{/*##input:popupParam-\*##*/}**ターゲット**コンポーネントの**Component Input**からのパラメータ入力です。その値はコンポーネントに転送されます。{/*##input##*/}</span>
 
-## Outputs
+## 出力
 
-| Signal                                            | Description                                                                                                                                                                         |
+| シグナル                                            | 説明                                                                                                                                                                         |
 | ------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-signal">Closed</span>        | {/*##output:closed##*/}This output sends a signal when the popup is closed with a **Close Popup** node.{/*##output##*/} See [Close Popup](/nodes/popups/close-popup/) for more information. |
-| <span className="ndl-signal">Close Actions</span> | Any close action signals provided via the [Close Popup](/nodes/popups/close-popup/) node from the target popup component will become available here.                                |
+| <span className="ndl-signal">Closed</span>        | {/*##output:closed##*/}**Close Popup**ノードでポップアップが閉じられたときにシグナルが送信されます。[Close Popup](/nodes/popups/close-popup/)の詳細をご覧ください。 |
+| <span className="ndl-signal">Close Actions</span> | ターゲットポップアップコンポーネントから[Close Popup](/nodes/popups/close-popup/)ノードを介して提供される任意の閉じるアクションシグナルがここで利用可能になります。                                |
 
-<span className="hidden-props-for-editor">{/*##output:closeAction-\*##*/}A result signal originating from the **Target** components **Close Popup** node.{/*##output##*/}</span>
+<span className="hidden-props-for-editor">{/*##output:closeAction-\*##*/}**ターゲット**コンポーネントの**Close Popup**ノードからの結果シグナルです。{/*##output##*/}</span>
 
-| Data                                            | Description                                                                                                                                   |
+| データ                                            | 説明                                                                                                                                   |
 | ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-data">Close Results</span> | Any result values provided via the [Close Popup](/nodes/popups/close-popup/) node from the target popup component will become available here. |
+| <span className="ndl-data">Close Results</span> | ターゲットポップアップコンポーネントから[Close Popup](/nodes/popups/close-popup/)ノードを介して提供される任意の結果値がここで利用可能になります。 |
 
-<span className="hidden-props-for-editor">{/*##output:closeResult-\*##*/}A result output originating from the **Target** components **Close Popup** node.{/*##output##*/}</span>
+<span className="hidden-props-for-editor">{/*##output:closeResult-\*##*/}**ターゲット**コンポーネントの**Close Popup**ノードからの結果出力です。{/*##output##*/}</span>

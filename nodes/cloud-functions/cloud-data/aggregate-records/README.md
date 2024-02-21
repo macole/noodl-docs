@@ -1,14 +1,14 @@
 ---
 hide_title: true
 hide_table_of_contents: true
-title: Aggregate Records node
+title: レコード集計ノード
 ---
 
 {/*##head##*/}
 
-# Aggregate Records
+# レコード集計
 
-This node is used to compute an aggregate over properties of records in the cloud database. 
+このノードは、クラウドデータベース内のレコードのプロパティに対して集計を計算するために使用されます。
 
 <div className="ndl-image-with-background l">
 
@@ -16,7 +16,7 @@ This node is used to compute an aggregate over properties of records in the clou
 
 </div>
 
-You create and give a name to an aggregate.
+集計を作成し、名前を付けます。
 
 <div className="ndl-image-with-background l">
 
@@ -24,7 +24,7 @@ You create and give a name to an aggregate.
 
 </div>
 
-Then for each aggregate name you created you choose the property to aggregate over and the type of aggregate.
+作成した各集計名に対して、集計するプロパティと集計の種類を選択します。
 
 <div className="ndl-image-with-background l">
 
@@ -34,49 +34,48 @@ Then for each aggregate name you created you choose the property to aggregate ov
 
 {/*##head##*/}
 
-You can also specify filters to limit the aggretate to a select set of recrods. This is done in the same way as with the [Query Records](/nodes/data/cloud-data/query-records) node, please see those reference docs for more details.
+特定のセットのレコードに集計を限定するフィルターを指定することもできます。これは、[レコードクエリ](/nodes/data/cloud-data/query-records)ノードと同じ方法で行われます。詳細については、そのリファレンスドキュメントを参照してください。
 
-You can do aggregates over two types of properties **String** and **Number**, these are the available aggregates:
+**String** と **Number** の2種類のプロパティに対して集計を行うことができます。これらが利用可能な集計です：
 
-**String**, for string there is only one aggregate, `Distinct` this returns the unique values for the property in all records.
+**String**では、`Distinct` が唯一の集計であり、すべてのレコードのプロパティに対するユニークな値を返します。
 
-**Number**, for number you can use the following aggregates:
-- `Min` This will return the minumum value for the property for all records.
-- `Max` Return the maximum value for the property for all records.
-- `Sum` Return the sum of the property for all records.
-- `Avg` Return the avegage of the property for all records.
+**Number**では、以下の集計を使用できます：
+- `Min` すべてのレコードにおけるプロパティの最小値を返します。
+- `Max` すべてのレコードにおけるプロパティの最大値を返します。
+- `Sum` すべてのレコードにおけるプロパティの合計を返します。
+- `Avg` すべてのレコードにおけるプロパティの平均を返します。
 
-## Inputs
+## 入力
 
-| Data                                                | Description                                                                                                                                                                                                                                                                       |
+| データ                                                | 説明                                                                                                                                                                                                                                                                       |
 | --------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-data">Class</span>             | Select the **Class** for the types of records this node should do aggregate over. When the **Class** is selected you can create filters and aggregates of the **Class**.                                                                                                 |
-| <span className="ndl-data">Filter</span>            | This specifies the type of filter, you can choose from:<br/><br/>`Visual`: Specify your filter using the visual filter editor.<br/>`JavaScript`: Specify your filter using JavaScript (this is more flexible and you can create more dynamic queyries but it's also more complex) |
-| <span className="ndl-data">Query Parameters</span>  | {/*##input:qp-\*##*/}The input for specifying the value of a query parameter.{/*##input##*/} Each paramteter used in your query will get an input where you can provide a value through a connection.{/*##input##*/}                                                                          |
-| <span className="ndl-data">Aggregates</span>  | {/*##input:aggregates##*/}This a list of the aggregates you want to perform. You must provide the names of the outputs that will contain the aggregates here.{/*##input##*/}                                                                          |
+| <span className="ndl-data">クラス</span>             | このノードが集計を行うレコードのタイプの**クラス**を選択します。**クラス**が選択されると、その**クラス**のフィルターや集計を作成できます。                                                                                                 |
+| <span className="ndl-data">フィルター</span>            | フィルターの種類を指定します。以下から選択できます：<br/><br/>`Visual`: ビジュアルフィルターエディタを使用してフィルターを指定します。<br/>`JavaScript`: JavaScriptを使用してフィルターを指定します（これはより柔軟で、より動的なクエリを作成できますが、より複雑です） |
+| <span className="ndl-data">クエリパラメータ</span>  | {/*##input:qp-\*##*/}クエリパラメータの値を指定するための入力です。{/*##input##*/} クエリで使用される各パラメータには、接続を介して値を提供できる入力があります。{/*##input##*/}                                                                          |
+| <span className="ndl-data">集計</span>  | {/*##input:aggregates##*/}実行したい集計のリストです。ここには集計の結果を含む出力の名前を提供する必要があります。{/*##input##*/}                                                                          |
 
-### Aggregate property and operation
+### 集計のプロパティと操作
 
-For each aggregate you create you also need to provide the property if should aggregate and the operation it should use.
+作成した各集計には、集計するプロパティと使用する操作も指定する必要があります。
 
-| Data                                                | Description                                                                                                                                                                                                                                                                       |
+| データ                                                | 説明                                                                                                                                                                                                                                                                       |
 | --------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-data">Property</span>             | Select the property of the **Class** that this aggregate should use.                                                                                                 |
-| <span className="ndl-data">Operation</span>            | Pick the operation that the aggregate should use. See above for which operations are available for which types. |
+| <span className="ndl-data">プロパティ</span>             | この集計が使用するべき**クラス**のプロパティを選択します。                                                                                                 |
+| <span className="ndl-data">操作</span>            | 集計が使用すべき操作を選択します。どの操作がどのタイプに利用可能かについては上記を参照してください。 |
 
 
-| Signal                                 | Description                                                                                                   |
+| シグナル                                 | 説明                                                                                                   |
 | -------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-signal">Do</span> | {/*##input:do##*/}Send a signal here to perform the aggregate.{/*##input##*/} |
+| <span className="ndl-signal">実行</span> | {/*##input:do##*/}ここにシグナルを送ると集計が実行されます。{/*##input##*/} |
 
-## Outputs
+## 出力
 
-| Data                                              | Description                                                                                                                                                                                          |
+| データ                                              | 説明                                                                                                                                                                                          |
 | ------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-data">Error</span>           | {/*##output:error##*/}This output contains the error message incase something when wrong when executing the aggregate.{/*##output##*/}                                                                           |
+| <span className="ndl-data">エラー</span>           | {/*##output:error##*/}何か問題が発生した場合にエラーメッセージを含む出力です。{/*##output##*/}                                                                           |
 
-| Signal                                      | Description                                                                                                                                            |
+| シグナル                                      | 説明                                                                                                                                            |
 | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| <span className="ndl-signal">Success</span> | {/*##output:success##*/}A signal is sent here if the aggregate was successful and the result is ready.{/*##output##*/}                                             |
-| <span className="ndl-signal">Failure</span> | {/*##output:failure##*/}A signal is sent here if something went wrong with the aggregate. You can find the error message via the **Error** output.{/*##output##*/} |
-
+| <span className="ndl-signal">成功</span> | {/*##output:success##*/}集計が成功し、結果が準備できた場合にここにシグナルが送られます。{/*##output##*/}                                             |
+| <span className="ndl-signal">失敗</span> | {/*##output:failure##*/}集計に何か問題があった場合にここにシグナルが送られます。**エラー**出力を通じてエラーメッセージを見つけることができます。{/*##output##*/} |

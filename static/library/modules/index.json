@@ -1,7 +1,7 @@
 [
   {
     "label": "PDF Viewer",
-    "desc": "A UI component for rendering PDFs from an URL.",
+    "desc": "URLからPDFをレンダリングするUIコンポーネント。",
     "icon": "library/modules/pdf-viewer/pdf-viewer.png",
     "project": "library/modules/pdf-viewer/pdf-viewer-1.0.0.zip",
     "docs": "/library/modules/pdf-viewer/",
@@ -9,7 +9,7 @@
   },
   {
     "label": "Mapbox",
-    "desc": "Use this module to add maps and location visualisations to your app.",
+    "desc": "このモジュールを使用して、アプリに地図とロケーションのビジュアライゼーションを追加します。",
     "icon": "library/modules/mapbox/mapbox.png",
     "project": "library/modules/mapbox/mapbox-2-0-0.zip",
     "docs": "/library/modules/mapbox/",
@@ -17,7 +17,7 @@
   },
   {
     "label": "Chart.js",
-    "desc": "A module with components to build charts.",
+    "desc": "チャートを構築するためのコンポーネントが含まれるモジュール。",
     "icon": "library/modules/chartjs/chartjs.png",
     "project": "library/modules/chartjs/chartjs-module-1-4-3.zip",
     "docs": "/library/modules/chartjs/",
@@ -25,7 +25,7 @@
   },
   {
     "label": "Google Sheets",
-    "desc": "Use your google sheets as a data source for your applications.",
+    "desc": "Google Sheetsをアプリケーションのデータソースとして使用します。",
     "icon": "library/modules/gsheets/googlesheet.png",
     "project": "library/modules/gsheets/gsheets-1-7.zip",
     "docs": "/library/modules/gsheets/",
@@ -33,7 +33,7 @@
   },
   {
     "label": "GraphQL",
-    "desc": "A module to help quering data using GraphQL.",
+    "desc": "GraphQLを使用してデータをクエリするのに役立つモジュール。",
     "project": "library/modules/graphql/graphql-module-1-0-1.zip",
     "icon": "library/modules/graphql/graphql.png",
     "docs": "/library/modules/graphql/",
@@ -41,7 +41,7 @@
   },
   {
     "label": "QR Scanner",
-    "desc": "Scan QR codes from camera or images.",
+    "desc": "カメラや画像からQRコードをスキャンします。",
     "icon": "library/modules/qr-scanner/qr.png",
     "project": "library/modules/qr-scanner/qr-scanner-1-4.zip",
     "docs": "/library/modules/qr-scanner/",
@@ -49,7 +49,7 @@
   },
   {
     "label": "Custom HTML",
-    "desc": "Write your own HTML and pass values to it with template strings. Useful for embeds.",
+    "desc": "独自のHTMLを書いてテンプレート文字列で値を渡します。埋め込みに便利です。",
     "project": "library/modules/custom-html/custom-html-module-1-0-2.zip",
     "icon": "library/modules/custom-html/html.png",
     "docs": "/library/modules/custom-html/",
@@ -57,7 +57,7 @@
   },
   {
     "label": "Simple Tooltips",
-    "desc": "Add simple tooltips to your Noodl App.",
+    "desc": "Noodlアプリにシンプルなツールチップを追加します。",
     "project": "library/modules/simple-tooltips/simple-tooltips-v1-0-0.zip",
     "icon": "library/modules/simple-tooltips/simple-tooltips.png",
     "docs": "/library/modules/simple-tooltips/",
@@ -65,7 +65,7 @@
   },
   {
     "label": "Marquee",
-    "desc": "Add a marquee container to your Noodl App.",
+    "desc": "Noodlアプリにマーキーコンテナを追加します。",
     "project": "library/modules/marquee/marquee-v1-0-0.zip",
     "icon": "library/modules/marquee/marquee.png",
     "docs": "/library/modules/marquee/",
@@ -73,7 +73,7 @@
   },
   {
     "label": "Form Validation",
-    "desc": "A utility node that makes different kind of form validation easier.",
+    "desc": "さまざまな種類のフォーム検証を簡単にするユーティリティノード。",
     "project": "library/modules/validation/validation-1-3.zip",
     "icon": "library/modules/validation/formvalidation.png",
     "docs": "/library/modules/validation/",
@@ -81,7 +81,7 @@
   },
   {
     "label": "Material Icons",
-    "desc": "The latest material icon set library.",
+    "desc": "最新のマテリアルアイコンセットライブラリ。",
     "icon": "library/modules/material-icons/material-icons.png",
     "project": "library/modules/material-icons/material-icons-1-1.zip",
     "docs": "/library/modules/material-icons/",
@@ -89,7 +89,7 @@
   },
   {
     "label": "Font Awesome Brands",
-    "desc": "The Font Awesome 6 brand icon library.",
+    "desc": "Font Awesome 6 ブランドアイコンライブラリ。",
     "icon": "library/modules/font-awesome-brands/font-awesome-brands.png",
     "project": "library/modules/font-awesome-brands/font-awesome-brands-1-0.zip",
     "docs": "/library/modules/font-awesome-brands/",
@@ -97,7 +97,7 @@
   },
   {
     "label": "Font Awesome Solid",
-    "desc": "The Font Awesome 6 solid icon library.",
+    "desc": "Font Awesome 6 ソリッドアイコンライブラリ。",
     "icon": "library/modules/font-awesome-solid/font-awesome-solid.png",
     "project": "library/modules/font-awesome-solid/font-awesome-solid-1-0.zip",
     "docs": "/library/modules/font-awesome-solid/",
@@ -105,7 +105,7 @@
   },
   {
     "label": "Markdown",
-    "desc": "Use Markdown in Noodl and style it with CSS.",
+    "desc": "NoodlでMarkdownを使用し、CSSでスタイルを設定します。",
     "project": "library/modules/markdown/noodl-markdown-1-0-1.zip",
     "icon": "library/modules/markdown/markdown.png",
     "docs": "/library/modules/markdown/",
@@ -113,7 +113,7 @@
   },
   {
     "label": "Avatar",
-    "desc": "A module with components to build avatars.",
+    "desc": "アバターを構築するためのコンポーネントが含まれるモジュール。",
     "icon": "library/modules/avatar/avatars.png",
     "project": "library/modules/avatar/avatar-module-1-0-1.zip",
     "docs": "/library/modules/avatar/",
@@ -121,7 +121,7 @@
   },  
   {
     "label": "Image Cropper",
-    "desc": "Image Cropper Module. Mainly intended for cropping profile pictures.",
+    "desc": "画像クロッパーモジュール。主にプロファイル写真のトリミング用。",
     "icon": "library/modules/image-cropper/image-crop.png",
     "project": "library/modules/image-cropper/image-cropper-1-4.zip",
     "docs": "/library/modules/image-cropper/",
@@ -129,7 +129,7 @@
   },
   {
     "label": "Panning and Zooming Control",
-    "desc": "A control that implements a pan and zoom view on large images.",
+    "desc": "大きな画像に対してパンとズームビューを実装するコントロール。",
     "icon": "library/modules/panning-and-zooming/panning-and-zooming.png",
     "project": "library/modules/panning-and-zooming/panning-and-zoom-1-0.zip",
     "docs": "/library/modules/panning-and-zooming/",
@@ -137,7 +137,7 @@
   },
   {
     "label": "i18next Translation",
-    "desc": "A module for using i18next in Noodl.",
+    "desc": "Noodlでi18nextを使用するためのモジュール。",
     "project": "library/modules/i18next/i18next-1-0-3.zip",
     "icon": "library/modules/i18next/translate.png",
     "docs": "/library/modules/i18next/",
@@ -145,7 +145,7 @@
   },
   {
     "label": "MQTT Module",
-    "desc": "Send and receive messages over the MQTT protocol in web apps.",
+    "desc": "WebアプリでMQTTプロトコルを介してメッセージを送受信します。",
     "project": "library/modules/mqtt/mqtt-module-1-0-3.zip",
     "icon": "library/modules/mqtt/mqtt.png",
     "docs": "/library/modules/mqtt/",
@@ -153,7 +153,7 @@
   },
   {
     "label": "Shake Detector",
-    "desc": "A small module to detect a device shake with the accelerometer.",
+    "desc": "加速度計を使ってデバイスの振動を検出する小さなモジュール。",
     "icon": "library/modules/shake-detector/shake-detector.png",
     "project": "library/modules/shake-detector/shake-detector-1.0.2.zip",
     "docs": "/library/modules/shake-detector/",
@@ -161,7 +161,7 @@
   },
   {
     "label": "Google Analytics",
-    "desc": "Track user behavior with Google Analytics.",
+    "desc": "Google Analyticsでユーザー行動を追跡します。",
     "project": "library/modules/google-analytics/google-analytics-1-0-7.zip",
     "icon": "library/modules/google-analytics/googleanalytics.png",
     "docs": "/library/modules/google-analytics/",
@@ -169,7 +169,7 @@
   },
   {
     "label": "Lottie",
-    "desc": "A module for using Lottie animations in Noodl.",
+    "desc": "NoodlでLottieアニメーションを使用するためのモジュール。",
     "project": "library/modules/lottie/lottie-1-0-1.zip",
     "icon": "library/modules/lottie/lottie.png",
     "docs": "/library/modules/lottie/",
@@ -177,7 +177,7 @@
   },
   {
     "label": "Web Camera",
-    "desc": "Support for accessing the camera in web apps.",
+    "desc": "Webアプリでカメラにアクセスするサポート。",
     "icon": "library/modules/webcamera/webcam.png",
     "project": "library/modules/webcamera/webcamera-1-0-4.zip",
     "docs": "/library/modules/webcamera/",
@@ -185,7 +185,7 @@
   },
   {
     "label": "Parse Cloud Function",
-    "desc": "Call Parse Platform cloud functions.",
+    "desc": "Parse Platformクラウド関数を呼び出します。",
     "icon": "library/modules/parse-cloud-function/parse-cloud-function.png",
     "project": "library/modules/parse-cloud-function/parse-cloud-function-1-0-0.zip",
     "docs": "/library/modules/parse-cloud-function/",
@@ -193,7 +193,7 @@
   },
   {
     "label": "Geospatial Analysis",
-    "desc": "A module for using Turf.js to making it easy to working with GeoJSON.",
+    "desc": "Turf.jsを使用してGeoJSONを簡単に扱うためのモジュール。",
     "icon": "library/modules/geospatial-analysis/geospatial-analysis.png",
     "project": "library/modules/geospatial-analysis/geospatial-analysis-module-1-0-0.zip",
     "docs": "/library/modules/geospatial-analysis/",
@@ -201,7 +201,7 @@
   },
   {
     "label": "Data Context",
-    "desc": "Share data between all child components.",
+    "desc": "すべての子コンポーネント間でデータを共有します。",
     "icon": "library/modules/data-context/banner.png",
     "project": "library/modules/data-context/data-context-1-0-2.zip",
     "docs": "/library/modules/data-context/",

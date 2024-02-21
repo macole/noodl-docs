@@ -1,14 +1,14 @@
 ---
 hide_title: true
 hide_table_of_contents: true
-title: Pop Component node
+title: ポップコンポーネントノード
 ---
 
 {/*##head##*/}
 
-# Pop Component Stack
+# コンポーネントスタックをポップ
 
-The **Pop Component Stack** node is used together with a [Component Stack](/nodes/component-stack/component-stack-node) to navigate back ("pop"). It is typically used when creating app style navigation. For more information on how **Component Stack** navigation work, check out the [Component Stack](/nodes/component-stack/component-stack-node) documentation.
+**コンポーネントスタックをポップ**ノードは、[コンポーネントスタック](/nodes/component-stack/component-stack-node)と一緒に使用して戻る（"ポップ"）ために使用されます。これは、アプリスタイルのナビゲーションを作成する際に典型的に使用されます。**コンポーネントスタック**ナビゲーションの動作の詳細については、[コンポーネントスタック](/nodes/component-stack/component-stack-node)のドキュメントをご覧ください。
 
 <div className="ndl-image-with-background l">
 
@@ -16,24 +16,24 @@ The **Pop Component Stack** node is used together with a [Component Stack](/node
 
 </div>
 
-> Note that you have to use the **Pop Component Stack** node from within a component in the **Component Stack**.
+> **コンポーネントスタック**内のコンポーネントから**コンポーネントスタックをポップ**ノードを使用する必要があります。
 
 {/*##head##*/}
 
-## Inputs
+## 入力
 
-| Signal                                       | Description                                                                                                                                                                         |
+| シグナル                                       | 説明                                                                                                                                                                         |
 | -------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-signal">Navigate</span> | {/*##input:navigate##*/}Triggering this action will pop the topmost component from the stack. If there is a component under the popped component, it will be now be visible.{/*##input##*/} |
+| <span className="ndl-signal">ナビゲート</span> | {/*##input:navigate##*/}このアクションをトリガーすると、スタックの最上位のコンポーネントがポップされます。ポップされたコンポーネントの下に別のコンポーネントがある場合、それが表示されるようになります。{/*##input##*/} |
 
-### Back Actions and Results
+### 戻るアクションと結果
 
-When popping a component from the stack you can also trigger a **Back Action** and a **Result**. This can be used to communicate back to the place where the component was originally pushed using the [Push To Component Stack](/nodes/component-stack/push-component) node. This could for example be used to communicate back some contents of a form, and if the user pressed "OK" or "Cancel".
+スタックからコンポーネントをポップする際には、**戻るアクション**と**結果**もトリガーできます。これは、コンポーネントが元々[コンポーネントスタックにプッシュ](/nodes/component-stack/push-component)ノードを使用してプッシュされた場所に戻るための通信に使用できます。これは、例えば、フォームの内容を戻す場合や、ユーザーが「OK」または「キャンセル」を押したかどうかを通信するために使用できます。
 
-| Mixed                     | Description                                                                                                                                                                                                                                                                        |
+| 混合                     | 説明                                                                                                                                                                                                                                                                        |
 | ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Back Actions, Results** | You can add any number of **Back Actions** and **Result** inputs to the **Pop Component Stack** node. These will show up as outputs on any [Push To Component Stack](/nodes/component-stack/push-component) node pointing to the component with this **Pop Component Stack** node. |
+| **戻るアクション、結果** | **コンポーネントスタックをポップ**ノードに任意の数の**戻るアクション**と**結果**入力を追加できます。これらは、この**コンポーネントスタックをポップ**ノードを持つコンポーネントを指す[コンポーネントスタックにプッシュ](/nodes/component-stack/push-component)ノードの出力として表示されます。 |
 
-<span className="hidden-props-for-editor">{/*##input:backAction-\*##*/}A **Back Action** signal. Triggering this will pop from the **Component Stack** and send a signal to the [Push To Component Stack](/nodes/component-stack/push-component) node used to push the component.{/*##input##*/}</span>
+<span className="hidden-props-for-editor">{/*##input:backAction-\*##*/}**戻るアクション**シグナル。これをトリガーすると、**コンポーネントスタック**からポップされ、コンポーネントをプッシュするために使用された[コンポーネントスタックにプッシュ](/nodes/component-stack/push-component)ノードにシグナルが送信されます。{/*##input##*/}</span>
 
-<span className="hidden-props-for-editor">{/*##input:result-\*##*/}A **Result** input. Any data sent to this input will be forwarded to the [Push To Component Stack](/nodes/component-stack/push-component) node when the component is popped.{/*##input##*/}</span>
+<span className="hidden-props-for-editor">{/*##input:result-\*##*/}**結果**入力。この入力に送信されたデータは、コンポーネントがポップされたときに[コンポーネントスタックにプッシュ](/nodes/component-stack/push-component)ノードに転送されます。{/*##input##*/}</span>

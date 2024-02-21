@@ -1,14 +1,14 @@
 ---
 hide_title: true
 hide_table_of_contents: true
-title: Color Blend node
+title: Color Blendノード
 ---
 
 {/*##head##*/}
 
-# Color Blend
+# Color Blendノード
 
-This node lets you blend between color values.
+このノードは、色の値をブレンドすることができます。
 
 <div className="ndl-image-with-background">
 
@@ -18,15 +18,15 @@ This node lets you blend between color values.
 
 {/*##head##*/}
 
-## Inputs
+## 入力
 
-| Data                                          | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| データ                                          | 説明                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | --------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-data">Color 0..N</span>  | The colors to mix. These ports are numbered as _Color 0_, _Color 1_ etc. When a color is specified a new input will be created for the next color.                                                                                                                                                                                                                                                                                                             |
-| <span className="ndl-data">Blend value</span> | This specifies how the input colors will be blended. The inputs colors are interpolated linearly so a _Blend Value_ of _0_ will result in the color of the input port _Color 0_ and a value of _1_ will result in _Color 1_.<br/><br/>A value of 0.5 will be a mix of 50% of _Color 0_ and _Color 1_, a number of 1.5 will be a mix between _Color 1_ and _Color 2_, etc. Values below 0 or above the amount of input colors are clamped to the closest color. |
+| <span className="ndl-data">Color 0..N</span>  | ミックスする色です。これらのポートは_Color 0_、_Color 1_などと番号付けされます。色が指定されると、次の色のための新しい入力が作成されます。                                                                                                                                                                                                                                                                                                             |
+| <span className="ndl-data">ブレンド値</span> | 入力色がどのようにブレンドされるかを指定します。入力色は線形に補間されるので、_ブレンド値_が_0_の場合は入力ポート_Color 0_の色になり、値が_1_の場合は_Color 1_の色になります。<br/><br/>値が0.5の場合は_Color 0_と_Color 1_の50%のミックスになり、1.5の場合は_Color 1_と_Color 2_の間のミックスになります。0未満または入力色の数を超える値は、最も近い色にクランプされます。 |
 
-## Outputs
+## 出力
 
-| Data                                     | Description                 |
+| データ                                     | 説明                 |
 | ---------------------------------------- | --------------------------- |
-| <span className="ndl-data">Result</span> | The resulting blended color |
+| <span className="ndl-data">結果</span> | 結果として得られるブレンド色 |

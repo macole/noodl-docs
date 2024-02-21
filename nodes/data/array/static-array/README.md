@@ -1,14 +1,14 @@
 ---
 hide_title: true
 hide_table_of_contents: true
-title: Static Array node
+title: Static Arrayノード
 ---
 
 {/*##head##*/}
 
 # Static Array
 
-Store static data to populate an [Array](/nodes/data/array/array-node) with items. The Static Array node is great for providing static local data for lists etc. You can use it e.g. as an input to a **For Each** node.
+アイテムで[Array](/nodes/data/array/array-node)を満たすための静的データを保存します。Static Arrayノードは、リストなどの静的ローカルデータを提供するのに適しています。たとえば、**For Each**ノードへの入力として使用できます。
 
 <div className="ndl-image-with-background l">
 
@@ -16,21 +16,21 @@ Store static data to populate an [Array](/nodes/data/array/array-node) with item
 
 </div>
 
-You can provide the data in either **CSV** format or, **JSON** format. The **items** output is of **Noodl.Array** format.
-The content of the array is reset whenever the application is refreshed.
+データは**CSV**形式または**JSON**形式で提供できます。**items**出力は**Noodl.Array**形式です。
+配列の内容は、アプリケーションがリフレッシュされるたびにリセットされます。
 
 {/*##head##*/}
 
-## Inputs
+## 入力
 
-| Data                                   | Description                                                                                                           |
+| データ                                   | 説明                                                                                                           |
 | -------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-data">Type</span> | Choose what format the data will be in.<br/><br/>`CSV`: Comma-separated values<br/>`JSON`: JavaScript Object Notation |
+| <span className="ndl-data">Type</span> | データの形式を選択します。<br/><br/>`CSV`: カンマ区切り値<br/>`JSON`: JavaScriptオブジェクト記法 |
 
 ### CSV
 
-The first row defines the name of all properties. Subsequent rows defines the data values.
-Example:
+最初の行はすべてのプロパティの名前を定義します。次の行はデータ値を定義します。
+例:
 
 ```
 lamp,topic
@@ -41,8 +41,8 @@ Office Lamp 2,/lamps/4
 
 ### JSON
 
-Define the name of the properties, and the data, using a JSON array.
-Example:
+プロパティの名前とデータをJSON配列を使用して定義します。
+例:
 
 ```json
 [
@@ -61,8 +61,8 @@ Example:
 ]
 ```
 
-## Outputs
+## 出力
 
-| Data                                    | Description                                                                                                                                                                                                                   |
+| データ                                    | 説明                                                                                                                                                                                                                   |
 | --------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-data">Items</span> | {/*##output:items##*/}A `Noodl.Array` object that can be connected to e.g. an [Array](/nodes/data/array/array-node), [JavaScript](/docs/guides/business-logic/javascript) or [Repeater](/nodes/ui-controls/repeater).{/*##output##*/} |
+| <span className="ndl-data">Items</span> | {/*##output:items##*/}`Noodl.Array`オブジェクトで、たとえば[Array](/nodes/data/array/array-node)、[JavaScript](/docs/guides/business-logic/javascript)、[Repeater](/nodes/ui-controls/repeater)に接続できます。{/*##output##*/} |

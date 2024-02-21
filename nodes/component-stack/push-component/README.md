@@ -1,14 +1,14 @@
 ---
 hide_title: true
 hide_table_of_contents: true
-title: Push Component node
+title: コンポーネントをスタックにプッシュ
 ---
 
 {/*##head##*/}
 
-# Push Component To Stack
+# コンポーネントをスタックにプッシュ
 
-The **Push Component To Stack** node is used together with a [Component Stack](/nodes/component-stack/component-stack-node) to navigate to a new component (i.e. "push on the stack"). It is typically used when creating app style navigation. For more information on how **Component Stack** navigation work, check out the [Component Stack](/nodes/component-stack/component-stack-node) documentation.
+**コンポーネントをスタックにプッシュ**ノードは、[コンポーネントスタック](/nodes/component-stack/component-stack-node)と一緒に使用して、新しいコンポーネントにナビゲートする（つまり、"スタックにプッシュする"）ために使用されます。これは、アプリスタイルのナビゲーションを作成する際に典型的に使用されます。**コンポーネントスタック**ナビゲーションの動作の詳細については、[コンポーネントスタック](/nodes/component-stack/component-stack-node)のドキュメントをご覧ください。
 
 <div className="ndl-image-with-background l">
 
@@ -18,37 +18,37 @@ The **Push Component To Stack** node is used together with a [Component Stack](/
 
 {/*##head##*/}
 
-## Inputs
+## 入力
 
-| Data                                          | Description                                                                                                                                                                                                                                                                                            |
+| データ                                          | 説明                                                                                                                                                                                                                                                                                            |
 | --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| <span className="ndl-data">Stack</span>       | {/*##input:stack##*/}This property defines which **Component Stack** that the push will act on. The **Component Stack** is referred to by its name. {/*##input##*/}                                                                                                                                            |
-| <span className="ndl-data">Mode</span>        | {/*##input:mode##*/}This property selects whether the previous components will be kept in the stack, beneath the new top component, (**Push**) or if all components will be replaced by the new top component (**Replace**), in which case the new component will be the only one on the stack.{/*##input##*/} |
-| <span className="ndl-data">Target Page</span> | {/*##input:target##*/}Here you select the target component to push on the **Component Stack**. The component need to be one of the component entries defined in the **Component Stack** to show up as an option here.{/*##input##*/}                                                                           |
+| <span className="ndl-data">スタック</span>       | {/*##input:stack##*/}このプロパティはプッシュが作用する**コンポーネントスタック**を定義します。**コンポーネントスタック**はその名前で参照されます。{/*##input##*/}                                                                                                                                            |
+| <span className="ndl-data">モード</span>        | {/*##input:mode##*/}このプロパティは、以前のコンポーネントをスタックに残すか（**プッシュ**）、すべてのコンポーネントを新しいトップコンポーネントに置き換えるか（**置換**）を選択します。この場合、新しいコンポーネントがスタック上の唯一のコンポーネントになります。{/*##input##*/} |
+| <span className="ndl-data">ターゲットページ</span> | {/*##input:target##*/}ここでは、**コンポーネントスタック**にプッシュするターゲットコンポーネントを選択します。コンポーネントは、**コンポーネントスタック**で定義されたコンポーネントエントリの1つでなければなりません。{/*##input##*/}                                                                           |
 
-| Signal                                       | Description                                                                                                             |
+| シグナル                                       | 説明                                                                                                             |
 | -------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-signal">Navigate</span> | {/*##input:navigate##*/}Sending a signal to this input will push the **Target Page** on the **Component Stack**.{/*##input##*/} |
+| <span className="ndl-signal">ナビゲート</span> | {/*##input:navigate##*/}この入力にシグナルを送信すると、**ターゲットページ**が**コンポーネントスタック**にプッシュされます。{/*##input##*/} |
 
-| Mixed                | Description                                                                                                                  |
+| 混合                | 説明                                                                                                                  |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| **Component Inputs** | Any **Component Inputs** that the target component have will be available as inputs on the **Push Component To Stack** node. |
+| **コンポーネント入力** | ターゲットコンポーネントが持つ任意の**コンポーネント入力**は、**コンポーネントをスタックにプッシュ**ノードの入力として利用可能になります。 |
 
-<span className="hidden-props-for-editor">{/*##input:pm-\*##*/}A parameter input originating from a **Component Input** in the **Target** component. It's value will be forwarded to the component.{/*##input##*/}</span>
+<span className="hidden-props-for-editor">{/*##input:pm-\*##*/}**ターゲット**コンポーネントの**コンポーネント入力**から来るパラメータ入力です。その値はコンポーネントに転送されます。{/*##input##*/}</span>
 
-### Transition
+### トランジション
 
-| Data                                                  | Description                                                                                                                                                                                                                                                                                                                                                                                       |
+| データ                                                  | 説明                                                                                                                                                                                                                                                                                                                                                                                       |
 | ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-data">Transition</span>          | The type of transition. Can be any of:<br/><br/>`None`: No transition, the target component is immediately made visible.<br/>`Push`: The current top of the stack is "pushed away" while the new top enters.<br/>`Popup`: The current top is not changed. The new top enters with a transition on top of it.<br/><br/>Not all of the parameters below are available for all types of transitions. |
-| <span className="ndl-data">Direction</span>           | {/*##input:tr-direction##*/}This is the direction the new top component enters from, and also the direction the current top is pushed away in, if the transition is _Push_. It can be any of _Left_, _Right_, _Up_, _Down_ and _In_,_Out_. The latter zooms in vs out.{/*##input##*/}                                                                                                                     |
-| <span className="ndl-data">Shift Distance</span>      | {/*##input:tr-shift##*/}This is the distance of the transition in either _%_ or in _px_, i.e. the distance the component is moved in the specified direction.{/*##input##*/}                                                                                                                                                                                                                              |
-| <span className="ndl-data">Zoom</span>                | {/*##input:tr-zoom##*/}This is available if the _Direction_ is set to _In_ or _Out_ and specifies the amount of zoom the transition should apply.{/*##input##*/}                                                                                                                                                                                                                                          |
-| <span className="ndl-data">Crossfade</span>           | {/*##input:tr-crossfade##*/}If enabled the target will fade in and the current top fade out. Only available for _Push_ transitions.{/*##input##*/}                                                                                                                                                                                                                                                        |
-| <span className="ndl-data">Dark Overlay</span>        | {/*##input:tr-darkoverlay##*/}Adds a overlay to the current top with the color #000000. Only available for _Push_ transitions.{/*##input##*/}                                                                                                                                                                                                                                                             |
-| <span className="ndl-data">Dark Overlay Amount</span> | {/*##input:tr-darkoverlayamount##*/}The maximum opacity of the overlay. It starts at `0` and animates to this value. `0` disables it, and `1` makes the overlay animate to 100% opacity. Only available for _Push_ transitions.{/*##input##*/}                                                                                                                                                            |
-| <span className="ndl-data">Fade In</span>             | {/*##input:tr-fadein##*/}Available for _Popup_ transitions. This indicates if the new top component should fade in ou not during the transition.{/*##input##*/}                                                                                                                                                                                                                                           |
-| <span className="ndl-data">Timing</span>              | {/*##input:tr-timing##*/}This is a timing curve that controls the delay, duration and animation ease of the transition.{/*##input##*/}                                                                                                                                                                                                                                                                    |
+| <span className="ndl-data">トランジション</span>          | トランジションの種類。以下のいずれかになります：<br/><br/>`なし`：トランジションなし、ターゲットコンポーネントは即座に表示されます。<br/>`プッシュ`：スタックの現在のトップが「押し出される」一方で、新しいトップが入ります。<br/>`ポップアップ`：現在のトップは変更されず、新しいトップがそれの上にトランジションで入ります。<br/><br/>以下のすべてのパラメータが全てのトランジションタイプで利用可能なわけではありません。 |
+| <span className="ndl-data">方向</span>           | {/*##input:tr-direction##*/}これは、新しいトップコンポーネントがどの方向から入るか、また、トランジションが_プッシュ_の場合、現在のトップがどの方向に押し出されるかを示します。_左_、_右_、_上_、_下_、_イン_、_アウト_のいずれかになります。後者はズームインとズームアウトを示します。{/*##input##*/}                                                                                                                     |
+| <span className="ndl-data">シフト距離</span>      | {/*##input:tr-shift##*/}これは、指定された方向でのトランジションの距離で、_%_または_px_で指定されます。つまり、コンポーネントが移動する距離です。{/*##input##*/}                                                                                                                                                                                                                              |
+| <span className="ndl-data">ズーム</span>                | {/*##input:tr-zoom##*/}_方向_が_イン_または_アウト_に設定されている場合に利用可能で、トランジションが適用するズームの量を指定します。{/*##input##*/}                                                                                                                                                                                                                                          |
+| <span className="ndl-data">クロスフェード</span>           | {/*##input:tr-crossfade##*/}有効にすると、ターゲットがフェードインし、現在のトップがフェードアウトします。_プッシュ_トランジションでのみ利用可能です。{/*##input##*/}                                                                                                                                                                                                                                                        |
+| <span className="ndl-data">ダークオーバーレイ</span>        | {/*##input:tr-darkoverlay##*/}現在のトップに#000000の色のオーバーレイを追加します。_プッシュ_トランジションでのみ利用可能です。{/*##input##*/}                                                                                                                                                                                                                                                             |
+| <span className="ndl-data">ダークオーバーレイの量</span> | {/*##input:tr-darkoverlayamount##*/}オーバーレイの最大不透明度です。`0`からこの値までアニメーションします。`0`はそれを無効にし、`1`はオーバーレイを100%の不透明度までアニメーションさせます。_プッシュ_トランジションでのみ利用可能です。{/*##input##*/}                                                                                                                                                            |
+| <span className="ndl-data">フェードイン</span>             | {/*##input:tr-fadein##*/}_ポップアップ_トランジションで利用可能です。これは、新しいトップコンポーネントがトランジション中にフェードインするかどうかを示します。{/*##input##*/}                                                                                                                                                                                                                                           |
+| <span className="ndl-data">タイミング</span>              | {/*##input:tr-timing##*/}これは、トランジションの遅延、持続時間、およびアニメーションのイージングを制御するタイミングカーブです。{/*##input##*/}                                                                                                                                                                                                                                                                    |
 
 <div className="ndl-image-with-background l">
     <img src="/guides/navigation/transition-params.png"></img>
@@ -56,26 +56,26 @@ The **Push Component To Stack** node is used together with a [Component Stack](/
 
 <div className="hidden-props-for-editor">
 
-{/*##input:transition##*/}The type of transition. Can be any of:
+{/*##input:transition##*/}トランジションの種類。以下のいずれかになります：
 
--   _None_ No transition, the target component is immediately made visible.
--   _Push_ The current top of the stack is "pushed away" while the new top enters.
--   _Popup_ The current top is not changed. The new top enters with a transition on top of it.
+-   _なし_ トランジションなし、ターゲットコンポーネントは即座に表示されます。
+-   _プッシュ_ スタックの現在のトップが「押し出される」一方で、新しいトップが入ります。
+-   _ポップアップ_ 現在のトップは変更されず、新しいトップがそれの上にトランジションで入ります。
 
-Not all of the parameters below are available for all types of transitions.{/*##input##*/}
+以下のすべてのパラメータが全てのトランジションタイプで利用可能なわけではありません。{/*##input##*/}
 
 </div>
 
-## Outputs
+## 出力
 
-| Signal                                        | Description                                                                                                                          |
+| シグナル                                        | 説明                                                                                                                          |
 | --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| <span className="ndl-signal">Navigated</span> | {/*##output:navigated##*/}This signal is triggered when the **Target Component** has been pushed on the **Component Stack**.{/*##output##*/} |
+| <span className="ndl-signal">ナビゲートされた</span> | {/*##output:navigated##*/}このシグナルは、**ターゲットコンポーネント**が**コンポーネントスタック**にプッシュされたときにトリガーされます。{/*##output##*/} |
 
-| Mixed                     | Description                                                                                                                                                                                             |
+| 混合                     | 説明                                                                                                                                                                                             |
 | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Back Actions, Results** | If the **Target Component** contains a [Pop Component Stack](/nodes/component-stack/pop-component) with **Back Actions** and **Results** they will appear as outputs on the related **Push Component**. |
+| **戻るアクション、結果** | **ターゲットコンポーネント**が[コンポーネントスタックをポップ](/nodes/component-stack/pop-component)を含む場合、**戻るアクション**と**結果**が関連する**コンポーネントをプッシュ**の出力として表示されます。 |
 
-<span className="hidden-props-for-editor">{/*##output:backAction-\*##*/}An output signal originating from the **Back Actions** of the [Pop Component Stack](/nodes/component-stack/pop-component) node of the **Target Component**.{/*##output##*/}</span>
+<span className="hidden-props-for-editor">{/*##output:backAction-\*##*/}**ターゲットコンポーネント**の[コンポーネントスタックをポップ](/nodes/component-stack/pop-component)ノードの**戻るアクション**から来る出力シグナルです。{/*##output##*/}</span>
 
-<span className="hidden-props-for-editor">{/*##output:backResult-\*##*/}A result output originating from the **Result** of the [Pop Component Stack](/nodes/component-stack/pop-component) node of the **Target Component**.{/*##output##*/}</span>
+<span className="hidden-props-for-editor">{/*##output:backResult-\*##*/}**ターゲットコンポーネント**の[コンポーネントスタックをポップ](/nodes/component-stack/pop-component)ノードの**結果**から来る結果出力です。{/*##output##*/}</span>

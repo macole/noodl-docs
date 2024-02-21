@@ -1,14 +1,14 @@
 ---
 hide_title: true
 hide_table_of_contents: true
-title: Open File Picker node
+title: Open File Pickerノード
 ---
 
 {/*##head##*/}
 
-# Open File Picker
+# Open File Pickerノード
 
-This node opens a file picker dialog. Noodl uses the system file picker dialog, meaning it works seamlessly with the users native device experience.
+このノードはファイルピッカーダイアログを開きます。Noodlはシステムファイルピッカーダイアログを使用するため、ユーザーのネイティブデバイス体験とシームレスに動作します。
 
 <div className="ndl-image-with-background l">
 
@@ -16,35 +16,35 @@ This node opens a file picker dialog. Noodl uses the system file picker dialog, 
 
 </div>
 
-You can define what file types are allowed to be uploaded. This is done by entering a <span className="ndl-data">string</span> of file types: each item needs to start with a period (`.`) and be separated by a comma (`,`). Leave the list blank if you want to accept any file type.
+アップロードを許可するファイルタイプを定義できます。これはファイルタイプの<span className="ndl-data">string</span>を入力することで行います：各項目はピリオド(`.`)で始まり、カンマ(`,`)で区切られる必要があります。任意のファイルタイプを受け入れたい場合はリストを空にします。
 
 {/*##head##*/}
 
-## Inputs
+## 入力
 
-| Signal                                   | Description                                                                     |
+| シグナル                                   | 説明                                                                     |
 | ---------------------------------------- | ------------------------------------------------------------------------------- |
-| <span className="ndl-signal">Open</span> | {/*##input:open##*/}Send a signal to this input to open the file picker.{/*##input##*/} |
+| <span className="ndl-signal">Open</span> | {/*##input:open##*/}この入力にシグナルを送ることでファイルピッカーを開きます。{/*##input##*/} |
 
-| Data                                                  | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| データ                                                  | 説明                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | ----------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-data">Accepted file types</span> | {/*##input:accepted file types##*/}A comma separated list of file types that the user can select. Leave blank to accept any file type.{/*##input##*/}<br/><br/>The file type can be specified as a filename extension, starting with a period. E.g. `.png`, `.json` or `.png, .jpg`.<br/><br/>The type can also be specified as a [MIME type](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types). E.g. `image/*`, `image/png` or `video/mp4`. |
+| <span className="ndl-data">許可されるファイルタイプ</span> | {/*##input:accepted file types##*/}ユーザーが選択できるファイルタイプのカンマ区切りリストです。任意のファイルタイプを受け入れる場合は空にしてください。{/*##input##*/}<br/><br/>ファイルタイプはピリオドで始まるファイル名の拡張子として指定できます。例: `.png`, `.json` や `.png, .jpg`。<br/><br/>タイプは[MIMEタイプ](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types)としても指定できます。例: `image/*`, `image/png` や `video/mp4`。 |
 
-## Outputs
+## 出力
 
-| Data                                   | Description                                                                                                                                                                                                                                                                                                                                                             |
+| データ                                   | 説明                                                                                                                                                                                                                                                                                                                                                             |
 | -------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-data">File</span> | {/*##output:file##*/}A web file API Object.{/*##output##*/} A [File](https://developer.mozilla.org/en-US/docs/Web/API/File) object. This can be used uploaded via [Upload File](/nodes/data/cloud-data/upload-file), sent as a part of a [REST](/nodes/data/rest) call, processed in a [Function](/nodes/javascript/function) node, used together with modules, or other tasks. |
+| <span className="ndl-data">File</span> | {/*##output:file##*/}ウェブファイルAPIオブジェクトです。[File](https://developer.mozilla.org/en-US/docs/Web/API/File)オブジェクトです。これは[Upload File](/nodes/data/cloud-data/upload-file)を介してアップロードされたり、[REST](/nodes/data/rest)コールの一部として送信されたり、[Function](/nodes/javascript/function)ノードで処理されたり、モジュールと共に使用されたり、その他のタスクに使用できます。 |
 
-### Metadata
+### メタデータ
 
-| Data                                            | Description                                                            |
+| データ                                            | 説明                                                            |
 | ----------------------------------------------- | ---------------------------------------------------------------------- |
-| <span className="ndl-data">Path</span>          | {/*##output:path##*/}The local path to the file.{/*##output##*/}               |
-| <span className="ndl-data">Name</span>          | {/*##output:name##*/}Name of the file, without the path.{/*##output##*/}       |
-| <span className="ndl-data">Size in bytes</span> | {/*##output:size in bytes##*/}Total size of the file in bytes.{/*##output##*/} |
-| <span className="ndl-data">Type</span>          | {/*##output:type##*/}The file type{/*##output##*/}                             |
+| <span className="ndl-data">Path</span>          | {/*##output:path##*/}ファイルのローカルパスです。{/*##output##*/}               |
+| <span className="ndl-data">Name</span>          | {/*##output:name##*/}パスを除いたファイル名です。{/*##output##*/}       |
+| <span className="ndl-data">バイト単位のサイズ</span> | {/*##output:size in bytes##*/}ファイルのバイト単位での総サイズです。{/*##output##*/} |
+| <span className="ndl-data">Type</span>          | {/*##output:type##*/}ファイルタイプです。{/*##output##*/}                             |
 
-| Signal                                      | Description                                                                 |
+| シグナル                                      | 説明                                                                 |
 | ------------------------------------------- | --------------------------------------------------------------------------- |
-| <span className="ndl-signal">Success</span> | {/*##output:success##*/}Triggered when the user has selected a file{/*##output##*/} |
+| <span className="ndl-signal">Success</span> | {/*##output:success##*/}ユーザーがファイルを選択したときにトリガーされます。{/*##output##*/} |

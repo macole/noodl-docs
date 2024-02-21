@@ -1,14 +1,14 @@
 ---
 hide_title: true
 hide_table_of_contents: true
-title: Array Map node
+title: Array Mapノード
 ---
 
 {/*##head##*/}
 
 # Array Map
 
-This node takes an input array, runs a small map script on each item, and outputs the resulting mapped array. That is an array with new objects, each created in the mapping script.
+このノードは入力配列を取り、各アイテムに小さなマップスクリプトを実行し、その結果としてマップされた配列を出力します。つまり、マッピングスクリプトで作成された新しいオブジェクトの配列です。
 
 <div className="ndl-image-with-background l">
 
@@ -18,15 +18,15 @@ This node takes an input array, runs a small map script on each item, and output
 
 {/*##head##*/}
 
-## Inputs
+## 入力
 
-| Data                                    | Description                                                  |
+| データ                                    | 説明                                                  |
 | --------------------------------------- | ------------------------------------------------------------ |
-| <span className="ndl-data">Items</span> | {/*##input:items##*/}The array that should be mapped.{/*##input##*/} |
+| <span className="ndl-data">Items</span> | {/*##input:items##*/}マップされるべき配列。{/*##input##*/} |
 
-### Script
+### スクリプト
 
-The mapping script used to map the objects in the input array to new objects in the mapped output array. The script should be provided in the following format:
+入力配列のオブジェクトをマップされた出力配列の新しいオブジェクトにマップするために使用されるマッピングスクリプト。スクリプトは以下のフォーマットで提供されるべきです：
 
 ```javascript
 map({
@@ -35,9 +35,9 @@ map({
 })
 ```
 
-You can either provide a string with the name of the property that should be mapped with the syntax _to:'from'_ which will simply rename a property taking the value directly from the input object. Or you can provide a mapping function that takes the object (of the type [Noodl.Object](/javascript/reference/object)) and the function should return the mapped value.
+_名前:'元の名前'_ の構文でマッピングするプロパティの名前を文字列で提供するか、マッピング関数を提供することができます。マッピング関数はオブジェクト（[Noodl.Object](/javascript/reference/object)の型）を取り、マッピングされた値を返すべきです。
 
-Sometimes you need to extract the **Id** of the objects you are mapping, this can be done in the following way:
+時にはマッピングしているオブジェクトの**Id**を抽出する必要があるかもしれません。これは以下の方法で行うことができます：
 
 ```javascript
 map({
@@ -46,17 +46,17 @@ map({
 })
 ```
 
-Note that the objects that are created when mapping are new objects so they will have their own Id as well.
+マッピング時に作成されるオブジェクトは新しいオブジェクトなので、それ自体のIdも持つことに注意してください。
 
-## Outputs
+## 出力
 
-### General
+### 一般
 
-| Data                                    | Description                                                                                                      |
+| データ                                    | 説明                                                                                                      |
 | --------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-data">Items</span> | {/*##output:items##*/}The mapped array.{/*##output##*/}                                                                  |
-| <span className="ndl-data">Count</span> | {/*##output:count##*/}The number of items in the mapped array (this will be the same as the input array){/*##output##*/} |
+| <span className="ndl-data">Items</span> | {/*##output:items##*/}マップされた配列。{/*##output##*/}                                                                  |
+| <span className="ndl-data">Count</span> | {/*##output:count##*/}マップされた配列のアイテム数（これは入力配列と同じになります）{/*##output##*/} |
 
-| Signal                                      | Description                                                                                                                                                                                  |
+| シグナル                                      | 説明                                                                                                                                                                                  |
 | ------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-signal">Changed</span> | {/*##output:changed##*/}A signal is emitted here when the input array has been modified which will trigger the _Array Map_ node to remap the input and produce a new output _Items_.{/*##output##*/} |
+| <span className="ndl-signal">Changed</span> | {/*##output:changed##*/}入力配列が変更されたときにここでシグナルが発信され、_Array Map_ ノードが入力を再マップして新しい出力 _Items_ を生成するトリガーになります。{/*##output##*/} |

@@ -1,14 +1,14 @@
 ---
 hide_title: true
 hide_table_of_contents: true
-title: Button node
+title: Buttonノード
 ---
 
 {/*##head##*/}
 
 # Button
 
-This node places a customizable button in the visual tree.
+このノードは、ビジュアルツリーにカスタマイズ可能なボタンを配置します。
 
 <div className="ndl-image-with-background l">
 
@@ -16,7 +16,7 @@ This node places a customizable button in the visual tree.
 
 </div>
 
-The button has a <span className="ndl-signal">Click</span> signal that you can use to trigger actions.
+ボタンには、アクションをトリガーするために使用できる<span className="ndl-signal">クリック</span>シグナルがあります。
 
 <div className="ndl-image-with-background l">
 
@@ -25,79 +25,81 @@ The button has a <span className="ndl-signal">Click</span> signal that you can u
 </div>
 {/*##head##*/}
 
-This control contains all logic such as accessibility etc. It can be styled in via it's properties.
-Use variations to create different types of buttons
+このコントロールには、アクセシビリティなどのすべてのロジックが含まれています。プロパティを介してスタイルを設定できます。
+バリエーションを使用して、異なるタイプのボタンを作成します。
 
-## Inputs
+## 入力
 
-The Button can be enabled and disabled using the Enabled input:
+ボタンは、有効入力を使用して有効/無効にすることができます：
 
 @include "../../shared-props/inputs/_enabled.md"
 
-The Button node has a set of label properties that can be set:
+ボタンノードには、設定できる一連のラベルプロパティがあります：
 
-| Data                                           | Description                                                                                      |
-| ---------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| <span className="ndl-data">Enable Label</span> | Sets whether the label is visible or not.                                                        |
-| <span className="ndl-data">Text Style</span>   | Set an existing text style to this node, or create a new text style from the current properties. |
-| <span className="ndl-data">Label</span>        | A text string that will be shown as the label on the button.                                     |
+| データ                                             | 説明                                                                                                  |
+| ---------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| <span className="ndl-data">ラベルを有効にする</span>   | ラベルが表示されるかどうかを設定します。                                                                |
+| <span className="ndl-data">テキストスタイル</span>     | このノードに既存のテキストスタイルを設定するか、現在のプロパティから新しいテキストスタイルを作成します。 |
+| <span className="ndl-data">ラベル</span>             | ボタン上に表示されるテキスト文字列。                                                                    |
 
-Similarly, it has a set of icon properties:
+同様に、一連のアイコンプロパティがあります：
 
-| Data                                          | Description                                                                                         |
-| --------------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| <span className="ndl-data">Enable Icon</span> | Sets whether the icon is visible or not.                                                            |
-| <span className="ndl-data">Type</span>        | Use this to set if you want to use a predefined `icon` or a custom `image` from the project folder. |
-| <span className="ndl-data">Source</span>      | Where to get the icon.                                                                              |
-| <span className="ndl-data">Spacing</span>     | The spacing between the text and the icon.                                                          |
-| <span className="ndl-data">Placement</span>   | Sets whether the icon should be to the `left` or to the `right` of the _Label_                      |
-| <span className="ndl-data">Size</span>        | The width of the icon in `px`.                                                                      |
-| <span className="ndl-data">Color</span>       | Sets the color of the icon. Only visible if _Type_ is set to `icon`.                                |
+| データ                                           | 説明                                                                                                   |
+| --------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| <span className="ndl-data">アイコンを有効にする</span> | アイコンが表示されるかどうかを設定します。                                                               |
+| <span className="ndl-data">タイプ</span>          | 事前定義された`アイコン`を使用するか、プロジェクトフォルダからカスタム`画像`を使用するかを設定します。   |
+| <span className="ndl-data">ソース</span>         | アイコンを取得する場所。                                                                                 |
+| <span className="ndl-data">スペーシング</span>    | テキストとアイコンの間隔。                                                                               |
+| <span className="ndl-data">配置</span>           | アイコンが`ラベル`の`左`または`右`に配置されるかどうかを設定します。                                     |
+| <span className="ndl-data">サイズ</span>          | アイコンの幅（`px`単位）。                                                                               |
+| <span className="ndl-data">色</span>             | アイコンの色を設定します。_タイプ_が`アイコン`に設定されている場合にのみ表示されます。                    |
 
-### Visual
+### ビジュアル
 
-This node supports the following [Visual Input Properties](/nodes/shared-props/inputs/visual-input-properties):
+このノードは、以下の[ビジュアル入力プロパティ](/nodes/shared-props/inputs/visual-input-properties)をサポートしています:
 
--   [Margin](/nodes/shared-props/inputs/visual-input-properties#margin)
--   [Padding](/nodes/shared-props/inputs/visual-input-properties#padding)
--   [Alignment](/nodes/shared-props/inputs/visual-input-properties#alignment)
--   [Dimensions](/nodes/shared-props/inputs/visual-input-properties#dimensions)
--   [Layout, Position](/nodes/shared-props/inputs/visual-input-properties#position)
--   [Text Styles](/nodes/shared-props/inputs/visual-input-properties#text-styles)
--   [Style](/nodes/shared-props/inputs/visual-input-properties#style)
--   [Border Style](/nodes/shared-props/inputs/visual-input-properties#border-style)
--   [Corner Radius](/nodes/shared-props/inputs/visual-input-properties#corner-radius)
--   [Box Shadow](/nodes/shared-props/inputs/visual-input-properties#box-shadow)
--   [Placement](/nodes/shared-props/inputs/visual-input-properties#placement)
--   [Dimension Constraints](/nodes/shared-props/inputs/visual-input-properties#dimension-constraints)
--   [Other](/nodes/shared-props/inputs/visual-input-properties#other)
--   [Advanced HTML](/nodes/shared-props/inputs/visual-input-properties#advanced-html)
+-   [マージン](/nodes/shared-props/inputs/visual-input-properties#margin)
+-   [パディング](/nodes/shared-props/inputs/visual-input-properties#padding)
+-   [配置](/nodes/shared-props/inputs/visual-input-properties#alignment)
+-   [寸法](/nodes/shared-props/inputs/visual-input-properties#dimensions)
+-   [レイアウト, 位置](/nodes/shared-props/inputs/visual-input-properties#position)
+-   [テキストスタイル](/nodes/shared-props/inputs/visual-input-properties#text-styles)
+-   [スタイル](/nodes/shared-props/inputs/visual-input-properties#style)
+-   [ボーダースタイル](/nodes/shared-props/inputs/visual-input-properties#border-style)
+-   [コーナーの半径](/nodes/shared-props/inputs/visual-input-properties#corner-radius)
+-   [ボックスシャドウ](/nodes/shared-props/inputs/visual-input-properties#box-shadow)
+-   [配置](/nodes/shared-props/inputs/visual-input-properties#placement)
+-   [寸法制約](/nodes/shared-props/inputs/visual-input-properties#dimension-constraints)
+-   [その他](/nodes/shared-props/inputs/visual-input-properties#other)
+-   [高度なHTML](/nodes/shared-props/inputs/visual-input-properties#advanced-html)
 
-## Outputs
+## 出力
 
-The main output for the button is the Click <span className="ndl-signal">signal</span>:
+ボタンの主な出力は、クリック<span className="ndl-signal">シグナル</span>です：
 
-| Signal                                    | Description                                                                                 |
-| ----------------------------------------- | ------------------------------------------------------------------------------------------- |
-| <span className="ndl-signal">Click</span> | {/*##output:onClick##*/}A signal is sent on this output when the button is clicked.{/*##output##*/} |
+| シグナル                                       | 説明                                                                                   |
+| -------------------------------------------- | -------------------------------------------------------------------------------------- |
+| <span className="ndl-signal">クリック</span>     | {/*##output:onClick##*/}ボタンがクリックされたときにこの出力でシグナルが送信されます。{/*##output##*/} |
 
-It also features a set of more in depth <span className="ndl-signal">signals</span>:
+また、より詳細な<span className="ndl-signal">シグナル</span>のセットも備えています：
 
 @include "../../shared-props/outputs/_control-events.md"
 
-### States
+### ステート
 
-Apart from triggering <span className="ndl-signal">signals</span> the Button node also notifies of its state through <span className="ndl-data">data</span> outputs:
+<span className="ndl-signal">シグナル</span>をトリガーするだけでなく、Buttonノードは<span className="ndl-data">データ</span>出力を通じてその状態も通知します：
 
 @include "../../shared-props/outputs/_control-states.md"
 
-### Visual
+### ビジュアル
 
-This node supports the following [Visual Output Properties](/nodes/shared-props/outputs/visual-output-properties/):
+このノードは、以下の[ビジュアル出力プロパティ](/nodes/shared-props/outputs/visual-output-properties/)をサポートしています:
 
--   [Bounding Box](/nodes/shared-props/outputs/visual-output-properties/#bounding-box)
--   [Mounted](/nodes/shared-props/outputs/visual-output-properties/#mounted)
--   [Other](/nodes/shared-props/outputs/visual-output-properties/#other)
+-   [バウンディングボックス](/nodes/shared-props/outputs/visual-output-properties
+
+/#bounding-box)
+-   [マウント](/nodes/shared-props/outputs/visual-output-properties/#mounted)
+-   [その他](/nodes/shared-props/outputs/visual-output-properties/#other)
 
 <div className="hidden-props-for-editor">
 

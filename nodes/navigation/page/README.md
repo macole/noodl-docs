@@ -1,22 +1,22 @@
 ---
 hide_title: true
 hide_table_of_contents: true
-title: Page node
+title: Pageノード
 ---
 
 {/*##head##*/}
 
-# Page
+# Pageノード
 
-The **Page** node is a basic building block when creating web type navigation using a [Page Router](/nodes/navigation/page-router).
+**Page**ノードは、[Page Router](/nodes/navigation/page-router)を使用してウェブタイプのナビゲーションを作成する際の基本的な構成要素です。
 
 :::note
 
-**Page** nodes cannot be created throught the node picker, it can only be created by adding a new **Page** in the component list.
+**Page**ノードはノードピッカーから作成することはできず、コンポーネントリストで新しい**Page**を追加することでのみ作成できます。
 
 :::
 
-**Pages** are typically used together with a [Page Inputs](/nodes/navigation/page-inputs) node to be able to provide parameters to the **Page**.
+**Pages**は通常、**Page**にパラメータを提供できるように[Page Inputs](/nodes/navigation/page-inputs)ノードと一緒に使用されます。
 
 <div className="ndl-image-with-background">
 
@@ -26,23 +26,23 @@ The **Page** node is a basic building block when creating web type navigation us
 
 {/*##head##*/}
 
-## Inputs
+## 入力
 
-| Data                                       | Description                                                                                                                                                                                                                                                        |
+| データ                                       | 説明                                                                                                                                                                                                                                                        |
 | ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| <span className="ndl-data">Title</span>    | {/*##input:title##*/}This property controls the title of the **Page** i.e. what the title of the browser window will be say when the **Page** is active.{/*##input##*/}                                                                                                    |
-| <span className="ndl-data">URL path</span> | {/*##input:urlPath##*/}This property controls the URL route to this **Page** in relation to its [Page Router](/nodes/navigation/page-router).{/*##input##*/} See the documentation for [Page Router](/nodes/navigation/page-router) for more details on how routing works. |
+| <span className="ndl-data">タイトル</span>    | {/*##input:title##*/}このプロパティは**Page**のタイトルを制御します。つまり、**Page**がアクティブなときにブラウザウィンドウのタイトルが表示する内容です。{/*##input##*/}                                                                                                    |
+| <span className="ndl-data">URLパス</span> | {/*##input:urlPath##*/}このプロパティは、[Page Router](/nodes/navigation/page-router)に対するこの**Page**のURLルートを制御します。{/*##input##*/} ルーティングの仕組みについては、[Page Router](/nodes/navigation/page-router)のドキュメントを参照してください。 |
 
-This node supports the following [Visual Input Properties](/nodes/shared-props/inputs/visual-input-properties/):
+このノードは以下の[Visual Input Properties](/nodes/shared-props/inputs/visual-input-properties/)をサポートしています：
 
 -   [Padding](/nodes/shared-props/inputs/visual-input-properties#padding)
 -   [Advanced HTML](/nodes/shared-props/inputs/visual-input-properties#advanced-html)
 
-## Outputs
+## 出力
 
 ### Visual
 
-This node supports the following [Visual Output Properties](/nodes/shared-props/outputs/visual-output-properties/):
+このノードは以下の[Visual Output Properties](/nodes/shared-props/outputs/visual-output-properties/)をサポートしています：
 
 -   [Bounding Box](/nodes/shared-props/outputs/visual-output-properties#bounding-box)
 -   [Mounted](/nodes/shared-props/outputs/visual-output-properties#mounted)

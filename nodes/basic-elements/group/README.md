@@ -1,14 +1,14 @@
 ---
 hide_title: true
 hide_table_of_contents: true
-title: Group node
+title: Groupノード
 ---
 
 {/*##head##*/}
 
 # Group
 
-This node is a styleable container. It can have other visual nodes nested inside of it.
+このノードはスタイル可能なコンテナです。他のビジュアルノードを内部にネストできます。
 
 <div className="ndl-image-with-background l">
 
@@ -16,7 +16,7 @@ This node is a styleable container. It can have other visual nodes nested inside
 
 </div>
 
-The <span className="ndl-node">Group</span> is the most essential node when it comes to creating layouts and arranging visual elements.
+<span className="ndl-node">Group</span>は、レイアウトを作成し、ビジュアルエレメントを配置する際に最も基本的なノードです。
 
 <div className="ndl-image-with-background l">
 
@@ -26,44 +26,44 @@ The <span className="ndl-node">Group</span> is the most essential node when it c
 
 {/*##head##*/}
 
-**Group** nodes are typically used to layout children by stacking (the default), but can also be used to simply provide margins and padding to a group of visual nodes. To learn more about **Group** nodes check out the [Layouting guide](/docs/guides/user-interfaces/layout).
+**Group**ノードは通常、子をスタックする（デフォルト）ために使用されますが、ビジュアルノードのグループにマージンやパディングを提供するために使用することもできます。**Group**ノードの詳細については、[レイアウトガイド](/docs/guides/user-interfaces/layout)をご覧ください。
 
-## Inputs
+## 入力
 
-Many of the UI nodes share the same inputs. Please refer to the [Visual Input Properties](/nodes/shared-props/inputs/visual-input-properties) documentation.
+多くのUIノードは同じ入力を共有しています。[ビジュアル入力プロパティ](/nodes/shared-props/inputs/visual-input-properties)のドキュメントを参照してください。
 
-This node supports the following properties:
+このノードは、以下のプロパティをサポートしています:
 
-- [Margin](/nodes/shared-props/inputs/visual-input-properties#margin)
-- [Padding](/nodes/shared-props/inputs/visual-input-properties#padding)
-- [Alignment](/nodes/shared-props/inputs/visual-input-properties#alignment)
-- [Dimensions](/nodes/shared-props/inputs/visual-input-properties#dimensions)
-- [Layout](/nodes/shared-props/inputs/visual-input-properties#layout)
-- [Align and justify content](/nodes/shared-props/inputs/visual-input-properties#align-and-justify-content)
-- [Scroll](/nodes/shared-props/inputs/visual-input-properties#scroll)
-- [Style](/nodes/shared-props/inputs/visual-input-properties#style)
-- [Border Style](/nodes/shared-props/inputs/visual-input-properties#border-style)
-- [Corner Radius](/nodes/shared-props/inputs/visual-input-properties#corner-radius)
-- [Box Shadow](/nodes/shared-props/inputs/visual-input-properties#box-shadow)
-- [Placement](/nodes/shared-props/inputs/visual-input-properties#placement)
-- [Dimension Constraints](/nodes/shared-props/inputs/visual-input-properties#dimension-constraints)
-- [Focus](/nodes/shared-props/inputs/visual-input-properties#focus)
-- [Other](/nodes/shared-props/inputs/visual-input-properties#other)
-- [Advanced HTML](/nodes/shared-props/inputs/visual-input-properties#advanced-html)
+- [マージン](/nodes/shared-props/inputs/visual-input-properties#margin)
+- [パディング](/nodes/shared-props/inputs/visual-input-properties#padding)
+- [配置](/nodes/shared-props/inputs/visual-input-properties#alignment)
+- [寸法](/nodes/shared-props/inputs/visual-input-properties#dimensions)
+- [レイアウト](/nodes/shared-props/inputs/visual-input-properties#layout)
+- [コンテンツの整列と配置](/nodes/shared-props/inputs/visual-input-properties#align-and-justify-content)
+- [スクロール](/nodes/shared-props/inputs/visual-input-properties#scroll)
+- [スタイル](/nodes/shared-props/inputs/visual-input-properties#style)
+- [ボーダースタイル](/nodes/shared-props/inputs/visual-input-properties#border-style)
+- [コーナーの半径](/nodes/shared-props/inputs/visual-input-properties#corner-radius)
+- [ボックスシャドウ](/nodes/shared-props/inputs/visual-input-properties#box-shadow)
+- [配置](/nodes/shared-props/inputs/visual-input-properties#placement)
+- [寸法制約](/nodes/shared-props/inputs/visual-input-properties#dimension-constraints)
+- [フォーカス](/nodes/shared-props/inputs/visual-input-properties#focus)
+- [その他](/nodes/shared-props/inputs/visual-input-properties#other)
+- [高度なHTML](/nodes/shared-props/inputs/visual-input-properties#advanced-html)
 
-## Outputs
+## 出力
 
-Many of the UI nodes share the same outputs. Please refer to the [Visual Output Properties](/nodes/shared-props/outputs/visual-output-properties) documentation.
+多くのUIノードは同じ出力を共有しています。[ビジュアル出力プロパティ](/nodes/shared-props/outputs/visual-output-properties)のドキュメントを参照してください。
 
-This node supports the following properties:
+このノードは、以下のプロパティをサポートしています:
 
-- [Scrolling](/nodes/shared-props/outputs/visual-output-properties#scrolling)
-- [Bounding Box](/nodes/shared-props/outputs/visual-output-properties#bounding-box)
-- [Mounted](/nodes/shared-props/outputs/visual-output-properties#mounted)
-- [Pointer Events](/nodes/shared-props/outputs/visual-output-properties#pointer-events)
-- [Hover Events](/nodes/shared-props/outputs/visual-output-properties#hover-events)
-- [Focus](/nodes/shared-props/outputs/visual-output-properties#focus)
-- [Other](/nodes/shared-props/outputs/visual-output-properties#other)
+- [スクロール](/nodes/shared-props/outputs/visual-output-properties#scrolling)
+- [バウンディングボックス](/nodes/shared-props/outputs/visual-output-properties#bounding-box)
+- [マウント](/nodes/shared-props/outputs/visual-output-properties#mounted)
+- [ポインタイベント](/nodes/shared-props/outputs/visual-output-properties#pointer-events)
+- [ホバーイベント](/nodes/shared-props/outputs/visual-output-properties#hover-events)
+- [フォーカス](/nodes/shared-props/outputs/visual-output-properties#focus)
+- [その他](/nodes/shared-props/outputs/visual-output-properties#other)
 
 <div className="hidden-props-for-editor">
 

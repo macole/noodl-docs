@@ -1,14 +1,14 @@
 ---
 hide_title: true
 hide_table_of_contents: true
-title: Columns node
+title: Columnsノード
 ---
 
 {/*##head##*/}
 
 # Columns
 
-This node is used to layout your content in columns with gaps.
+このノードは、ギャップを持つカラムでコンテンツをレイアウトするために使用されます。
 
 <div className="ndl-image-with-background l">
 
@@ -16,11 +16,11 @@ This node is used to layout your content in columns with gaps.
 
 </div>
 
-The <span className="ndl-node">Columns</span> node does not have any own styling attached to it. Instead it arranges all its children into dynamic layouts using **layout strings**.
+<span className="ndl-node">Columns</span>ノードは、独自のスタイリングを持たず、代わりに**レイアウト文字列**を使用して、すべての子を動的レイアウトに配置します。
 
-## Layout strings
+## レイアウト文字列
 
-A layout string is simply a string of numbers with spaces between them. Every number represents a fraction of the full container width and is converted to a column. A <span className="ndl-node">Columns</span> node with the layout string `1 2 1` that contains 5 children will be rendered like this:
+レイアウト文字列は、単に数字の間にスペースがある文字列です。各数字はコンテナ全体の幅の一部を表し、列に変換されます。レイアウト文字列`1 2 1`を持つ<span className="ndl-node">Columns</span>ノードが5つの子を含む場合、次のようにレンダリングされます：
 
 <div className="ndl-image-with-background l">
 
@@ -30,28 +30,28 @@ A layout string is simply a string of numbers with spaces between them. Every nu
 
 {/*##head##*/}
 
-## Responsive layouts
+## レスポンシブレイアウト
 
-### Using the Min Column Width value
+### 最小カラム幅値を使用する
 
-The easiest way of making the columns responsive is by setting the <span class="ndl-data">Min Column Width</span> value. This will check if the columns will fit with your specified <span class="ndl-data">Layout String</span>. If the container can't fit the columns when they are at their Min Width, the layout will fold into a grid with fewer columns.
+カラムをレスポンシブにする最も簡単な方法は、<span class="ndl-data">最小カラム幅</span>値を設定することです。これにより、指定された<span class="ndl-data">レイアウト文字列</span>でカラムが収まるかどうかがチェックされます。コンテナが最小幅でカラムを収容できない場合、レイアウトはより少ないカラムを持つグリッドに折りたたまれます。
 
-Make sure the children you pass are set to a width of `100%` of their parent.
+渡す子要素が親の`100%`の幅に設定されていることを確認してください。
 
-### Using different layout strings
+### 異なるレイアウト文字列を使用する
 
-Advanced responsive layouts can easily be created by passing different values to the <span class="ndl-data">Layout String</span> input using a [States](/nodes/utilities/logic/states) node and the [Media Queries](/library/prefabs/media-query/) prefab.
+[States](/nodes/utilities/logic/states)ノードと[Media Queries](/library/prefabs/media-query/)プリファブを使用して、異なる値を<span class="ndl-data">レイアウト文字列</span>入力に渡すことにより、高度なレスポンシブレイアウトを簡単に作成できます。
 
-Make sure the children you pass are set to a width of `100%` of their parent.
+渡す子要素が親の`100%`の幅に設定されていることを確認してください。
 
-## Inputs
+## 入力
 
-| Data                                               | Description                                                                                   |
-| -------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| <span className="ndl-data">Layout String</span>    | Determines the size and layout of the columns that the children are rendered into.            |
-| <span className="ndl-data">Horizontal Gap</span>   | The horizontal spacing between the columns in `px`.                                           |
-| <span className="ndl-data">Vertical Gap</span>     | The vertical spacing between the columns in `px`.                                             |
-| <span className="ndl-data">Layout Direction</span> | If the columns should be rendered horizontally or vertically.                                 |
-| <span className="ndl-data">Min Column Width</span> | The smallest the columns are allowed to be before they fold into a layout with fewer columns. |
-| <span className="ndl-data">Mounted</span>          | If the columns node should be rendered in the app or not.                                     |
-| <span className="ndl-data">Justify Content</span>  | The position of children in unfilled rows.                                                    |
+| データ                                               | 説明                                                                                               |
+| -------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| <span className="ndl-data">レイアウト文字列</span>    | 子がレンダリングされるカラムのサイズとレイアウトを決定します。                                        |
+| <span className="ndl-data">水平方向のギャップ</span>   | カラム間の水平方向のスペース（`px`単位）。                                                         |
+| <span className="ndl-data">垂直方向のギャップ</span>   | カラム間の垂直方向のスペース（`px`単位）。                                                         |
+| <span className="ndl-data">レイアウト方向</span>     | カラムが水平方向または垂直方向にレンダリングされるかどうか。                                           |
+| <span className="ndl-data">最小カラム幅</span>       | より少ないカラムを持つレイアウトに折りたたまれる前に、カラムが許可される最小のサイズ。                          |
+| <span className="ndl-data">マウントされた</span>      | Columnsノードがアプリにレンダリングされるかどうか。                                               |
+| <span className="ndl-data">コンテンツの配置</span>   | 未満の行における子の位置。                                                                       |

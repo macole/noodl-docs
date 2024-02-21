@@ -1,14 +1,14 @@
 ---
 hide_title: true
 hide_table_of_contents: true
-title: Navigate To Path node
+title: Navigate To Pathノード
 ---
 
 {/*##head##*/}
 
-# Navigate To Path
+# Navigate To Pathノード
 
-This node lets you navigate to a specific <span className="ndl-node">[Page](/nodes/navigation/page)</span> node in a <span className="ndl-node">[Page Router](/nodes/navigation/page-router)</span>.
+このノードを使用すると、<span className="ndl-node">[Page Router](/nodes/navigation/page-router)</span>内の特定の<span className="ndl-node">[Page](/nodes/navigation/page)</span>ノードにナビゲートできます。
 
 <div className="ndl-image-with-background l">
 
@@ -16,32 +16,32 @@ This node lets you navigate to a specific <span className="ndl-node">[Page](/nod
 
 </div>
 
-In most cases you will want to use the <span className="ndl-node">[Navigate](/nodes/navigation/navigate)</span> or <span className="ndl-node">[External Link](/nodes/navigation/external-link)</span> nodes for your navigation. The <span className="ndl-node">Navigate To Path</span> node is a low level implementation suitable for more advanced and specific use cases.
+ほとんどの場合、ナビゲーションには<span className="ndl-node">[Navigate](/nodes/navigation/navigate)</span>または<span className="ndl-node">[External Link](/nodes/navigation/external-link)</span>ノードを使用することをお勧めします。Navigate To Pathノードは、より高度で特定のユースケースに適した低レベルの実装です。
 
 {/*##head##*/}
 
-## Usage
+## 使い方
 
-You don't specify which **Page Router** that should perform the navigation, it will be implicitly resolved using the provided path. For example, if you have a **Page Router** with **URL path** `router1`, with a **Page**with the **URL path** `page1`, which in turn contains an unnamed **Page** with the **URL path** `pageA`, providing the **Path** `/router1/page1/pageA/` will force the two **Page Routers** to navigate to the respective pages.
+ナビゲーションを実行する**Page Router**を指定する必要はありません。提供されたパスを使用して暗黙的に解決されます。例えば、**URL path**が`router1`の**Page Router**を持ち、**URL path**が`page1`の**Page**を持ち、その中に**URL path**が`pageA`の名前のない**Page**を含む場合、**Path**`/router1/page1/pageA/`を提供すると、2つの**Page Routers**がそれぞれのページにナビゲートします。
 
-In a way, **Navigate To Path** is very much like writing a URL directly into the browser address bar. However the node is only used to navigate between **Pages** in the Noodl project. If you want to navigate to an external URL you should instead use the [External Link](/nodes/navigation/external-link) node.
+ある意味で、**Navigate To Path**はブラウザのアドレスバーに直接URLを書き込むようなものです。しかし、このノードはNoodlプロジェクト内の**Pages**間でナビゲートするためにのみ使用されます。外部URLにナビゲートしたい場合は、[External Link](/nodes/navigation/external-link)ノードを代わりに使用してください。
 
-## Inputs
+## 入力
 
 <div className="ndl-table-35-65">
 
-| Data                                               | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| データ                                               | 説明                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | -------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-data">Path</span>             | {/*##input:path##*/}Use this property to set the path to navigate to. Note that the **Path** should not include the domain but only the route within the Noodl project. The **Path** may include a **Path Parameter** as the final part, that will be forwarded to the receiving **Page**. You can also use `{}` to make part of the **Path** dynamic and expose the part as an input. For example the path `/{a}/{b}/` will expose two new inputs _a_ and _b_.{/*##input##*/} |
-| <span className="ndl-data">Query Parameters</span> | You can add any number of **Query Parameters** that will be forwarded to the receiving [Page](/nodes/navigation/page/) through their [Page](/nodes/navigation/page-inputs/) node.                                                                                                                                                                                                                                                                                      |
-| <span className="ndl-data">Open in new tab</span>  | Open the new page in a new browser tab.                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| <span className="ndl-data">Path</span>             | {/*##input:path##*/}ナビゲートするパスを設定するためにこのプロパティを使用します。**Path**にはドメインを含めず、Noodlプロジェクト内のルートのみを含めるべきです。**Path**には、受信する**Page**に転送される**Path Parameter**を最後の部分として含めることができます。また、`{}`を使用して**Path**の一部を動的にし、その部分を入力として公開することができます。例えば、パス`/{a}/{b}/`は2つの新しい入力_a_と_b_を公開します。{/*##input##*/} |
+| <span className="ndl-data">Query Parameters</span> | 受信する[Page](/nodes/navigation/page/)に転送される任意の数の**Query Parameters**を追加できます。これらは、[Page](/nodes/navigation/page-inputs/)ノードを通じて転送されます。                                                                                                                                                                                                                                                                                      |
+| <span className="ndl-data">新しいタブで開く</span>  | 新しいページを新しいブラウザタブで開きます。                                                                                                                                                                                                                                                                                                                                                                                                                                |
 
-| Signal                                       | Description                                                                                                                   |
+| シグナル                                       | 説明                                                                                                                   |
 | -------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-signal">Navigate</span> | {/*##input:navigate##*/}Sending a signal to this input will perform the navigation according to the provided **Path**.{/*##input##*/} |
+| <span className="ndl-signal">Navigate</span> | {/*##input:navigate##*/}この入力にシグナルを送ると、提供された**Path**に従ってナビゲーションが実行されます。{/*##input##*/} |
 
-<span className="hidden-props-for-editor">{/*##input:q-\*##*/}A **Query Parameter** that will be forwarded to the receiving **Page** node through their **Page Inputs** node.{/*##input##*/}</span>
+<span className="hidden-props-for-editor">{/*##input:q-\*##*/}受信する**Page**ノードに転送される**Query Parameter**です。これは、**Page Inputs**ノードを通じて転送されます。{/*##input##*/}</span>
 
-<span className="hidden-props-for-editor">{/*##input:p-\*##*/}A **Path Parameter** that will be part of the **Path**.{/*##input##*/}</span>
+<span className="hidden-props-for-editor">{/*##input:p-\*##*/}**Path**の一部となる**Path Parameter**です。{/*##input##*/}</span>
 
 </div>

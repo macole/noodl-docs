@@ -1,14 +1,14 @@
 ---
 hide_title: true
 hide_table_of_contents: true
-title: Navigate node
+title: Navigateノード
 ---
 
 {/*##head##*/}
 
-# Navigate
+# Navigateノード
 
-This node is used to navigate between <span className="ndl-node">[Page](/nodes/navigation/page)</span> nodes set up in a <span className="ndl-node">[Page Router](/nodes/navigation/page-router)</span>.
+このノードは、<span className="ndl-node">[Page](/nodes/navigation/page)</span>ノード間でナビゲートするために使用され、<span className="ndl-node">[Page Router](/nodes/navigation/page-router)</span>で設定されます。
 
 <div className="ndl-image-with-background l">
 
@@ -16,38 +16,38 @@ This node is used to navigate between <span className="ndl-node">[Page](/nodes/n
 
 </div>
 
-You can use a [Page Inputs](/nodes/navigation/page-inputs) node to pass parameters to the <span className="ndl-node">Page</span> you are navigating to. Any <span className="ndl-data">Path Parameters</span> or <span className="ndl-data">Query Parameters</span> you add will show up as inputs to the <span className="ndl-node">Navigate</span> node if you select that <span className="ndl-node">Page</span> as the <span className="ndl-data">Target Page</span>.
+ナビゲート先の<span className="ndl-node">Page</span>にパラメータを渡すために、[Page Inputs](/nodes/navigation/page-inputs)ノードを使用できます。追加した<span className="ndl-data">Path Parameters</span>または<span className="ndl-data">Query Parameters</span>は、その<span className="ndl-node">Page</span>を<span className="ndl-data">Target Page</span>として選択すると、<span className="ndl-node">Navigate</span>ノードの入力として表示されます。
 
 {/*##head##*/}
 
-## Inputs
+## 入力
 
 <div className="ndl-table-35-65">
 
-| Data                                              | Description                                                                                                                                                          |
+| データ                                              | 説明                                                                                                                                                          |
 | ------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-data">Router</span>          | Here you select which **Page Router** that this **Navigation** node will act on. This input is only available if there are multiple **Page Routers** in the project. |
-| <span className="ndl-data">Target Page</span>     | Here you select the **Page** to navigate to. The pages available are based on which **Page Router** this **Navigation** node is associated with.                     |
-| <span className="ndl-data">Open in new tab</span> | Open the new page in a new browser tab.                                                                                                                              |
+| <span className="ndl-data">Router</span>          | この**Navigation**ノードが作用する**Page Router**をここで選択します。この入力は、プロジェクト内に複数の**Page Routers**がある場合のみ利用可能です。 |
+| <span className="ndl-data">Target Page</span>     | ナビゲートする**Page**をここで選択します。利用可能なページは、この**Navigation**ノードが関連付けられている**Page Router**に基づきます。                     |
+| <span className="ndl-data">新しいタブで開く</span> | 新しいページを新しいブラウザタブで開きます。                                                                                                                              |
 
-| Signal                                       | Description                                                                                                       |
+| シグナル                                       | 説明                                                                                                       |
 | -------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-signal">Navigate</span> | {/*##input:navigate##*/}Sending a signal to this input will perform the navigation to the **Target Page**.{/*##input##*/} |
+| <span className="ndl-signal">Navigate</span> | {/*##input:navigate##*/}この入力にシグナルを送ると、**Target Page**へのナビゲーションが実行されます。{/*##input##*/} |
 
-| Mixed               | Description                                                                                                                                             |
+| ミックス               | 説明                                                                                                                                             |
 | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Page Parameters** | Any page parameters set in the [Pages Inputs](/nodes/navigation/page-inputs) used by the **Page** will be available as inputs on the **Navigate** node. |
+| **Page Parameters** | **Page**が使用する[Pages Inputs](/nodes/navigation/page-inputs)で設定されたページパラメータは、**Navigate**ノード上で入力として利用可能になります。 |
 
-<span className="hidden-props-for-editor">{/*##input:pm-\*##*/} An input parameter originating from the **Page Inputs** node of the **Target Page**.{/*##input##*/}</span>
+<span className="hidden-props-for-editor">{/*##input:pm-\*##*/} **Target Page**の**Page Inputs**ノードから発生する入力パラメータです。{/*##input##*/}</span>
 
 </div>
 
-## Outputs
+## 出力
 
 <div className="ndl-table-35-65">
 
-| Signal                                        | Description                                                                                    |
+| シグナル                                        | 説明                                                                                    |
 | --------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| <span className="ndl-signal">Navigated</span> | {/*##output:navigated##*/}This event is triggered when a navigation as been performed.{/*##output##*/} |
+| <span className="ndl-signal">Navigated</span> | {/*##output:navigated##*/}ナビゲーションが実行されたときにトリガーされるイベントです。{/*##output##*/} |
 
 </div>

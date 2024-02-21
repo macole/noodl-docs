@@ -1,14 +1,14 @@
 ---
 hide_title: true
 hide_table_of_contents: true
-title: Boolean node
+title: Booleanノード
 ---
 
 {/*##head##*/}
 
-# Boolean
+# Booleanノード
 
-This node holds a <span className="ndl-data">boolean</span> (true/false) value. You can use it to quickly store a <span className="ndl-data">boolean</span> using the <span className="ndl-signal">Set</span> input. It can also be used to hold a static value in logical operations.
+このノードは<span className="ndl-data">ブール値</span>（true/false）を保持します。<span className="ndl-signal">Set</span>入力を使用してすぐに<span className="ndl-data">ブール値</span>を保存することができます。また、論理演算で静的な値を保持するためにも使用できます。
 
 <div className="ndl-image-with-background l">
 
@@ -16,7 +16,7 @@ This node holds a <span className="ndl-data">boolean</span> (true/false) value. 
 
 </div>
 
-You can connect the <span className="ndl-node">Boolean</span> node to a <span className="ndl-node">Component Inputs</span> node. This will make the input shows up as a <span className="ndl-data">boolean</span> (checkbox) in the Property Panel for instances of this component.
+<span className="ndl-node">Boolean</span>ノードを<span className="ndl-node">Component Inputs</span>ノードに接続することができます。これにより、このコンポーネントのインスタンスのプロパティパネルに<span className="ndl-data">ブール値</span>（チェックボックス）として入力が表示されます。
 
 <div className="ndl-image-with-background l">
 
@@ -26,22 +26,22 @@ You can connect the <span className="ndl-node">Boolean</span> node to a <span cl
 
 {/*##head##*/}
 
-## Inputs
+## 入力
 
-| Data                                    | Description                                                                                                                                                |
-| --------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-data">Value</span> | The value to store in the node. The output value will equal this value, unless _Set_ is connected, then it will be updated when **Set** receives a signal. |
+| データ                                         | 説明                                                                                                                                                                     |
+| ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| <span className="ndl-data">値</span>            | ノードに保存する値です。出力値はこの値と同じになりますが、_Set_が接続されている場合は、**Set**がシグナルを受信したときに更新されます。                                         |
 
-| Signal                                  | Description                                                                                                                                                                                  |
-| --------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-signal">Set</span> | This is used to only update the output when _Save Value_ is set to true. This will allow you to freeze the stored value and only allow it to update under certain conditions, e.g. on a Tap. |
+| シグナル                                       | 説明                                                                                                                                                                                           |
+| ---------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <span className="ndl-signal">Set</span>        | _保存値_をtrueに設定した場合にのみ出力を更新するために使用されます。これにより、特定の条件下でのみ、例えばタップ時などに、保存された値を固定して、それが更新されるのを許可することができます。 |
 
-## Outputs
+## 出力
 
-| Data                                    | Description                    |
-| --------------------------------------- | ------------------------------ |
-| <span className="ndl-data">Value</span> | The boolean stored in the node |
+| データ                                         | 説明                          |
+| ---------------------------------------------- | ----------------------------- |
+| <span className="ndl-data">値</span>            | ノードに保存されているブール値 |
 
-| Signal                                     | Description                                                                   |
-| ------------------------------------------ | ----------------------------------------------------------------------------- |
-| <span className="ndl-signal">Stored</span> | This port sends a signal when the value is stored via the _Set_ input signal. |
+| シグナル                                       | 説明                                                                                   |
+| ---------------------------------------------- | -------------------------------------------------------------------------------------- |
+| <span className="ndl-signal">Stored</span>      | このポートは、_Set_入力シグナルを介して値が保存されたときにシグナルを送信します。          |

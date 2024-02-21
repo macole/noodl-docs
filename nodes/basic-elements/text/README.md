@@ -1,14 +1,14 @@
 ---
 hide_title: true
 hide_table_of_contents: true
-title: Text node
+title: Textノード
 ---
 
 {/*##head##*/}
 
 # Text
 
-This node places a text element in the visual tree. You can use it for both single words as well as paragraphs of text.
+このノードは、ビジュアルツリーにテキスト要素を配置します。単語1つからテキストの段落まで、幅広く使用できます。
 
 <div className="ndl-image-with-background l">
 
@@ -16,7 +16,7 @@ This node places a text element in the visual tree. You can use it for both sing
 
 </div>
 
-The <span className="ndl-node">Text</span> node can be styled with font family, color, size, and much more.
+<span className="ndl-node">Text</span>ノードは、フォントファミリー、色、サイズなどでスタイリングできます。
 
 <div className="ndl-image-with-background l">
 
@@ -26,39 +26,39 @@ The <span className="ndl-node">Text</span> node can be styled with font family, 
 
 {/*##head##*/}
 
-## Inputs
+## 入力
 
-| Data                                         | Description                                                                                                                                                                                        |
-| -------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-data">Text</span>       | The text string to display.                                                                                                                                                                        |
-| <span className="ndl-data">Text Align</span> | The alignment of the text string within the Text node's bounding box.                                                                                                                              |
-| <span className="ndl-data">Word Break</span> | Control where line breaks are allowed. <br/><br/> `Normal`: Break on spaces and other whitespace characters <br/>`Break All`: Allow line breaks between any two characters, including inside words |
+| データ                                         | 説明                                                                                                                                                                                        |
+| -------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <span className="ndl-data">テキスト</span>       | 表示するテキスト文字列。                                                                                                                                                                    |
+| <span className="ndl-data">テキスト配置</span>   | Textノードのバウンディングボックス内でのテキスト文字列の配置。                                                                                                                              |
+| <span className="ndl-data">単語の折り返し</span> | 行の折り返しが許される場所を制御します。<br/><br/> `Normal`: スペースやその他の空白文字で折り返す <br/>`Break All`: 単語の内部を含む任意の2文字の間で行の折り返しを許可する                                 |
 
-### Visual
+### ビジュアル
 
-The Text node features the following [Visual Input Properties](/nodes/shared-props/inputs/visual-input-properties).
+Textノードは、以下の[ビジュアル入力プロパティ](/nodes/shared-props/inputs/visual-input-properties)を特徴としています。
 
--   [Margin](/nodes/shared-props/inputs/visual-input-properties#margin)
--   [Alignment](/nodes/shared-props/inputs/visual-input-properties#alignment)
--   [Dimensions](/nodes/shared-props/inputs/visual-input-properties#dimensions)
--   [Text Styles](/nodes/shared-props/inputs/visual-input-properties#text-styles)
--   [Style](/nodes/shared-props/inputs/visual-input-properties#style)
--   [Placement](/nodes/shared-props/inputs/visual-input-properties#placement)
--   [Layout, Position](/nodes/shared-props/inputs/visual-input-properties#-position)
--   [Other](/nodes/shared-props/inputs/visual-input-properties#other)
--   [Advanced HTML](/nodes/shared-props/inputs/visual-input-properties#advanced-html)
+-   [マージン](/nodes/shared-props/inputs/visual-input-properties#margin)
+-   [配置](/nodes/shared-props/inputs/visual-input-properties#alignment)
+-   [寸法](/nodes/shared-props/inputs/visual-input-properties#dimensions)
+-   [テキストスタイル](/nodes/shared-props/inputs/visual-input-properties#text-styles)
+-   [スタイル](/nodes/shared-props/inputs/visual-input-properties#style)
+-   [配置](/nodes/shared-props/inputs/visual-input-properties#placement)
+-   [レイアウト, 位置](/nodes/shared-props/inputs/visual-input-properties#-position)
+-   [その他](/nodes/shared-props/inputs/visual-input-properties#other)
+-   [高度なHTML](/nodes/shared-props/inputs/visual-input-properties#advanced-html)
 
-## Outputs
+## 出力
 
-Many of the UI nodes share the same outputs. Please refer to the [Visual Output Properties](/nodes/shared-props/outputs/visual-output-properties) documentation.
+多くのUIノードは同じ出力を共有しています。[ビジュアル出力プロパティ](/nodes/shared-props/outputs/visual-output-properties)のドキュメントを参照してください。
 
-This node supports the following outputs:
+このノードは、以下の出力をサポートしています:
 
--   [Bounding Box](/nodes/shared-props/outputs/visual-output-properties/#bounding-box)
--   [Mounted](/nodes/shared-props/outputs/visual-output-properties/#mounted)
--   [Pointer Events](/nodes/shared-props/outputs/visual-output-properties/#pointer-events)
--   [Hover Events](/nodes/shared-props/outputs/visual-output-properties/#hover-events)
--   [Other](/nodes/shared-props/outputs/visual-output-properties/#other)
+-   [バウンディングボックス](/nodes/shared-props/outputs/visual-output-properties/#bounding-box)
+-   [マウント](/nodes/shared-props/outputs/visual-output-properties/#mounted)
+-   [ポインタイベント](/nodes/shared-props/outputs/visual-output-properties/#pointer-events)
+-   [ホバーイベント](/nodes/shared-props/outputs/visual-output-properties/#hover-events)
+-   [その他](/nodes/shared-props/outputs/visual-output-properties/#other)
 
 <div className="hidden-props-for-editor">
 

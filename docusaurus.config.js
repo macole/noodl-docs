@@ -10,13 +10,13 @@ const {
 const config = {
   title: 'Noodl',
   tagline: 'Dinosaurs are cool',
-  url: 'https://noodlapp.github.io',
+  url: 'https://noodl.main.jp',
   baseUrl: `/noodl-docs/`,
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  organizationName: 'Noodl', // Usually your GitHub org/user name.
-  projectName: 'Noodl', // Usually your repo name.
+  organizationName: 'macole', // Usually your GitHub org/user name.
+  projectName: 'noodl-docs-ja', // Usually your repo name.
 
   // This depends on the hosting provider
   // trailingSlash: true,

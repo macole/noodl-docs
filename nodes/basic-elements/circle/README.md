@@ -1,14 +1,14 @@
 ---
 hide_title: true
 hide_table_of_contents: true
-title: Circle node
+title: Circleノード
 ---
 
 {/*##head##*/}
 
 # Circle
 
-This node places a circle (or a circle segment) in the visual tree. It features a wide range of design options.
+このノードは、ビジュアルツリーに円（または円のセグメント）を配置します。幅広いデザインオプションを備えています。
 
 <div className="ndl-image-with-background l">
 
@@ -18,42 +18,42 @@ This node places a circle (or a circle segment) in the visual tree. It features 
 
 {/*##head##*/}
 
-## Inputs
+## 入力
 
-| Data                                           | Description                                                                                                                                                                        |
-| ---------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-data">Size</span>         | Specifies the size of the Circle in pixels.                                                                                                                                        |
-| <span className="ndl-data">Start Angle</span>  | The start angle of the Circle segment.                                                                                                                                             |
-| <span className="ndl-data">End Angle</span>    | The end angle of the Circle segment.                                                                                                                                               |
-| <span className="ndl-data">Fill</span>         | Specify whether the Cirlce should be filled or not.                                                                                                                                |
-| <span className="ndl-data">Fill Color</span>   | Specify the fill color.                                                                                                                                                            |
-| <span className="ndl-data">Stroke</span>       | Enables the stroke of the Circle.                                                                                                                                                  |
-| <span className="ndl-data">Stroke Width</span> | Sets the width of the Circle stroke.                                                                                                                                               |
-| <span className="ndl-data">Stroke Color</span> | Sets the stroke color of the Circle stroke.                                                                                                                                        |
-| <span className="ndl-data">Line Cap</span>     | Specifies what kind of cap there will be on the circle stroke.<br/><br/>`Butt`: A direct cut, not rounded end of the circle stroke.<br/>`Round`: A round end to the circle stroke. |
+| データ                                           | 説明                                                                                                                                                                          |
+| ---------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <span className="ndl-data">サイズ</span>         | 円のサイズをピクセル単位で指定します。                                                                                                                                           |
+| <span className="ndl-data">開始角度</span>       | 円のセグメントの開始角度を指定します。                                                                                                                                           |
+| <span className="ndl-data">終了角度</span>       | 円のセグメントの終了角度を指定します。                                                                                                                                           |
+| <span className="ndl-data">塗りつぶし</span>     | 円を塗りつぶすかどうかを指定します。                                                                                                                                             |
+| <span className="ndl-data">塗りつぶし色</span>   | 塗りつぶし色を指定します。                                                                                                                                                     |
+| <span className="ndl-data">ストローク</span>     | 円のストロークを有効にします。                                                                                                                                                    |
+| <span className="ndl-data">ストローク幅</span>   | 円のストロークの幅を設定します。                                                                                                                                               |
+| <span className="ndl-data">ストローク色</span>   | 円のストロークの色を設定します。                                                                                                                                               |
+| <span className="ndl-data">ラインキャップ</span> | 円のストロークの端にどのようなキャップがあるかを指定します。<br/><br/>`Butt`: 円のストロークの端が直接切断された、丸くない形。<br/>`Round`: 円のストロークの端が丸い形。 |
 
-### Visual
+### ビジュアル
 
-This node supports the following [Visual Input Properties](/nodes/shared-props/inputs/visual-input-properties):
+このノードは、以下の[ビジュアル入力プロパティ](/nodes/shared-props/inputs/visual-input-properties)をサポートしています:
 
--   [Margin](/nodes/shared-props/inputs/visual-input-properties#margin)
--   [Alignment](/nodes/shared-props/inputs/visual-input-properties#alignment)
--   [Layout, Position](/nodes/shared-props/inputs/visual-input-properties#position)
--   [Placement](/nodes/shared-props/inputs/visual-input-properties#placement)
--   [Other](/nodes/shared-props/inputs/visual-input-properties#other)
--   [Advanced HTML](/nodes/shared-props/inputs/visual-input-properties#advanced-html)
+-   [マージン](/nodes/shared-props/inputs/visual-input-properties#margin)
+-   [配置](/nodes/shared-props/inputs/visual-input-properties#alignment)
+-   [レイアウト, 位置](/nodes/shared-props/inputs/visual-input-properties#position)
+-   [配置](/nodes/shared-props/inputs/visual-input-properties#placement)
+-   [その他](/nodes/shared-props/inputs/visual-input-properties#other)
+-   [高度なHTML](/nodes/shared-props/inputs/visual-input-properties#advanced-html)
 
-## Outputs
+## 出力
 
-Many of the UI nodes share the same outputs. Please refer to the [Visual Output Properties](/nodes/shared-props/outputs/visual-output-properties) documentation.
+多くのUIノードは、同じ出力を共有しています。[ビジュアル出力プロパティ](/nodes/shared-props/outputs/visual-output-properties)のドキュメントを参照してください。
 
-This node supports the following properties:
+このノードは、以下のプロパティをサポートしています:
 
--   [Bounding Box](/nodes/shared-props/outputs/visual-output-properties#bounding-box)
--   [Mounted](/nodes/shared-props/outputs/visual-output-properties#mounted)
--   [Pointer Events](/nodes/shared-props/outputs/visual-output-properties#pointer-events)
--   [Hover Events](/nodes/shared-props/outputs/visual-output-properties#hover-events)
--   [Other](/nodes/shared-props/outputs/visual-output-properties#other)
+-   [バウンディングボックス](/nodes/shared-props/outputs/visual-output-properties#bounding-box)
+-   [マウント](/nodes/shared-props/outputs/visual-output-properties#mounted)
+-   [ポインタイベント](/nodes/shared-props/outputs/visual-output-properties#pointer-events)
+-   [ホバーイベント](/nodes/shared-props/outputs/visual-output-properties#hover-events)
+-   [その他](/nodes/shared-props/outputs/visual-output-properties#other)
 
 <div className="hidden-props-for-editor">
 

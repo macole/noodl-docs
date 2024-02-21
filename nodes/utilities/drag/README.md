@@ -1,18 +1,18 @@
 ---
 hide_title: true
 hide_table_of_contents: true
-title: Drag node
+title: Dragノード
 ---
 
 {/*##head##*/}
 
-# Drag
+# Dragノード
 
-The drag node is used to make visual nodes draggable with the mouse or touch. The child of a **Drag** node automatically become draggable.
+Dragノードは、マウスまたはタッチでビジュアルノードをドラッグ可能にするために使用されます。**Drag**ノードの子は自動的にドラッグ可能になります。
 
 :::tip
 
-The Drag node can only have one child, but that child can have many children.
+Dragノードは1つの子しか持つことができませんが、その子は多くの子を持つことができます。
 
 :::
 
@@ -24,91 +24,93 @@ The Drag node can only have one child, but that child can have many children.
 
 {/*##head##*/}
 
-## Inputs
+## 入力
 
-### Snap To Position X
+### X位置へスナップ
 
-| Signal                                 | Description                                                                                                                         |
+| シグナル                                 | 説明                                                                                                                         |
 | -------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-signal">Do</span> | Send a signal here to trigger a snap to the position specified by _Value_ and with the transition duration specified by _Duration_. |
+| <span className="ndl-signal">Do</span> | _Value_によって指定された位置へスナップをトリガーするためにここにシグナルを送ります。_Duration_によって指定された遷移期間を使用します。 |
 
-| Data                                       | Description                                                                      |
+| データ                                       | 説明                                                                      |
 | ------------------------------------------ | -------------------------------------------------------------------------------- |
-| <span className="ndl-data">Value</span>    | This is the X value the the snap action will have as destination when triggered. |
-| <span className="ndl-data">Duration</span> | The snap transition duration.                                                    |
+| <span className="ndl-data">Value</span>    | スナップアクションがトリガーされたときの目的地としてのX値です。 |
+| <span className="ndl-data">Duration</span> | スナップ遷移の期間です。                                                    |
 
-### Snap To Position Y
+### Y位置へスナップ
 
-| Signal                                 | Description                                                                                                                         |
+| シグナル                                 | 説明                                                                                                                         |
 | -------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-signal">Do</span> | Send a signal here to trigger a snap to the position specified by _Value_ and with the transition duration specified by _Duration_. |
+| <span className="ndl-signal">Do</span> | _Value_によって指定された位置へスナップをトリガーするためにここにシグナルを送ります。_Duration_によって指定された遷移期間を使用します。 |
 
-| Data                                       | Description                                                                      |
+| データ                                       | 説明                                                                      |
 | ------------------------------------------ | -------------------------------------------------------------------------------- |
-| <span className="ndl-data">Value</span>    | This is the Y value the the snap action will have as destination when triggered. |
-| <span className="ndl-data">Duration</span> | The snap transition duration.                                                    |
+| <span className="ndl-data">Value</span>    | スナップアクションがトリガーされたときの目的地としてのY値です。 |
+| <span className="ndl-data">Duration</span> | スナップ遷移の期間です。                                                    |
 
-### Drag
+### ドラッグ
 
-| Data                                                  | Description                                                                                                                                                                                     |
+| データ                                                  | 説明                                                                                                                                                                                     |
 | ----------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-data">Enable</span>              | Enables or disables this node. If it is disabled, drag will not have any affect on child nodes.                                                                                                 |
-| <span className="ndl-data">Axis</span>                | Specifies along which axes the drag will work<br/>a<br/>`X`: Only horizontal drag is enabled.<br/>`Y`: Only vertical drag is enabled.<br/>`Both`: Both horizontal and vertical drag is enabled. |
-| <span className="ndl-data">Constrain to parent</span> | If enabled the child nodes being dragged will be constrained to the borders of the parent node so they cannot be dragged outside of the parent bounds.                                          |
+| <span className="ndl-data">Enable</span>              | このノードの有効/無効を切り替えます。無効の場合、ドラッグは子ノードに影響しません。                                                                                                 |
+| <span className="ndl-data">Axis</span>                | ドラッグが機能する軸を指定します。<br/>`X`: 水平方向のドラッグのみが有効。<br/>`Y`: 垂直方向のドラッグのみが有効。<br/>`Both`: 水平および垂直方向のドラッグが有効。 |
+| <span className="ndl-data">Constrain to parent</span> | 有効にすると、ドラッグされている子ノードは親ノードの境界内に制約され、親の境界外にドラッグできなくなります。                                          |
 
-### Other
+### その他
 
-| Data                                           | Description                                                                                                                                                                                                                        |
+| データ                                           | 説明                                                                                                                                                                                                                        |
 | ---------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-data">Start Drag X</span> | Specifies the X position that will be used as the starting point. Setting this will force the child nodes to the specified position.                                                                                               |
-| <span className="ndl-data">Start Drag Y</span> | Specifies the Y position that will be used as the starting point. Setting this will force the child nodes to the specified position.                                                                                               |
-| <span className="ndl-data">Scale</span> | Specifies the move scale that will be used when dragging the node around. This can correct the drag deltas while you are zoomed in or out.                                                                                               |
-| <span className="ndl-data">Mounted</span>      | This property is used to completely remove the node from the DOM. If this property is set to false the node is removed from the DOM. It differs from the _Visible_ property where the node is still part of the DOM but invisible. |
+| <span className="ndl-data">Start Drag X</span> | 開始点として使用されるX位置を指定します。これを設定すると、子ノードが指定された位置に強制的に移動します。                                                                                               |
+| <span className="ndl-data">Start Drag Y</span> | 開始点として使用されるY位置を指定します。これを設定すると、子ノードが指定された位置に強制的に移動します。                                                                                               |
+| <span className="ndl-data">Scale</span> | ノードをドラッグする際に使用される移動スケールを指定します。これにより、ズームインまたはズームアウトしている間のドラッグデルタを修正できます。                                                                                               |
+| <span className="ndl-data">Mounted</span>      | このプロパティは、ノードをDOMから完全に削除するために使用されます。このプロパティがfalseに設定されている場合、ノードはDOMから削除されます。_Visible_プロパティとは異なり、ノードはDOMの一部でありながらも見えなくなります。 |
 
-### Visual
+### ビジュアル
 
-This node supports the following [Visual Input Properties](/nodes/shared-props/inputs/visual-input-properties):
+このノードは、以下の[ビジュアル入力プロパティ](/nodes/shared-props/inputs/visual-input-properties)をサポートしています：
 
 -   [Advanced HTML](/nodes/shared-props/inputs/visual-input-properties#advanced-html)
 
-## Outputs
+## 出力
 
-### Other
+### その他
 
-| Data                                          | Description                                                                                                                                                                                       |
+| データ                                          | 説明                                                                                                                                                                                       |
 | --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-data">Child Index</span> | The place this node has in relation to its parent. E.g. if a **Group** has three children, then the first child will have _Child Index_ 0, the second child will have _Child Index_ 1, and so on. |
-| <span className="ndl-data">This</span>        | A reference to this node. Used in custom **Javascript** nodes and more.                                                                                                                           |
+| <span className="ndl-data">Child Index</span> | このノードが親に対して持つ位置です。例えば、**Group**に3つの子がある場合、最初の子は_Child Index_ 0、2番目の子は_Child Index_ 1となります。 |
+| <span className="ndl-data">This</span>        | このノードへの参照です。カスタム**Javascript**ノードなどで使用されます。                                                                                                                           |
 
 ### Bounding Box
 
-| Data                                                | Description                                           |
+| データ                                                | 説明                                           |
 | --------------------------------------------------- | ----------------------------------------------------- |
-| <span className="ndl-data">Screen Position X</span> | Where this node is on the screen's X-axis, in pixels. |
-| <span className="ndl-data">Screen Position Y</span> | Where this node is on the screen's Y-axis, in pixels. |
-| <span className="ndl-data">Width</span>             | Current width of this node.                           |
-| <span className="ndl-data">Height</span>            | Current height of this node.                          |
+| <span className="ndl-data">Screen Position X</span> | このノードがスクリーンのX軸上にある位置（ピクセル単位）。 |
+| <span className="ndl-data">Screen Position Y</span> | このノードがスクリーンのY軸上にある位置（ピクセル単
+
+位）。 |
+| <span className="ndl-data">Width</span>             | このノードの現在の幅。                           |
+| <span className="ndl-data">Height</span>            | このノードの現在の高さ。                          |
 
 ### Mounted
 
-| Signal                                           | Description                                                                                          |
+| シグナル                                           | 説明                                                                                          |
 | ------------------------------------------------ | ---------------------------------------------------------------------------------------------------- |
-| <span className="ndl-signal">Did Mount</span>    | Signal sent when this node has been mounted, i.e. has become part of the visual tree and is visible. |
-| <span className="ndl-signal">Will Unmount</span> | Signal sent when this node is about to be removed from the visual tree and become hidden.            |
+| <span className="ndl-signal">Did Mount</span>    | このノードがマウントされ、つまり視覚ツリーの一部となり見えるようになったときに送信されるシグナル。 |
+| <span className="ndl-signal">Will Unmount</span> | このノードが視覚ツリーから削除され、隠される直前に送信されるシグナル。            |
 
-### Signals
+### シグナル
 
-| Signal                                           | Description                                                |
+| シグナル                                           | 説明                                                |
 | ------------------------------------------------ | ---------------------------------------------------------- |
-| <span className="ndl-signal">Drag Started</span> | Emitted when dragging of a child is detected.              |
-| <span className="ndl-signal">Drag Ended</span>   | Emitted when dragging stopped.                             |
-| <span className="ndl-signal">Drag Moved</span>   | Emitted while a child node is being moved during the drag. |
+| <span className="ndl-signal">Drag Started</span> | 子のドラッグが検出されたときに発せられるシグナル。              |
+| <span className="ndl-signal">Drag Ended</span>   | ドラッグが停止したときに発せられるシグナル。                             |
+| <span className="ndl-signal">Drag Moved</span>   | ドラッグ中に子ノードが移動している間に発せられるシグナル。 |
 
-### Values
+### 値
 
-| Data                                      | Description                                                                                          |
+| データ                                      | 説明                                                                                          |
 | ----------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| <span className="ndl-data">Drag X</span>  | The current X position of the dragged node.                                                          |
-| <span className="ndl-data">Drag Y</span>  | The current Y position of the dragged node.                                                          |
-| <span className="ndl-data">Delta X</span> | The horizontal distance a node has been dragged from its last horizontal position. Measured in `px`. |
-| <span className="ndl-data">Delta Y</span> | The vertical distance a node has been dragged from its last vertical position. Measured in `px`.     |
+| <span className="ndl-data">Drag X</span>  | ドラッグされたノードの現在のX位置。                                                          |
+| <span className="ndl-data">Drag Y</span>  | ドラッグされたノードの現在のY位置。                                                          |
+| <span className="ndl-data">Delta X</span> | 前回の水平位置からドラッグされたノードが移動した水平距離。`px`で測定。 |
+| <span className="ndl-data">Delta Y</span> | 前回の垂直位置からドラッグされたノードが移動した垂直距離。`px`で測定。 |

@@ -1,14 +1,14 @@
 ---
 hide_title: true
 hide_table_of_contents: true
-title: Request node
+title: リクエストノード
 ---
 
 {/*##head##*/}
 
-# Request
+# リクエスト
 
-The **Request** node is the starting point for **Cloud Functions**, it is where the logic flow is initiated when the function is called from the client. Each cloud function component can only have one **Request** node.
+**リクエスト**ノードは、**クラウド関数**の起点であり、クライアントから関数が呼び出されたときにロジックフローが開始される場所です。各クラウド関数コンポーネントには、**リクエスト**ノードが1つだけ含まれます。
 
 <div className="ndl-image-with-background l">
 
@@ -16,9 +16,9 @@ The **Request** node is the starting point for **Cloud Functions**, it is where 
 
 </div>
 
-It's also where any input parameters to the **Cloud Function** is provided. To learn more about cloud functions take a look at the [guide](/docs/guides/cloud-logic/introduction).
+これは、**クラウド関数**への任意の入力パラメータが提供される場所でもあります。クラウド関数の詳細については、[ガイド](/docs/guides/cloud-logic/introduction)をご覧ください。
 
-You specify what parameters the cloud function accepts in the properties of the **Request** node. Here you can also specify if the user must be logged in on the client to call this function.
+クラウド関数が受け入れるパラメータは、**リクエスト**ノードのプロパティで指定します。ここでは、この関数を呼び出すためにクライアント上でユーザーがログインしている必要があるかどうかも指定できます。
 
 <div className="ndl-image-with-background l">
 
@@ -28,9 +28,9 @@ You specify what parameters the cloud function accepts in the properties of the 
 
 {/*##head##*/}
 
-By default the user must be logged in on the client, and if thats not the case the cloud function call will automatically fail with an error indication an invalid session.
+デフォルトでは、クライアント上でユーザーがログインしている必要があり、そうでない場合、クラウド関数の呼び出しは無効なセッションを示すエラーで自動的に失敗します。
 
-However, if you check the **Allow Unauthenticated** property the function can be called without a valid user session on the client.
+ただし、**未認証許可**プロパティをチェックすると、有効なユーザーセッションなしで関数を呼び出すことができます。
 
 <div className="ndl-image-with-background xl">
 
@@ -38,26 +38,24 @@ However, if you check the **Allow Unauthenticated** property the function can be
 
 </div>
 
-If the cloud function accepts unauthenticated requests, you can tell if the call was authenticated (there was a valid user session on the client) with the two outputs **Authenticated** and **User Id**. This can be used to trigger two different flows.
+クラウド関数が未認証のリクエストを受け入れる場合、呼び出しが認証されたかどうか（クライアント上に有効なユーザーセッションがあったか）を**認証済み**と**ユーザーID**の2つの出力で確認できます。これを使用して、2つの異なるフローをトリガーできます。
 
-## Inputs
+## 入力
 
-| Data                                            | Description                                                                                                                                                                                                                                                                            |
+| データ                                            | 説明                                                                                                                                                                                                                                                                            |
 | ----------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-data">Allow Unauthenticated</span> | Specifies if a valid user session (the user is logged in) is required on the client for calling this function. |
+| <span className="ndl-data">未認証許可</span> | この関数を呼び出すためにクライアント上で有効なユーザーセッション（ユーザーがログインしている）が必要かどうかを指定します。 |
 
-### Parameters
-You can add parameters using the properties of this node. Parameters will show up when using the [Cloud Function](/nodes/data/cloud-data/cloud-function) node to call a cloud function from the client.
+### パラメータ
+このノードのプロパティを使用してパラメータを追加できます。パラメータは、クライアントからクラウド関数を呼び出すために[クラウド関数](/nodes/data/cloud-data/cloud-function)ノードを使用する際に表示されます。
 
-## Outputs
+## 出力
 
-| Data                                            | Description                                                                                                                                                                                                                                                                            |
+| データ                                            | 説明                                                                                                                                                                                                                                                                            |
 | ----------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-data">Authenticated</span> | This output will be **true** if the client calling this cloud function had a valid user session, i.e. the user was logged in. |
-| <span className="ndl-data">User Id</span> | If the user was logged in when calling this function this output will be the **Id** of the user record. |
+| <span className="ndl-data">認証済み</span> | このクラウド関数を呼び出したクライアントが有効なユーザーセッションを持っていた場合、この出力は**true**になります。 |
+| <span className="ndl-data">ユーザーID</span> | 関数を呼び出したときにユーザーがログインしていた場合、この出力はユーザーレコードの**ID**になります。 |
 
-| Signal                                      | Description                                                                                                                       |
+| シグナル                                      | 説明                                                                                                                       |
 | ------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-signal">Received</span> | This signal is the starting point for the cloud function logic flow. The first actions you want performed in the cloud function should be connected to this input. |
-
-
+| <span className="ndl-signal">受信</span> | このシグナルは、クラウド関数ロジックフローの開始点です。クラウド関数で最初に実行されるアクションは、この入力に接続されるべきです。 |

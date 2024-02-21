@@ -1,93 +1,95 @@
 ---
 hide_title: true
 hide_table_of_contents: true
-title: Video node
+title: Videoノード
 ---
 
 {/*##head##*/}
 
 # Video
 
-This node places a video surface in the visual tree. It features a wide range of design options and settings for playback.
+このノードは、ビジュアルツリーにビデオ面を配置します。幅広いデザインオプションと再生設定を特徴としています。
 
-The <span className="ndl-data">source</span> can be set from a URL or a file. You can drag videos from your computer and drop them into Noodl to add them to the project folder. This will make them selectable as the <span className="ndl-data">source</span> in the <span className="ndl-node">Video</span> node Property Panel.
+<span className="ndl-data">ソース</span>はURLまたはファイルから設定できます。コンピュータからビデオをドラッグしてNoodlにドロップすると、プロジェクトフォルダに追加され、<span className="ndl-node">Video</span>ノードのプロパティパネルで<span className="ndl-data">ソース</span>として選択できるようになります。
 
 {/*##head##*/}
 
-## Inputs
+## 入力
 
 <div className="ndl-table-35-65">
 
-| Signal                                      | Description                                  |
-| ------------------------------------------- | -------------------------------------------- |
-| <span className="ndl-signal">Play</span>    | Signal to start playing the video.           |
-| <span className="ndl-signal">Pause</span>   | Signal to pause the video.                   |
-| <span className="ndl-signal">Restart</span> | Signal to play the video from the beginning. |
-| <span className="ndl-signal">Reset</span>   | Signal to reset the video to the beginning.  |
+| シグナル                                      | 説明                                     |
+| ------------------------------------------- | --------------------------------------- |
+| <span className="ndl-signal">再生</span>     | ビデオの再生を開始するシグナル。          |
+| <span className="ndl-signal">一時停止</span>  | ビデオを一時停止するシグナル。            |
+| <span className="ndl-signal">再起動</span>  | ビデオを最初から再生するシグナル。        |
+| <span className="ndl-signal">リセット</span> | ビデオを最初にリセットするシグナル。      |
 
-| Data                                       | Description                                                                            |
-| ------------------------------------------ | -------------------------------------------------------------------------------------- |
-| <span className="ndl-data">Source</span>   | The source of the video. Either a local file in the project folder or an absolute url. |
-| <span className="ndl-data">Poster</span>   | An image shown when the video is not started. Choose an image in the project folder.   |
-| <span className="ndl-data">Autoplay</span> | Sets whether the audio/video should start playing as soon as it is loaded.             |
-| <span className="ndl-data">Controls</span> | Sets whether the audio/video browser native controls are visible.                      |
-| <span className="ndl-data">Volume</span>   | The volume of the video when played.                                                   |
-| <span className="ndl-data">Muted</span>    | Sets whether the audio/video is muted or not.                                          |
-| <span className="ndl-data">Loop</span>     | Indicates whether the video should loop when the end is reached during playback.       |
+| データ                                         | 説明                                                                                   |
+| ------------------------------------------ | ------------------------------------------------------------------------------------- |
+| <span className="ndl-data">ソース</span>    | ビデオのソース。プロジェクトフォルダ内のローカルファイルか絶対URLのいずれか。              |
+| <span className="ndl-data">ポスター</span>  | ビデオが開始されていないときに表示される画像。プロジェクトフォルダ内の画像を選択。         |
+| <span className="ndl-data">自動再生</span> | オーディオ/ビデオがロードされるとすぐに再生を開始するかどうかを設定します。               |
+| <span className="ndl-data">コントロール</span> | オーディオ/ビデオのブラウザネイティブコントロールが表示されるかどうかを設定します。         |
+| <span className="ndl-data">音量</span>      | 再生時のビデオの音量。                                                                   |
+| <span className="ndl-data">ミュート</span>   | オーディオ/ビデオがミュートされているかどうかを設定します。                               |
+| <span className="ndl-data">ループ</span>    | 再生中に終了に達したときにビデオがループするかどうかを示します。                          |
 
-The Video node also has some special Video Layout properties:
+Videoノードには、特別なビデオレイアウトプロパティもあります:
 
-| Data                                               | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-data">Video Position X</span> | The video's X position within the **Video** node's bounding box.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| <span className="ndl-data">Video Position Y</span> | The video's Y position within the **Video** node's bounding box.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| <span className="ndl-data">Object Fit</span>       | Specifies how the video will behave when scaled to other size than the default size.<br/><br/>`Contain`: The video will be scaled by keeping aspect ratio and making sure the video fits in the bounding box. This may introduce transparent areas within the **Video** node's bounding box.<br/>`Cover`: The video will be scaled by keeping aspect ratio and making sure the video fills the entire bounding box. Portions of the video may be clipped.<br/>`Fill`: The video will fill the bounding box by scaling without keeping aspect ratio.<br/>`None`: The video will not be scaled. May be clipped. |
+| データ                                                | 説明                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| <span className="ndl-data">ビデオ位置X</span>        | **Video**ノードのバウンディングボックス内でのビデオのX位置。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| <span className="ndl-data">ビデオ位置Y</span>        | **Video**ノードのバウンディングボックス内でのビデオのY位置。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| <span className="ndl-data">オブジェクトフィット</span> | ビデオがデフォルトサイズ以外のサイズにスケールされたときの挙動を指定します。<br/><br/>`Contain`: ビデオはアスペクト比を維持しつつ、バウンディングボックスに収まるようにスケールされます。これにより、**Video**ノードのバウンディングボックス内に透明な領域が導入される場合があります。<br/>`Cover`: ビデオはアスペクト比を維持しつつ、バウンディングボックス全体を埋めるようにスケールされます。ビデオの一部がクリップされる可能性があります。<br/>`Fill`: ビデオはアスペクト比を維持せずにバウンディングボックスを埋めるようにスケールされます。<br/>`None`: ビデオはスケールされません。クリップされる可能性があります。 |
 
 </div>
 
-### Visual
+### ビジュアル
 
-This node supports the following [Visual Input Properties](/nodes/shared-props/inputs/visual-input-properties):
+このノードは、以下の[ビジュアル入力プロパティ](/nodes/shared-props/inputs/visual-input-properties)をサポートしています:
 
-- [Margin](/nodes/shared-props/inputs/visual-input-properties#margin)
-- [Alignment](/nodes/shared-props/inputs/visual-input-properties#alignment)
-- [Dimensions](/nodes/shared-props/inputs/visual-input-properties#dimensions)
-- [Layout, Position](/nodes/shared-props/inputs/visual-input-properties#-position)
-- [Style](/nodes/shared-props/inputs/visual-input-properties#style)
-- [Border Style](/nodes/shared-props/inputs/visual-input-properties#border-style)
-- [Corner Radius](/nodes/shared-props/inputs/visual-input-properties#corner-radius)
-- [Box Shadow](/nodes/shared-props/inputs/visual-input-properties#box-shadow)
-- [Placement](/nodes/shared-props/inputs/visual-input-properties#placement)
-- [Dimension Constraints](/nodes/shared-props/inputs/visual-input-properties#dimension-constraints)
-- [Other](/nodes/shared-props/inputs/visual-input-properties#other)
-- [Advanced HTML](/nodes/shared-props/inputs/visual-input-properties#advanced-html)
+- [マージン](/nodes/shared-props/inputs/visual-input-properties#margin)
+- [配置](/nodes/shared-props/inputs/visual-input-properties#alignment)
+- [寸法](/nodes/shared-props/inputs/visual-input-properties#dimensions)
+- [レイアウト, 位置](/nodes/shared-props/inputs/visual-input-properties#-position)
+- [スタイル](/nodes/shared-props/inputs/visual-input-properties#style)
+- [ボーダースタイル](/nodes/shared-props/inputs/visual-input-properties#border-style)
+- [コーナーの半径](/nodes/shared-props/inputs/visual-input-properties#corner-radius)
+- [ボックスシャドウ](/nodes/shared-props/inputs/visual-input-properties#box-shadow)
+- [配置](/nodes/shared-props/inputs/visual-input-properties#placement)
+- [寸法制約](/nodes/shared-props/inputs/visual-input-properties#dimension-constraints)
+- [その他](/nodes/shared-props/inputs/visual-input-properties#other)
+- [高
 
-## Outputs
+度なHTML](/nodes/shared-props/inputs/visual-input-properties#advanced-html)
+
+## 出力
 
 <div className="ndl-table-35-65">
 
-| Signal                                             | Description                                                                                                                                                                                                               |
-| -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-signal">On Can Play</span>    | Signal triggered when the video has loaded and is ready to be played.                                                                                                                                                     |
-| <span className="ndl-signal">On Time Update</span> | Signal triggered when the playing position of the audio/video has changed. Event is invoked both by playing the media as well as when the playback position is being moved (for example when fast forward is being used). |
+| シグナル                                             | 説明                                                                                                                                                                                                                           |
+| -------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <span className="ndl-signal">再生可能時</span>       | ビデオがロードされ、再生準備が整ったときにトリガーされるシグナル。                                                                                                                                                             |
+| <span className="ndl-signal">時間更新時</span>       | オーディオ/ビデオの再生位置が変更されたときにトリガーされるシグナル。メディアの再生だけでなく、再生位置が移動されるとき（例えば早送りが使用されるときなど）にも呼び出されます。                                                                       |
 
-| Data                                          | Description                                                   |
-| --------------------------------------------- | ------------------------------------------------------------- |
-| <span className="ndl-data">DOM Element</span> | A reference to the DOM Element representing this visual node. |
-| <span className="ndl-data">videoWidth</span>  | The width of the video source.                                |
-| <span className="ndl-data">videoHeight</span> | The height of the video source.                               |
+| データ                                          | 説明                                              |
+| --------------------------------------------- | ------------------------------------------------ |
+| <span className="ndl-data">DOMエレメント</span> | このビジュアルノードを表すDOMエレメントへの参照。 |
+| <span className="ndl-data">videoWidth</span>  | ビデオソースの幅。                                 |
+| <span className="ndl-data">videoHeight</span> | ビデオソースの高さ。                                |
 
 </div>
 
-### Visual
+### ビジュアル
 
-This node supports the following [Visual Output Properties](/nodes/shared-props/outputs/visual-output-properties).
+このノードは、以下の[ビジュアル出力プロパティ](/nodes/shared-props/outputs/visual-output-properties)をサポートしています。
 
-- [Bounding Box](/nodes/shared-props/outputs/visual-output-properties/#bounding-box)
-- [Mounted](/nodes/shared-props/outputs/visual-output-properties/#mounted)
-- [Pointer Events](/nodes/shared-props/outputs/visual-output-properties/#pointer-events)
-- [Hover Events](/nodes/shared-props/outputs/visual-output-properties/#hover-events)
-- [Other](/nodes/shared-props/outputs/visual-output-properties/#other)
+- [バウンディングボックス](/nodes/shared-props/outputs/visual-output-properties/#bounding-box)
+- [マウント](/nodes/shared-props/outputs/visual-output-properties/#mounted)
+- [ポインタイベント](/nodes/shared-props/outputs/visual-output-properties/#pointer-events)
+- [ホバーイベント](/nodes/shared-props/outputs/visual-output-properties/#hover-events)
+- [その他](/nodes/shared-props/outputs/visual-output-properties/#other)
 
 <div className="hidden-props-for-editor">
 
