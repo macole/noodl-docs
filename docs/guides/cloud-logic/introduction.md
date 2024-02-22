@@ -1,13 +1,13 @@
 ---
-title: Introduction to Cloud Functions
+title: クラウド関数入門
 hide_title: true
 ---
 
-# Introduction to Cloud Functions
+# クラウド関数入門
 
-**Cloud Functions** in Noodl is a way to create logic that run in the cloud using the same techniques that you use when building business logic in your frontend, namely connecting logic and action nodes into flows, injecting Javascript where needed.
+Noodlの**クラウド関数**は、フロントエンドでビジネスロジックを構築するときに使用するのと同じ技術、つまりロジックとアクションノードをフローに接続し、必要に応じてJavaScriptを注入することで、クラウドで実行されるロジックを作成する方法です。
 
-A **Cloud Function** is just another component in your project, but they don't live among the frontend components. Instead you find them in the **Cloud Functions** tab.
+**クラウド関数**はプロジェクトの別のコンポーネントに過ぎませんが、フロントエンドコンポーネントの中には存在しません。代わりに**クラウド関数**タブで見つけることができます。
 
 <div className="ndl-image-with-background l">
 
@@ -15,7 +15,7 @@ A **Cloud Function** is just another component in your project, but they don't l
 
 </div>
 
-You create a new **Cloud Function** component by clicking the **+** icon in the sidebar and selection **Cloud Component Function**.
+新しい**クラウド関数**コンポーネントを作成するには、サイドバーの**+**アイコンをクリックし、**クラウドコンポーネント関数**を選択します。
 
 <div className="ndl-image-with-background l">
 
@@ -23,7 +23,7 @@ You create a new **Cloud Function** component by clicking the **+** icon in the 
 
 </div>
 
-You give the cloud function a name and click **Create**.
+クラウド関数に名前を付けて**作成**をクリックします。
 
 <div className="ndl-image-with-background l">
 
@@ -31,11 +31,11 @@ You give the cloud function a name and click **Create**.
 
 </div>
 
-You can also create **Folders** and **Logic Components** just like you do on the frontend to keep things organised and to seperate functionality into reusable logic components.
+また、フロントエンドと同じように**フォルダー**や**ロジックコンポーネント**を作成して、物事を整理し、機能を再利用可能なロジックコンポーネントに分割することができます。
 
-## Anatomy of a cloud function
+## クラウド関数の構造
 
-When you create a new **Cloud Function** you will end up with two nodes that are the backbone, the [Request](/nodes/cloud-functions/request) and the [Response](/nodes/cloud-functions/response) nodes.
+新しい**クラウド関数**を作成すると、[Request](/nodes/cloud-functions/request)と[Response](/nodes/cloud-functions/response)の2つのノードが骨格となります。
 
 <div className="ndl-image-with-background l">
 
@@ -43,7 +43,7 @@ When you create a new **Cloud Function** you will end up with two nodes that are
 
 </div>
 
-First let's look closer at the **Request** node. When a cloud function is called from the client this is where the logic flow starts.
+まず**Request**ノードを詳しく見てみましょう。クラウド関数がクライアントから呼び出されると、ここからロジックフローが始まります。
 
 <div className="ndl-image-with-background xl">
 
@@ -51,15 +51,15 @@ First let's look closer at the **Request** node. When a cloud function is called
 
 </div>
 
-The logic flow is initiated by the <span class="ndl-signal">Received</span> signal. So the first actions that you want the cloud function to perform should be connected to this signal. There are also a couple of important properties on the **Request** node that we should look at:
+ロジックフローは<span class="ndl-signal">Received</span>シグナルによって開始されます。したがって、クラウド関数に実行させたい最初のアクションは、このシグナルに接続するべきです。**Request**ノードには、いくつかの重要なプロパティもあります：
 
-**Allow unauthenticated**. This is an important property, by default all cloud functions need the user to be logged in to be accessible. But if you for some reason want the function to be callable without a user you can check this property. You must be careful since all cloud functions have full access to your database and can do things that might be limited in the client for security reasons.
+**Allow unauthenticated**。これは重要なプロパティです。デフォルトでは、すべてのクラウド関数はユーザーがログインしている必要があります。しかし、何らかの理由でユーザーなしで関数を呼び出せるようにしたい場合は、このプロパティをチェックできます。すべてのクラウド関数はデータベースへの完全なアクセス権を持っており、セキュリティ上の理由からクライアントで制限されている可能性のある操作を行うことができるため、注意が必要です。
 
-**Parameters**. Here you add the parameters for your cloud function, these will become outputs on the **Request** node and inputs on the **Cloud Function** node in the frontend that you use to call your functions.
+**Parameters**。ここにはクラウド関数のパラメーターを追加します。これらは**Request**ノードの出力と、関数を呼び出すためにフロントエンドで使用する**クラウド関数**ノードの入力になります。
 
-In the very simple example above we use the **Set User Properties** node to set the password of a user, this obviously needs a logged in user (otherwise the **Set User Properties** node wont work), we accept the new password as a parameter and trigger the action node on the **Received** signal.
+非常にシンプルな上記の例では、**Set User Properties**ノードを使用してユーザーのパスワードを設定していますが、これにはログインしたユーザーが必要です（そうでなければ**Set User Properties**ノードは機能しません）。新しいパスワードをパラメーターとして受け入れ、**Received**シグナルでアクションノードをトリガーします。
 
-When a **Cloud Function** completes it needs to either succeed or fail, this is done using the second important cloud function node, namely the **Response** node.
+**クラウド関数**が完了すると、成功または失敗のいずれかでなければなりません。これは、2番目の重要なクラウド関数ノード、つまり**Response**ノードを使用して行われます。
 
 <div className="ndl-image-with-background xl">
 
@@ -67,9 +67,9 @@ When a **Cloud Function** completes it needs to either succeed or fail, this is 
 
 </div>
 
-When the function completes you should send a **Send** signal on the **Response** node. By default this will result in a successful completion of the function with no result parameters. If you need to send a failure you can change the **Status** property to **Failure** and provide an error message.
+関数が完了すると、**Response**ノード上で**Send**シグナルを送信する必要があります。デフォルトでは、これにより結果パラメーターなしで関数の成功が完了します。失敗を送信する必要がある場合は、**Status**プロパティを**Failure**に変更し、エラーメッセージを提供できます。
 
-If you need to return a result to the client you specify result **Parameters** in the properties of the **Response** node and make appropriate connections.
+クライアントに結果を返す必要がある場合は、**Response**ノードのプロパティで結果**Parameters**を指定し、適切な接続を行います。
 
 <div className="ndl-image-with-background xl">
 
@@ -77,9 +77,11 @@ If you need to return a result to the client you specify result **Parameters** i
 
 </div>
 
-## Calling cloud functions
+## クラウド関数の呼び出し
 
-When your **Cloud Function** is in place you will need to call it from your frontend, this is done using the [Cloud Function](/nodes/data/cloud-data/cloud-function) node. First you need to pick the cloud function that you want to call using the dropdown in the node properties.
+**クラウド関数**が配置されたら、フロントエンドから呼び出す必要があります。これは[Cloud Function](/nodes/data/cloud-data/cloud-function)ノードを使用して行います。最初
+
+に、ノードのプロパティでドロップダウンを使用して呼び出したいクラウド関数を選択します。
 
 <div className="ndl-image-with-background l">
 
@@ -87,7 +89,7 @@ When your **Cloud Function** is in place you will need to call it from your fron
 
 </div>
 
-Then you can hook up the node. You call the function by sending a signal to the <span class="ndl-signal">Call</span> signal input.
+次に、ノードを接続できます。<span class="ndl-signal">Call</span>シグナル入力にシグナルを送信することで、関数を呼び出します。
 
 <div className="ndl-image-with-background xl">
 
@@ -95,10 +97,10 @@ Then you can hook up the node. You call the function by sending a signal to the 
 
 </div>
 
-If you have any parameters in your **Request** node of the selected cloud function then they will show up on the **Cloud Function** node as inputs, same for result parameters in the **Repsonse** nodes.
+選択したクラウド関数の**Request**ノードにパラメーターがある場合、それらは**クラウド関数**ノードの入力として表示されます。**Response**ノードの結果パラメーターも同様です。
 
-When your cloud function has completed running it will result in either a <span class="ndl-signal">Success</span> or <span class="ndl-signal">Failure</span> signal.
+クラウド関数の実行が完了すると、<span class="ndl-signal">Success</span>または<span class="ndl-signal">Failure</span>シグナルのいずれかになります。
 
-## Deploying
+## デプロイ
 
-This is the basics of cloud function, keep reading the guides in this section to learn more about the details and different use cases. Finally you will want to deploy your application, and for the cloud functions to work properly you need to make sure you have a cloud services selected when deploying.
+これがクラウド関数の基本です。このセクションのガイドを読み進めて、詳細やさまざまな使用例について学んでください。最終的にアプリケーションをデプロイしたいと思うでしょうが、クラウド関数が適切に機能するためには、デプロイ時にクラウドサービスが選択されていることを確認する必要があります。

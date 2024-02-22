@@ -1,22 +1,22 @@
 ---
-title: Javascript in Cloud Functions
+title: クラウド関数でのJavascript
 hide_title: true
 ---
 
-# Javascript in Cloud Functions
+# クラウド関数でのJavascript
 
-Not all nodes are available to cloud functions but in terms of writing Javascript the **Function** and **Expression** nodes are available. However there are some caveats, most notably when deployed cloud functions are not running in a browser they are running in the cloud and they have a much more limited runtime environment. This means that you cannot access most of the browser APIs, the cloud runtime is limited to:
+すべてのノードがクラウド関数で利用可能なわけではありませんが、Javascriptを記述する上では**Function**ノードと**Expression**ノードが利用可能です。ただし、いくつか注意点があります。特にデプロイされたクラウド関数はブラウザではなくクラウドで実行され、はるかに限定されたランタイム環境を持っています。これは、ほとんどのブラウザAPIにアクセスできないことを意味し、クラウドランタイムは以下に限定されます：
 
-- **Core Javascript Objects and Functions** The Javascript language contains a set of core objects and functions that are all available to the cloud runtime. More info [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects).
+- **コアJavascriptオブジェクトと関数** Javascript言語には、すべてクラウドランタイムで利用可能なコアオブジェクトと関数のセットが含まれています。詳細は[こちら](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects)。
 
-- **The Noodl API** A subset of the Noodl API is available to cloud functions. Read more about the Noodl APIs [here](/javascript/overview). Some of the functions and objects are labeled **Only available on the frontend** and some are labeled as **Only available in cloud functions**, the rest are shared between frontend and cloud functions.
+- **Noodl API** Noodl APIのサブセットがクラウド関数で利用可能です。Noodl APIについての詳細は[こちら](/javascript/overview)で読むことができます。いくつかの関数とオブジェクトには**フロントエンドでのみ利用可能**とラベルが付けられており、いくつかには**クラウド関数でのみ利用可能**とラベルが付けられています。残りはフロントエンドとクラウド関数の間で共有されます。
 
 ## Fetch
 
-A subset of the **Fetch API** available on the browser also works in cloud functions, which is very useful for making HTTP requests to external services.
+ブラウザで利用可能な**Fetch API**のサブセットもクラウド関数で動作し、外部サービスへのHTTPリクエストを行うのに非常に便利です。
 
 **`fetch(url,options)`**  
-The **Fetch API** first takes the endpoint of the HTTP request and then an object with options. Here are a few examples, first making a simple POST request to an endpoint:
+**Fetch API**は最初にHTTPリクエストのエンドポイントを取り、次にオプションのオブジェクトを取ります。ここでは、エンドポイントに対してシンプルなPOSTリクエストを行う例をいくつか紹介します：
 
 ```javascript
 const res = await fetch("https://some-endpoint",{
@@ -35,20 +35,15 @@ if(res.ok) {
 else Outputs.Failure()
 ```
 
-## The Request Object
+## リクエストオブジェクト
 
-In Javascript in your cloud functions you can access the request object containing data on the current request being handled.
+クラウド関数のJavascriptで、現在処理されているリクエストに関するデータを含むリクエストオブジェクトにアクセスできます。
 
 ```javascript
 const request = Noodl.Objects.Request;
 
-request.UserId // Contains the user if of the user that called the cloud function, if authenticated
-request.Authenticated // Will be true if this call is authenticated
-request.Parameters // An object with the parameters of the current cloud function request
-request.Headers // An object with the HTTP headers of the current cloud function request
+request.UserId // 認証された場合、クラウド関数を呼び出したユーザーのユーザーIDを含みます
+request.Authenticated // この呼び出しが認証されている場合はtrueになります
+request.Parameters // 現在のクラウド関数リクエストのパラメーターを含むオブジェクト
+request.Headers // 現在のクラウド関数リクエストのHTTPヘッダーを含むオブジェクト
 ```
-
-
-
-
-

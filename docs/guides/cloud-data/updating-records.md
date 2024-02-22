@@ -1,31 +1,31 @@
 ---
-title: Updating Records
+title: レコードの更新
 hide_title: true
 ---
-# Updating Records in the Database
+# データベース内のレコードの更新
 
-## What you will learn in this guide
+## このガイドで学べること
 
-In this guide you will learn how to use the [Set Record Properties](/nodes/data/cloud-data/set-record-properties) node to update data in the Database.
+このガイドでは、[Set Record Properties](/nodes/data/cloud-data/set-record-properties) ノードを使用してデータベース内のデータを更新する方法について学びます。
 
-## Overview
+## 概要
 
-We will go through the following steps in this guide
+このガイドでは、以下のステップを通じて進めます
 
--   Update previously queried **Records**
+-   以前にクエリした**レコード**の更新
 
-To get most out of this guide, it's best that you are already familiar with how to set up a cloud backend, create **Classes** and **Records** and query them. You can quickly learn that by going through the following guides:
+このガイドを最大限に活用するには、クラウドバックエンドの設定方法、**クラス**と**レコード**の作成方法、およびそれらのクエリ方法に既に慣れていることが最善です。以下のガイドを通じてこれを素早く学ぶことができます：
 
--   [Creating a Backend](/docs/guides/cloud-data/creating-a-backend)
--   [Creating a Class](/docs/guides/cloud-data/creating-a-class)
--   [Creating Records](/docs/guides/cloud-data/creating-new-database-records)
--   [Query Records](/docs/guides/cloud-data/quering-records-from-database)
+-   [バックエンドの作成](/docs/guides/cloud-data/creating-a-backend)
+-   [クラスの作成](/docs/guides/cloud-data/creating-a-class)
+-   [レコードの作成](/docs/guides/cloud-data/creating-new-database-records)
+-   [レコードのクエリ](/docs/guides/cloud-data/quering-records-from-database)
 
-## Updating Records in the database
+## データベース内のレコードの更新
 
-It's simple to update **Records** in the database using the [Set Record Properties](/nodes/data/cloud-data/set-record-properties) node. You basically make sure the **Id** is set to the right **Record**, set the properties to what you want them to be and signal the **Do** input.
+[Set Record Properties](/nodes/data/cloud-data/set-record-properties) ノードを使用してデータベース内の**レコード**を更新するのは簡単です。基本的に、**Id**を正しい**レコード**に設定し、プロパティを望む値に設定して**Do**入力をトリガーします。
 
-To try it out, make sure you have a cloud service active for your project. Set up a **Class** in the Database with some **Records** in. Finally Query some items from the **Database**. If you follow the previous "Working With Cloud Data" guides you can use the simple Task list created there. It looks something like this:
+試してみるには、プロジェクトにアクティブなクラウドサービスがあることを確認してください。データベースに**クラス**を設定し、いくつかの**レコード**を入れます。最後に、**データベース**からアイテムをクエリします。以前の"クラウドデータを使った作業"ガイドに従えば、そこで作成されたシンプルなタスクリストを使用できます。それは以下のようなものです：
 
 <div className="ndl-image-with-background">
 
@@ -33,9 +33,9 @@ To try it out, make sure you have a cloud service active for your project. Set u
 
 </div>
 
-The app has two components, the main component called "App" and a List Item called "Task Item".
+アプリには、"App"と呼ばれるメインコンポーネントと"Task Item"と呼ばれるリストアイテムがあります。
 
-The main component that looks like this:
+メインコンポーネントは以下のように見えます：
 
 <div className="ndl-image-with-background l">
 
@@ -43,7 +43,7 @@ The main component that looks like this:
 
 </div>
 
-And the list item like this
+リストアイテムは以下のようになります
 
 <div className="ndl-image-with-background l">
 
@@ -51,9 +51,9 @@ And the list item like this
 
 </div>
 
-A clear shortcoming of this small app is that when you complete a task and check its checkbox the database wont actually update. The `isDone` property will not change.
+この小さなアプリの明らかな欠点は、タスクを完了してそのチェックボックスをチェックしても、データベースが実際には更新されないことです。`isDone`プロパティは変更されません。
 
-You can double check that by clicking a few items and reload the app. The changes are only visual, the underlying data is not changed.
+いくつかのアイテムをクリックしてアプリをリロードして、変更が視覚的にのみであり、基礎となるデータが変更されていないことをダブルチェックできます。
 
 <div className="ndl-image-with-background l">
 
@@ -61,11 +61,11 @@ You can double check that by clicking a few items and reload the app. The change
 
 </div>
 
-### The Set Record Properties node
+### Set Record Properties ノード
 
-To update a **Record** you use the [Set Record Properties](/nodes/data/cloud-data/set-record-properties) node.
+**レコード**を更新するには、[Set Record Properties](/nodes/data/cloud-data/set-record-properties) ノードを使用します。
 
-Add the node to your List Item. Click it, to edit its properties, and make sure the correct **Class** is selected.
+リストアイテムにノードを追加します。クリックしてそのプロパティを編集し、正しい**クラス**が選択されていることを確認してください。
 
 <div className="ndl-image-with-background l">
 
@@ -79,11 +79,11 @@ Add the node to your List Item. Click it, to edit its properties, and make sure 
 
 </div>
 
-Also note the option `Store to`. You can chose to store changes either locally and in the cloud, or only locally. Let it be set to `Cloud and locally` as we our changes to be stored directly in the database.
+`Store to`オプションにも注意してください。変更をローカルとクラウドのどちらに保存するか、またはローカルのみに保存するかを選択できます。データベースに直接変更を保存したいので、`Cloud and locally`に設定されているままにします。
 
-Sometimes it makes sense to only store the changes locally at first. For example, if you have a form with multiple fields and a "Save" button, it might make sense to first store only locally and when the user presses "Save" to store all changes at once.
+場合によっては、最初に変更をローカルにのみ保存することが理にかなっています。例えば、複数のフィールドと"保存"ボタンがあるフォームがある場合、最初にローカルにのみ保存し、ユーザーが"保存"を押したときに一度にすべての変更を保存することが理にかなっているかもしれません。
 
-Now we need to make sure the **Id** of the **Set Record Properties** are set correctly to the **Id** that the **Repeater** provides.
+これで、**Set Record Properties**の**Id**が**Repeater**が提供する**Id**に正しく設定されていることを確認する必要があります。
 
 <div className="ndl-image-with-background">
 
@@ -91,7 +91,9 @@ Now we need to make sure the **Id** of the **Set Record Properties** are set cor
 
 </div>
 
-Now the only two things left to do is to connect the **Checkbox** to the `isDone` property and trigger the **Do** signal of the **Set Record Properties**. We want to save whenever the state of the **Checkbox** is updated, so lets connect the **Changed** signal coming out of the **Checkbox** to **Do**.
+残りの2つの作業は、**チェックボックス**を`isDone`プロパティに接続し、**Set Record Properties**の**Do**シグナルをトリガーすることです。**チェックボックス**の状態が更新されるたびに保存したいので、**チェックボックス**から出てくる**Changed**
+
+シグナルを**Do**に接続しましょう。
 
 <div className="ndl-image-with-background l">
 
@@ -99,4 +101,4 @@ Now the only two things left to do is to connect the **Checkbox** to the `isDone
 
 </div>
 
-We're done! Click on your different tasks and double check that they are correctly saved by bringing up your **Dashboard** inspect the `isDone` properties. Don't forget to press `Refresh` in the **Dashboard** to update the view.
+完了しました！異なるタスクをクリックして、`isDone`プロパティが正しく保存されているかをダブルチェックするために、**ダッシュボード**を表示してください。ビューを更新するために**ダッシュボード**で`Refresh`を忘れずに押してください。

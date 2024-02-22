@@ -1,25 +1,25 @@
 ---
-title: Logging and Debugging
+title: ロギングとデバッグ
 hide_title: true
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl'
 
-# Logging and Debugging
+# ロギングとデバッグ
 
-When building cloud functions it's important to know how to spot errors and problems quickly. This is where logging and debugging comes in.
+クラウド関数を構築する際には、エラーや問題を迅速に特定する方法を知っておくことが重要です。ここでロギングとデバッグが役立ちます。
 
-## Running locally
+## ローカルでの実行
 
-When you are running your application in the Noodl editor all cloud functions are run on your local computer. The are accessing the active cloud service of the project, just as they will when deployed. The easiest way to find errors in your cloud functions is to inspect data and signal connections in your node graph as your functions are running locally.
+Noodlエディターでアプリケーションを実行している場合、すべてのクラウド関数はローカルコンピューター上で実行されます。プロジェクトのアクティブなクラウドサービスにアクセスしており、デプロイされた場合と同様に動作します。クラウド関数のエラーを見つける最も簡単な方法は、関数がローカルで実行されている間にノードグラフ内のデータとシグナル接続を検査することです。
 
 <div className="ndl-video">
     <video width="100%" autoPlay muted loop src={useBaseUrl("/docs/guides/cloud-logic/logging/cf-inspect.mp4")}/>
 </div>
 
-Simply bring up the cloud functions tab, choose the function you want to inspect and then trigger it from the app preview. You will see the data and signals flowing through your graph and you can inspect the values afterwards just like in your frontend components.
+単にクラウド関数タブを開き、検査したい関数を選択してから、アプリプレビューからトリガーします。グラフを通じてデータとシグナルの流れを見ることができ、フロントエンドコンポーネントと同様に、後で値を検査することができます。
 
-Sometimes this is not enough and we need to open the **Cloud Runtime Debugger**, you can launch it from the top of the sidebar in the cloud functions tab.
+時にはこれだけでは不十分で、**クラウドランタイムデバッガー**を開く必要があります。クラウド関数タブのサイドバーの上部から起動できます。
 
 <div className="ndl-image-with-background l">
 
@@ -27,21 +27,21 @@ Sometimes this is not enough and we need to open the **Cloud Runtime Debugger**,
 
 </div>
 
-This will open a web debugger, just like when debugging your front end. When your cloud functions run locally they run in a web runtime which means that you have access to all the same debug tools. Most notably you can debug network calls from your function, as well as the logging to the console, more on that in a bit.
+これにより、フロントエンドをデバッグするときと同様のWebデバッガーが開きます。クラウド関数がローカルで実行されるとき、それらはWebランタイムで実行されるため、同じデバッグツールすべてにアクセスできます。特に、関数からのネットワーク呼び出しをデバッグしたり、コンソールへのロギングを行ったりすることができます。
 
-The **Refresh cloud functions** button above is also very useful if you want to clear error messages and inspect data and run your function clean.
+上記の**クラウド関数を更新**ボタンも、エラーメッセージをクリアしてデータを検査し、関数をクリーンに実行したい場合に非常に便利です。
 
-If you want to call your cloud functions from external tools while running locally you can do this by accessing the local Noodl clound functions server directly.
+ローカルで実行している間に外部ツールからクラウド関数を呼び出したい場合は、ローカルのNoodlクラウド関数サーバーに直接アクセスすることでこれを行うことができます。
 
 ```bash
 curl -X POST http://localhost:8577/functions/my-func -H 'Content-Type: application/json' -d '{"someParameter":"value"}'
 ```
 
-This can be very useful when working with e.g. webhooks as they can be tested locally without having to deploy.
+これは、特にWebhookなどをローカルでテストする際に非常に便利です。
 
-## Logging
+## ロギング
 
-Another important tool to make sure your functions are running as expected is logging, especially when finding problems in deployed applications. When you are running locally you will find the logs in the **Cloud Runtime Debugger** under the **Console** tab.
+関数が期待通りに実行されていることを確認するためのもう1つの重要なツールはロギングであり、特にデプロイされたアプリケーションの問題を見つける際に重要です。ローカルで実行している場合、ログは**クラウドランタイムデバッガー**の**コンソール**タブで見つけることができます。
 
 <div className="ndl-image-with-background xl">
 
@@ -49,19 +49,19 @@ Another important tool to make sure your functions are running as expected is lo
 
 </div>
 
-There are three functions you can use to log from your cloud functions:
+クラウド関数からロギングを行うために使用できる関数は3つあります：
 
 ```javascript
-// These two both log messages as "info" severity
+// これらの2つは両方とも"info"の重大度としてメッセージをログに記録します
 console.log('Some message')
 console.info('Another message')
 
-// This is logged with "error" severity and should be reserved for
-// critical issues. So they will be easier to find.
+// これは"error"の重大度でログに記録され、
+// 重要な問題のみに予約されるべきです。そうすることで、見つけやすくなります。
 console.error("An error occured")
 ```
 
-When you have deployed your application you can find the logs in the dashboard for the cloud service that you have deployed to.
+アプリケーションをデプロイした場合、ログはデプロイ先のクラウドサービスのダッシュボードで見つけることができます。
 
 <div className="ndl-image-with-background xl">
 
@@ -69,12 +69,10 @@ When you have deployed your application you can find the logs in the dashboard f
 
 </div>
 
-The logs are divided into **info** and **error** depending on which log function you used above. If you make sure to reserv error for more critical issues they will be easier to find.
+ログは、上記で使用したログ関数に応じて**info**と**error**に分けられます。より重大な問題にエラーを予約しておくと、それらを見つけやすくなります。
 
 <div className="ndl-image-with-background xl">
 
 ![](/docs/guides/cloud-logic/logging/log-dashboard-error.png)
 
 </div>
-
-

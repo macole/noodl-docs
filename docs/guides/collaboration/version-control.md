@@ -1,12 +1,15 @@
-# Version control
+---
+title: バージョン管理
+hide_title: true
+---
 
-## Introduction
+# バージョン管理
 
-Version control has three main use cases:
+バージョン管理には三つの主な用途があります：
 
-- Collaborating with team members
-- Working with different versions of your project in parallel (what's known as "branches")
-- Backup. All versions are backed up in the cloud
+- チームメンバーとの共同作業
+- プロジェクトの異なるバージョンを並行して作業すること（「ブランチ」として知られています）
+- バックアップ。すべてのバージョンはクラウドにバックアップされます
 
 <div className="ndl-image-with-background s">
 
@@ -14,12 +17,12 @@ Version control has three main use cases:
 
 </div>
 
-Noodl uses [Git](https://git-scm.com) as the underlying version control system. The project folder is a Git repository.
-The most common way to interact with Git in Noodl is through the Version Control panel. Users comfortable with Git can use external git clients to view their Noodl projects as well.
+Noodlは、基盤となるバージョン管理システムとして[Git](https://git-scm.com)を使用しています。プロジェクトフォルダはGitリポジトリです。
+NoodlでGitを操作する最も一般的な方法は、バージョン管理パネルを通じてです。Gitに慣れているユーザーは、外部のgitクライアントを使用してNoodlプロジェクトを表示することもできます。
 
-## Enabling version control
+## バージョン管理の有効化
 
-To start using the version control features you need to init Git for your project. This can be done by opening the Version Control panel and clicking the "Initialize Version Control" button.
+バージョン管理機能を使用するためには、プロジェクトでGitを初期化する必要があります。これは、バージョン管理パネルを開いて「バージョン管理の初期化」ボタンをクリックすることで行うことができます。
 
 <div className="ndl-image-with-background">
 
@@ -27,25 +30,25 @@ To start using the version control features you need to init Git for your projec
 
 </div>
 
-This will set up all necessary files to run Git in your project. From here you can version control locally, or push it to an external Git repository. This is useful if you want to collaborate with others, or keep your project backed up on a remote server.
+これにより、プロジェクトでGitを実行するために必要なすべてのファイルが設定されます。ここから、ローカルでバージョン管理を行うことも、外部のGitリポジトリにプッシュすることもできます。これは、他の人と共同作業をしたい場合や、プロジェクトをリモートサーバーにバックアップしたい場合に便利です。
 
-Pushing to an external repo can be done by clicking the button labeled "To push changes set a git remote". You can also use the terminal, or a Git client like [Github Desktop](https://desktop.github.com/).
+外部リポジトリへのプッシュは、「リモートを設定して変更をプッシュする」ボタンをクリックするか、ターミナルや[Github Desktop](https://desktop.github.com/)のようなGitクライアントを使用して行うことができます。
 
 :::tip
-If you're new to Git, don't forget to push your changes regularly to prevent losing your work. A good rule of thumb is to do it everytime you finish or change a feature.
+Gitを初めて使用する場合は、作業を失わないように定期的に変更をプッシュすることを忘れないでください。良い目安としては、機能を完成させたり変更したりするたびに行うことです。
 :::
 
-Any project collaborators will have to clone the project from the repo, and then open the downloaded Project Folder in Noodl.
+プロジェクトの共同作業者は、リポからプロジェクトをクローンしてから、ダウンロードしたプロジェクトフォルダをNoodlで開く必要があります。
 
-The easiest way to get started with Git is through Github. Read more about creating Github repos [here](https://docs.github.com/en/repositories/creating-and-managing-repositories/quickstart-for-repositories) or cloning Github repos [here](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).
+Gitを始める最も簡単な方法はGithubを通じてです。Githubリポの作成については[こちら](https://docs.github.com/en/repositories/creating-and-managing-repositories/quickstart-for-repositories)、Githubリポのクローニングについては[こちら](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)で詳しく読むことができます。
 
 :::note
-Noodl will clear out the newly created repo when pushing for the first time. However, to be on the safe side, make sure to create the repo without any `README.md` or `.gitignore` files.
+Noodlは最初のプッシュ時に新しく作成されたリポをクリアします。しかし、安全を確保するために、`README.md`や`.gitignore`ファイルなしでリポを作成することを確認してください。
 :::
 
-## The version control panel
+## バージョン管理パネル
 
-The version control panel is where you perform all actions related to version control. This includes actions such as pushing new changes to your collaborators, pulling the latest version, seeing differences between versions, merging branches, and more.
+バージョン管理パネルは、バージョン管理に関連するすべてのアクションを実行する場所です。これには、新しい変更を共同作業者にプッシュする、最新バージョンをプルする、バージョン間の違いを確認する、ブランチをマージするなどのアクションが含まれます。
 
 <div className="ndl-image-with-background">
 
@@ -53,9 +56,9 @@ The version control panel is where you perform all actions related to version co
 
 </div>
 
-## Commiting your changes
+## 変更をコミットする
 
-When there are changes in your project you can commit them to the version control system. This creates a commit, which is a snapshot of the current state of your entire project. This can then be pushed to share your changes with collaborators (or yourself if you work on multiple computers).
+プロジェクトに変更がある場合、それらをバージョン管理システムにコミットできます。これにより、現在のプロジェクト全体の状態のスナップショットであるコミットが作成されます。これは、共同作業者と変更を共有するため（または複数のコンピューターで作業している場合は自分自身と）、プッシュすることができます。
 
 <div className="ndl-image-with-background">
 
@@ -63,7 +66,7 @@ When there are changes in your project you can commit them to the version contro
 
 </div>
 
-Noodl will now show you all the components and files that have changed, and by clicking them you can see the difference compared to the previous version.
+Noodlは、変更されたすべてのコンポーネントとファイルを表示し、それらをクリックすると前のバージョンとの違いを確認できます。
 
 <div className="ndl-image-with-background l">
 
@@ -71,7 +74,7 @@ Noodl will now show you all the components and files that have changed, and by c
 
 </div>
 
-After the changes have been commited the commit is now visible in the history tab.
+変更がコミットされた後、コミットは履歴タブに表示されます。
 
 <div className="ndl-image-with-background">
 
@@ -79,13 +82,15 @@ After the changes have been commited the commit is now visible in the history ta
 
 </div>
 
-Push your changes by clicking the button at the top that says "Push 1 local commit".
+「1つのローカルコミットをプッシュ」のボタンをクリックして変更をプッシュします。
 
-## Pulling down changes
+## 変更をプルダウンする
 
-Noodl checks if there are any changes to pull down when the version control panel is opened.
+バージョン管理パネルが開かれると、Noodlはプルダウンする
 
-You can also manually check for updates by clicking the update icon
+変更があるかどうかを確認します。
+
+更新アイコンをクリックすることで手動で更新を確認することもできます。
 
 <div className="ndl-image-with-background">
 
@@ -93,7 +98,7 @@ You can also manually check for updates by clicking the update icon
 
 </div>
 
-A new version will show be displayed as "Remote commits" in the history tab. These are versions that you haven't pulled down yet.
+新しいバージョンは「リモートコミット」として履歴タブに表示されます。これらはまだプルダウンしていないバージョンです。
 
 <div className="ndl-image-with-background">
 
@@ -101,13 +106,13 @@ A new version will show be displayed as "Remote commits" in the history tab. The
 
 </div>
 
-The button at the top lights up and shows how many remote commits are available. Click it to pull down the changes. You can click on the commits in the history tab to see the changes you're about to pull.
+上部のボタンが点灯し、利用可能なリモートコミットの数を示します。それをクリックして変更をプルダウンします。履歴タブのコミットをクリックすると、プルダウンしようとしている変更を確認できます。
 
-Any local changes you have, that aren't pushed, will still be there after pulling down a new version. They will be applied to the new versions, which leads to the next subject, conflicts.
+プッシュしていないローカルの変更がある場合、新しいバージョンをプルダウンした後もそこに残ります。それらは新しいバージョンに適用されます。これにより、次の話題であるコンフリクトにつながります。
 
-## Conflicts
+## コンフリクト
 
-Sometimes you and your collaborators might change the same parameter on the same node. In those cases, Noodl doesn't know which change to apply and will ask you to resolve the conflicts.
+時には、あなたと共同作業者が同じノード上の同じパラメータを変更することがあります。そのような場合、Noodlはどちらの変更を適用すべきかわからず、コンフリクトを解決するように求められます。
 
 <div className="ndl-image-with-background l">
 
@@ -115,22 +120,22 @@ Sometimes you and your collaborators might change the same parameter on the same
 
 </div>
 
-You can resolve conflicts by choosing to keep your change or overwrite your change with the one from your collaborator.
+自分の変更を維持するか、共同作業者からの変更で上書きするかを選択して、コンフリクトを解決できます。
 
-## Branches
+## ブランチ
 
-Branches can be used to develop different parts of your application in parallel, that can later be merged.
+ブランチは、後でマージできる、アプリケーションの異なる部分を並行して開発するために使用できます。
 
-Here are a few common use cases
+いくつかの一般的な使用例は以下の通りです：
 
-- One branch for the stable version of your app, and another one for the development version
-- A new feature that's being worked on can be developed in a separate branch, and later merged into the main branch when it's ready
-- Explore different designs variations of your app, deploying them independently, and later merge in the variation that was the most successful.
-- ...and there are many more
+- アプリの安定バージョン用のブランチと、開発バージョン用の別のブランチ
+- 新しい機能が開発中のブランチで開発され、準備ができたらメインブランチにマージされる
+- アプリの異なるデザインバリエーションを探求し、独立してデプロイし、最も成功したバリエーションを後でマージする
+- ...そして他にも多くあります
 
-### Creating a branch
+### ブランチの作成
 
-Create a branch by clicking the '+' icon in the version control panel's branch dropdown.
+バージョン管理パネルのブランチドロップダウンの'+'アイコンをクリックしてブランチを作成します。
 
 <div className="ndl-image-with-background">
 
@@ -138,17 +143,17 @@ Create a branch by clicking the '+' icon in the version control panel's branch d
 
 </div>
 
-After a branch has been created Noodl will switch to the new branch. Any changes in your project that weren't pushed will be moved to this new branch.
+ブランチが作成されるとNoodlは新しいブランチに切り替わります。プッシュされていないプロジェクトの変更は、この新しいブランチに移動します。
 
-Changes you push will now belong to the new branch, and won't affect the other branches.
+プッシュした変更は現在の新しいブランチに属し、他のブランチには影響しません。
 
-### Switching branches
+### ブランチの切り替え
 
-Switch between branches by clicking on a branch. Switching requires you to have no local changes. There are three ways to solve this:
+ブランチをクリックしてブランチ間を切り替えます。切り替えるには、ローカルの変更がない状態である必要があります。これを解決するには三つの方法があります：
 
-- Commit your changes to the current branch
-- Delete your changes
-- (Advanced) Stash your changes
+- 現在のブランチに変更をコミットする
+- 変更を削除する
+- (上級者向け) 変更をスタッシュする
 
 <div className="ndl-image-with-background l">
 
@@ -156,9 +161,9 @@ Switch between branches by clicking on a branch. Switching requires you to have 
 
 </div>
 
-### Merging branches
+### ブランチのマージ
 
-Changes from one branch can be merged into another branch. In this example, the "my-new-feature" branch is being merged into the "main" branch.
+一つのブランチの変更を別のブランチにマージできます。この例では、「my-new-feature」ブランチが「main」ブランチにマージされています。
 
 <div className="ndl-image-with-background">
 
@@ -166,7 +171,7 @@ Changes from one branch can be merged into another branch. In this example, the 
 
 </div>
 
-Clicking "Merge into main" will show a preview of the changes that are being merged in. Noodl is visualizing the changes as they will look after the merge has been done.
+「メインにマージ」をクリックすると、マージされる変更のプレビューが表示されます。Noodlは、マージが行われた後の変更を視覚化して表示します。
 
 <div className="ndl-image-with-background l">
 
@@ -174,20 +179,22 @@ Clicking "Merge into main" will show a preview of the changes that are being mer
 
 </div>
 
-Click "Merge branches" to perform the merge.
+「ブランチをマージ」をクリックしてマージを実行します。
 
-When the merge is done, it is done locally, and won't yet be shared with collaborators. You can now choose to push the changes, or continue working locally.
+マージが完了すると、それはローカルで行われ、まだ共同作業者と共有されていません。変更をプッシュするか、ローカルで作業を続けるかを選べます。
 
-## Deleting a branch
+## ブランチの削除
 
-After a branch has been merged into another branch it can be a good idea to delete it if it won't be used anymore.
+ブランチが別のブランチにマージされた後、それ以上使用されない場合は削除すると良いでしょう。
 
-Note that deleting branches will delete branches both locally and remotely. If other collaborators have done work on the branch you just deleted, their local copy of the branch will still be intact and they can choose to push their changes to restore the branch.
+ブランチの削除は、ローカルとリモートの両方でブランチを削除します。他の共同作業者が削除したばかりのブランチで作業を行っていた場合、彼らのローカルコピーのブランチはそのまま intact され、彼らの変更をプッシュしてブランチを復元することを選択できます。
 
-The main branch can't be deleted.
+メインブランチは削除できません。
 
 <div className="ndl-image-with-background">
 
-![](/docs/guides/collaboration/version-control/branch-delete.png)
+![]
+
+(/docs/guides/collaboration/version-control/branch-delete.png)
 
 </div>

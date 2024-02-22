@@ -1,6 +1,6 @@
 import useBaseUrl from '@docusaurus/useBaseUrl'
 
-# Migrating from Noodl hosted Git
+# NoodlホステッドGitからの移行
 
 <div className="ndl-image-with-background">
 
@@ -8,27 +8,27 @@ import useBaseUrl from '@docusaurus/useBaseUrl'
 
 </div>
 
-## Introduction
+## はじめに
 
-Any Noodl projects created in the closed source (CS) version need to be migrated from Noodls hosted Git to its own Git repository. If you downloaded Noodl after January 2024 you are probaly running the open source (OS) version, and can disregard this guide.
+クローズドソース（CS）バージョンで作成されたNoodlプロジェクトは、NoodlがホストするGitから自身のGitリポジトリへ移行する必要があります。2024年1月以降にNoodlをダウンロードした場合、オープンソース（OS）バージョンを使用している可能性があり、このガイドは無視してかまいません。
 
-The process of migrating is as follows:
+移行プロセスは以下の通りです：
 
-## Get in sync
+## 同期をとる
 
-To not lose any of your work you need to sync all the branches in your project. This makes sure that they are up to date on your computer.
+作業を失わないように、プロジェクトのすべてのブランチを同期する必要があります。これにより、コンピュータ上で最新の状態に保たれます。
 
-To do so, open your project in CS Noodl. Then open the Version Control panel, and pull any potential changes on every branch. If you have any local changes that are unpushed you will need to push them.
+これを行うには、CS Noodlでプロジェクトを開きます。次に、バージョン管理パネルを開き、すべてのブランチで潜在的な変更をプルします。プッシュされていないローカルの変更がある場合は、それらをプッシュする必要があります。
 
 :::tip
-Learn more about the Version Control panel in the [version control docs](/docs/guides/collaboration/version-control).
+バージョン管理パネルについての詳細は、[バージョン管理ドキュメント](/docs/guides/collaboration/version-control)で学ぶことができます。
 :::
 
-## Move the project
+## プロジェクトを移動する
 
-CS Noodl projects live in system folders that are pretty cumbersome to navigate to. A strong suggestion is to move your project to an easily accessible folder.
+CS Noodlプロジェクトは、ナビゲートするのがかなり面倒なシステムフォルダーに存在します。プロジェクトをアクセスしやすいフォルダーに移動することを強くお勧めします。
 
-Open the Project Settings panel and click the "Open project folder" button.
+プロジェクト設定パネルを開き、「プロジェクトフォルダを開く」ボタンをクリックします。
 
 <div className="ndl-image-with-background">
 
@@ -36,19 +36,19 @@ Open the Project Settings panel and click the "Open project folder" button.
 
 </div>
 
-This will open up your file browser in the folder of the current project. Rename this folder into something better and move it to a more reasonable place on your computer.
+これにより、現在のプロジェクトのフォルダでファイルブラウザが開きます。このフォルダの名前を変更し、コンピュータのより合理的な場所に移動します。
 
-## Gotta get Git
+## Gitを取得する
 
-With all branches synced and the project folder moved it's time to give them a new home. For this you will be using Github.
+すべてのブランチが同期され、プロジェクトフォルダが移動されたら、新しいホームを提供する時が来ました。これにはGithubを使用します。
 
-If you dont have a Github account already, now is the time to [create one](https://github.com/signup).
+まだGithubアカウントを持っていない場合、今が[アカウントを作成する](https://github.com/signup)時です。
 
-Log in to Github and [create a new repository](https://github.com/new). In order to migrate the project you will need two pieces of information from Github:
+Githubにログインし、[新しいリポジトリを作成します](https://github.com/new)。プロジェクトを移行するために、Githubから2つの情報が必要になります：
 
 ### Git Origin URL
 
-This is found in the repo in the "Quick Setup" section:
+これはリポジトリの「クイックセットアップ」セクションで見つかります：
 
 <div className="ndl-image-with-background l">
 
@@ -57,16 +57,16 @@ This is found in the repo in the "Quick Setup" section:
 </div>
 
 :::note
-Noodl will clear out the newly created repo when pushing. However, to be on the safe side, make sure to create the repo without any `README.md` or `.gitignore` files.
+Noodlはプッシュ時に新しく作成されたリポジトリをクリアします。しかし、安全のため、`README.md`や`.gitignore`ファイルなしでリポジトリを作成することを確認してください。
 :::
 
-### Personal Access Token
+### パーソナルアクセストークン
 
-This is managed in your Github account settings. You can find a guide on it [here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token). The token can be set up to access all your repos, or a select few. Usually, allowing access to all repos is fine, but there are some security benefits in creating separate tokens for each repo. Do what works best for you, but make sure your token is able to access your newly created repository.
+これはGithubアカウント設定で管理されます。それについてのガイドは[こちら](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token)で見つけることができます。トークンは、すべてのリポジトリまたはいくつかの選択したリポジトリにアクセスするように設定できます。通常、すべてのリポジトリにアクセスを許可するのは問題ありませんが、各リポジトリに対して別々のトークンを作成することにはいくつかのセキュリティ上の利点があります。最適な方法を選択してくださいが、新しく作成したリポジトリにアクセスできるようにトークンを設定してください。
 
-## Hooking it up
+## 接続する
 
-When you have your Git Origin URL and Personal Access Token you can close CS Noodl and open your project in OS Noodl (this is why it's good to have moved the project folder beforehand). When you navigate to the Version Control panel you will now see a migration notice. Click the notice and follow the steps in the popup:
+Git Origin URLとパーソナルアクセストークンを手に入れたら、CS Noodlを閉じてプロジェクトをOS Noodlで開きます（これがプロジェクトフォルダを事前に移動しておく理由です）。バージョン管理パネルに移動すると、移行通知が表示されます。通知をクリックし、ポップアップの手順に従ってください：
 
 <div className="ndl-video">
     <video width="100%" autoPlay muted loop src={useBaseUrl("/docs/guides/collaboration/version-control/migration-wizard.mp4")}/>

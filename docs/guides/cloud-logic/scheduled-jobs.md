@@ -1,16 +1,16 @@
 ---
-title: Scheduled Jobs
+title: スケジュールされたジョブ
 hide_title: true
 ---
 
-# Scheduled Jobs
+# スケジュールされたジョブ
 
-One very useful task for cloud functions are scheduled jobs. This is logic that you want to run in the cloud at specific intervals, such as every 15 minutes, hourly or daily. These jobs typically take care of housekeeping tasks that run in the "background" of your application.
+クラウド関数にとって非常に便利なタスクの一つが、スケジュールされたジョブです。これは、15分ごと、1時間ごと、または毎日など、特定の間隔でクラウドで実行したいロジックです。これらのジョブは通常、アプリケーションの「バックグラウンド」で実行されるハウスキーピングタスクを処理します。
 
-Let's say for this example that we have a class in the database where a lot of records gets created as the application is running and to not use unnecessary data storage we want to prune the records that are older than 48 hours.
+この例では、アプリケーションが実行されると多くのレコードがデータベースのクラスに作成され、不必要なデータストレージを使用しないように、48時間より古いレコードを削除したいとします。
 
-## The job cloud function
-We start by creating a simple cloud function that will do the cloud job. Let's call it **Cleanup**.
+## ジョブクラウド関数
+まず、クラウドジョブを行うシンプルなクラウド関数を作成します。これを**Cleanup**と呼びましょう。
 
 <div className="ndl-image-with-background l">
 
@@ -18,7 +18,7 @@ We start by creating a simple cloud function that will do the cloud job. Let's c
 
 </div>
 
-In this function we add a small logic flow that first find all **Photos** that are older than 48 hours. This is done with a [Query Records](/nodes/data/cloud-data/query-records) node and a date filter, passing in the date we want to compare **createdAt** too via a small **Function** snippet.
+この関数には、48時間より古い**Photos**をすべて見つける小さなロジックフローを追加します。これは、[Query Records](/nodes/data/cloud-data/query-records)ノードと日付フィルターを使用し、小さな**Function**スニペットを介して比較したい日付**createdAt**を渡すことで行います。
 
 <div className="ndl-image-with-background xl">
 
@@ -26,13 +26,13 @@ In this function we add a small logic flow that first find all **Photos** that a
 
 </div>
 
-The **Date** object to compare to is calcuated as such (date right now, and back up 48 hours). We want all **Photo** records that have a date that is less (earlier) than this.
+比較する**Date**オブジェクトは以下のように計算されます（現在の日付から48時間戻します）。私たちは、この日付より小さい（以前の）**Photo**レコードをすべて欲しいのです。
 
 ```javascript
 Outputs.FilterDate = new Date(Date.now() - 48*60*60*1000)
 ```
 
-If successful the photos are passed into a handy node called [Run Tasks](/nodes/data/run-tasks) which will perform a logic component task for each item in the array that is fed to it, reporting **Done** when the are all processed. We need to create the logic component, I called it **Delete Task** and added it as a child component to the cloud function.
+成功した場合、写真は[Run Tasks](/nodes/data/run-tasks)という便利なノードに渡されます。このノードは、それに供給された配列の各アイテムに対してロジックコンポーネントタスクを実行し、すべてが処理されたときに**Done**を報告します。ロジックコンポーネントを作成する必要があります。私はそれを**Delete Task**と呼び、クラウド関数の子コンポーネントとして追加しました。
 
 <div className="ndl-image-with-background l">
 
@@ -46,7 +46,7 @@ If successful the photos are passed into a handy node called [Run Tasks](/nodes/
 
 </div>
 
-The **Delete Task** is very simple, it uses the [Delete Record](/nodes/data/cloud-data/delete-record) node triggered when the **Do** is sent. This signal is sent by the **Run Tasks** node.
+**Delete Task**は非常にシンプルで、**Do**が送信されたときにトリガーされる[Delete Record](/nodes/data/cloud-data/delete-record)ノードを使用します。このシグナルは**Run Tasks**ノードによって送信されます。
 
 <div className="ndl-image-with-background xl">
 
@@ -54,7 +54,7 @@ The **Delete Task** is very simple, it uses the [Delete Record](/nodes/data/clou
 
 </div>
 
-The **Run Tasks** node will create an instance of the task component (**Delete Task**) for each item in the array (that is for each **Photo** we want to delete) and just like the [Repeater](/nodes/ui-controls/repeater) node you can specify that the **Delete Record** node should operate on the current record.
+**Run Tasks**ノードは、配列の各アイテム（削除したい各**Photo**）に対してタスクコンポーネント（**Delete Task**）のインスタンスを作成し、[Repeater](/nodes/ui-controls/repeater)ノードと同様に、**Delete Record**ノードが現在のレコードに対して操作を行うことを指定できます。
 
 <div className="ndl-image-with-background l">
 
@@ -62,7 +62,7 @@ The **Run Tasks** node will create an instance of the task component (**Delete T
 
 </div>
 
-Then we just need one more thing for out **Cleanup** cloud function and that is to make sure it can be called without **Authentication**, we will get back to this a bit later. Make sure the **Request** node in the **Cleanup** cloud function has this property checked.
+**Cleanup**クラウド関数に必要なもう一つのことは、**認証なし**で呼び出すことができるようにすることです。これについては後で少し戻ります。**Cleanup**クラウド関数の**Request**ノードがこのプロパティをチェックしていることを確認してください。
 
 <div className="ndl-image-with-background l">
 
@@ -70,9 +70,9 @@ Then we just need one more thing for out **Cleanup** cloud function and that is 
 
 </div>
 
-## Testing and deploying
+## テストとデプロイ
 
-The easiest way to test your background job is to trigger it manually from the UI of your application. Add a button somewhere (maybe in an admin panel of your app) and simply run the function. This will allow you to test if properly and debug it in the Noodl editor before deploying.
+バックグラウンドジョブをテストする最も簡単な方法は、アプリケーションのUIから手動でトリガーすることです。アプリの管理パネルなどにどこかにボタンを追加し、単純に関数を実行します。これにより、デプロイする前にNoodlエディターで適切にテストしてデバッグできます。
 
 <div className="ndl-image-with-background m">
 
@@ -86,11 +86,13 @@ The easiest way to test your background job is to trigger it manually from the U
 
 </div>
 
-When it's working to your liking, deploy it to your backend. Take a look in this [guide](/docs/guides/cloud-logic/introduction#deploying) to learn more about deploying.
+好みに合うように動作したら、バックエンドにデプロイします。デプロイについての詳細は、この[ガイド](/docs/guides/cloud-logic/introduction#deploying)を参照してください。
 
-## Scheduling the job
+## ジョブのスケジューリング
 
-When the cloud function is deploy we need to schedule it to be run at the interval we want. You can run a deployed cloud function from outside of Noodl, this is very handy for tasks like handling paymnents with external providers etc, and it's super useful for scheduling cloud jobs too. First, find your cloud service in the cloud services tab, and look for **Manage Cloud Service**.
+クラウド関数がデプロイされたら、私たちが望む間隔で実行されるようにスケジュールする必要があります。デプロイされたクラウド関数はNoodlの外部から
+
+実行することができ、これは外部プロバイダーなどとの支払い処理などのタスクに非常に便利であり、クラウドジョブのスケジューリングにも非常に便利です。まず、クラウドサービスタブでクラウドサービスを見つけ、**クラウドサービスを管理**を探します。
 
 <div className="ndl-image-with-background l">
 
@@ -104,7 +106,7 @@ When the cloud function is deploy we need to schedule it to be run at the interv
 
 </div>
 
-This will open a popup showing you information about the selected cloud services, we are looking for the **Endpoint**, this is the HTTP address you use to access your cloud service.
+これにより、選択したクラウドサービスに関する情報を表示するポップアップが開きます。私たちが探しているのは**エンドポイント**で、これはクラウドサービスにアクセスするために使用するHTTPアドレスです。
 
 <div className="ndl-image-with-background xl">
 
@@ -112,15 +114,15 @@ This will open a popup showing you information about the selected cloud services
 
 </div>
 
-The endpoint will have the following format:
+エンドポイントは以下の形式を持ちます：
 
 ```
 https://backend.noodl.cloud/xyz/123
 ```
 
-With the endpoint in hand you can go ahead and set up the scheduling for your cloud job. There are a wide range of tools for scheduling HTTP calls and my absolute favorite is [cron-job.org](https://cron-job.org/), it's clean, simple and free.
+エンドポイントを手に入れたら、クラウドジョブのスケジューリングを設定できます。HTTPコールのスケジューリングには幅広いツールがあり、私の絶対的なお気に入りは[cron-job.org](https://cron-job.org/)です。それはクリーンでシンプルで無料です。
 
-Once you have created an account and sign in, look for the **Create Cronjob** button.
+アカウントを作成してサインインしたら、**Create Cronjob**ボタンを探します。
 
 <div className="ndl-image-with-background m">
 
@@ -128,7 +130,7 @@ Once you have created an account and sign in, look for the **Create Cronjob** bu
 
 </div>
 
-First you provide the endpoint of the cloud function that is your backgroud job that you want to schedule, you use the endpoint for above and add ```/functions/{function-name}```
+最初に、スケジュールしたいバックグラウンドジョブであるクラウド関数のエンドポイントを提供します。上記のエンドポイントを使用し、```/functions/{function-name}```を追加します。
 
 <div className="ndl-image-with-background xl">
 
@@ -137,10 +139,10 @@ First you provide the endpoint of the cloud function that is your backgroud job 
 </div>
 
 :::note
-Some tools don't handle urls with big and small cases to it might be a good idea to just use small cases in the names of your cloud functions and no spaces or other special characters.
+一部のツールは大文字と小文字のURLを扱えないため、クラウド関数の名前には小文字のみを使用し、スペースやその他の特殊文字を使用しない方が良いかもしれません。
 :::
 
-Move on to choosing the schedule interval for your background job:
+次に、バックグラウンドジョブのスケジュール間隔を選択します：
 
 <div className="ndl-image-with-background m">
 
@@ -149,10 +151,10 @@ Move on to choosing the schedule interval for your background job:
 </div>
 
 :::note
-Don't schedule your tasks too often. In Noodl hosted cloud services (and generally self hosted too) you are billed for the amount of time your cloud function runs, and if you are using a free plan and run too many cloud functions they will be throttled after a while and your application performance will suffer.
+タスクを頻繁にスケジュールしないでください。Noodlがホストするクラウドサービス（一般的に自己ホスティングも）では、クラウド関数が実行される時間量に応じて課金され、無料プランを使用していて多くのクラウド関数を実行すると、しばらくするとスロットルされ、アプリケーションのパフォーマンスが低下します。
 :::
 
-Now move over to the **Advanced** tab for some additional settings. Mainly that you need to change the **Request Method** to **POST** as that is how you invoke cloud functions in Noodl.
+最後に、**Advanced**タブに移動して追加の設定を行います。主に、Noodlでクラウド関数を呼び出す方法として**POST**に**Request Method**を変更する必要があることです。
 
 <div className="ndl-image-with-background l">
 
@@ -160,7 +162,7 @@ Now move over to the **Advanced** tab for some additional settings. Mainly that 
 
 </div>
 
-That's it, you can now test your function using the **Test Run** button and it should run successfully. Then go ahead and create it.
+それでおしまいです。**Test Run**ボタンを使用して関数をテストし、正常に実行されるはずです。それから、それを作成してください。
 
 <div className="ndl-image-with-background m">
 
@@ -168,13 +170,13 @@ That's it, you can now test your function using the **Test Run** button and it s
 
 </div>
 
-Now your cloud function will be scheduled and you can just sit back and watch as your photos are clean up (or whatever you choose to do in your background job) nicely.
+これで、クラウド関数がスケジュールされ、写真がキレイに整理されるのを見守るだけで済みます（またはバックグラウンドジョブで行うことを選択したもの）。
 
-## Security
+## セキュリティ
 
-One final note on security. Above we set the cloud function to **allow unauthenticated requests**, this means that anyone can call this function whenever. It's not a huge problem since it doesn't do anything sensitive, it will simply prune our photos a bit more often. But it might run up our bill. So let's add a secret key that is needed to make the call.
+最後にセキュリティに関する注意点です。上記でクラウド関数を**認証なしのリクエストを許可**に設定しました。これは、誰でもこの関数をいつでも呼び出すことができることを意味します。これは、写真をもっと頻繁に剪定するだけなので、大きな問題ではありません。しかし、私たちの請求額を増やす可能性があります。そこで、呼び出しに必要な秘密キーを追加しましょう。
 
-Simply add parameter to your cloud function called **Secret**, and add a small logic in the beginning of your function to verify it (you can pick any secret you like).
+クラウド関数に**Secret**というパラメータを追加し、関数の始めにそれを検証する小さなロジックを追加します（好きな秘密を選べます）。
 
 <div className="ndl-image-with-background xl">
 
@@ -182,7 +184,7 @@ Simply add parameter to your cloud function called **Secret**, and add a small l
 
 </div>
 
-If the secret provided when calling this function does not match, then send an error response back.
+この関数を呼び出すときに提供された秘密が一致しない場合は、エラーレスポンスを返送します。
 
 <div className="ndl-image-with-background m">
 
@@ -190,7 +192,9 @@ If the secret provided when calling this function does not match, then send an e
 
 </div>
 
-This will make sure that no one can call your function (or at least, it won't do any possibly expensive work) without knowing your secret. Finally, provide the same secret when scheduling your background job, this can be done in the **Advanced** tab in [cron-job.org](https://cron-job.org/).
+これにより、秘密を知らない限り、誰もあなたの関数を呼び出すことができなくなります（少な
+
+くとも、可能性のある高額な作業を行うことはありません）。最後に、バックグラウンドジョブをスケジュールするときに同じ秘密を提供します。これは、[cron-job.org](https://cron-job.org/)の**Advanced**タブで行うことができます。
 
 <div className="ndl-image-with-background l">
 
@@ -198,15 +202,4 @@ This will make sure that no one can call your function (or at least, it won't do
 
 </div>
 
-There you go, now you have a scheduled cloud job up and running. Calling cloud functions from external services like this is a very useful pattern to integrate Noodl with other services, it will be a recurring pattern in other guides so it's good to know.
-
-
-
-
-
-
-
-
-
-
-
+これで、スケジュールされたクラウドジョブが稼働しました。このように外部サービスからクラウド関数を呼び出すことは、Noodlを他のサービスと統合するための非常に便利なパターンであり、他のガイドでも繰り返し出現するパターンなので、知っておくと良いでしょう。

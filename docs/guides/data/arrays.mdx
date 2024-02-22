@@ -1,59 +1,60 @@
 ---
-title: Arrays
+title: 配列
 hide_title: true
 ---
+
 import ReactPlayer from 'react-player'
 import ImportButton from '/src/components/importbutton'
 
-# Arrays
+# 配列
 
-## What you will learn in this guide
+## このガイドで学べること
 
-In this guide we will look more closely on how to use **Arrays** in Noodl. **Arrays** are fundamental for lists in Noodl and useful for many other things as well.
+このガイドでは、Noodlで**配列**を使用する方法について詳しく見ていきます。**配列**はNoodlのリストにとって基本であり、他の多くのことにも役立ちます。
 
-Noodl have a number of nodes related to Arrays. For accessing and modifying there are:
-- [Array](/nodes/data/array/array-node)
-- [Create New Array](/nodes/data/array/create-new-array)
-- [Insert Object Into Array](/nodes/data/array/insert-into-array)
-- [Remove Object From Array](/nodes/data/array/remove-from-array)
-- [Clear Array](/nodes/data/array/clear-array)
+Noodlには配列に関連する多くのノードがあります。アクセスと変更のためには以下のものがあります:
+- [配列](/nodes/data/array/array-node)
+- [新しい配列を作成](/nodes/data/array/create-new-array)
+- [配列にオブジェクトを挿入](/nodes/data/array/insert-into-array)
+- [配列からオブジェクトを削除](/nodes/data/array/remove-from-array)
+- [配列をクリア](/nodes/data/array/clear-array)
 
-For mapping and filtering an **Array** the [Array Filter](/nodes/data/array/array-filter) and [Array Map](/nodes/data/array/array-map).
+**配列**をマッピングとフィルタリングするためには、[配列フィルタ](/nodes/data/array/array-filter)と[配列マップ](/nodes/data/array/array-map)があります。
 
-You will also learn to use the [Static Array](/nodes/data/array/static-array) node which is very useful for handling static list data in your App.
+また、[静的配列](/nodes/data/array/static-array)ノードの使用方法も学びます。これはアプリ内の静的リストデータを扱う際に非常に便利です。
 
-## Overview
+## 概要
 
-This guide will walk through the following topics
+このガイドでは、以下のトピックを通して説明します:
 
--   What's a Noodl **Array**
--   Creating **Arrays**, statically and dynamically
--   Adding and Removing objects from an **Array**
--   Using **Static Arrays**
--   Using Arrays in Lists and Dropdowns
--   Filtering Arrays
+-   Noodlの**配列**とは何か
+-   静的および動的に**配列**を作成する方法
+-   **配列**からオブジェクトを追加および削除する方法
+-   **静的配列**の使用方法
+-   リストとドロップダウンでの配列の使用方法
+-   配列のフィルタリング方法
 
-Arrays are used all the time in Noodl. Hence they occur in many guides. It's suggested to check out the [List Basics](/docs/guides/data/list-basics) guide to learn more about how to display **Arrays** as lists. Also when querying data from a **Backend Database** the data is returned in an **Array** hence it could be interesting to check out some fo the [Cloud Data](/docs/guides/cloud-data/overview) guides in conjunction with this guide.
+配列はNoodlで常に使用されます。したがって、多くのガイドで登場します。**配列**をリストとして表示する方法については、[リストの基本](/docs/guides/data/list-basics)ガイドを確認してみてください。また、**バックエンドデータベース**からデータをクエリするときにはデータが**配列**で返されるため、このガイドと併せて[クラウドデータ](/docs/guides/cloud-data/overview)ガイドをいくつか確認すると良いでしょう。
 
-Before reading this guide, it's a good idea to have a basic understanding of what an [Object](/nodes/data/object/object-node) is, which is described in [this](/docs/guides/data/objects) guide.
+このガイドを読む前に、[オブジェクト](/nodes/data/object/object-node)が何であるかの基本的な理解があると良いでしょう。これについては[こちら](/docs/guides/data/objects)のガイドで説明されています。
 
-## What's a Noodl Array
+## Noodlの配列とは
 
-A Noodl **Array** is an ordered list of items, **Objects** or (if the array is the result of a database query) [Records](/nodes/data/cloud-data/record). An **Array** i Noodl is represented with an **Array** node.
+Noodlの**配列**は、アイテムの順序付きリストです。**オブジェクト**または（配列がデータベースクエリの結果である場合）[レコード](/nodes/data/cloud-data/record)です。Noodlの**配列**は**配列**ノードで表されます。
 
 :::note
 
-Note that a Noodl **Array** is not the same as a JavaScript array. They are easy to convert between but you cannot access a Noodl **Array** using JavaScript Array functions. Instead there is a Noodl Array API that will be covered later in the guide.
+Noodlの**配列**はJavaScript配列と同じではありません。変換は簡単ですが、JavaScript配列関数を使用してNoodlの**配列**にアクセスすることはできません。代わりに、後でこのガイドで説明されるNoodl配列APIがあります。
 
 :::
 
-### The Id of an **Array**
+### **配列**のID
 
-As with the [Variable](/nodes/data/variable/variable-node) and **Object**, an **Array** is uniquly identified by its **Id**. Any node referencing an **Array**, through an **Array** node or **Insert Object Into Array** etc, do it through an **Id**.
+[変数](/nodes/data/variable/variable-node)および**オブジェクト**と同様に、**配列**はその**ID**によって一意に識別されます。**配列**ノードまたは**配列にオブジェクトを挿入**などのノードを介して**配列**を参照する任意のノードは、**ID**を通じてそれを行います。
 
-Therefore it's quite common to connect the **Id** from one node, e.g. an **Array** node, to the **Id** of another node, for example an **Insert Object Into Array** to make sure they are operating on the same **Array**. You can also just write the **Id** into the nodes if the **Id** is static.
+したがって、**配列**ノードの**ID**を別のノード、例えば**配列からオブジェクトを削除**に接続して、同じ**配列**を操作していることを確認するのが一般的です。**ID**が静的である場合は、ノードに直接**ID**を入力することもできます。
 
-Below are three typical cases of how to use the **Id** of an **Array** and make sure a **Clear Array** node is acting on the same **Array**.
+以下は、**配列**の**ID**を使用して**配列をクリア**ノードが同じ**配列**に対して操作を行っていることを確認する3つの典型的なケースです。
 
 <div className="ndl-image-with-background xl">
 
@@ -61,9 +62,9 @@ Below are three typical cases of how to use the **Id** of an **Array** and make 
 
 </div>
 
-In the first case the **Id** of an **Array** is stored in a **String** node (or for example a **Variable**) which is then used to refer to the **Array** in different node.
+最初のケースでは、**配列**ノードの**ID**が**文字列**ノード（または例えば**変数**）に格納され、それが異なるノードで**配列**を参照するために使用されます。
 
-In the second case the **Id** is set directly in the **Array** node, and then that **Id** is used to point the **Clear Array** to the correct **Array**. The **Id** is set in the property panel.
+2番目のケースでは、**配列**ノードに直接**ID**が設定され、その**ID**が**配列をクリア**ノードを正しい**配列**に指すために使用されます。**ID**はプロパティパネルで設定されます。
 
 <div className="ndl-image-with-background">
 
@@ -71,13 +72,15 @@ In the second case the **Id** is set directly in the **Array** node, and then th
 
 </div>
 
-In the last case the **Id** is generated from a **Create New Array** below (more on that later) and then used to make sure the **Clear Array** node operates on the correct node.
+最後のケースでは、下にある**新しい配列を作成**から生成された**ID**が使用され、**配列をクリア**ノードが正しいノードで操作を行うことを
 
-### The Items of an **Array**
+確認しています。
 
-The **Items** of an **Array** are either **Objects** or **Records**. An item can be a member of multiple **Arrays**. This means that two different **Arrays** (i.e. with different **Ids**) can have exactly the same items, but they are still different **Arrays**. An item can only occur once in an **Array**.
+### **配列**のアイテム
 
-When you hover over an **Array** node in the node canvas you will see how many items the **Array** currently has.
+**配列**の**アイテム**は、**オブジェクト**または**レコード**です。アイテムは複数の**配列**のメンバーになることができます。つまり、2つの異なる**配列**（つまり、異なる**ID**を持つ）がまったく同じアイテムを持つことができますが、それらはまだ異なる**配列**です。アイテムは**配列**内に一度しか存在できません。
+
+**配列**ノードをノードキャンバス上でホバーすると、**配列**が現在持っているアイテムの数が表示されます。
 
 <div className="ndl-image-with-background s">
 
@@ -85,7 +88,7 @@ When you hover over an **Array** node in the node canvas you will see how many i
 
 </div>
 
-You can easily assign items to an **Array** by setting the **Items** input of an **Array** node. This is often done used for example when you do a query to the database through a [Query Records](/nodes/data/cloud-data/query-records), or handling the result of a [Array Filter](/nodes/data/array/array-filter) or [Static Array](/nodes/data/array/static-array). See three examples below.
+**配列**ノードの**アイテム**入力にアイテムを簡単に割り当てることができます。これは、たとえば[レコードをクエリ](/nodes/data/cloud-data/query-records)を通じてデータベースからクエリを行うときや、[配列フィルタ](/nodes/data/array/array-filter)や[静的配列](/nodes/data/array/static-array)の結果を処理するときなどによく行われます。以下に3つの例を示します。
 
 <div className="ndl-image-with-background l">
 
@@ -93,27 +96,27 @@ You can easily assign items to an **Array** by setting the **Items** input of an
 
 </div>
 
-Most often you assign items to an **Array** because you want to process them (perhaps add or remove some more items) or keep track of them to be used later.
+ほとんどの場合、アイテムを**配列**に割り当てるのは、それらを処理するため（おそらくいくつかのアイテムを追加または削除するため）または後で使用するために追跡するためです。
 
-## Creating Arrays
+## 配列の作成
 
-As you saw in the example above there are two main ways of creating an **Array**.
+上記の例で見たように、**配列**を作成する主な方法は2つあります。
 
-1. **Static creation** - You simply add an **Array** node in you node graph. You can give the **Array** an **Id** (as discussed above) or simply leave it blank, which means an **Id** will be assigned automaticallt to the Array.
+1. **静的作成** - ノードグラフに**配列**ノードを単純に追加します。**配列**に**ID**を与えることができます（上記で議論されたように）または単に空白にしておくことができます。これは、**配列**に自動的に**ID**が割り当てられることを意味します。
 
-2. **Dynamic creation** - You create a new **Array** on a certain event, for example using a **Did Mount** signal or a **Click** signal.
+2. **動的作成** - 特定のイベント（例えば**Did Mount**シグナルや**Click**シグナル）で新しい**配列**を作成します。
 
 :::note
 
-If you give your **Array** a static **Id** and if you have multiple instances of the component with the **Array** node (for example a couple of list items), the same **Array** will be referenced in all those components. This may or may not be what you want, so keep that in mind.
+**配列**に静的な**ID**を与え、**配列**ノードを含むコンポーネントの複数のインスタンス（たとえばいくつかのリストアイテム）がある場合、それらのコンポーネントすべてで同じ**配列**が参照されます。これが望んでいることかどうかに注意してください。
 
 :::
 
-## Creating a Recipe App
+## レシピアプリの作成
 
-Now let's start playing around with **Arrays**. Let's create a small recipe app. The overall idea would be to have a list of Recipes (stored in an **Array**) and each recipe have a bunch of ingredients, also stored in an **Array**. So in the end we'll have an **Array** with **Arrays**.
+それでは、**配列**を使って遊んでみましょう。小さなレシピアプリを作成しましょう。全体的なアイデアは、レシピのリスト（**配列**に保存される）を持ち、各レシピにはいくつかの材料も**配列**に保存されるというものです。最終的には、**配列**の中に**配列**を持つことになります。
 
-Let's start with some sample data! Create a new project, using the "Hello World"-template. Then create a **Static Array** node. Make sure it's set to `JSON` format.
+サンプルデータから始めましょう！新しいプロジェクトを作成し、「Hello World」テンプレートを使用してください。次に、**静的配列**ノードを作成します。`JSON`形式に設定されていることを確認してください。
 
 <div className="ndl-image-with-background s">
 
@@ -121,64 +124,66 @@ Let's start with some sample data! Create a new project, using the "Hello World"
 
 </div>
 
-Then copy and paste the following into the JSON data.
+次に、以下の内容をJSONデータにコピー＆ペーストしてください。
 
 ```json
 [
     {
-        "name": "Swedish Pancakes",
-        "description": "A simple tasty recipe of classic Swedish pancakes (8-10 pcs)",
+        "name": "スウェーデンのパンケーキ",
+        "description": "クラシックなスウェーデンのパンケーキのシンプルで美味しいレシピ（8-10個分）",
         "containsMeat": false,
         "ingredients": [
-            { "amount": "150 g", "name": "Wheat flower" },
-            { "amount": "1/2 tsp", "name": "Salt" },
-            { "amount": "3", "name": "Eggs" },
-            { "amount": "600 g", "name": "Milk" },
-            { "amount": "1 tbsp", "name": "Butter" }
+            { "amount": "150 g", "name": "小麦粉" },
+            { "amount": "1/2 tsp", "name": "塩" },
+            { "amount": "3", "name": "卵" },
+            { "amount": "600 g", "name": "牛乳" },
+            { "amount": "1 tbsp", "name": "バター" }
         ],
-        "instructions": "Mix flower, salt, milk and eggs well. Fry thin pancakes on medium heat in butter, 3-4 minutes on each side"
+        "instructions": "小麦粉、塩、牛乳、卵をよく混ぜ合わせます。中火でバターを使って薄いパンケーキを焼き、各面3-4分焼きます"
     },
     {
-        "name": "Swedish Meatballs",
-        "description": "A swedish classic. Eat with potatoes, gravy and lingonberries.",
+        "name": "スウェーデンのミートボール",
+        "description": "スウェーデンの定番。ジャガイモ、グレイビーソース、リンゴンベリーと一緒に食べます。",
         "containsMeat": true,
         "ingredients": [
-            { "amount": "500 g", "name": "Minced meat" },
-            { "amount": "1", "name": "Egg" },
-            { "amount": "1 clove", "name": "Garlic" },
-            { "amount": "3 tbsp", "name": "Bread crumbs" },
-            { "amount": "1/2", "name": "Yellow Onion" },
-            { "amount": "2 tsp", "name": "Concentrated beef stock" },
-            { "amount": "2 tbsp", "name": "Full cream" },
-            { "amount": "1 tsb", "name": "Salt" },
-            { "amount": "1/2 tbsp", "name": "Ground pepper" },
-            { "amount": "2 tbsp", "name": "Butter" }
+            { "amount": "500 g", "name": "ひき肉" },
+            { "amount": "1", "name": "卵" },
+            { "amount": "1片", "name": "ニンニク" },
+            { "amount": "3 tbsp", "name": "パン粉" },
+            { "amount": "1/2", "name": "黄色い玉ねぎ" },
+            {
+
+ "amount": "2 tsp", "name": "濃縮ビーフストック" },
+            { "amount": "2 tbsp", "name": "全脂肪のクリーム" },
+            { "amount": "1 tsb", "name": "塩" },
+            { "amount": "1/2 tbsp", "name": "挽いたコショウ" },
+            { "amount": "2 tbsp", "name": "バター" }
         ],
-        "instructions": "Chop the onion finely. Put in a bucket. Press the garlic into the bucket. Add egg, bread crumbs, cream, beef stock, salt and pepper and mix. Let it rest for 10 mins. Mix in the minced meat. Make small balls and fry (8-10 at a time) in butter until golden brown and cooked through."
+        "instructions": "玉ねぎを細かく刻みます。バケツに入れます。ニンニクをバケツに押し込みます。卵、パン粉、クリーム、ビーフストック、塩、コショウを加えて混ぜ合わせます。10分間休ませます。ひき肉を混ぜ合わせます。小さなボールを作り、バターで金色になり、中まで火が通るまで焼きます。"
     },
     {
-        "name": "Kalops",
-        "description": "This Swedish stew should be eaten with potatoes and pickled red beets.",
+        "name": "カロプス",
+        "description": "このスウェーデンのシチューは、ジャガイモとピクルス赤ビーツと一緒に食べるべきです。",
         "containsMeat": true,
         "ingredients": [
-            { "amount": "1 kg", "name": "Boneless Beef" },
-            { "amount": "2 tbsp", "name": "Butter" },
-            { "amount": "2", "name": "Yellow onions" },
-            { "amount": "4", "name": "Carrots" },
-            { "amount": "3", "name": "Bay leafs" },
-            { "amount": "30", "name": "Allspice grains" },
-            { "amount": "1 litre", "name": "Water" },
-            { "amount": "2 tbsp", "name": "Concentrated beef stock" },
-            { "amount": "1 1/2 tbsp", "name": "Corn starch" },
-            { "amount": "1 tsb", "name": "Salt" },
-            { "amount": "1/2 tbsp", "name": "Ground pepper" }
+            { "amount": "1 kg", "name": "骨なしビーフ" },
+            { "amount": "2 tbsp", "name": "バター" },
+            { "amount": "2", "name": "黄色い玉ねぎ" },
+            { "amount": "4", "name": "ニンジン" },
+            { "amount": "3", "name": "ローリエ" },
+            { "amount": "30", "name": "オールスパイス粒" },
+            { "amount": "1リットル", "name": "水" },
+            { "amount": "2 tbsp", "name": "濃縮ビーフストック" },
+            { "amount": "1 1/2 tbsp", "name": "コーンスターチ" },
+            { "amount": "1 tsb", "name": "塩" },
+            { "amount": "1/2 tbsp", "name": "挽いたコショウ" }
         ],
-        "instructions": "Cut the meat into 3x3 cm pieces. Peel and cut onions and carrots into 3cm pieces. Fry the meat in a pan with butter until it has a nice surface. Add onion, carrots, bay leafs and allspice. Pour over the water and beef stock. Bring to boil and leave until the meat is tender (2-3 hours depending on meet). Thicken the stew with the corn starch. Add salt and pepper."
+        "instructions": "肉を3x3 cmのピースに切ります。玉ねぎとニンジンを皮をむき、3cmのピースに切ります。肉をバターで表面がきれいになるまでフライパンで焼きます。玉ねぎ、ニンジン、ローリエ、オールスパイスを加えます。水とビーフストックを注ぎます。沸騰させ、肉が柔らかくなるまで煮ます（肉によって2-3時間）。コーンスターチでシチューをとろみをつけます。塩とコショウを加えます。"
     }
 ]
 ```
 
-Now we have some data to play with. Let's start by taking a look at it. We want to look at both the outer list (the recipes) and one of the inner lists (a specific) recipe, just to get a feel for it. Connect the **Items** output of the **Static Array** to an **Array Filter** node. Then take the **First Item Id** of the **Array Filter** and connect it to an **Object** node. Add a property to the **Object** node called `ingredients` and connect that one to an **Array** node. Also open up the debug popup on the connections to see what's going on.
+これで遊ぶためのデータができました。まず、それを見てみましょう。外側のリスト（レシピ）と内側のリスト（特定のレシピ）の両方を見てみましょう。まずはそれを確認するために、**静的配列**から**アイテム**を**配列フィルタ**ノードに接続します。次に、**配列フィルタ**の**最初のアイテムID**を**オブジェクト**ノードに接続します。`ingredients`というプロパティを**オブジェクト**ノードに追加し、それを**配列**ノードに接続します。また、デバッグポップアップを開いて、何が起こっているかを確認します。
 
 <div className="ndl-image-with-background xl">
 
@@ -192,16 +197,17 @@ Now we have some data to play with. Let's start by taking a look at it. We want 
 
 </div>
 
-## Filtering out the first item in an **Array**
+## **
 
-To explain in more on what's going on. We take the items from the **Static Array** and feed them into a **Filter Array** node. The filter actually doesn't have any filters enabled but we can make use of its **First Item Id** output which holds the Id of our first **Object** in the **Array** (the Pancake recipe). In that Object we look at the **ingredients** property which contains an **Array** of items. These items are set as **Items** for another **Array** which now will contain the ingredients of the Pancake recipe.
-Phew! The **Array Filter** / **First Item Id** output is very useful if you want to get a sample of what's in a list.
+配列**内の最初のアイテムをフィルタリングする
 
-Let's create some simple UI around our recipes. To make the app a little easier to interact with, we need a simple navigation system. You can learn more about how to do navigation in [this](/docs/guides/navigation/basic-navigation) guide. In this guide we will not go into details.
+何が起こっているのかをもう少し説明します。**静的配列**からの**アイテム**を**配列フィルタ**ノードに渡します。フィルタは実際にはフィルタが有効になっていませんが、**配列フィルタ**の**最初のアイテムID**出力を利用できます。これは、**配列**内の最初の**オブジェクト**（パンケーキレシピ）のIDを保持します。そのオブジェクトで`ingredients`プロパティを見ると、**配列**のアイテムが含まれています。これらのアイテムは、別の**配列**の**アイテム**として設定され、この**配列**にはパンケーキレシピの材料が含まれるようになります。
 
-## Making a list to show the **Array**
+それでは、レシピの周りにいくつかのシンプルなUIを作成しましょう。アプリをもう少し操作しやすくするために、シンプルなナビゲーションシステムが必要です。ナビゲーションの方法については、[この](/docs/guides/navigation/basic-navigation)ガイドで詳しく学ぶことができます。このガイドでは詳細には触れません。
 
-Start by adding a **Page Router** in the root component. Also get rid of the **Text** node.
+## **配列**を表示するリストを作成する
+
+まず、ルートコンポーネントに**ページルーター**を追加します。また、**テキスト**ノードを削除してください。
 
 <div className="ndl-image-with-background m">
 
@@ -209,7 +215,7 @@ Start by adding a **Page Router** in the root component. Also get rid of the **T
 
 </div>
 
-Click on the **Page Router** and add a new page called `Recipe List`.
+**ページルーター**をクリックし、`レシピリスト`という新しいページを追加します。
 
 <div className="ndl-image-with-background m">
 
@@ -217,7 +223,7 @@ Click on the **Page Router** and add a new page called `Recipe List`.
 
 </div>
 
-You will now have a new **Page** component in your component tree.
+これで、コンポーネントツリーに新しい**ページ**コンポーネントが追加されます。
 
 <div className="ndl-image-with-background m">
 
@@ -225,7 +231,7 @@ You will now have a new **Page** component in your component tree.
 
 </div>
 
-Create yet another component. This time a visual component called `Recipe List Item`. This will be a list item for a list we soon are going to build.
+別のコンポーネントを作成します。今回は`レシピリストアイテム`と呼ばれるビジュアルコンポーネントです。これは、まもなく構築するリストのリストアイテムになります。
 
 <div className="ndl-image-with-background m">
 
@@ -235,7 +241,7 @@ Create yet another component. This time a visual component called `Recipe List I
 
 </div>
 
-In that component, set the size of the list item to be **width** 100% and **height** 30 px. Also add a [Text](/nodes/basic-elements/text) node to the root **Group**. Center the text vertically and left align it.
+このコンポーネントで、リストアイテムのサイズを**幅**100%、**高さ**30pxに設定します。また、ルート**グループ**に[テキスト](/nodes/basic-elements/text)ノードを追加します。テキストを垂直方向に中央揃えにし、左揃えにします。
 
 <div className="ndl-image-with-background m">
 
@@ -243,7 +249,7 @@ In that component, set the size of the list item to be **width** 100% and **heig
 
 </div>
 
-Now go to the newly created `Recipe List` page. Add a text node that will be the title. Maybe increase the font size to 24 px. Give the Page some white space by adding 10 px padding top and left direction.
+新しく作成した`レシピリスト`ページに戻ります。タイトル用のテキストノードを追加します。フォントサイズを24pxに増やしてみましょう。ページに少し余白をつけるために、上方向と左方向に10pxのパディングを追加します。
 
 <div className="ndl-image-with-background m">
 
@@ -251,7 +257,7 @@ Now go to the newly created `Recipe List` page. Add a text node that will be the
 
 </div>
 
-Then add a [Repeater](/nodes/ui-controls/repeater) node under the title **Text** node. Make sure the newly created `Recipe List Item` is used as a template.
+タイトル**テキスト**ノードの下に[リピータ](/nodes/ui-controls/repeater)ノードを追加します。新しく作成した`レシピリストアイテム`をテンプレートとして使用していることを確認してください。
 
 <div className="ndl-image-with-background m">
 
@@ -259,7 +265,7 @@ Then add a [Repeater](/nodes/ui-controls/repeater) node under the title **Text**
 
 </div>
 
-Now move (for example using cut/paste) the **Static Array** node from the main `App` to this page and connect the **Items** output to the **Repeater**.
+次に、（例えばカット＆ペーストを使用して）`App`から`レシピリスト`ページに**静的配列**ノードを移動し、**アイテム**出力を**リピータ**に接続します。
 
 <div className="ndl-image-with-background l">
 
@@ -267,7 +273,7 @@ Now move (for example using cut/paste) the **Static Array** node from the main `
 
 </div>
 
-The final step to get the list working is to connect the correct data point in the **Object** to the **Text** in the list item. Go to `Recipe List Item` and add a new **Object** node. Make sure its **Id** comes from the repeater.
+リストが動作するようにするための最後のステップは、**オブジェクト**内の正しいデータポイントをリストアイテムの**テキスト**に接続することです。`レシピリストアイテム`に戻り、新しい**オブジェクト**ノードを追加します。**Id**がリピータから来るようにしてください。
 
 <div className="ndl-image-with-background s">
 
@@ -275,7 +281,7 @@ The final step to get the list working is to connect the correct data point in t
 
 </div>
 
-Then add a property on the **Object** called `name` and connect it to the **Text** node.
+次に、`name`というプロパティを**オブジェクト**に追加し、それを**テキスト**ノードに接続します。
 
 <div className="ndl-image-with-background l">
 
@@ -283,13 +289,15 @@ Then add a property on the **Object** called `name` and connect it to the **Text
 
 </div>
 
-This simple list will do for now. If you want to learn more about how to make lists it's recommended to go through the list guides, starting with [List Basics](/docs/guides/data/list-basics).
+このシンプルなリストで今は十分です。リストの作成方法についてもっと学びたい場合は、[リストの基本](/docs/guides/data/list-basics)から始めることをお勧めします。
 
-## Removing an Object from an **Array**
+## **配列**からオブジェクトを削除する
 
-So let's add some functionality to the list. Let's make sure we can remove some recipes. We begin by adding an button for it on our list item. Go into the `Recipe List Item` component.
+それでは、リストにいくつかの機能を追加しましょう。レシピを削除できるようにしましょう。削除ボタンをリスト
 
-Change the layout of the root **Group** to `horizontal`. Then add a new **Group** as a sibling to the **Text** node and in that **Group** node an [Icon](/nodes/basic-elements/icon) node. Find a good icon for delete and also make sure it is black, so you can see it properly. Also, change the sizing of the newly added **Group** node to `Content Width and Height`. Tweak the size, margins and padding so it looks ok.
+アイテムに追加し始めます。`レシピリストアイテム`コンポーネントに戻ります。
+
+ルート**グループ**のレイアウトを`水平`に変更します。次に、ルート**テキスト**ノードの兄弟として新しい**グループ**を追加し、その**グループ**ノードに[アイコン](/nodes/basic-elements/icon)ノードを追加します。削除用の良いアイコンを見つけ、それがきちんと見えるように黒にしてください。また、新しく追加された**グループ**ノードのサイズを`コンテンツの幅と高さ`に変更します。サイズ、マージン、パディングを調整して、見栄えが良くなるようにします。
 
 <div className="ndl-image-with-background l">
 
@@ -297,7 +305,7 @@ Change the layout of the root **Group** to `horizontal`. Then add a new **Group*
 
 </div>
 
-We only want the delete button to show up when you hover the list item. We achieve this by adding a [Switch](/nodes/logic/switch) and hooking it up to **Hover Start** and **Hover End** and feeding its state to the **Mounted** input of the inner **Group** see below.
+リストアイテムにホバーしたときにのみ削除ボタンが表示されるようにしたいです。これを実現するために、[スイッチ](/nodes/logic/switch)を追加し、それを**ホバースタート**と**ホバーエンド**に接続し、その状態を内部**グループ**の**マウント**入力にフィードします。以下を参照してください。
 
 <div className="ndl-image-with-background l">
 
@@ -305,7 +313,7 @@ We only want the delete button to show up when you hover the list item. We achie
 
 </div>
 
-Finally we want to send a signal out of the list when the user clicks the delete icon. So add a [Component Output](/nodes/component-utilities/component-outputs) node. Make and input called `Request Delete` and connect the **Click** signal from the inner **Group** to it.
+最後に、ユーザーが削除アイコンをクリックしたときにリストの外にシグナルを送信する必要があります。そのために、[コンポーネント出力](/nodes/component-utilities/component-outputs)ノードを追加します。`削除要求`という入力を作成し、内部**グループ**の**クリック**シグナルをそれに接続します。
 
 <div className="ndl-image-with-background l">
 
@@ -313,7 +321,7 @@ Finally we want to send a signal out of the list when the user clicks the delete
 
 </div>
 
-We are now ready to go back to the `Recipe List` page component and deal with the actual deletion. In that component we first need to add an Array that will hold the recipe items. Before we fed the **Items** directly from the **Static Array**. Now, since we need to modify the contents, we need to first feed the **Items** into an **Array**. Give the new **Array** the name `Recipe List`. The node construct should now look like below.
+これで、リストを含むコンポーネントで削除を処理する準備が整いました。`レシピリスト`ページコンポーネントに戻りましょう。このコンポーネントには、レシピアイテムを保持する**配列**を追加する必要があります。以前は、**静的配列**から直接**アイテム**を供給していました。今回は、内容を変更する必要があるため、最初に**アイテム**を**配列**に供給する必要があります。新しい**配列**に`レシピリスト`という名前を付けましょう。ノードの構造は以下のようになります。
 
 <div className="ndl-image-with-background l">
 
@@ -321,7 +329,7 @@ We are now ready to go back to the `Recipe List` page component and deal with th
 
 </div>
 
-Now we can do the removal. Create a **Remove Object from Array** node. This node takes two inputs. The **Array Id** and the **Object to Remove Id**. The **Array Id** is the same as the **Array** we just created (`Recipe List`) so let's just connect the two Ids. The **Object to Remove Id** comes from the repeater. The **Id** of the object that was clicked will forwarded by the **Repeater**. Also, our output from the `Recipe List Item` component will come out of the repeater as a signal and we can use that as the signal for triggering the delete by connecting it to the **Do** signal of the **Remove Object From Array** node.
+これで削除を行う準備が整いました。**配列からオブジェクトを削除**ノードを作成します。このノードは2つの入力を取ります。追加する**配列のID**と追加する**オブジェクトのID**です。**配列のID**は、作成したばかりの**配列**（`レシピリスト`）と同じなので、2つのIDを接続しましょう。**オブジェクトを削除するID**はリピータから来ます。クリックされたオブジェクトの**ID**は、**リピータ**によって転送されます。また、`レシピリストアイテム`コンポーネントからの出力は、**リピータ**からのシグナルとして出力され、**配列からオブジェクトを削除**ノードの**実行**シグナルに接続することで、削除をトリガーするシグナルとして使用できます。
 
 <div className="ndl-image-with-background l">
 
@@ -329,33 +337,35 @@ Now we can do the removal. Create a **Remove Object from Array** node. This node
 
 </div>
 
-Try it out! Don't be afraid to delete recipies. If you refresh your viewer they will all be back since they are not coming from a database but from a **Static Array**.
+試してみてください！レシピを削除することを恐れないでください。ビューアを更新すると、すべてが**静的配列**から来ているため、すべてが戻ります。
 
-## Using **Count**
+## **カウント**の使用
 
-If you remove all recipes, it might be a good idea to show a text, `The recipe list is empty`. Lets build that! Start by adding a **Text** node to the `Recipe List` page. Center the text (using the `Text Alignment` property).
+すべてのレシピを削除した場合、`レシピリストが空です`というテキストを表示すると良いでしょう。それを構築しましょう！`レシピリスト`ページに新しい**テキスト**ノードを追加します。テキストを中央揃えにします（`テキストアライメント`プロパティを使用します）。
 
-We only want to show this text when the **Array** is empty. So add an [Expression](/nodes/math/expression) node. Type the following into the expression node
+このテキストは、**配列**が空の場合にのみ表示されるようにしたいです。そのために、[式](/nodes/math/expression)ノードを追加します。以下の式を式ノードに入力します。
 
 ```javascript
 count === 0
 ```
 
-This will make the expression return `true` if the input `count` equals 0, otherwise `false`. Connect the output **Result** of the expression to the **Mounted** input of the new **Text** node. Then finally connect the **Count** output from the **Array** to the `count` input of the expression.
+これにより、入力`count`が0に等しい場合、式は`true`を返し、それ以外の場合は`false`を返します。式の出力**結果**を新しい**テキスト**ノードの**マウント**入力に接続します。最後に、**配列**の**カウント**出力を式の`count`入力に接続します。
 
 <div className="ndl-image-with-background l">
 
-![](/docs/guides/data/arrays/recipe-list-6.png)
+![](/docs/guides/data/arrays/recipe-list-6.png
+
+)
 
 </div>
 
-Try removing all recipes and make sure the text is visible once **Count** equals 0.
+すべてのレシピを削除して、**カウント**が0に等しい場合にテキストが表示されることを確認してください。
 
-## Showing the recipe
+## レシピを表示する
 
-Ok, now it's time to show the recipes once you click on them. So let's start by adding another page. As before, click the **Page Router** and then click **Add Page**. Add a page name `Recipe`.
+それでは、レシピをクリックしたときにレシピを表示する時が来ました。それでは、別のページを追加してみましょう。前と同じように、**ページルーター**をクリックし、次に**ページを追加**をクリックします。新しい**ページ**の名前を`レシピ`とします。
 
-In the new **Page** start by adding a title text. We can copy the **Text** node that was used as a title in the `Recipe List`. Below that we want another **Text** node which will hold the description. Let's add that as well.
+新しい**ページ**を開き、タイトルテキストを追加します。`レシピリスト`ページからタイトル**テキスト**ノードをコピー＆ペーストし、タイトルを`新しいレシピ`に変更できます。その下に別の**テキスト**ノードを追加します。これは説明を保持します。それも追加しましょう。
 
 <div className="ndl-image-with-background m">
 
@@ -363,9 +373,9 @@ In the new **Page** start by adding a title text. We can copy the **Text** node 
 
 </div>
 
-### Passing on the Recipe to the **Page**
+### レシピを**ページ**に渡す
 
-We now need to pass on the **Id** of the **Recipe** we clicked to the new **Page** so we can show it. Step 1 is to catch when we click the recipe. Remember, we only catch the case when we click the delete button so far. So go back to the `Recipe List Item`. Add another output on the **Component Outputs** node called `Request View`. Then connect the **Click** output on the root **Text** node to it. This will forward the signal to the component containing the list.
+クリックした**レシピ**の**ID**を新しい**ページ**に渡して、それを表示できるようにする必要があります。ステップ1は、レシピをクリックしたときにキャッチすることです。これまでのところ、削除ボタンをクリックした場合のみをキャッチしています。`レシピリストアイテム`に戻り、**コンポーネント出力**に`表示要求`という出力を追加します。ルート**テキスト**ノードの**クリック**出力をそれに接続します。これにより、リストを含むコンポーネントにシグナルが転送されます。
 
 <div className="ndl-image-with-background l">
 
@@ -373,7 +383,7 @@ We now need to pass on the **Id** of the **Recipe** we clicked to the new **Page
 
 </div>
 
-Now go back to the `Recipe` Page. We want to add a new **Path Parameter** in the **Page Inputs** component. Click the **Page Inputs** node and then add a new **Path Parameter** called `RecipeId`. This will mean that we can send the **Id** of the clicked recipe is part of the url path that we navigate to.
+次に、新しい**ページ**へ戻ります。**ページ入力**コンポーネントで新しい**パスパラメーター**を追加します。**ページ入力**ノードをクリックし、`RecipeId`という新しい**パスパラメーター**を追加します。これにより、クリックしたレシピの**ID**をナビゲートするURLパスの一部として送信できます。
 
 <div className="ndl-image-with-background">
 
@@ -381,7 +391,7 @@ Now go back to the `Recipe` Page. We want to add a new **Path Parameter** in the
 
 </div>
 
-Assuming that the **Id** is this **Path Parameter**, we can connect the **Object** to it and get the name, description and other properties from the **Object**. Let's set that up. We are still in the `Recipe` page.
+この**ID**がこの**パスパラメーター**であると仮定すると、**オブジェクト**をそれに接続して、名前、説明、その他のプロパティを**オブジェクト**から取得できます。`レシピ`ページでそれを設定しましょう。
 
 <div className="ndl-image-with-background">
 
@@ -389,7 +399,7 @@ Assuming that the **Id** is this **Path Parameter**, we can connect the **Object
 
 </div>
 
-Now we are ready to implemnt the navigation. In the `Recipe List` page we add a [Navigate](/nodes/navigation/navigate) node. Select the `Recipe` page to navigate to. This will add an input to the **Navigate** node which is our **Path Parameter** `RecipeId`. Connect the **Item Id** output of the **Repeater** to it and finally the **Request View** signal to the **Do** signal of the **Navigate** node. Voila!
+これで、ナビゲーションを実装する準備が整いました。`レシピリスト`ページに新しい[Navigate](/nodes/navigation/navigate)ノードを追加して、`レシピ`ページに移動します。
 
 <div className="ndl-image-with-background l">
 
@@ -397,11 +407,11 @@ Now we are ready to implemnt the navigation. In the `Recipe List` page we add a 
 
 </div>
 
-Note that there is no Back-button in the Noodl viewer so you either have to use your browser if you want to go back and forth, or simply refresh to get back to the list. That's a little bit annoying but we'll fix it later. We want to show our ingredients first.
+Noodlビューアには戻るボタンがないので、ブラウザを使用するか、単にリフレッシュしてリストに戻る必要があります。それは少し面倒ですが、後で修正します。まず、材料を表示しましょう。
 
-## Showing the recipe ingredients
+## レシピの材料を表示する
 
-So let's build the list that shows our ingredients. Create a new list item, a visual component named `Ingredient Item`. We can actually duplicate our previous list item and modify it.
+それでは、材料を表示するリストを構築しましょう。`Ingredient List Item`という名前の新しいリストアイテム、ビジュアルコンポーネントを作成します。以前のリストアイテムを複製して変更することができます。
 
 <div className="ndl-image-with-background m">
 
@@ -409,7 +419,7 @@ So let's build the list that shows our ingredients. Create a new list item, a vi
 
 </div>
 
-Start with removing the `Request View` input in the **Component Output** since we are not going to view individual ingredient. Also remove the delete action and the hover state. Looking at the data, the ingredient have two properties. `name`, which we already have connected. The other one is `amount`. Let's add a text node for that and connect it.
+`表示要求`入力を**コンポーネント出力**から削除して始めます。個々の材料を表示する予定はないためです。また、削除アクションとホバー状態を削除します。データを見ると、材料には`name`（すでに接続している）と`amount`の2つのプロパティがあることがわかります。それに対してテキストノードを追加し、接続しましょう。
 
 <div className="ndl-image-with-background m">
 
@@ -417,7 +427,9 @@ Start with removing the `Request View` input in the **Component Output** since w
 
 </div>
 
-Now we can add the **Repeater** node that will display the ingredients. Go to the `Recipe` Page. Add a **Repeater** node and select the newly created `Ingredient List Item` as the component template. Now we need to find the list of ingredients. Looking at the data model we see that the property is called `ingredients`. Add that property to the **Object**. Then add an **Array** node. That's the **Array** that will hold the ingredients. Connect the `ingredients` property of the **Object** to the **Array**. Then connect the **Items** output of the **Array** to the **Repeater**. You now have a list of ingredients!
+これで、材料を表示する**リピータ**ノードを追加する準備ができました。`レシピ`ページに移動します。**リピータ**ノードを追加し、新しく作成した`Ingredient List Item`をコンポーネントテンプレートとして選択します。これで、材料のリストを見つける必要があります。データモデルを見ると、プロパティは`ingredients`と呼ばれていることがわかります。**オブジェクト**にそのプロパティを追加し、**配列**ノードを追加します。それが材料を保持する**配列**になります。**オブジェクト**の`ingredients`プロパティを**配列**に
+
+接続し、その**アイテム**を**リピータ**に接続します。これで、材料のリストができました！
 
 <div className="ndl-image-with-background xl">
 
@@ -425,7 +437,7 @@ Now we can add the **Repeater** node that will display the ingredients. Go to th
 
 </div>
 
-We might as well add the instructions at the end to make the view complete. Add another **Text** node at the bottom. Call it `Instructions`. Then add the property `instructions` on the **Object** and connect it to the **Text** node. Maybe add some margin to seperate it a bit from the list.
+最後に、指示を最後に追加してビューを完成させましょう。もう一つ**テキスト**ノードを下に追加します。それを`指示`と呼びます。次に、**オブジェクト**に`instructions`プロパティを追加し、それを**テキスト**ノードに接続します。リストから少し離して配置するために、いくらかのマージンを追加すると良いでしょう。
 
 <div className="ndl-image-with-background xl">
 
@@ -433,7 +445,7 @@ We might as well add the instructions at the end to make the view complete. Add 
 
 </div>
 
-Finally, let's add that back button. At the bottom, add a **Button** that triggers a navigation to the `Recipe List` **Page**. Connect the button to a **Navigate** node that takes the user back to `Recipe List` **Page**.
+最後に、戻るボタンを追加しましょう。下部に**ボタン**を追加し、その**ボタン**が`レシピリスト`**ページ**に移動する**ナビゲート**ノードをトリガーするようにします。
 
 <div className="ndl-image-with-background xl">
 
@@ -441,31 +453,31 @@ Finally, let's add that back button. At the bottom, add a **Button** that trigge
 
 </div>
 
-## Feeding a Dropdown with an **Array**
+## **配列**でドロップダウンを使用する
 
-We are making progress with our recipe App. Next step is to add a simple filtering functionality to filter out vegetarian / non vegetarian options. Remember, in our data model we have the property `containsMeat` that is either `true` or `false`.
+レシピアプリの進捗状況が見えてきました。次に、野菜/非野菜オプションをフィルタリングするためのシンプルな機能を追加します。データモデルを思い出してみると、`containsMeat`というプロパティが`true`または`false`のどちらかであることがわかります。
 
-We go back our our `Recipe List` page. In here we want to add a [Dropdown](/nodes/ui-controls/dropdown) with three options `all`,`meat` or `vegetarian`.
+`レシピリスト`ページに戻ります。ここに、`all`、`meat`、`vegetarian`の3つのオプションを持つ[ドロップダウン](/nodes/ui-controls/dropdown)を追加したいと思います。
 
-If you read up on the **Dropdown** node, you can see that to figure out its options it takes items from an **Array** as an input. The **Array** should contain items of the following type:
+**ドロップダウン**ノードを読むと、オプションを図るために入力として**配列**からアイテムを取ることがわかります。**配列**は以下のタイプのアイテムを含む必要があります：
 
 ```json
 {
-    "Label": "a label",
-    "Value": "a value"
+    "Label": "ラベル",
+    "Value": "値"
 }
 ```
 
-The `Label` will be shown as a text in the **Dropdown** and the `Value` is the value that the **Dropdown** will have on its output if the associated item is selected.
-We can easily feed the **Dropdown** using a **Static Array**.
+`Label`は**ドロップダウン**にテキストとして表示され、関連するアイテムが選択された場合に**ドロップダウン**の出力になる`Value`です。
+**静的配列**を使用して**ドロップダウン**に簡単にフィードできます。
 
-Start by adding a **Static Array** in the `Recipe List` page and make sure it's set to JSON format. Name it `Dropdown Options` for clarity and add in the following data
+`レシピリスト`ページに**静的配列**を追加し、JSON形式に設定されていることを確認します。明確にするために、それを`ドロップダウンオプション`と名付け、以下のデータを追加します。
 
 ```json
 [
-    { "Label": "Show all recepies", "Value": "all" },
-    { "Label": "Show recepies with meat", "Value": "meat" },
-    { "Label": "Show vegetarian recepies", "Value": "veg" }
+    { "Label": "すべてのレシピを表示", "Value": "all" },
+    { "Label": "肉を含むレシピを表示", "Value": "meat" },
+    { "Label": "ベジタリアンのレシピを表示", "Value": "veg" }
 ]
 ```
 
@@ -475,7 +487,7 @@ Start by adding a **Static Array** in the `Recipe List` page and make sure it's 
 
 </div>
 
-Then add in a **Dropdown** node, just after the title. Enable the `label` on it and give it the label `Filter`. Also give it a bottom margin to seperate it a little from the list items. Then connect the **Items** from the **Static Array** to the Dropdown and you should see the options in the **Dropdown**.
+次に、タイトルの直後に**ドロップダウン**ノードを追加し、`label`を有効にして、ラベルに`フィルタ`と記入します。また、リストアイテムと少し離すために、下マージンを追加します。**静的配列**からの**アイテム**をドロップダウンに接続すると、**ドロップダウン**にオプションが表示されるはずです。
 
 <div className="ndl-image-with-background xl">
 
@@ -483,24 +495,26 @@ Then add in a **Dropdown** node, just after the title. Enable the `label` on it 
 
 </div>
 
-## Filtering an **Array**
+## **配列**をフィルタリングする
 
-We can now proceed with the filtering of the recipe. In our case we have three filtering states:
+これで、レシピのフィルタリングを進めることができます。このケースでは、3つのフィルタリング状態があります：
 
--   No filtering, i.e. we show all recipes
--   Show only the meat recipes, i.e. `containsMeat == true`
--   Show only the vegetarian recipes, i.e. `containsMeat == false`
+-   フィルタリングなし、つまりすべてのレシピを表示
+-   肉を含むレシピのみを表示、つまり`containsMeat == true`
+-   ベジタリアンのレシピのみを表示、つまり`containsMeat == false`
 
-We can encode these in a [States](/nodes/utilities/logic/states) node. Add in a **States** node. Give it a name, `Filter States`. Then create three states. To match up with our dropdown values we will call them `all`, `meat` and `veg`. By calling them exactly what the `Value` of the dropdown will give us will make it possible to let the **Dropdown** set the state without any intermediary logic.
+これらを[ステート](/nodes/utilities/logic/states)ノードでエンコードできます。**ステート**ノードを追加します。それに`フィルターステート`という名前を付けます。次に、3つのステートを作成します。ドロップダウンの`Value`が与えるものと一致させるために、`all`、`meat`、`veg`と呼びます。**ドロップダウン**が**ステート**ノードを変更するために中間ロジックなしで設定できるようにするためです。
 
-Then create two **Values** for the **States** node. Call one, `Filter Enabled`, one `containsMeat`. Both should be of the type `Boolean` We will now assign these **Values** for each state.
+次に、**ステート**ノードのために2つの**値**を作成します。1つは`フィルター有効`、もう1つは`containsMeat`と呼びます。両方とも`ブール値`のタイプにします。これらの**値**を各ステートに割り当てます。
 
--   `all` - `Filter Enabled` should be `false`, `containsMeat` can be either `true` or `false` (doesn't matter).
--   `meat` - `Filter Enabled` should be `true`, `containsMeat` should also be `true`.
--   `veg` - `Filter Enabled` should be `true`, `containsMeat` should be `false`.
+-   `all` - `フィルター有効`
 
-Now add in a **Array Filter** node. This should be in between the **Static Array** that contains the recipes and the **Recipe List** that holds the items to be presented in the list.
-Create a new filter for the property `containsMeat`.
+は`false`に設定され、`containsMeat`は`true`または`false`のどちらかに設定できます（フィルタリングには影響しません）。
+-   `meat` - `フィルター有効`は`true`に、`containsMeat`も`true`に設定します。
+-   `veg` - `フィルター有効`は`true`に、`containsMeat`は`false`に設定します。
+
+これで、**配列フィルタ**ノードを追加する準備ができました。これは、**静的配列**とレシピを保持する**配列**の間に配置される必要があります。
+`containsMeat`のための新しいフィルタを作成します。
 
 <div className="ndl-image-with-background m">
 
@@ -508,7 +522,7 @@ Create a new filter for the property `containsMeat`.
 
 </div>
 
-Set the filter to be of `Boolean` type. We now are able to control this filter through an input, i.e. weather the filter should filter for `containsMeat == false` or `containsMeat == true`.
+フィルタを`ブール値`タイプに設定します。これで、フィルタが`containsMeat == false`または`containsMeat == true`でフィルタリングするかどうかを入力を通じて制御できるようになりました。
 
 <div className="ndl-image-with-background s">
 
@@ -516,7 +530,7 @@ Set the filter to be of `Boolean` type. We now are able to control this filter t
 
 </div>
 
-So hook up the **Items** from the **Static Array** containing the recipes to the **Items** of the **Array Filter**. Then from the **Array Filter** to the **Array**.
+そこで、**静的配列**からの**アイテム**を**配列フィルタ**の**アイテム**に接続し、**配列フィルタ**から**配列**に接続します。
 
 <div className="ndl-image-with-background xl">
 
@@ -524,7 +538,7 @@ So hook up the **Items** from the **Static Array** containing the recipes to the
 
 </div>
 
-Now we need to control the filter depending on state. So first connect **Value** from the **Dropdown** to our states node. Changing the **Dropdown** will now change the state of the **States** node. Then we connect the **Values** of the **States** node to the inputs on the **Array Filter**, **Enabled** and `containsMeat Filter Value`.
+これで、状態に応じてフィルタを制御する準備が整いました。まず、**ドロップダウン**の**値**を私たちの状態ノードに接続します。**ドロップダウン**を変更すると、**ステート**ノードの状態が変更されます。次に、**ステート**ノードの**値**を**配列フィルタ**の入力、**有効**と`containsMeatフィルタ値`に接続します。
 
 <div className="ndl-image-with-background xl">
 
@@ -532,22 +546,22 @@ Now we need to control the filter depending on state. So first connect **Value**
 
 </div>
 
-You can now filter the recipes.
+これで、レシピをフィルタリングできます。
 
 <ReactPlayer playing autoplay muted loop url="arrays/recipe-list-1.mp4" />
 
-## Creating New Recipes
+## 新しいレシピの作成
 
-### Make a simple form
+### シンプルなフォームを作成する
 
-As a final feature we also want to add in the option to create new recipes. It will involve two things:
+最後の機能として、新しいレシピを作成するオプションを追加します。これには2つのことが関係します：
 
--   Create a new recipe, including data for the recipe, for example, name and description
--   Create a new ingredients array for the new recipe and fill with ingredients
+-   新しいレシピを作成する、例えばレシピのデータ、名前や説明など
+-   新しいレシピのために新しい**配列**を作成し、材料で満たす
 
-Let's start by creating some UI for this functionality.
+この機能のためのUIをいくつか作成しましょう。
 
-Start by adding a [Button](/nodes/ui-controls/button) at the bottom of the `Recipe List` page. Give it the label `Add new recipe`. Center it and give it some margin.
+まず、`レシピリスト`ページの下部に[ボタン](/nodes/ui-controls/button)を追加します。`新しいレシピを追加`というラベルを付けます。それを中央に配置し、少しマージンを追加します。
 
 <div className="ndl-image-with-background xl">
 
@@ -555,9 +569,9 @@ Start by adding a [Button](/nodes/ui-controls/button) at the bottom of the `Reci
 
 </div>
 
-Clicking this **Button** should take us to a new **Page** where we can add in the information about the recipe. So let's create that page. Find the **Page Router** in the main App and click **Add new page**. Call the new **Page** `New Recipe`. Open the new **Page** component. Copy and paste a title **Text** node from the `Recipe List` page and change the title to `New Recipe`.
+この**ボタン**をクリックすると、新しい情報を追加できる新しい**ページ**に移動する必要があります。そのページを作成しましょう。メインアプリで**ページルーター**を見つけ、**新しいページを追加**をクリックします。新しい**ページ**の名前を`新しいレシピ`とします。新しい**ページ**コンポーネントを開きます。`レシピリスト`ページからタイトル**テキスト**ノードをコピー＆ペーストし、タイトルを`新しいレシピ`に変更します。
 
-Add a new **Navigate** node in the `Recipe List` **Page** so we can get to our new **Page**.
+`レシピリスト`**ページ**に新しい**ナビゲート**ノードを追加して、新しい**ページ**に移動できるようにします。
 
 <div className="ndl-image-with-background xl">
 
@@ -565,15 +579,15 @@ Add a new **Navigate** node in the `Recipe List` **Page** so we can get to our n
 
 </div>
 
-In our new form we need controls to store the following in our new recipe.
+新しいフォームでは、新しいレシピに必要なデータを格納するためのコントロールが必要です。
 
--   A [Checkbox](/nodes/ui-controls/checkbox) to store the `containsMeat` value
--   A [Text Input](/nodes/ui-controls/text-input) to store the `name` of the recipe
--   A **Text Input** to store the `description`
--   A **Text Input** to store the `instructions`
--   Two **Buttons**, one for Save and one for Cancel
+-   `containsMeat`値を格納するための[チェックボックス](/nodes/ui-controls/checkbox)
+-   レシピの`name`を格納するための[テキスト入力](/nodes/ui-controls/text-input)
+-   `description`を格納するための**テキスト入力**
+-   `instructions`を格納するための**テキスト入力**
+-   `保存`と`キャンセル`のための2つの**ボタン**
 
-Add those controls to the new **Page** and make sure the labels are properly set to describe what the user should fill out in each control. Tweak padding, margins and layout to make it look ok. Set the `description` and `instructions` **Text Inputs** as **Text Areas**.
+これらのコントロールを新しい**ページ**に追加し、各コントロールが関連付けられているプロパティに対してラベルが適切に設定されていることを確認します。パディング、マージン、レイアウトを調整して見栄えを良くします。`description`と`instructions`の**テキスト入力**を**テキストエリア**として設定します。
 
 <div className="ndl-image-with-background l">
 
@@ -581,22 +595,24 @@ Add those controls to the new **Page** and make sure the labels are properly set
 
 </div>
 
-### Hooking up the data
+### データを接続する
 
-Looking at the **Page** from a data perspective, this is what we need to do:
+データの観点から**
 
-1. Once we enter the new page, we should create a new **Object** that will hold the recipe data.
-2. After creating the **Object** we also need to create a new **Array** that will hold the ingredients. The items of this **Array** should later be stored in the **Object**.
-3. If the user clicks `Save` we should add this **Object** as a new item in our recipe **Array**.
+ページ**を見ると、以下のことを行う必要があります：
 
-## Creating an **Array** dynamically
+1. 新しいページに入ったら、レシピデータを保持する新しい**オブジェクト**を作成する。
+2. **オブジェクト**を作成した後、材料を保持する新しい**配列**も作成する必要があります。ユーザーが`保存`をクリックした後、この**配列**のアイテムを**オブジェクト**に格納します。
+3. ユーザーが`保存`をクリックした場合、この**オブジェクト**をレシピを保持するメインの**配列**に新しいアイテムとして追加する必要があります。
 
-Let's orchestrate this based on the **Did Mount** event of the **Page**.
-Create a **Create New Object** node. Add the property `containsMeat` and make sure it's set to `false` by default to make sure our filter works. Trigger the **Create New Object** node on **Did Mount**. Once the **Object** is created, we should create the **Array** for the ingredients. When the user clicks `Save` we will store the items in the `ingredients` **Array** in the **Object** representing the recipe.
+## 動的に**配列**を作成する
 
-Then create an **Object** and hook up the controls (**Checkbox** and **Text Inputs**) to the properties they are associated with. Note that we are not using a **Set Object Properties** because we want the **Object** to be updated at any change on the inputs, i.e. not at a specific time.
+これを**ページ**の**Did Mount**イベントに基づいて構成しましょう。
+**新しいオブジェクトを作成**ノードを作成します。`containsMeat`プロパティを追加し、デフォルトで`false`に設定して、フィルタリングが機能するようにします。**Did Mount**で**新しいオブジェクトを作成**ノードをトリガーします。**オブジェクト**が作成されたら、材料の**配列**を作成する必要があります。ユーザーが`保存`をクリックしたときに、`ingredients`**配列**のアイテムを**オブジェクト**に格納します。
 
-Here's how the flow looks. Note that it's important to use the **Done** signals to make things happen sequentially, as well as passing on the **Id** of the newly created **Object** to the **Object** node to make it act on the correct **Object**.
+次に、**オブジェクト**を作成し、コントロール（**チェックボックス**と**テキスト入力**）をそれに関連付けられているプロパティに接続します。**オブジェクトのプロパティを設定**を使用していないのは、入力の変更があるたびに**オブジェクト**を更新したいからです。つまり、特定のタイミングではなく。
+
+これがそのフローです。**完了**シグナルを使用して、順番に事が起こるようにし、**オブジェクト**ノードに新しく作成された**オブジェクト**の**ID**を渡して、正しい**オブジェクト**に対して操作を行うようにします。
 
 <div className="ndl-image-with-background xl">
 
@@ -604,11 +620,11 @@ Here's how the flow looks. Note that it's important to use the **Done** signals 
 
 </div>
 
-### Add ingredients to the **Array**
+### 材料を**配列**に追加する
 
-Now we need to add some UI to make it possible to add ingredients. The idea is to have two **Text Inputs** (one for amount and one for the name of the ingredient) and a **Button** that adds the ingredient. We also need a **Repeater** that shows the ingredients as you add them. That repeater can reuse our previous `Ingredient List Item` component. Of course, the **Repeater** gets its items from the **Array** we created that holds the ingredients. Let's also add in a **Text** as a title for the ingredients section to make it easier to understand the form.
+材料を追加するためのUIを追加しましょう。アイデアは、2つの**テキスト入力**（1つは量用、もう1つは材料の名前用）と、材料を追加する**ボタン**を持つことです。また、追加するにつれて材料を表示する**リピータ**も必要です。そのリピータは、以前作成した`Ingredient List Item`コンポーネントを再利用できます。もちろん、**リピータ**は材料を保持する**配列**からアイテムを取得します。材料セクションのフォームをわかりやすくするために、材料セクションのタイトルとして**テキスト**も追加しましょう。
 
-All the components are put in a **Group** called `Ingredient Section` to make them easy to handle as a compound.
+すべてのコンポーネントは`Ingredient Section`という**グループ**に入れて、複合体として簡単に扱えるようにします。
 
 <div className="ndl-image-with-background xl">
 

@@ -1,25 +1,25 @@
 ---
-title: Emal Verification
+title: メール検証
 hide_title: true
 ---
 
-# Email Verification
+# メール検証
 
-Cloud functions play an important role when creating different log in and sign up flows. Using the nodes [Sign Up](/nodes/data/user/sign-up), [Log In](/nodes/data/user/log-in) and [Log Out](/nodes/data/user/log-out) you can create the most basic flow that will have the user sign up with a username, optionally email, and password and log in with username and password.
+クラウド機能は、さまざまなログインおよびサインアップフローを作成する際に重要な役割を果たします。[Sign Up](/nodes/data/user/sign-up)、[Log In](/nodes/data/user/log-in)、[Log Out](/nodes/data/user/log-out)のノードを使用して、ユーザーがユーザー名、オプションでメール、パスワードでサインアップし、ユーザー名とパスワードでログインする最も基本的なフローを作成できます。
 
 :::note
 
-It's common to use email for both **username** and **email** when signing up, so you only ask the user for email and password, one less thing to remeber right.
+サインアップ時に**ユーザー名**と**メール**の両方にメールを使用することが一般的です。つまり、ユーザーにメールとパスワードのみを求めるため、覚えるべきことが1つ少なくなります。
 
 :::
 
-Once logged in you can use the [Access Control](/docs/guides/cloud-data/access-control) functions of the cloud database to control what a user has access to and not. The built in role system will allow you to create features like teams/groups of users.
+ログインしたら、クラウドデータベースの[Access Control](/docs/guides/cloud-data/access-control)機能を使用して、ユーザーがアクセスできるものとできないものを制御できます。組み込みのロールシステムを使用して、ユーザーのチーム/グループのような機能を作成できます。
 
-This is a great way to get started and focus on building your application. But once you start getting to the point where you want to expose it to more users often you need a more solid sign up and log in flow. The first addition is likely the need to verify the email of users and allow them to reset the password and this is what we will cover in this guide.
+これは、アプリケーションの構築に集中し始める素晴らしい方法です。しかし、より多くのユーザーに公開し始めるところに達すると、より堅牢なサインアップおよびログインフローが必要になることがよくあります。最初の追加は、おそらくユーザーのメールを検証し、パスワードをリセットできるようにする必要があることです。このガイドではそれについて説明します。
 
-There is a project template that contains a more complete sign up and log in flow that also covers sending emails to users on sign up, editing the profile etc, and it uses cloud functions to do some of these things that cannot be performed from the frontend for security reasons (cloud functions always have full access to the database).
+サインアップ時にユーザーにメールを送信し、プロファイルの編集などをカバーする、より完全なサインアップおよびログインフローを含むプロジェクトテンプレートがあります。これは、フロントエンドからセキュリティ上の理由で実行できないいくつかのことを行うためにクラウド機能を使用します（クラウド機能は常にデータベースへの完全なアクセス権を持っています）。
 
-You can either start a new project from the template, or you can import the cloud functions into your existing project. We will review them here in this guide, case by case.
+テンプレートから新しいプロジェクトを開始するか、クラウド機能を既存のプロジェクトにインポートできます。ここでは、このガイドでケースバイケースでそれらをレビューします。
 
 <div className="ndl-image-with-background l">
 
@@ -27,9 +27,9 @@ You can either start a new project from the template, or you can import the clou
 
 </div>
 
-## Settings
+## 設定
 
-In order to make the email verification process work there are a few configuration parameters that need to be provided. This is done by opening up the dashboard for your **Cloud Serivce** and navigating to the **Config** tab using the sidebar. You can learn more about config parameters by looking at the [Config](/nodes/data/cloud-data/config) node. The configuration parameters you need a are shown below:
+メール検証プロセスを機能させるためには、いくつかの設定パラメーターを提供する必要があります。これは、**クラウドサービス**のダッシュボードを開き、サイドバーを使用して**Config**タブに移動することで行われます。設定パラメーターについての詳細は、[Config](/nodes/data/cloud-data/config)ノードを見ることで学ぶことができます。必要な設定パラメーターは以下のとおりです：
 
 <div className="ndl-image-with-background xl">
 
@@ -37,21 +37,23 @@ In order to make the email verification process work there are a few configurati
 
 </div>
 
-- `EmailVerificationDomain` Here you need to enter the domain where your application is deployed starting with `https://`. This is used for the links in the verification emails. When running locally this will automatically be `http://localhost:8574`, this is where the local Noodl web server is running.
-- `EmailVerificationFrom` This is where you put the email address that should be used as the "from" email when sending verification emails to users. It's important that this is a valid email with **Send Grid** (the email sending service we use for the application).
-- `SendGridAPIKey` The project template and email verification prefabs use [SendGrid](https://sendgrid.com/) as an email service, to use it you need to sign up and get an account (it's free to test). Then create an API Key and put it in the config. More info on how to use Send Grid with Noodl can be found [here](/library/prefabs/sendgrid).
+- `EmailVerificationDomain` ここには、アプリケーションがデプロイされているドメインを`https://`から始めて入力する必要があります。これは、検証メールのリンクに使用されます。ローカルで実行している場合、これは自動的に`http://localhost:8574`になります。これは、ローカルのNoodl Webサーバーが実行されている場所です。
+- `EmailVerificationFrom` これは、ユーザーに検証メールを送信する際に「from」メールとして使用されるメールアドレスを入れる場所です。これが**Send Grid**（アプリケーションで使用しているメール送信サービス）で有効なメールであることが重要です。
+- `SendGridAPIKey` プロジェクトテンプレートとメール検証プリファブは、メールサービスとして[SendGrid](https://sendgrid.com/)を使用しています。これを使用するには、アカウントにサインアップして取得する必要があります（テストには無料です）。APIキーを作成し、設定に入れます。NoodlでSend Gridを使用する方法についての詳細は[こちら](/library/prefabs/sendgrid)で見つけることができます。
 
-## Signing up
+## サインアップ
 
-Signing up is done with the [Sign Up](/nodes/data/user/sign-up) action node. After the user has successfully signed up the cloud function **Send Verification Email** is called. This function will send an email to the address provided by the user.
+サインアップは、[Sign Up](/nodes/data/user/sign-up)アクションノードで行われます。ユーザーが正常にサインアップした後、クラウド機能**Send Verification Email**が呼び出されます。この機能は、ユーザーに提供されたアドレスにメールを送信します。
 
 <div className="ndl-image-with-background xl">
 
-![](/docs/guides/cloud-logic/email-verification/sign-up-1.png)
+![](/docs/guides/cloud-logic/email-verification/sign-up
+
+-1.png)
 
 </div>
 
-Let's take a closer look at the cloud function. There is no need to dive into the details but it's good to review the main flow and blocks. The cloud function is found in the cloud function tab, in the **Sign Up** folder, it's called **Send Verification Email**. The first this when the function is started is that a **Request Email Verification** action component is used.
+クラウド機能をもう少し詳しく見てみましょう。詳細に深入る必要はありませんが、主要なフローとブロックをレビューするのは良いことです。クラウド機能は、クラウド機能タブの**Sign Up**フォルダにあり、**Send Verification Email**と呼ばれています。機能が開始される最初のこの時、**Request Email Verification**アクションコンポーネントが使用されます。
 
 <div className="ndl-image-with-background xl">
 
@@ -59,9 +61,9 @@ Let's take a closer look at the cloud function. There is no need to dive into th
 
 </div>
 
-This action create a secret token (a random string of characters, sort of a temporary password) that it stores with the current user. This token will later be sent to the user as part of an email. If the email is already verified a signal will be emitted on **Email Is Verified** which we will return as an error result for the cloud function.
+このアクションは、秘密トークン（一時的なパスワードのような、文字のランダムな文字列）を作成し、現在のユーザーと共に保存します。このトークンは後でメールの一部としてユーザーに送信されます。メールがすでに検証されている場合、**Email Is Verified**にシグナルが発行され、クラウド機能のエラー結果として返されます。
 
-The next part is actually sending the email to the user. This is done in the function with the **Format Email** and **Send Email** action components.
+次の部分は、実際にユーザーにメールを送信することです。これは、**Format Email**および**Send Email**アクションコンポーネントを使用して機能内で行われます。
 
 <div className="ndl-image-with-background xl">
 
@@ -69,7 +71,7 @@ The next part is actually sending the email to the user. This is done in the fun
 
 </div>
 
-The **Format Email** action takes as input the verification token and the email of the user and creates an email with a link. You can look at the properties of the **Format Email** node to see the content of the email.
+**Format Email**アクションは、検証トークンとユーザーのメールを入力として受け取り、リンクを含むメールを作成します。**Format Email**ノードのプロパティを見ることで、メールの内容を確認できます。
 
 <div className="ndl-image-with-background l">
 
@@ -77,13 +79,13 @@ The **Format Email** action takes as input the verification token and the email 
 
 </div>
 
-As you can see it creates an email containing an HTML link, this link uses some fancy template syntax.
+見ての通り、HTMLリンクを含むメールが作成されます。このリンクはいくつかの洗練されたテンプレート構文を使用します。
 
-- `$Domain` This will be replaced by the format email node to the domain where your application is deployed, so that the link will take you back to the app. More on this later.
-- `{Token}` This is the generated token from before.
-- `{Email}` This is the email for the user, it will be used to fetch the user and marked the email as verified in the next step.
+- `$Domain` これは、フォーマットメールノードによってアプリケーションがデプロイされたドメインに置き換えられます。これにより、リンクがアプリに戻ります。後ほど詳細を説明します。
+- `{Token}` これは前に生成されたトークンです。
+- `{Email}` これはユーザーのメールであり、次のステップでユーザーを取得してメールを検証済みとしてマークするために使用されます。
 
-The **Format Email** node outputs the final email with the correct values for the above placeholders insterted. This email content is then sent to the **Send Email** node that actually sends the email to the user.
+**Format Email**ノードは、上記のプレースホルダーに正しい値が挿入された最終メールを出力します。このメール内容は、実際にユーザーにメールを送信する**Send Email**ノードに送られます。
 
 <div className="ndl-image-with-background l">
 
@@ -91,15 +93,15 @@ The **Format Email** node outputs the final email with the correct values for th
 
 </div>
 
-That's it. Now the user should have a fresh email with the subject **Email Verification!** in it's inbox. You can edit the **Subject** property of the **Send Email** action.
+それでおしまいです。これで、ユーザーは受信トレイに**Email Verification!**という件名の新しいメールを持っているはずです。**Send Email**アクションの**Subject**プロパティを編集できます。
 
-## Verifyng the email
+## メールの検証
 
-We need one more thing in place for the email verification flow to work. We need the page that the link in the verification email points to. After the **Format Email** action have formatted the email template and inserted the **Token**, **Email** and **Domain** the resulting link will look something like this.
+メール検証フローを機能させるためには、もう1つのことが必要です。検証メールのリンクが指すページが必要です。**Format Email**アクションがメールテンプレートをフォーマットし、**Token**、**Email**、**Domain**を挿入した結果、リンクは次のようになります。
 
 `<a href="https://your-app.sandbox.noodl.app/verify-email?token=abc&email=user@email.com">verify</a>`
 
-This little thing will send the user back to your app (remember you can use `http://localhost:8574` as domain for testing, before your app is deployed) and specifically to the page `/verify-email`. So, let's take a look at the page in the project template.
+この小さなリンクは、ユーザーをアプリに戻します（テストのために`http://localhost:8574`をドメインとして使用できることを覚えておいてください。アプリがデプロイされる前に）そして、`/verify-email`のページに具体的に戻ります。したがって、プロジェクトテンプレートのページを見てみましょう。
 
 <div className="ndl-image-with-background xl">
 
@@ -107,11 +109,13 @@ This little thing will send the user back to your app (remember you can use `htt
 
 </div>
 
-There is a lot of stuff here but the important things is the **Page Inputs** where we get the **Token** and **Email** as part of the query parameters in the link (the stuff after the `?` in the link), these are passed to the **Sign Up / Verify Email** cloud function that is called as soon as the page is loaded with the **Did Mount** signal.
+ここには多くのものがありますが、重要なのは**Page Inputs**です。ここで、リンクのクエリパラメータ（リンクの`?`の後ろのもの）の一部として**Token**と**Email**を取得し、これらは**Sign Up / Verify Email**クラウド機能に渡され、ページがロードされるとすぐに**Did Mount**シグナルで呼び出されます。
 
-If it succeeds, the email was verified and the user is sent to the log in page of the app with the **Navigate** node and a toast message is shown. If it fails, a message is displayed on the screen and a toast is shown using the **Show Toast** component (you can find this among the prefabs and install it into your project, same for the **Loading Spinner**).
+成功した場合、メールが検証され、ユーザーはアプリのログインページに**Navigate**ノードとトーストメッセージが表示されて送られます。失敗した場合、画面にメッセージが表示され、**Show Toast**コンポーネントを使用してトーストが表示されます（これはプリファブの中にあり、プロジェクトにインストールできます。**Loading Spinner**も同様です）。
 
-Once logged in to your app you can inspect the user object by hovering over any **User** node. Here you can see some properties that have been set by the email verification cloud functions.
+アプリにログインしたら、任意の**User**ノードにマウスを合わせることでユーザーオブジェク
+
+トを検査できます。ここでは、メール検証クラウド機能によって設定されたいくつかのプロパティを確認できます。
 
 <div className="ndl-image-with-background l">
 
@@ -119,17 +123,17 @@ Once logged in to your app you can inspect the user object by hovering over any 
 
 </div>
 
-The most important is the **emailVerified** property of the user, this indicates if the user have verified their email of not. In the sign up project template the user is actually send to the home screen of the app even if the email address is not verfied and a banner is shown. You could for instance only enable certain parts of the application if the user have verified their email.
+最も重要なのはユーザーの**emailVerified**プロパティです。これは、ユーザーがメールを検証したかどうかを示します。サインアッププロジェクトテンプレートでは、メールアドレスが検証されていなくても、ユーザーは実際にアプリのホーム画面に送られ、バナーが表示されます。たとえば、ユーザーがメールを検証した場合にのみ、アプリケーションの特定の部分を有効にすることができます。
 
-If the email was not received properly of if the user would like to have another verification email sent you can simply call the **Sign Up / Send Verification Email** cloud function again.
+メールが適切に受信されなかった場合、またはユーザーが別の検証メールを送信したい場合は、単に**Sign Up / Send Verification Email**クラウド機能を再度呼び出すことができます。
 
 :::note
-If you update the email with the **Set User Properties** action node, it will automatically switch the **emailVerified** property of the user to false.
+**Set User Properties**アクションノードでメールを更新すると、ユーザーの**emailVerified**プロパティが自動的にfalseに切り替わります。
 :::
 
-## Reset Password
+## パスワードのリセット
 
-Resetting a user password when it's been lost follows the same pattern as sending an email for verification. First you need to present some sort of UI where the user can enter their email address to recover their password.
+失われたユーザーパスワードをリセットすることは、検証のためのメールを送信するのと同じパターンに従います。まず、ユーザーがパスワードを回復するためにメールアドレスを入力できる何らかのUIを提示する必要があります。
 
 <div className="ndl-image-with-background l">
 
@@ -137,7 +141,7 @@ Resetting a user password when it's been lost follows the same pattern as sendin
 
 </div>
 
-There is a function called **Sign Up / Request Password Reset** that simply accepts an **Email** and it can be called without the user being logged in.
+**Sign Up / Request Password Reset**と呼ばれる関数があり、これは単に**Email**を受け入れ、ユーザーがログインしていなくても呼び出すことができます。
 
 <div className="ndl-image-with-background xl">
 
@@ -145,7 +149,7 @@ There is a function called **Sign Up / Request Password Reset** that simply acce
 
 </div>
 
-The cloud function follow pretty much the same pattern as when sending email verifications. It will send an email to the user with a link containing a secret token just like when veryfing the email address.
+クラウド機能は、メール検証を送信するときとほぼ同じパターンに従います。これは、秘密トークンを含むリンクを使用して、メールアドレスを検証するときと同じように、ユーザーにメールを送信します。
 
 <div className="ndl-image-with-background xl">
 
@@ -153,7 +157,7 @@ The cloud function follow pretty much the same pattern as when sending email ver
 
 </div>
 
-The **Request Password Reset** action will generate the secret token which is passed to the **Format Email** along with the users email. This time it will generate a link to a page called `/reset-password`. You can edit the content of the email in the **Format Email** node.
+**Request Password Reset**アクションは、秘密トークンを生成し、これをユーザーのメールと共に**Format Email**に渡します。今回は、`/reset-password`というページへのリンクを生成します。**Format Email**ノードのメールの内容を編集できます。
 
 <div className="ndl-image-with-background xl">
 
@@ -161,11 +165,11 @@ The **Request Password Reset** action will generate the secret token which is pa
 
 </div>
 
-The resulting link will look something like this:
+結果として得られるリンクは次のようになります：
 
 `<a href="https://your-app.sandbox.noodl.app/reset-password?token=abc&email=user@email.com">link</a>`
 
-The link will take the user to the `/reset-password` page which can contain a **Text Input** where the user can provide the new password.
+このリンクは、ユーザーを`/reset-password`ページに送り、ここにはユーザーが新しいパスワードを提供できる**Text Input**を含めることができます。
 
 <div className="ndl-image-with-background xl">
 
@@ -173,7 +177,7 @@ The link will take the user to the `/reset-password` page which can contain a **
 
 </div>
 
-When the user hits the reset button we will call the **Sign Up / Reset Password** cloud function by supplying the secret token and user email that is received via the query parameters of the link and the **Page Inputs** node.
+ユーザーがリセットボタンを押したとき、リンクのクエリパラメータと**Page Inputs**ノードを介して受け取った秘密トークンとユーザーメールを供給して、**Sign Up / Reset Password**クラウド機能を呼び出します。
 
 <div className="ndl-image-with-background xl">
 
@@ -181,6 +185,6 @@ When the user hits the reset button we will call the **Sign Up / Reset Password*
 
 </div>
 
-Provided that the secret token is correct and have not expired (tokens are valid for 24 hours) the password will be updated. You can then send the user back to the **Log In** page.
+秘密トークンが正しく、有効期限が切れていない場合（トークンは24時間有効です）、パスワードが更新されます。その後、ユーザーを**Log In**ページに送ることができます。
 
-That's it, this is how you use cloud functions to create an email verification and password reset flow. You will use cloud functions for a lot of user management tasks that need to be performed on the backend with full database access.
+それでおしまいです。これが、メール検証とパスワードリセットフローを作成するためにクラウド機能を使用する方法です。バックエンドで完全なデータベースアクセスを必要とするユーザー管理タスクを実行するために、多くの場合、クラウド機能を使用します。

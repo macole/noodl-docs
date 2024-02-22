@@ -1,9 +1,9 @@
 ---
-title: Collaboration
+title: 協働
 hide_title: true
 ---
-# Collaboration
+# 協働
 
-Noodl has a built-in git client to handle version control and make it easy to follow.
+Noodlには組み込みのgitクライアントがあり、バージョン管理を簡単に行い、追跡しやすくなっています。
 
-### [Start learning about version control of Noodl apps](/docs/guides/collaboration/version-control)
+### [Noodlアプリのバージョン管理について学び始める](/docs/guides/collaboration/version-control)

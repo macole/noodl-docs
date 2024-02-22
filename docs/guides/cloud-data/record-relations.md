@@ -1,36 +1,36 @@
 ---
-title: Records Relationships
+title: レコード関係
 hide_title: true
 ---
-# Record Relationships
+# レコード関係
 
-## What you will learn in this guide
+## このガイドで学べること
 
-In this guide we will look into relationships between different **Records** in the database. This could for example be a _pointer_ stored in a **Record** that points to another **Record**. It could also be a "Many to Many" relationship where an **Record** can have a list of _pointers_ to other **Records**.
+このガイドでは、データベース内の異なる**レコード**間の関係について見ていきます。これは例えば、ある**レコード**に格納された別の**レコード**を指す _ポインター_ のようなものです。また、"多対多"の関係性で、一つの**レコード**が他の複数の**レコード**への _ポインター_ のリストを持つこともあります。
 
-This is very useful when you deal with _relational data_, for example if you have a Post **Class** in your database, and you want to keep track of all the **Users** (another **Class**) that liked that post, a **Post** record can store relations to those Users in a property.
+これは、例えばデータベース内にブログ投稿の**クラス**があり、その投稿に「いいね」した**ユーザー**（別の**クラス**）を追跡したい場合など、_リレーショナルデータ_ を扱う際に非常に便利です。
 
-## Overview
+## 概要
 
-We will first look at **Pointers**, i.e. a _One-to-many_ relationship. Then we will look at **Relations**, i.e. _Many-to-many relationshipts_.
+まずは**ポインター**、つまり _一対多_ の関係性について見ていきます。次に、**リレーション**、つまり _多対多の関係性_ について見ていきます。
 
-It's recommended that you have some experience working with Backends, Databases and **Records** to get most out of this guide, so if you haven't already, going through the following guides before is recommended.
+バックエンド、データベース、**レコード**の操作にある程度の経験があることがこのガイドを最大限に活用するために推奨されます。まだの場合は、以下のガイドを先に進めることをお勧めします。
 
--   [Creating a Backend](/docs/guides/cloud-data/creating-a-backend)
--   [Creating a Class](/docs/guides/cloud-data/creating-a-class)
--   [Creating Records](/docs/guides/cloud-data/creating-new-database-records)
+-   [バックエンドの作成](/docs/guides/cloud-data/creating-a-backend)
+-   [クラスの作成](/docs/guides/cloud-data/creating-a-class)
+-   [レコードの作成](/docs/guides/cloud-data/creating-new-database-records)
 
-## Relationships between Records
+## レコード間の関係
 
-If we imagine an App where we have a couple of different **Classes**, say a _Post_ Class that contains blog posts and a _Comment_ Class with comments on these post. The **Records** in these classes need to be related and we need to be able to query these relations.
+例えば、_Post_ クラスがブログ投稿を含み、_Comment_ クラスがこれらの投稿に対するコメントを含むような異なる**クラス**を持つアプリを想像してみましょう。これらのクラスの**レコード**は関連している必要があり、これらの関係をクエリできる必要があります。
 
-## Pointers - One-to-many relationships
+## ポインター - 一対多の関係性
 
-The most simple relationship is a **Pointer**. This type of relationship is often referred to as a _One-to-many_ relationship. For example, a blog _Post_ will have many *Comment*s, but each _Comment_ only belong to one _Post_. To create this kind of relationship we use a property of a special kind called a **Pointer**.
+最も単純な関係は**ポインター**です。このタイプの関係は一般に _一対多_ の関係と呼ばれます。例えば、ブログの_Post_ は多くの*Comment*を持ちますが、各_Comment_ は一つの _Post_ にのみ属します。この種の関係を作成するには、**ポインター**と呼ばれる特別な種類のプロパティを使用します。
 
-A **Pointer** property can reference another **Record** of a certain Class via it's _Id_. In this case we want to reference the _Post_ that is the owner of a _Comment_. So in the _Comment_ class we create a property, let's call it `Owner`, and give it a _Pointer_ type and specify that it should point to _Post_ records.
+**ポインター**プロパティは、その_Id_を介して特定のクラスの別の**レコード**を参照できます。この場合、_Comment_ の所有者である _Post_ を参照したいとします。そこで、`Owner`と呼ぶプロパティを_Comment_ クラスに作成し、_ポインター_ タイプを与えて_Post_ レコードを指すように指定します。
 
-?> This is called a _backward_ relationship, i.e. the _Comment_ points back to the _Post_. If you want to find all _Comments_ for _Post_ you will simply look for all _Comments_ pointing back to the _Post_ you are interested in.
+?> これは _Comment_ が _Post_ を指すという、_後方_ の関係と呼ばれます。_Post_ に対する全ての_Comment_ を見つけたい場合は、単純にその_Post_ に対して指し戻している全ての_Comment_ を探します。
 
 <div className="ndl-image-with-background">
 
@@ -38,7 +38,7 @@ A **Pointer** property can reference another **Record** of a certain Class via i
 
 </div>
 
-Now to set the pointer you can pass in the **id** of a **Post** Record. You could for example do this when you create a new _Comment_ **Record** . It's important the the **Record** you point to is of the right type. In this case a _Post_.
+ポインターを設定するには、**Post** レコードの **id** を渡すことができます。例えば、新しい_Comment_ **レコード** を作成するときにこれを行うことができます。ポインターとして指定された**レコード**が正しいタイプであることが重要です。この場合は_Post_です。
 
 <div className="ndl-image-with-background l">
 
@@ -46,7 +46,7 @@ Now to set the pointer you can pass in the **id** of a **Post** Record. You coul
 
 </div>
 
-Later, if you want to retrieve all the _Comments_ for a _Post_ you simply use a **Query Records** node and ask for all **Comments** where the **Owner** property points to the specific comment.
+後で、_Post_ に対する全ての_Comment_ を取得したい場合は、**Query Records** ノードを使用して、**Owner** プロパティが特定のコメントを指している全ての**Comments**を求めるだけです。
 
 <div className="ndl-image-with-background l">
 
@@ -54,7 +54,7 @@ Later, if you want to retrieve all the _Comments_ for a _Post_ you simply use a 
 
 </div>
 
-The specific **id** we are looking for, we provide through an input.
+具体的に探している**id**は、入力を通じて提供します。
 
 <div className="ndl-image-with-background l">
 
@@ -62,7 +62,7 @@ The specific **id** we are looking for, we provide through an input.
 
 </div>
 
-You can inspect your relationships in the data browser, if you go ahead and open the _Dashboard_ for the cloud services and find the _Comment_ Class. There you can see the record _Id_ that the pointer currently points to, and you can click it to jump to that particular record.
+関係性をデータブラウザで調べることができます。クラウドサービスの_ダッシュボード_を開いて_Comment_ クラスを見つけると、ポインターが現在指しているレコード_Id_を見ることができ、クリックするとその特定のレコードにジャンプできます。
 
 <div className="ndl-image-with-background">
 
@@ -70,11 +70,13 @@ You can inspect your relationships in the data browser, if you go ahead and open
 
 </div>
 
-## Relation - Many-to-many relationships
+## リレーション - 多対多の関係性
 
-Let's say that we introduce a new **Class** called _Group_, and a _Post_ can be part of many different *Group*s. In this case we cannot use the backwards pointing mechanism from the previous example. One single pointer from the _Post_ to the _Group_ would not work, since a _Post_ can be part of many _Groups_. Instead we need to use a concept called **Relation**. You need to start by creating a new property of the _Group_ **Record** that have the type _Relation_ and like pointers you need to specify the _Type_ and give it a name.
+新しい**クラス** _Group_ を導入し、_Post_ が多くの異なる*Group*の一部になることができるとしましょう
 
-?> So in this case it becomes a _forward_ reference, the _Group_ has the relation property.
+。この場合、前の例での後方向のポインティングメカニズムを使用することはできません。_Post_ から_Group_ への単一のポインターでは機能しません。なぜなら、_Post_ は多くの_Groups_ の一部である可能性があるからです。代わりに**リレーション**と呼ばれる概念を使用する必要があります。_Group_ **レコード**に_Relation_ タイプの新しいプロパティを作成し、ポインターと同様に_タイプ_を指定して名前を付ける必要があります。
+
+?> この場合、_前方_ の参照になります。つまり、_Group_ がリレーションプロパティを持っています。
 
 <div className="ndl-image-with-background">
 
@@ -82,9 +84,9 @@ Let's say that we introduce a new **Class** called _Group_, and a _Post_ can be 
 
 </div>
 
-It can be a bit tricky in the beginning to get the hang of relations. One way to look at it is this: In this example, A _Group_ have a list of pointers to all its _Posts_ that belongs to it. So a specific _Group_ can easily find its _Posts_ by following these pointers. The inverse question, a _Post_ who wants to know which _Groups_ it belongs to (it can be more than one!) can query for all _Groups_ that have a pointer in its list that's pointing at them.
+リレーションを扱うのは最初は少し難しいかもしれません。これを見る一つの方法は、この例では、_Group_ がそれに属する全ての_Posts_ をそのリストにあるポインターをたどることで簡単に見つけることができるということです。逆の質問、つまり_Post_ が自分が属している_Groups_ を知りたい場合（複数の可能性がある！）は、そのリストに自分を指しているポインターを持っている全ての_Groups_ をクエリすることで見つけることができます。
 
-When you have a _Relation_ property on a **Record** you need to use the nodes [Add Record Relation](/nodes/data/cloud-data/add-record-relation) and [Remove Record Relation](/nodes/data/cloud-data/remove-record-relation) to manage them. In these nodes you need to provide the **id** of the **Record** that has the relation property (Group in our case) and the **id** of the **Record** you want to add or remove to the relationship.
+**レコード**に_Relation_ プロパティがある場合、[Add Record Relation](/nodes/data/cloud-data/add-record-relation) と [Remove Record Relation](/nodes/data/cloud-data/remove-record-relation) ノードを使用して管理する必要があります。これらのノードでは、リレーションプロパティを持つ**レコード**の**id**（この場合はGroup）と、関係に追加または削除したい**レコード**の**id**を提供する必要があります。
 
 <div className="ndl-image-with-background">
 
@@ -98,7 +100,7 @@ When you have a _Relation_ property on a **Record** you need to use the nodes [A
 
 </div>
 
-In the same manner as with _Pointers_ you can go to the _Dashboard_ of the cloud services and find the relations of your models in the table. You can click _View relation_ to get a table of the relations for this particular model.
+_Pointers_ と同様に、クラウドサービスの_ダッシュボード_に行ってモデルの関係を表で見ることができます。_View relation_ をクリックすると、この特定のモデルの関係の表が表示されます。
 
 <div className="ndl-image-with-background">
 
@@ -106,9 +108,9 @@ In the same manner as with _Pointers_ you can go to the _Dashboard_ of the cloud
 
 </div>
 
-Finally you need to be able to query the relations. You have two cases:
+最後に、関係をクエリする必要があります。2つのケースがあります：
 
-1. Either you want to find all _Post_ that are related to a _Group_. The you should create a **Query Records** of the class _Post_ (you want _Posts_ back from the query). You can then set up the filter according to the image below
+1. _Group_ に関連する全ての_Post_ を見つけたい場合。その場合、_Post_ のクラスの**Query Records**を作成します（クエリから_Posts_を返したい）。次に、以下の画像に従ってフィルターを設定できます
 
 <div className="ndl-image-with-background l">
 
@@ -116,9 +118,9 @@ Finally you need to be able to query the relations. You have two cases:
 
 </div>
 
-Note that you have to specify the name of the relation property in the class having the property (_Group_ in this case) as well.
+プロパティを持っているクラス（この場合は_Group_）のリレーションプロパティの名前も指定する必要があることに注意してください。
 
-2. If you want to make the inverse query, that is you want to ask for all _Groups_ that relates to a post, you create a **Query Records** node with the class _Group_ (you want _Groups_ back from the query). have a _Post_ **Record** (you have the _Id_ of a _Post_ **Record**) and you want to find all *Group*s that it belongs to you would use this javascript query in a **Query Records** that is set to the **Group** class.
+2. 逆のクエリを行いたい場合、つまり_Post_ に関連する全ての_Groups_ を求めたい場合は、_Group_ のクラスで**Query Records** ノードを作成します（クエリから_Groups_を返したい）。_Post_ **レコード**を持っていて（_Post_ **レコード**の_Id_を持っていて）、それに属している全ての_Groups_を見つけたい場合、**Group** クラスに設定された**Query Records**で以下のjavascriptクエリを使用します。
 
 ```javascript
 where({
@@ -126,4 +128,4 @@ where({
 })
 ```
 
-As you can see above you must also make sure that you use the correct relation field, in this case _posts_ on the _Group_ collection.
+上記のように、_Group_ コレクションの関係フィールド、この場合は_posts_を正しく使用することも確認する必要があります。
