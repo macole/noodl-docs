@@ -6,7 +6,7 @@ title: Noodl.Variables
 
 # Noodl.Variables
 
-Variables are the simplest form of global data model in Noodl. You can learn more about variables in the [guide](/docs/guides/data/variables). You can access all variables in your application trough the `Noodl.Variables` object. Changing a variable will trigger all connections to be updated for all **Variable** nodes in your project with the corresponding variable name.
+変数は、Noodlにおける最も単純な形のグローバルデータモデルです。変数についての詳細は、[ガイド](/docs/guides/data/variables)で学ぶことができます。`Noodl.Variables` オブジェクトを通じて、アプリケーション内のすべての変数にアクセスできます。変数を変更すると、プロジェクト内の対応する変数名を持つすべての **Variable** ノードのすべての接続が更新されます。
 
 <div className="ndl-image-with-background xl">
 
@@ -15,15 +15,15 @@ Variables are the simplest form of global data model in Noodl. You can learn mor
 </div>
 
 ```javascript
-// This will change the variable named MyVariable
-// and trigger all variable nodes in your project
-Noodl.Variables.MyVariable = "Hello";
+// これにより、MyVariable という名前の変数が変更され、
+// プロジェクト内のすべての変数ノードがトリガーされます
+Noodl.Variables.MyVariable = "こんにちは";
 
-// Use this if you have spaces in your variable name
+// 変数名にスペースがある場合はこれを使用します
 Noodl.Variables["My Variable"] = 10;
 
 Noodl.Variables.userName = "Mickeeeey";
 
-// Reading variables
+// 変数の読み取り
 console.log(Noodl.Variables.userName);
 ```

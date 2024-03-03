@@ -6,14 +6,14 @@ title: Noodl.Users
 
 # Noodl.Users
 
-The **Noodl.Users** object let's you access the current session user.
+**Noodl.Users** オブジェクトを使うと、現在のセッションユーザーにアクセスできます。
 
 #### **`Noodl.Users.logIn(options)`**
 
-This function will attempt to login to create a user session. After a successful login you can access the user object with `Noodl.Users.Current`
+この関数はユーザーセッションを作成するためのログインを試みます。ログインに成功すると、`Noodl.Users.Current` でユーザーオブジェクトにアクセスできます。
 
 ```javascript
-// On the frontend you log in and access the user via Noodl.Users.Current
+// フロントエンドでログインして Noodl.Users.Current でユーザーにアクセス
 await Noodl.Users.logIn({
   username: "my-username",
   password: "my-password",
@@ -21,7 +21,7 @@ await Noodl.Users.logIn({
 
 console.log(Noodl.Users.Current.UserId);
 
-// When running in a cloud function it also returns the user object
+// クラウドファンクションで実行すると、ユーザーオブジェクトも返されます
 const user = await Noodl.Users.logIn({
   username: "my-username",
   password: "my-password",
@@ -32,8 +32,8 @@ console.log(user.sessionToken);
 
 #### **`Noodl.Users.signUp(options)`**
 
-**Only available on the frontend**  
-This function will attempt to sign up a new user, and if successful that user will become the current user session. Username, email and password are required options and properties is optional.
+**フロントエンドでのみ利用可能**  
+この関数は新しいユーザーのサインアップを試み、成功するとそのユーザーが現在のユーザーセッションになります。ユーザーネーム、メール、パスワードは必須オプションで、プロパティはオプションです。
 
 ```javascript
 await Noodl.Users.signUp({
@@ -48,11 +48,11 @@ await Noodl.Users.signUp({
 
 #### **`Noodl.Users.become(sessionToken)`**
 
-**Only available on the frontend**  
-This function will attempt to login a user with an existing session token. Session tokens can be created in cloud functions e.g. using the `impersonate` function. After a successful login you can access the user object with `Noodl.Users.Current`
+**フロントエンドでのみ利用可能**  
+この関数は、既存のセッショントークンでユーザーをログインさせようとします。セッショントークンは、たとえば `impersonate` 関数を使用してクラウドファンクションで作成できます。ログインに成功すると、`Noodl.Users.Current` でユーザーオブジェクトにアクセスできます。
 
 ```javascript
-// Call this from a function node with Inputs.SessionToken
+// Inputs.SessionToken を持つ関数ノードから呼び出します
 try {
   await Noodl.Users.become(Inputs.SessionToken);
 } catch (e) {
@@ -60,23 +60,23 @@ try {
   throw e;
 }
 
-// You can now access the user
+// これでユーザーにアクセスできます
 const userId = Noodl.Users.Current.UserId;
 
 Outputs.Success();
 ```
 
-#### **`Noodl.Users.impersonate(username,options)`**
+#### **`Noodl.Users.impersonate(username, options)`**
 
-**Only available in cloud functions**  
-With this function you can get a session token for a user that you can later send to the client to log that user in. This does not require a password and must be run on a cloud function (since they all have full access to the database). You can provide a duration for the session, or it will expire after 24 hours as default. If successful this call will return a user object that contains a session token that you can return to the client and use with the `become` function.
+**クラウドファンクションでのみ利用可能**  
+この関数を使用すると、後でクライアントに送信してそのユーザーをログインさせるためのセッショントークンを取得できます。これにはパスワードは必要なく、データベースへのフルアクセスを持つクラウドファンクションで実行する必要があります。成功すると、クライアントに返すために `become` 関数で使用できるセッショントークンを含むユーザーオブジェクトが返されます。
 
-**installationId** is an optional that is a unique id for the client if you don't want to share sessions between different clients. Most common is to generate a random id on the client and pass to the cloud function when you are logging in.
+**installationId** は、異なるクライアント間でセッションを共有しない場合に使用するオプションの一意のIDです。一般的には、クライアントでランダムなIDを生成し、ログイン時にクラウドファンクションに渡します。
 
 ```javascript
 try {
   const user = await Noodl.Users.impersonate("test@email.com", {
-    duration: 1 * 60 * 60 * 1000, // have the session last 1 hour
+    duration: 1 * 60 * 60 * 1000, // セッションを1時間持続させる
     installationID: "xyz",
   });
 
@@ -90,23 +90,23 @@ try {
 
 #### **`Noodl.Users.Current`**
 
-This function will return the current user object and properties if one exists.
+この関数は、存在する場合、現在のユーザーオブジェクトとプロパティを返します。
 
 ```javascript
 const user = Noodl.Users.Current;
 if (user) {
-  // A user is logged in
-  console.log(user.UserId); // the user id of the current user
+  // ユーザーがログインしている
+  console.log(user.UserId); // 現在のユーザーのユーザーID
 
   console.log(user.Properties.SomeProperty);
 } else {
-  // No user session
+  // ユーザーセッションがありません
 }
 ```
 
 #### **`Noodl.Users.Current.fetch()`**
 
-This function will fetch that laters properties of the user object from the cloud database. It will throw an exception if the user session has expired.
+この関数は、クラウドデータベースからユーザーオブジェクトの最新のプロパティを取得します。ユーザーセッションが期限切れの場合、例外をスローします。
 
 ```javascript
 await Noodl.Users.Current.fetch();
@@ -114,8 +114,8 @@ await Noodl.Users.Current.fetch();
 
 #### **`Noodl.Users.Current.save()`**
 
-This function will attempt to save the properties of the current user. If you have made changes to the **current()** user object you will need to call this function to write the changes to the backend.
-If the `password` has been updated it will terminate all the sessions so the user has to login again.
+この関数は、現在のユーザーのプロパティを保存しようとします。**current()** ユーザーオブジェクトに変更を加えた場合、バックエンドに変更を書き込むためにこの関数を呼び出す必要があります。
+`password` が更新された場合、すべてのセッションが終了し、ユーザーは再度ログインする必要があります。
 
 ```javascript
 await Noodl.Users.Current.save();
@@ -123,33 +123,35 @@ await Noodl.Users.Current.save();
 
 #### **`Noodl.Users.Current.logOut()`**
 
-**Only available on the frontend**  
-This function will log out the current user and terminate the session.
+**フロントエンドでのみ利用可能**  
+この関数は、現在のユーザーをログアウトし、セッションを終了します。
 
 ```javascript
 await Noodl.Users.Current.logOut();
 ```
 
-#### **`Noodl.Users.on(eventName,callback)`**
+#### **`Noodl.Users.on(eventName, callback)`**
 
-**Only available on the frontend**  
-You can use this function to listen for events related to the user service.
+**フロントエンド
+
+でのみ利用可能**  
+この関数を使用して、ユーザーサービスに関連するイベントをリッスンできます。
 
 ```javascript
 Noodl.Users.on("sessionLost", () => {
-  // This is called when the session has expired
+  // セッションが期限切れの場合に呼び出されます
 });
 
 Noodl.Users.on("loggedIn", () => {
-  // This is called when a user has successfully logged in
+  // ユーザーが正常にログインした場合に呼び出されます
 });
 
 Noodl.Users.on("loggedOut", () => {
-  // This is called when a user has successfully logged out
+  // ユーザーが正常にログアウトした場合に呼び出されます
 });
 ```
 
-#### **`Noodl.Users.off(eventName,callback)`**
+#### **`Noodl.Users.off(eventName, callback)`**
 
-**Only available on the frontend**  
-You use this function to remove an event listener from a specific event.
+**フロントエンドでのみ利用可能**  
+この関数を使用して、特定のイベントからイベントリスナーを削除します。

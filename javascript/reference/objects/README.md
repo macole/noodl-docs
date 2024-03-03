@@ -6,12 +6,12 @@ title: Noodl.Objects
 
 # Noodl.Objects
 
-One step above **Variable**s are **Object**s,
-this is a global data model of Noodl objects.
-Each object is referenced with an **Id** and can contain a set of properties.
-You can access all objects in your project through their **Id** and the `Noodl.Objects` prefix.
-Change a property of an object will trigger all connections from object nodes with the corresponding **Id** and property.
-You can learn more about objects and how you use them in your Noodl applications [here](/docs/guides/data/objects).
+**Variable**よりも上の階層にあるのが**Object**です。
+これはNoodlオブジェクトのグローバルデータモデルです。
+各オブジェクトは**Id**で参照され、一連のプロパティを含むことができます。
+`Noodl.Objects`プレフィックスとその**Id**を使用して、プロジェクト内のすべてのオブジェクトにアクセスできます。
+オブジェクトのプロパティを変更すると、対応する**Id**とプロパティを持つオブジェクトノードからのすべての接続がトリガーされます。
+Noodlアプリケーションでのオブジェクトの使用方法とその詳細については、[こちら](/docs/guides/data/objects)で学ぶことができます。
 
 <div className="ndl-image-with-background xl">
 
@@ -20,22 +20,22 @@ You can learn more about objects and how you use them in your Noodl applications
 </div>
 
 ```javascript
-// This will change the property MyProperty
-// of object with id MyObjectId and trigger
-// all object nodes (with that id) in your project
-Noodl.Objects.MyObjectId.MyProperty = "Hello";
+// これにより、プロパティMyPropertyが変更されます
+// idがMyObjectIdのオブジェクトのプロパティが変更され、
+// プロジェクト内のすべてのオブジェクトノード（そのidを持つもの）がトリガーされます
+Noodl.Objects.MyObjectId.MyProperty = "こんにちは";
 
-// Use this notation of that object id contains spaces
-Noodl.Objects["Form Values"].input_text = "Whoops";
+// この表記法は、そのオブジェクトのidにスペースが含まれている場合に使用します
+Noodl.Objects["Form Values"].input_text = "おっと";
 
-Noodl.Objects["Form Values"]["A property with spaces"] = 20;
+Noodl.Objects["Form Values"]["スペースを含むプロパティ"] = 20;
 
-// Reading an object property
+// オブジェクトのプロパティを読み込む
 console.log(Noodl.Objects.CurrentUser.Name);
 
-// This will set all properties of the object you assign with
-// to the object with id "SomeId"
-// You cannot set the id property this way,
-// that property will be ignored if part of the object you assign
+// これにより、割り当てたオブジェクトのすべてのプロパティが
+// id "SomeId" のオブジェクトに設定されます
+// この方法では、idプロパティを設定することはできません。
+// 割り当てるオブジェクトの一部である場合、そのプロパティは無視されます
 Noodl.Objects.SomeId = { ... }
 ```

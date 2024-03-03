@@ -6,25 +6,25 @@ title: Noodl.Navigation
 
 # Noodl.Navigation
 
-**Only available on the frontend**  
-The **Noodl.Navigation** service lets you perform navigation from functions and scripts.
+**フロントエンドでのみ利用可能**  
+**Noodl.Navigation** サービスを使用すると、関数やスクリプトからナビゲーションを実行できます。
 
-#### **`Noodl.Navigation.showPopup(componentPath,parameters)`**  
-This function will show the provided visual component as a popup.
+#### **`Noodl.Navigation.showPopup(componentPath, parameters)`**  
+この関数は、提供されたビジュアルコンポーネントをポップアップとして表示します。
 
 ```javascript
 const result = await Noodl.Navigation.showPopup("#mysheet/mypopupcomponent", {
-  Message: "hello",
+  Message: "こんにちは",
 });
 
-console.log(result.action); // The action used to close the popup
-console.log(result.parameters); // The close parameters
+console.log(result.action); // ポップアップを閉じるために使用されたアクション
+console.log(result.parameters); // 閉じるパラメーター
 ```
 
-The **parameters** are provided to the component as inputs, and must match the component input names.
+**parameters** はコンポーネントの入力として提供され、コンポーネントの入力名と一致する必要があります。
 
-#### **`Noodl.Navigation.navigate(routerName,targetPageName,parameters)`**  
-This function will navigate on a given page router, identified with **routerName**, to a provided page, identified with **targetPageName** (the path to the page component), and give it the parameters provided in **parameters**.
+#### **`Noodl.Navigation.navigate(routerName, targetPageName, parameters)`**  
+この関数は、**routerName** で識別された特定のページルーターでナビゲートし、**targetPageName**（ページコンポーネントへのパス）で識別されたページに移動し、**parameters** で提供されたパラメーターを与えます。
 
 ```javascript
 Noodl.Navigation.navigate("Main", "#mysheet/DetailsPage", {
@@ -32,8 +32,8 @@ Noodl.Navigation.navigate("Main", "#mysheet/DetailsPage", {
 });
 ```
 
-#### **`Noodl.Navigation.navigateToPath(path,query)`**  
-This function will navigate to a specific url path. You can provide query parameters as an object. The function will use the current path mode selected in the project, hash or path.
+#### **`Noodl.Navigation.navigateToPath(path, query)`**  
+この関数は特定のURLパスにナビゲートします。オブジェクトとしてクエリパラメーターを提供できます。この関数は、プロジェクトで選択された現在のパスモード、ハッシュまたはパスを使用します。
 
 ```javascript
 Noodl.Navigation.navigateToPath("/main/details/" + theClickedObjectId, {

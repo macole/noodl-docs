@@ -1,5 +1,5 @@
 ---
-title: Build script that generate Sitemap and static pages
+title: サイトマップと静的ページの生成用ビルドスクリプト
 hide_title: true
 ---
 
@@ -7,29 +7,28 @@ hide_title: true
   <meta name="robots" content="noindex,nofollow,noarchive" />
 </head>
 
-# Generate a Sitemap and static pages
+# サイトマップと静的ページの生成
 
-Having a `sitemap.xml` is very important for SEO,
-so that search engines can build up a good map on the website.
+SEOにとって非常に重要なのが`sitemap.xml`の存在です。
+これにより、検索エンジンはウェブサイトの良いマップを作成できます。
 
-With Noodl we can create build scripts that will alter the files after building.
-What is really cool with this feature is that you can find all the information on
-how the project is built, so we can find all the Pages nodes and generate a nice
-sitemap and even create static index.html files to improve the SEO even more!
+Noodlでは、ビルド後にファイルを変更するビルドスクリプトを作成できます。
+この機能の本当にクールな点は、プロジェクトがどのように構築されたかに関する情報をすべて見つけることができ、
+すべてのページノードを見つけて素敵なサイトマップを生成し、さらに静的なindex.htmlファイルを作成してSEOをさらに向上させることができることです！
 
-## Examples
+## 例
 
-Here are 2 examples of a script that generates a sitemap from all the pages.
+ここに、すべてのページからサイトマップを生成するスクリプトの2つの例を示します。
 
-### Static pages for Sitemap.xml
+### Sitemap.xmlのための静的ページ
 
-In case you don't have any dynamic pages, this script is really easy to use.
+動的ページがない場合、このスクリプトは非常に簡単に使用できます。
 
 ```js
 const fs = require("fs");
 
 /**
- * Sitemap class that helps us build the sitemap XML.
+ * サイトマップXMLを構築するのに役立つSitemapクラス。
  */
 class Sitemap {
   constructor() {
@@ -66,12 +65,12 @@ class Sitemap {
 module.exports = {
   async onPostBuild(context) {
     /**
-     * this.getPages() returns a flat array of all the pages,
-     * like this:
+     * this.getPages()は、すべてのページのフラットな配列を返します。
+     * 例えば、以下のように：
      *
      *  [
      *      {
-     *          title: "page title",
+     *          title: "ページのタイトル",
      *          path: "/path-1/path-2",
      *      }
      *  ]
@@ -79,28 +78,27 @@ module.exports = {
      */
     const pages = await context.getPages();
 
-    // Create our Sitemap class
+    // Sitemapクラスを作成
     const sitemap = new Sitemap();
 
-    // Loop over all the pages
+    // すべてのページをループ
     pages.forEach((page) => {
-      // Add the page to the sitemap with
-      // the sitemap tags we want to use.
+      // サイトマップに使用したいタグとともにページを追加
       //
-      // Here is what kind of tags there are:
+      // ここに使用できるタグの種類があります：
       // https://www.sitemaps.org/protocol.html
       sitemap.add({
-        // NOTE: In this example the path is not an absolute URL, which is required to make sitemaps work correctly.
+        // 注：この例では、pathは絶対URLではないため、サイトマップが正しく機能するためには必要です。
         loc: page.path,
         changefreq: "weekly",
         priority: 0.5,
       });
     });
 
-    // Write our sitemap.xml to the outputPath
+    // sitemap.xmlをoutputPathに書き込む
     //
-    // if you are deploying via our cloud service
-    // this will also upload the file.
+    // クラウドサービス経由でデプロイする場合、
+    // このファイルもアップロードされます。
     await fs.promises.writeFile(
       `${context.outputPath}/sitemap.xml`,
       sitemap.toXml()
@@ -109,25 +107,24 @@ module.exports = {
 };
 ```
 
-### Dynamic pages for Sitemap.xml
+### Sitemap.xmlのための動的ページ
 
-To make this one work you have to provide the information required by Noodl
-to understand what your dynamic pages have.
+このものを動かすためには、Noodlが動的ページに必要な情報を理解するために必要な情報を提供する必要があります。
 
 ```js
-// We can do that by sending more information to the "getPages" method.
+// 「getPages」メソッドにもっと情報を送ることができます。
 const pages = await context.getPages({
-  // Async function that is called for each page that has variables.
+  // 変数があるページごとに呼び出される非同期関数。
   async expandPaths(route) {
-    // Check the current page path.
+    // 現在のページのパスをチェック。
     if (route.current.path === "page-3/{id}") {
-      // Return a list of our expanded paths.
+      // 拡張されたパスのリストを返す。
       return [
         {
-          title: "My custom title",
+          title: "私のカスタムタイトル",
           path: "page-3/0",
           meta: {
-            description: "My description",
+            description: "私の説明",
             keywords: "",
           },
         },
@@ -140,9 +137,9 @@ const pages = await context.getPages({
       ];
     }
 
-    // Return the default value.
-    // this will not be called unless there is a variable in the path.
-    // So we are returning an invalid path here.
+    // デフォルト値を返す。
+    // パスに変数がある場合にのみ呼び出されます。
+    // ここでは無効なパスを返しています。
     return [
       {
         path: route.current.path,
@@ -153,15 +150,14 @@ const pages = await context.getPages({
 
 // ...
 
-// To access the meta data from the pages we can call
-// pages[0].meta
+// ページのメタデータにアクセスするには
+// pages[0].metaを呼び出す
 ```
 
-### Generate static pages
+### 静的ページの生成
 
-We can expand on the previous example with dynamic pages for Sitemap.xml.
-In this case we want to take all the information and write a index.html file
-for each page.
+Sitemap.xmlのための動的ページの前の例を拡張できます。
+この場合、すべての情報を取得し、各ページに対してindex.htmlファイルを書き込みたいと考えています。
 
 ```js
 const fs = require('fs');
@@ -169,14 +165,16 @@ const path = require('path');
 
 // ...
 
-// Loop over all the pages
+// すべてのページをループ
 for (let index = 0; index < pages.length; index++) {
   const page = pages[index];
 
-  // Create the filepath where we want to save the new index.html file.
-  const pageDir = path.join(context.outputPath, page.path);
+  // 新しいindex.htmlファイルを保存したいファイルパスを作成。
+  const page
 
-  // Generate a index.html file with our custom title and headcode.
+Dir = path.join(context.outputPath, page.path);
+
+  // カスタムタイトルとheadcodeを使ってindex.htmlファイルを生成。
   const content = await context.createIndexPage({
     title: page.title,
     headCode: `
@@ -185,12 +183,12 @@ for (let index = 0; index < pages.length; index++) {
     `,
   });
 
-  // Create all the folders to the path.
+  // パスへのすべてのフォルダを作成。
   await fs.promises.mkdir(pageDir, {
     recursive: true,
   });
 
-  // Save our new index.html file.
+  // 新しいindex.htmlファイルを保存。
   await fs.promises.writeFile(path.join(pageDir, "index.html"), content);
 }
 ```

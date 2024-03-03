@@ -1,13 +1,13 @@
 ---
-title: Weavy Integration
+title: Weavy統合
 hide_title: true
 ---
 
 import ImportButton from '/src/components/importbutton';
 
-# Using Weavy with Noodl
+# NoodlでのWeavyの使用
 
-Weavy is a service that lets you add collaboration features to your app. Chat, feeds and file sharing/editing can be integrated in a fraction of the time it would take to build it from scratch. This template sets up all the user management, authentication and Weavy app registration you need to get started quickly.
+Weavyは、アプリにコラボレーション機能を追加するためのサービスです。チャット、フィード、ファイル共有/編集を、一から構築するのにかかる時間の一部で統合できます。このテンプレートは、素早く始めるために必要なユーザー管理、認証、Weavyアプリ登録を設定します。
 
 <div className="ndl-image-with-background m">
 
@@ -16,21 +16,21 @@ Weavy is a service that lets you add collaboration features to your app. Chat, f
 <ImportButton
   zip="/library/examples/weavy-integration/weavy-template-2.zip"
   cf="/library/examples/weavy-integration/weavy-template-cf.json"
-  name="Weavy Template"
+  name="Weavyテンプレート"
   thumb="/library/examples/weavy-integration/weavy-thumb.png"
 />
 
 </div>
 
-## Prerequisites
+## 前提条件
 
-In order to connect to Weavy, you need a Weavy account with an API key and an Environment URL. If you don't have that already [here's a handy guide](https://www.weavy.com/docs/learn/weavy-account).
+Weavyに接続するためには、WeavyアカウントとAPIキー、環境URLが必要です。まだお持ちでない場合は、[こちらの便利なガイド](https://www.weavy.com/docs/learn/weavy-account)をご覧ください。
 
-## Setting up the backend
+## バックエンドの設定
 
-When you have the API key and Environment URL you need to add them to the **Config** paramters in the Noodl Cloud Service. If you haven't already imported the project template in the thumbnail above, now is the perfect time to do it.
+APIキーと環境URLを入手したら、Noodl Cloud Serviceの**Config**パラメーターにそれらを追加する必要があります。上のサムネイルにあるプロジェクトテンプレートをまだインポートしていない場合は、今がそのチャンスです。
 
-With your newly created project open, click the **Cloud Services** tab in the sidebar, and find the Weavy related cloud service that has been created.
+新しく作成されたプロジェクトを開いて、サイドバーの**Cloud Services**タブをクリックし、作成されたWeavy関連のクラウドサービスを探します。
 
 <div className="ndl-image-with-background ">
 
@@ -38,9 +38,9 @@ With your newly created project open, click the **Cloud Services** tab in the si
 
 </div>
 
-Make sure to click the **Use in editor** button if it isn't already in use. Then click **Open dashboard**.
+**Use in editor**ボタンがすでに使用されていない場合は、クリックしてください。次に**Open dashboard**をクリックします。
 
-Navigate to the **Config** tab in the dashboard. Click the **Create a parameter** button to create two parameters named `WeavyAPIKey` and `WeavyEnvUrl`.
+ダッシュボードの**Config**タブに移動します。**Create a parameter**ボタンをクリックして、`WeavyAPIKey`と`WeavyEnvUrl`という名前の2つのパラメーターを作成します。
 
 <div className="ndl-image-with-background l">
 
@@ -50,13 +50,13 @@ Navigate to the **Config** tab in the dashboard. Click the **Create a parameter*
 
 </div>
 
-These are case sensitive, so make sure to double check that. Also take an extra look at the `Type` and `Requires master key`.
+これらは大文字と小文字を区別するので、確認を忘れないでください。また、`Type`と`Requires master key`にも注意してください。
 
-When this is done, you should have everything you need to get going.
+これで、始めるために必要なすべてが揃いました。
 
-## The template structure
+## テンプレートの構造
 
-The template has two routers, one for the pages that can be accessed by logged out users, and one for the pages that can be accessed when a user has logged in.
+テンプレートには、ログアウトしているユーザーがアクセスできるページと、ユーザーがログインした後にアクセスできるページ用の2つのルーターがあります。
 
 <div className="ndl-image-with-background l">
 
@@ -64,7 +64,7 @@ The template has two routers, one for the pages that can be accessed by logged o
 
 </div>
 
-To be able to use the Weavy apps a user needs to have an account and be logged in. For this there are two pages, called **Signup** and **Login**. You can find all the pages in the **Components Panel**.
+Weavyアプリを使用するには、ユーザーがアカウントを持ち、ログインしている必要があります。このためには、**Signup**と**Login**という2つのページがあります。すべてのページは**コンポーネントパネル**で見つけることができます。
 
 <div className="ndl-image-with-background">
 
@@ -72,9 +72,9 @@ To be able to use the Weavy apps a user needs to have an account and be logged i
 
 </div>
 
-## Creating a Weavy app
+## Weavyアプリの作成
 
-There are three unstyled example pages when logged in. **Chat**, **Files** and **Posts**, that use the respective Weavy apps **Chat**, **Files** and **Posts**. They all contain a basic page layout, but most importantly they feature the **Weavy App** component.
+ログインした後の3つのスタイルが未設定の例示ページがあります。**Chat**、**Files**、**Posts**は、それぞれのWeavyアプリ**Chat**、**Files**、**Posts**を使用しています。それぞれ基本的なページレイアウトを含んでいますが、最も重要なのは**Weavy App**コンポーネントです。
 
 <div className="ndl-image-with-background l">
 
@@ -82,31 +82,33 @@ There are three unstyled example pages when logged in. **Chat**, **Files** and *
 
 </div>
 
-The **Weavy App** component has two purposes - registering a Weavy app in the Weavy environment (if it hasn't already been registered), and rendering it. It has 3 settings out of the box:
+**Weavy App**コンポーネントには2つの目的があります - Weavy環境にWeavyアプリを登録すること（すでに登録されていない場合）、およびそれをレンダリングすること。初期設定では3つの設定があります：
 
-- **UID**: This is the unique ID of the app you want to register.
-- **Type**: The type of Weavy app you want to use.
-- **Height**: The height you want the Weavy app to render in.
+- **UID**: 登録したいアプリの一意のIDです。
+- **Type**: 使用したいWeavyアプリのタイプです。
+- **Height**: Weavyアプリをレンダリングする高さです。
 
-You can pick any string for the UID, but it cannot have any spaces and must contain at least one non-digit character.
+UIDには任意の文字列を選ぶことができますが、スペースを含むことはできず、少なくとも1つの非数字文字を含む必要があります。
 
 :::info
 
-If you created a **Weavy App** with a new UID and it doesn't show up on the page, it might be because the Weavy app has not been regisetered yet. This will be the case the first time you run the template app as well.<br/><br/>
+新しいUIDで**Weavy App**を作成したが、ページに表示されない場合は、Weavyアプリがまだ登録されていない可能性があります。テンプレートアプリを初めて実行する場合も同様です。<br/><br/>
 
-To solve this, try reloading the page that the **Weavy App** component resides in. This will send a request to the Weavy server to register a new app with your new UID.<br/><br/>
+これを解決するには、**Weavy App**コンポーネントが存在するページをリロードしてみてください。これにより、新しいUIDで新しいアプリを登録するためのWeavyサーバーへのリクエストが送信されます。<br/><br/>
 
-The app registration only has to be done once, so this issue will only show up during development.
+アプリの登録は一度だけ行う必要があるので、この問題は開
+
+発中にのみ発生します。
 
 :::
 
-If you change the **Type** of your Weavy App you will also have to give it a new **UID** for the registration to work properly.
+Weavy Appの**Type**を変更する場合、登録が正しく機能するために新しい**UID**を付ける必要があります。
 
-## Modifying the _Weavy App_ component
+## _Weavy App_ コンポーネントの変更
 
-While you can use the **Weavy App** component as is, you will probably want to modify it and make it your own. The best way to do this is to duplicate the component and edit the **Script** node inside of it.
+**Weavy App**コンポーネントをそのまま使用することもできますが、おそらくカスタマイズして自分のものにしたいでしょう。これを行う最良の方法は、コンポーネントを複製して中にある**スクリプト**ノードを編集することです。
 
-This way you can have multiple Weavy apps working differently, and always have a clean backup of the integration.
+この方法では、異なる方法で動作する複数のWeavyアプリを持つことができ、常に統合のクリーンなバックアップがあります。
 
 <div className="ndl-image-with-background">
 
@@ -114,4 +116,4 @@ This way you can have multiple Weavy apps working differently, and always have a
 
 </div>
 
-You can read more about customizing Weavy [here](https://www.weavy.com/docs/reference/uikit-js).
+Weavyのカスタマイズについては、[こちら](https://www.weavy.com/docs/reference/uikit-js)で詳しく読むことができます。

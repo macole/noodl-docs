@@ -1,19 +1,19 @@
 ---
 hide_title: true
 hide_table_of_contents: true
-title: Function node
+title: 関数ノード
 ---
 
 {/*##head##*/}
 
-# Function
+# 関数
 
-This node enables you to add simpler custom JavaScript to your application.
+このノードを使用すると、アプリケーションにカスタムのJavaScriptを簡単に追加できます。
 
-Runs the Javascript:
+JavaScriptの実行:
 
-- When any inputs are updated (if "Run" is not connected to anything)
-- When "Run" is called
+- 入力が更新されたとき（"Run"が何にも接続されていない場合）
+- "Run"が呼び出されたとき
 
 <div className="ndl-image-with-background l">
 
@@ -21,14 +21,14 @@ Runs the Javascript:
 
 </div>
 
-The code runs from top to bottom.
-For more complex custom JavaScript with multiple executon paths and extended control you should use the <span className="ndl-node">Script</span> node.
+コードは上から下へ実行されます。
+より複雑なカスタムJavaScriptを複数の実行パスと拡張された制御で使用する場合は、<span className="ndl-node">Script</span>ノードを使用する必要があります。
 
 {/*##head##*/}
 
-The most basic way to use the node is as an expression,
-any time the inputs are changed the script is run and the outputs are updated.
-E.g. the example above can be used as shown below.
+ノードを使用する最も基本的な方法は式としてであり、
+入力が変更されるたびにスクリプトが実行され、出力が更新されます。
+例えば、上記の例は以下のように使用できます。
 
 <div className="ndl-image-with-background l">
 
@@ -36,19 +36,19 @@ E.g. the example above can be used as shown below.
 
 </div>
 
-## Custom inputs and outputs
+## カスタム入力と出力
 
-In your function script you can use the **Inputs** and **Outputs** object and any properties of these objects that you use in your script will automatically create input and outputs ports.
-So the following script:
+関数スクリプトでは**Inputs**オブジェクトと**Outputs**オブジェクトを使用でき、これらのオブジェクトのプロパティをスクリプトで使用すると、自動的に入力ポートと出力ポートが作成されます。
+したがって、以下のスクリプト：
 
 ```javascript
 Outputs.FullName = Inputs.FirstName + " " + Inputs.LastName;
 ```
 
-Will create the output **FullName** and the inputs **FirstName** and **LastName**.
-Another option is to explicitly specify the inputs and outputs in the properties of the node.
-This will allow you to explicitly specify the types of the inputs and outputs.
-This can be especially useful if the node is connected to **Component Inputs** or **Component Outputs**.
+出力**FullName**と入力**FirstName**と**LastName**を作成します。
+別のオプションは、ノードのプロパティで入力と出力を明示的に指定することです。
+これにより、入力と出力のタイプを明示的に指定できます。
+これは、ノードが**Component Inputs**や**Component Outputs**に接続されている場合に特に便利です。
 
 <div className="ndl-image-with-background">
 
@@ -56,9 +56,9 @@ This can be especially useful if the node is connected to **Component Inputs** o
 
 </div>
 
-## Signal outputs
+## シグナル出力
 
-If you want to send a signal from your **Function** script you can use an output as a function instead of assigning it a value.
+**Function**スクリプトからシグナルを送信したい場合、値を割り当てる代わりに出力を関数として使用できます。
 
 ```javascript
 if (Inputs.Test === true) {
@@ -68,14 +68,14 @@ if (Inputs.Test === true) {
 }
 ```
 
-The code above will automatically create two outputs **TestIsTrue** and **TestIsFalse** that are signals.
-When the inputs are changed and the code is run the node will send a signal on either depending on the content of the **Test** input.
+上記のコードは、シグナルである2つの出力**TestIsTrue**と**TestIsFalse**を自動的に作成します。
+入力が変更されてコードが実行されると、**Test**入力の内容に応じて、ノードはどちらかのシグナルを送信します。
 
-## Controlled execution
+## 制御された実行
 
-Normally the script is run when any of the inputs change, i.e.
-receive new data via connections, but you can also control when the function is run with the **Run** signal input.
-If this input has a connection the script will only run when a signal is received.
+通常、入力が変更されると、つまり
+接続を介して新しいデータを受け取ると、スクリプトが実行されますが、**Run**シグナル入力を使用して関数の実行を制御することもできます。
+この入力に接続がある場合、スクリプトはシグナルを受信したときにのみ実行されます。
 
 <div className="ndl-image-with-background l">
 
@@ -83,19 +83,19 @@ If this input has a connection the script will only run when a signal is receive
 
 </div>
 
-## Inputs
+## 入力
 
-| Data                                             | Description                                                                                                                                                                                         |
+| データ                                             | 説明                                                                                                                                                                                         |
 | ------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-data">Script Inputs</span>  | Here you can list inputs to the function and specify types for the inputs as described above. For each input specified or simply used in the function code an input to the node will be created.    |
-| <span className="ndl-data">Script Outputs</span> | Here you can list outputs to the function and specify types for the outputs as described above. For each output specified or simply used in the function code an input to the node will be created. |
+| <span className="ndl-data">スクリプト入力</span>  | ここでは、上記のように関数への入力をリストして、入力のタイプを指定できます。関数コードで指定されたり単に使用されたりする各入力に対して、ノードへの入力が作成されます。    |
+| <span className="ndl-data">スクリプト出力</span> | ここでは、上記のように関数からの出力をリストして、出力のタイプを指定できます。関数コードで指定されたり単に使用されたりする各出力に対して、ノードへの入力が作成されます。 |
 
-| Signal                                  | Description                                                                                                                      |
+| シグナル                                  | 説明                                                                                                                      |
 | --------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-signal">Run</span> | Send a signal here to run the function. If this input has a connection the function script will not run when inputs are changed. |
+| <span className="ndl-signal">実行</span> | ここにシグナルを送信して関数を実行します。この入力に接続がある場合、入力が変更されたときには関数スクリプトは実行されません。 |
 
-## Outputs
+## 出力
 
-| Data                                      | Description                                 |
+| データ                                      | 説明                                 |
 | ----------------------------------------- | ------------------------------------------- |
-| <span className="ndl-data">Outputs</span> | The outputs defined in the function script. |
+| <span className="ndl-data">出力</span> | 関数スクリプトで定義された出力。 |

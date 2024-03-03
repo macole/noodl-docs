@@ -1,14 +1,14 @@
 ---
 hide_title: true
 hide_table_of_contents: true
-title: Cloud File node
+title: クラウドファイルノード
 ---
 
 {/*##head##*/}
 
-# Cloud File
+# クラウドファイル
 
-Represents a file that has been uploaded to the Noodl Cloud Services and stored as a file property in a **Record**.
+**Record**内のファイルプロパティとしてNoodlクラウドサービスにアップロードされたファイルを表します。
 
 <div className="ndl-image-with-background l">
 
@@ -16,7 +16,7 @@ Represents a file that has been uploaded to the Noodl Cloud Services and stored 
 
 </div>
 
-**Cloud File** is typically used in combination with the [Open File Picker](/nodes/utilities/open-file-picker) and the [Upload File](/nodes/data/cloud-data/upload-file) to upload a file and store a reference to it in the database. Then **Cloud File** is used to retrieve the reference and get the URL or Name of the file.
+**クラウドファイル**は通常、[ファイルピッカーを開く](/nodes/utilities/open-file-picker)と[ファイルをアップロード](/nodes/data/cloud-data/upload-file)と組み合わせて使用され、ファイルをアップロードし、データベース内にそれへの参照を保存します。その後、**クラウドファイル**を使用して参照を取得し、ファイルのURLや名前を取得します。
 
 <div className="ndl-image-with-background l">
 
@@ -25,15 +25,15 @@ Represents a file that has been uploaded to the Noodl Cloud Services and stored 
 </div>
 {/*##head##*/}
 
-## Inputs
+## 入力
 
-| Data                                         | Description                                                                                                                                                                           |
-| -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-data">Cloud File</span> | {/*##input:cloud file##*/}A file that has been stored in the Noodl Cloud Services. Often used in combination with a **Record** to retrieve the **Name** and **URL** of a file.{/*##input##*/} |
+| データ                                           | 説明                                                                                                                                    |
+| ------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
+| <span className="ndl-data">クラウドファイル</span> | {/*##input:cloud file##*/}Noodlクラウドサービスに保存されたファイル。通常は**Record**と組み合わせて、ファイルの**名前**と**URL**を取得するために使用されます。{/*##input##*/} |
 
-## Outputs
+## 出力
 
-| Data                                   | Description                                        |
-| -------------------------------------- | -------------------------------------------------- |
-| <span className="ndl-data">URL</span>  | {/*##output:url##*/}The URL of the file.{/*##output##*/}   |
-| <span className="ndl-data">Name</span> | {/*##output:name##*/}The Name of the file.{/*##output##*/} |
+| データ                                 | 説明                                  |
+| -------------------------------------- | ------------------------------------- |
+| <span className="ndl-data">URL</span>  | {/*##output:url##*/}ファイルのURL。{/*##output##*/}   |
+| <span className="ndl-data">名前</span> | {/*##output:name##*/}ファイルの名前。{/*##output##*/} |

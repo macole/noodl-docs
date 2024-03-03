@@ -1,18 +1,18 @@
-# Module Manifest
+# モジュールマニフェスト
 
 :::note
 
-WIP
+作業中
 
 :::
 
-This document is all you need to know about what is required in the manifest.json file.
+このドキュメントは、manifest.jsonファイルに必要なすべてを知るために必要です。
 
-# React and Node Modules
+# React と Node モジュール
 
 ```json
 {
-  "name": "name",
+  "name": "名前",
   "main": "index.js",
   "dependencies": [
     "http ..."
@@ -21,7 +21,7 @@ This document is all you need to know about what is required in the manifest.jso
 }
 ```
 
-## Iconset
+## アイコンセット
 
 ```json
 {

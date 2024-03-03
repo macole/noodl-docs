@@ -6,11 +6,11 @@ title: Noodl.Files
 
 # Noodl.Files
 
-The **Noodl.Files** service lets you access the cloud services files.
+**Noodl.Files** サービスを使用すると、クラウドサービスのファイルにアクセスできます。
 
-#### **`Noodl.Files.upload(file,options)`**  
-**Only available on the frontend**  
-This function will upload a file to the backend. You can specify a progress callback using the options.
+#### **`Noodl.Files.upload(file, options)`**  
+**フロントエンドでのみ利用可能**  
+この関数はファイルをバックエンドにアップロードします。オプションを使用して進行状況のコールバックを指定できます。
 
 <div className="ndl-image-with-background xl">
 
@@ -30,10 +30,10 @@ console.log(cloudFile.url);
 ```
 
 #### **`Noodl.Files.delete(fileName)`**  
-**Only available in cloud functions**  
-This function will delete a file that has been uploaded to the backend. You need to provide the file name that was returned when the file was uploaded. So not the full `url` but the `hash+filename` returned by the upload function.
+**クラウドファンクションでのみ利用可能**  
+この関数は、バックエンドにアップロードされたファイルを削除します。ファイルがアップロードされたときに返されたファイル名を提供する必要があります。したがって、完全な`url`ではなく、アップロード関数によって返された`hash+filename`です。
 
 ```javascript
-// Can only be done in cloud functions
+// クラウドファンクションでのみ実行可能
 await Noodl.Files.delete(filename);
 ```

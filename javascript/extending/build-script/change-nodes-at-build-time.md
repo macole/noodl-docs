@@ -1,5 +1,5 @@
 ---
-title: Change nodes at build time
+title: ビルド時のノード変更
 hide_title: true
 ---
 
@@ -7,24 +7,24 @@ hide_title: true
   <meta name="robots" content="noindex,nofollow,noarchive" />
 </head>
 
-# Change nodes at build time
+# ビルド時のノード変更
 
 :::note
 
-This is recommended to only use in 2.7.x.
+これは2.7.xでの使用を推奨します。
 
-If using it in 2.6.x, you will change the current project
-which will not be temporary during building.
+2.6.xで使用する場合、現在のプロジェクトが変更され、
+ビルド中に一時的ではなくなります。
 
 :::
 
 ```js
 module.exports = {
   async onPreBuild(context) {
-    // Get all the "Function" nodes
+    // すべての「Function」ノードを取得する
     const functionNodes = context.project.getNodesWithType('JavaScriptFunction');
     functionNodes.forEach((node) => {
-      // Replace all "Hello World" to "Hello" in the scripts
+      // スクリプト内のすべての「Hello World」を「Hello」に置き換える
       node.parameters.functionScript = node.parameters.functionScript
         .replace("Hello World", "Hello");
     });

@@ -1,5 +1,5 @@
 ---
-title: Create a build script
+title: ビルドスクリプトの作成
 hide_title: true
 ---
 
@@ -7,69 +7,68 @@ hide_title: true
   <meta name="robots" content="noindex,nofollow,noarchive" />
 </head>
 
-# Build scripts
+# ビルドスクリプト
 
-Noodl has a way where you can hook into the different build events that
-are triggered from the editor.
+Noodlでは、エディタからトリガーされるさまざまなビルドイベントにフックする方法があります。
 
 :::danger
 
-This is an experimental feature, that might be changed in the future.
+これは実験的な機能であり、将来変更される可能性があります。
 
 :::
 
-### Where to use it?
+### どこで使用するか？
 
-- [Generate a Sitemap and static pages](/javascript/extending/build-script/sitemap-and-seo)
-- [Change nodes at build time](/javascript/extending/build-script/change-nodes-at-build-time)
+- [サイトマップと静的ページの生成](/javascript/extending/build-script/sitemap-and-seo)
+- [ビルド時のノード変更](/javascript/extending/build-script/change-nodes-at-build-time)
 
-## Create a build script
+## ビルドスクリプトの作成
 
-To add a build script it has to be placed inside a folder in the project.
-As long as the file ends with `.build.js` it will be picked up by Noodl.
+ビルドスクリプトを追加するには、プロジェクト内のフォルダに配置する必要があります。
+ファイルが `.build.js` で終わる限り、Noodlによって検出されます。
 
-The execution order of the build scripts are based on alphabetical order.
+ビルドスクリプトの実行順序は、アルファベット順に基づいています。
 
 ```
 my-noodl-project/
     .noodl/
         build-scripts/
-            [HERE]
+            [ここ]
 ```
 
-### Example
+### 例
 
-Here is an example of what kind of events you can listen to:
+ここに、リッスンできるイベントの例を示します：
 
 ```js
 module.exports = {
   async onPreBuild(context) {
-    // Occurs before the build.
+    // ビルド前に発生します。
   },
   async onPostBuild(context) {
-    // Occurs after the build.
+    // ビルド後に発生します。
   },
   async onPreDeploy(context) {
-    // Occurs before the build is deployed.
+    // ビルドがデプロイされる前に発生します。
   },
   async onPostDeploy(context) {
-    // Occurs after the build is deployed.
+    // ビルドがデプロイされた後に発生します。
   },
 };
 ```
 
-## What is Context?
+## Context（コンテキスト）とは？
 
-Context is a little different in each method,
-but generally have the same methods.
+Contextは各メソッドで少し異なりますが、
+一般的には同じメソッドを持っています。
 
 :::note
 
-More documentation to come later!
+後日、さらなるドキュメントが追加されます！
 
 :::
 
-### General
+### 一般
 
 ```ts
 project: ProjectModel;
@@ -96,11 +95,11 @@ activity(options: { message: string; successMessage?: string; }, callback: () =>
 notify(type: 'notice' | 'success' | 'error', message: string): void;
 
 /**
- * Returns a list of all the pages with absolute paths.
+ * 絶対パスでのすべてのページのリストを返します。
  *
  * @returns [
  *    {
- *      title: "page title",
+ *      title: "ページのタイトル",
  *      path: "/path-1/path-2",
  *      meta: {}
  *    },
@@ -112,28 +111,28 @@ getPages(options: {
 }): Promise<readonly PageObject[]>;
 
 /**
- * Create a index.html page similar to the one created for the web app.
+ * ウェブアプリ用に作成されたindex.htmlページを作成します。
  *
- * @returns a string containg the HTML code.
+ * @returns HTMLコードを含む文字列。
  */
 createIndexPage(options: {
   /**
-   * Override the title from project settings.
+   * プロジェクト設定からのタイトルをオーバーライドします。
    *
-   * Default: undefined
+   * デフォルト: undefined
    */
   title?: string;
 
   /**
-   * Append the headcode from the project settings.
+   * プロジェクト設定からのheadcodeを追加します。
    *
-   * Default: undefined
+   * デフォルト: undefined
    */
   headCode?: string;
 }): Promise<string>;
 
 /**
- * Returns a traversal graph of the nodes.
+ * ノードのトラバーサルグラフを返します。
  *
  * @param selector
  * @returns

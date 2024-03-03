@@ -6,27 +6,27 @@ title: Noodl.SEO
 
 # Noodl.SEO
 
-The **Noodl.SEO** API lets you change metatags and document titles without directly accessing the window object, this is required for server-side rendering where we don't have a window.
+**Noodl.SEO** APIを使用すると、windowオブジェクトに直接アクセスせずにメタタグやドキュメントのタイトルを変更できます。これは、windowが存在しないサーバーサイドレンダリングで必要です。
 
 :::info
 
-All of this is only available on the frontend.
+これはすべてフロントエンドでのみ利用可能です。
 
 :::
 
-### Reference
+### リファレンス
 
 #### **`Noodl.SEO.setTitle(value)`**  
-This function updates the window title.
+この関数はウィンドウのタイトルを更新します。
 
 #### **`Noodl.SEO.meta`**  
-Get all the metatags that is currently used.
+現在使用されているすべてのメタタグを取得します。
 
 #### **`Noodl.SEO.clearMeta()`**  
-Clear all the metatags that currently exist.
+現在存在するすべてのメタタグをクリアします。
 
 #### **`Noodl.SEO.getMeta(key)`**  
-Get a specific metatag by key.
+キーで特定のメタタグを取得します。
 
 #### **`Noodl.SEO.setMeta(key, value)`**  
-Set a metatag with key and value.
+キーと値でメタタグを設定します。

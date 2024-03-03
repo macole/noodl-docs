@@ -6,8 +6,8 @@ title: Noodl.Events
 
 # Noodl.Events
 
-**Only available on the frontend**  
-This is the Noodl event emitter, you can use it to receive and send events from your scripts. You can learn more about events in the [guide](/docs/guides/business-logic/events).
+**フロントエンドでのみ利用可能**  
+これはNoodlのイベントエミッターで、スクリプトからイベントを受信および送信するために使用できます。イベントについての詳細は、[ガイド](/docs/guides/business-logic/events)で学ぶことができます。
 
 <div className="ndl-image-with-background xl">
 
@@ -17,11 +17,11 @@ This is the Noodl event emitter, you can use it to receive and send events from 
 
 #### **`Noodl.Events.emit(eventName, data)`**
 
-Send an event. Works well together with _Event Receivers_.
+イベントを送信します。_イベントレシーバー_ とよく連携します。
 
 ```javascript
-Noodl.Events.emit("event name", {
-  value: "hello",
+Noodl.Events.emit("イベント名", {
+  value: "こんにちは",
   someOtherValue: 100,
 });
 ```
@@ -30,32 +30,32 @@ Noodl.Events.emit("event name", {
 
 #### **`Noodl.Events.once(eventName, callback(data))`**
 
-Receive an event. Works together with _Event Senders_
+イベントを受信します。_イベントセンダー_ と連携します。
 
 ```javascript
-Noodl.Events.on("event name", function (eventData) {
+Noodl.Events.on("イベント名", function (eventData) {
   console.log(eventData.value);
 });
 ```
 
 #### **`Noodl.Events.off(eventName, callback(data))`**
 
-Remove an event handler.
+イベントハンドラーを削除します。
 
 ```javascript
 function onEventName(eventData) {
   console.log(eventData.value);
 }
 
-Noodl.Events.on("event name", onEventName);
-Noodl.Events.off("event name", onEventName);
+Noodl.Events.on("イベント名", onEventName);
+Noodl.Events.off("イベント名", onEventName);
 ```
 
-## Features
+## 機能
 
-### Listen to Page Router navigation
+### ページルーターナビゲーションのリスニング
 
-Here is an example of how you can listen to the Page Router navigation events.
+以下は、ページルーターナビゲーションイベントをリスニングする方法の例です。
 
 ```js
 Script.Outputs = {
@@ -63,14 +63,14 @@ Script.Outputs = {
 };
 
 function onNavigated({
-  // The name of the router for example 'Main'.
+  // ルーターの名前。例えば「Main」。
   routerName,
-  // The relative path on this page router.
-  // To get the fullpath, use `window.location.pathname`.
+  // このページルーター上の相対パス。
+  // 完全なパスを取得するには、`window.location.pathname`を使用します。
   path,
   title,
-  // The component name for example '/Pages/MyPage'.
-  // (this is a page in the 'Pages' folder)
+  // コンポーネント名。例えば'/Pages/MyPage'。
+  // （これは「Pages」フォルダ内のページです）
   component
 }) {
   Script.Outputs.Navigated();
@@ -80,8 +80,8 @@ Script.Signals.DidMount = function () {
   Noodl.Events.on("NoodlApp_Navigated", onNavigated);
 };
 
-// OnDestroy is called when the Script node is unmounted.
-// Where we do some cleanup to remove the event listener.
+// OnDestroyは、Scriptノードがアンマウントされたときに呼び出されます。
+// ここで、イベントリスナーを削除するためのクリーンアップを行います。
 Script.OnDestroy = function () {
   Noodl.Events.off("NoodlApp_Navigated", onNavigated);
 };

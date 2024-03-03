@@ -1,16 +1,16 @@
 ---
 hide_title: true
 hide_table_of_contents: true
-title: Script node
+title: スクリプトノード
 ---
 
 {/*##head##*/}
 
-# Script
+# スクリプト
 
-This node allows you to add complex JavaScript to your application.
-Please refer to the [Script Guide](/docs/guides/business-logic/javascript) to learn more about the API.
-But remember - with great power comes great responsibility.
+このノードを使用すると、アプリケーションに複雑なJavaScriptを追加できます。
+APIについて詳しく知るために、[スクリプトガイド](/docs/guides/business-logic/javascript)を参照してください。
+しかし、覚えておいてください - 大きな力には大きな責任が伴います。
 
 <div className="ndl-image-with-background l">
 
@@ -18,13 +18,13 @@ But remember - with great power comes great responsibility.
 
 </div>
 
-In most cases you are better off using the simpler <span className="ndl-node">[Function](/nodes/javascript/function)</span> node for your custom JavaScript.
+ほとんどの場合、カスタムJavaScriptにはよりシンプルな<span className="ndl-node">[Function](/nodes/javascript/function)</span>ノードを使用した方が良いでしょう。
 
-## Getting Started
+## 入門
 
-Reading the Javascript [guide](/docs/guides/business-logic/javascript) gives a broader understanding of how it works.
+Javascript [ガイド](/docs/guides/business-logic/javascript)を読むと、それがどのように機能するかの広い理解を得ることができます。
 
-Here is an example of how you create a function that you can call in the node graph:
+ここでは、ノードグラフ内で呼び出すことができる関数を作成する例を示します：
 
 ```js
 Script.Inputs = {
@@ -38,14 +38,14 @@ Script.Outputs = {
 };
 
 Script.Signals.MyFunction = function (value) {
-  // run javascript code
+  // JavaScriptコードを実行する
   
   Script.Outputs.Value = Script.Inputs.Prefix + " " + Script.Inputs.Value;
   Script.Outputs.Done();
 };
 ```
 
-This can also be done with a setter so you dont have to call the `MyFunction` signal.
+これは、`MyFunction`シグナルを呼び出さなくてもsetterを使用して行うこともできます。
 
 ```js
 Script.Inputs = {
@@ -67,25 +67,25 @@ Script.Setters.Prefix = onChange;
 Script.Setters.Value = onChange;
 ```
 
-### Handling when the node is unmounted
+### ノードがアンマウントされたときの処理
 
-When the node is unmounted like going to a different page, the `OnDestroy` method will be called.
-In this method, you can clean up potential listeners or libraries to keep the app performant.
+ノードが異なるページに移動するなどしてアンマウントされると、`OnDestroy`メソッドが呼び出されます。
+このメソッドでは、アプリのパフォーマンスを保つために、リスナーやライブラリのクリーンアップを行うことができます。
 
 ```js
 Script.OnDestroy = function () {
-  // called when the node is unmounted
+  // ノードがアンマウントされたときに呼び出される
 }
 ```
 
 {/*##head##*/}
 
-## Inputs
+## 入力
 
-The inputs are defined by the content of the script or by explicitly specifying inputs in the properties.
-See the javascript [guide](/docs/guides/business-logic/javascript) for more details.
+入力は、スクリプトの内容やプロパティで明示的に入力を指定することによって定義されます。
+詳細については、javascript [ガイド](/docs/guides/business-logic/javascript)を参照してください。
 
-## Outputs
+## 出力
 
-The outputs are defined by the content of the script or by explicitly specifying outputs in the properties.
-See the javascript [guide](/docs/guides/business-logic/javascript) for more details.
+出力は、スクリプトの内容やプロパティで明示的に出力を指定することによって定義されます。
+詳細については、javascript [ガイド](/docs/guides/business-logic/javascript)を参照してください。

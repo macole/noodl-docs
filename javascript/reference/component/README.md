@@ -1,15 +1,15 @@
 ---
 hide_title: true
 hide_table_of_contents: true
-title: Component
+title: コンポーネント
 ---
 
-# Component
+# コンポーネント
 
-**Only available on the frontend**  
-The `Component` object is ony available in [Function](/nodes/javascript/function) and [Script](/nodes/javascript/script) nodes and it contains things related to the component scope where the **Function** or **Script** node is executing.
+**フロントエンドでのみ利用可能**  
+`Component` オブジェクトは、[Function](/nodes/javascript/function) および [Script](/nodes/javascript/script) ノードでのみ利用可能であり、**Function** や **Script** ノードが実行されているコンポーネントスコープに関連する内容を含んでいます。
 
-`Component.Object` is the [Component Object](/nodes/component-utilities/component-object) of the current component and you can use it just like any other [Noodl.Object](/javascript/reference/object). Most commonly this means accessing the properties of the object. When you set a property any **Component Object** node in this component instance will update accordingly.
+`Component.Object` は現在のコンポーネントの [コンポーネントオブジェクト](/nodes/component-utilities/component-object) であり、他の [Noodl.Object](/javascript/reference/object) と同様に使用できます。これは通常、オブジェクトのプロパティにアクセスすることを意味します。プロパティを設定すると、このコンポーネントインスタンスの**コンポーネントオブジェクト**ノードがそれに応じて更新されます。
 
 <div className="ndl-image-with-background xl">
 
@@ -17,7 +17,7 @@ The `Component` object is ony available in [Function](/nodes/javascript/function
 
 </div>
 
-In the example above the **Function** node called _Update selection_ is modifying the **Component Object** to create a new array for **Selection**. This is done by accessing the **Checkboxes** array in the component object and filtering and mapping that array.
+上記の例では、_Update selection_ と呼ばれる **Function** ノードが **コンポーネントオブジェクト** を変更し、**Selection** のための新しい配列を作成しています。これは、コンポーネントオブジェクト内の **Checkboxes** 配列にアクセスし、その配列をフィルタリングおよびマッピングすることによって行われます。
 
 ```javascript
 Component.Object.Selection = Component.Object.Checkboxes.filter(
@@ -25,9 +25,9 @@ Component.Object.Selection = Component.Object.Checkboxes.filter(
 ).map((o) => ({ Value: o.Value }));
 ```
 
-`Component.ParentObject` is similair but this object is the [Parent Component Object](/nodes/component-utilities/parent-component-object), that is the **Component Object** of the parent component in the visual hierarchy. It is also used like any other [Noodl.Object](/javascript/reference/object).
+`Component.ParentObject` は類似していますが、このオブジェクトは [親コンポーネントオブジェクト](/nodes/component-utilities/parent-component-object)、つまりビジュアル階層内の親コンポーネントの **コンポーネントオブジェクト** です。これも他の [Noodl.Object](/javascript/reference/object) と同様に使用されます。
 
-`Component.RepeaterObject` If this component is the template of a repeater this will contain the object of the items array corresponding to this specific component instance. That is the same object as if you set an object **Id Source** to **From Repeater**, as shown below.
+`Component.RepeaterObject` このコンポーネントがリピーターのテンプレートである場合、このオブジェクトには、この特定のコンポーネントインスタンスに対応するアイテム配列のオブジェクトが含まれます。これは、以下に示すようにオブジェクトの **Id Source** を **From Repeater** に設定した場合と同じオブジェクトです。
 
 <div className="ndl-image-with-background l">
 
@@ -35,7 +35,7 @@ Component.Object.Selection = Component.Object.Checkboxes.filter(
 
 </div>
 
-Below is an example of such an object in a component.
+以下は、コンポーネント内のそのようなオブジェクトの例です。
 
 <div className="ndl-image-with-background l">
 
@@ -43,4 +43,4 @@ Below is an example of such an object in a component.
 
 </div>
 
-If this component is not directly the template used by a repeater but instead a sub component, you can still access the object. The object will be resolved by following the instance parent chain of components until it reaches a component that is a repeater template instance.
+このコンポーネントがリピーターによって使用されるテンプレートの直接的なものではなく、代わりにサブコンポーネントである場合でも、オブジェクトにアクセスすることができます。オブジェクトは、コンポーネントのインスタンス親チェーンに沿って解決され、リピーターテンプレートインスタンスであるコンポーネントに到達します。

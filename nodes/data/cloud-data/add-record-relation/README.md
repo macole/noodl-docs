@@ -1,14 +1,14 @@
 ---
 hide_title: true
 hide_table_of_contents: true
-title: Add Record Relation node
+title: レコード関係ノードを追加
 ---
 
 {/*##head##*/}
 
-# Add Record Relation
+# レコード関係ノードを追加
 
-This action node is used to create a relation between two records, the owning record and the target record.
+このアクションノードは、所有レコードと対象レコードの間の関係を作成するために使用されます。
 
 <div className="ndl-image-with-background l">
 
@@ -16,37 +16,37 @@ This action node is used to create a relation between two records, the owning re
 
 </div>
 
-One record is the owning record (in this case **Group** records that can have a relation to many **Post** records), it should have a **Relation** type property.
+1つのレコードが所有レコード（この場合は多くの**Post**レコードに関係を持つことができる**Group**レコード）で、**Relation**タイプのプロパティを持っている必要があります。
 
-You need to provide the <span className="ndl-data">Id</span> of the owning record. You also need to provide the <span className="ndl-data">Id</span> of the record that you want to add a relation to, this is the Target Record Id input.
+所有レコードの<span className="ndl-data">Id</span>を提供する必要があります。また、関係を追加したいレコードの<span className="ndl-data">Id</span>、つまりターゲットレコードIdを提供する必要があります。
 
-Finally, send a <span className="ndl-signal">signal</span> to <span className="ndl-signal">Do</span> to perform the action.
+最後に、アクションを実行するために<span className="ndl-signal">Do</span>への<span className="ndl-signal">シグナル</span>を送信します。
 
 {/*##head##*/}
 
-## Inputs
+## 入力
 
-| Data                                               | Description                                                                                                                                                                                           |
-| -------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-data">Class</span>            | The **Class** of the owning record where you want to add the related object to.                                                                                                                       |
-| <span className="ndl-data">Id</span>               | {/*##input:id##*/}Specify the **Id** of the record that you want to use as the owning record to add a relation to.{/*##input##*/} This input is only valid if **Id Source** is set to **Specify explicitly**. |
-| <span className="ndl-data">Relation</span>         | You need to choose the **Relation** property of the owning class to use when creating the relation.                                                                                                   |
-| <span className="ndl-data">Target Record Id</span> | {/*##input:target record id##*/}This input should be connected to the **Id** of the target record of the new relation.{/*##input##*/}                                                                         |
+| データ                                                 | 説明                                                                                                                                                                                             |
+| ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <span className="ndl-data">クラス</span>                | 関連オブジェクトを追加したい所有レコードの**クラス**。                                                                                                                                             |
+| <span className="ndl-data">Id</span>                    | {/*##input:id##*/}関係を追加する所有レコードとして使用するレコードの**Id**を指定します。{/*##input##*/}この入力は**Id Source**が**明示的に指定**に設定されている場合にのみ有効です。              |
+| <span className="ndl-data">関係</span>                  | 関係作成時に使用する所有クラスの**関係**プロパティを選択する必要があります。                                                                                                                     |
+| <span className="ndl-data">ターゲットレコードId</span>  | {/*##input:target record id##*/}この入力は新しい関係のターゲットレコードの**Id**に接続されるべきです。{/*##input##*/}                                                                            |
 
 @include "../_id-source.md"
 
-| Signal                                 | Description                                                                                                   |
-| -------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-signal">Do</span> | {/*##input:do##*/}When a signal is received on this input the relation will be created in the backend.{/*##input##*/} |
+| シグナル                                   | 説明                                                                                                         |
+| ------------------------------------------ | ----------------------------------------------------------------------------------------------------------- |
+| <span className="ndl-signal">実行</span>   | {/*##input:do##*/}この入力にシグナルが受信されると、関係はバックエンドで作成されます。{/*##input##*/}               |
 
-## Outputs
+## 出力
 
-| Data                                    | Description                                                                                                                                              |
-| --------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-data">Id</span>    | {/*##output:id##*/}This is the **Id** of the owning record that have / will receive the new relation. It is simply a mirror of the **Id** input.{/*##output##*/} |
-| <span className="ndl-data">Error</span> | {/*##output:error##*/}The error message in case something went wrong when attempting to add the relation in the backend.{/*##output##*/}                         |
+| データ                                           | 説明                                                                                                                                                   |
+| ------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <span className="ndl-data">Id</span>              | {/*##output:id##*/}これは新しい関係を受け取る/受け取った所有レコードの**Id**です。単に**Id**入力のミラーです。{/*##output##*/}                          |
+| <span className="ndl-data">エラー</span>         | {/*##output:error##*/}バックエンドで関係を追加しようとした際に何か問題が発生した場合のエラーメッセージです。{/*##output##*/}                              |
 
-| Signal                                      | Description                                                                                                                                                                                  |
-| ------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span className="ndl-signal">Success</span> | {/*##output:success##*/}A signal is sent on this output when the relation has been added successfully in the backend.{/*##output##*/}                                                                |
-| <span className="ndl-signal">Failure</span> | {/*##output:failure##*/}A signal is sent on this output if something went wrong when adding the relation in the backend. The error message will be outputed on the **Error** output.{/*##output##*/} |
+| シグナル                                         | 説明                                                                                                                                                           |
+| ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <span className="ndl-signal">成功</span>         | {/*##output:success##*/}関係がバックエンドで成功裏に追加された場合、この出力にシグナルが送信されます。{/*##output##*/}                                              |
+| <span className="ndl-signal">失敗</span>         | {/*##output:failure##*/}バックエンドで関係を追加しようとした際に何か問題が発生した場合、この出力にシグナルが送信されます。**エラー**出力にエラーメッセージが出力されます。{/*##output##*/} |
