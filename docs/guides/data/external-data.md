@@ -1,23 +1,23 @@
 ---
-title: External Data
+title: 外部データ
 hide_title: true
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'
 import ImportButton from '/src/components/importbutton'
 
-# External Data
+# 外部データ
 
-## What you will learn in this guide
-So far we have been working exclusively with local data, often coming from a **Static Array**. This is great for building prototypes and getting started quickly but in real life we will need to integrate with external data. This guide shows you how to do that using REST APIs, the most common type of APIs for web applications.
+## このガイドで学べること
+これまで、主に**Static Array**から来るローカルデータのみを扱ってきました。これはプロトタイプを作成し、すばやく始めるのに適していますが、実際には外部データとの統合が必要になります。このガイドでは、Webアプリケーションで最も一般的なAPIタイプであるREST APIを使用して、それを行う方法を示します。
 
 ## Airtable
-For this guide we are going to use the [Airtable](https://airtable.com) REST API to read and write to an **Airtable** table. This guide assumes that you know a little bit about REST APIs, and to follow along you need to create an account for **Airtable**. You can read more about the **Airtable** REST API [here](https://support.airtable.com/hc/en-us/articles/203313985-Public-REST-API). Most REST APIs work in similar ways so the knowledge gained here should be applicable on most other APIs.
+このガイドでは、**Airtable**のREST APIを使用して、**Airtable**のテーブルにレコードを読み書きします。このガイドでは、REST APIについて少し知っていることを前提としています。そして、**Airtable**のアカウントを作成する必要があります。**Airtable** REST APIについては[こちら](https://support.airtable.com/hc/en-us/articles/203313985-Public-REST-API)で詳しく読むことができます。ほとんどのREST APIは似たような方法で動作するので、ここで得た知識は他のほとんどのAPIにも適用できるはずです。
 
-In this guide we are going to extend the CRUD example from the [UI Controls and data](/docs/guides/data/ui-controls-and-data) guide by connecting it to an **Airtable** table to create, update, read and delete records. To do this I have create a new airtable base and added a table called **Members**, I have also created three fields corresponding to the member object of the guide.
+このガイドでは、[UIコントロールとデータ](/docs/guides/data/ui-controls-and-data)ガイドからのCRUD例を拡張し、**Airtable**のテーブルに接続してレコードを作成、更新、読み取り、削除します。これを行うために、新しいairtableベースを作成し、**Members**というテーブルを追加しました。また、ガイドのmemberオブジェクトに対応する3つのフィールドを作成しました。
 
-* **Full Name**, a string that contain the name of the member.
-* **Receive Marketing Emails**, a checkbox (boolean) that indicated if the member should receive marketing emails
-* **Awesomeness**, a number between 0 and 100 indicating the general awesomeness of the member
+* **Full Name**、メンバーの名前を含む文字列。
+* **Receive Marketing Emails**、メンバーがマーケティングメールを受け取るべきかどうかを示すチェックボックス（ブーリアン）。
+* **Awesomeness**、メンバーの一般的な素晴らしさを0から100の間で示す数値。
 
 <div className="ndl-image-with-background l">
 
@@ -25,17 +25,17 @@ In this guide we are going to extend the CRUD example from the [UI Controls and 
 
 </div>
 
-There is a nice documentation for the different **Airtable** REST API operations that you can perform on a table, but we will review them briefly here before we use them. 
+テーブルに対して実行できるさまざまな**Airtable** REST API操作についての素晴らしいドキュメントがありますが、ここではそれらを簡単に見てから、それらを使用します。
 
-Let's get started. We are going to start where we left off in the [UI Controls and data](/docs/guides/data/ui-controls-and-data) guide, if you don't have ready you can import the finished components here.
+さあ、始めましょう。[UIコントロールとデータ](/docs/guides/data/ui-controls-and-data)ガイドの最後で終わったところから始めますが、準備ができていない場合は、ここで完成したコンポーネントをインポートできます。
 
 <div className="ndl-image-with-background xl">
     <video width="100%" autoPlay muted loop src={useBaseUrl("/docs/guides/data/external-data/final-crud.mp4")}/>
     <ImportButton zip="/docs/guides/data/external-data/final-crud-1.zip" name="CRUD Example" thumb="/docs/guides/data/external-data/final-crud-thumb.png" />
 </div>
 
-## The REST node
-To do REST API calls we are going to use the built in [REST](/nodes/data/rest) node. First the let's go over some of the properties that are important to know about:
+## RESTノード
+REST APIコールを行うために、組み込みの[REST](/nodes/data/rest)ノードを使用します。まず、重要なプロパティについて説明します：
 
 <div className="ndl-image-with-background l">
 
@@ -43,10 +43,10 @@ To do REST API calls we are going to use the built in [REST](/nodes/data/rest) n
 
 </div>
 
-* **Resources** this is the REST API endpoint and resource, i.e. the URI that will be requested.
-* **Method** is the HTTP method that will be used, it can be any of **GET**, **POST**, **PUT**, **DELETE**, **PATCH**
+* **Resources** これは、要求されるREST APIエンドポイントとリソース、すなわちURIです。
+* **Method** は使用されるHTTPメソッドで、**GET**、**POST**、**PUT**、**DELETE**、**PATCH**のいずれかになります。
 
-Once you have specified the resource as well as the method there are two small scripts that you will need to use to the first script prepares the request before it is sent, and the second script parses the response. 
+リソースとメソッドを指定したら、送信前にリクエストを準備するための小さなスクリプト2つを使用する必要があります。そして、レスポンスを解析するための2番目のスクリプトです。
 
 <div className="ndl-image-with-background l">
 
@@ -54,26 +54,28 @@ Once you have specified the resource as well as the method there are two small s
 
 </div>
 
-First, let's take a look at the request script. Using this script you will prepare the request, this is done be modifying the **Request** object. You can change the **resource** (the URI) and the **method** from before.
+まず、リクエストスクリプトを見てみましょう。このスクリプトを使用してリクエストを準備します。これは、**Request**オブジェクトを変更することによって行われます。以前の**resource**（URI）と**method**を変更することができます。
 
 ```javascript
 Request.resource = "https://example.org"
 Request.method = "POST"
 ```
 
-You can also modify the HTTP headers.
+HTTPヘッダーも変更できます。
 
 ```javascript
 Request.headers['authorization'] = "shhh it's a secret"
 ```
 
-The ```Reuqest.parameters``` object can be used to set query parameters for the URI. The script below would add ```?search=find-this``` to the URI before the request is made.
+```Reuqest.parameters```オブジェクトを使用して、リクエストが行われる前にURIにクエリパラメーターを設定できます。以下のスクリプトは、リクエストが行われる前にURIに```?search=find-this```を追加します。
 
 ```javascript
 Request.parameters['search'] = "find-this"
 ```
 
-Finally you can modify the ```Reuqest.content``` object. This should be a JSON compatible object that is sent if the method is **PUT**, **POST** or **PATCH**. As in many scripts in Noodl you can use the ```Inputs``` object to specify any custom inputs you would like for the node.
+最後に、```Reuqest.content```オブジェクトを変更できます。これは、メソッドが**PUT**、**POST**、または**PATCH**の場合に送信されるJSON互換のオブジェクトである必要があります。Noodlの多くのスクリプトと同様に、
+
+ノード用のカスタム入力を指定するために```Inputs```オブジェクトを使用できます。
 
 ```javascript
 Request.content = {
@@ -81,21 +83,21 @@ Request.content = {
 }
 ```
 
-The script above will create a custom input called **MyInput** on the Rest node. Any value connected to that input will be available in the request script using ```Inputs.MyInput``` and in the script above it is used as part of the request content.
+上記のスクリプトは、Restノード上に**MyInput**という名前のカスタム入力を作成します。その入力に接続された任意の値は、リクエストスクリプトで```Inputs.MyInput```を使用して取得でき、上記のスクリプトではリクエストコンテンツの一部として使用されます。
 
-Second, we have the **response** script. This script will take the reponse from the REST API call (if it is successful), parse it and expose it as custom outputs on the **REST** node. You have two important objects ```Response.status``` which will contain the HTTP status of the response, and ```Response.content``` which will contain the content parsed as JSON. Just like the request script used the ```Inputs``` object to create custom inputs, this script can also use the ```Ouputs``` object to create custom outputs to expose the response. Let's take a look at a way to use this with the **Airtable** API.
+次に、**response**スクリプトがあります。このスクリプトは、REST APIコールからのレスポンス（成功した場合）を取得し、解析し、**REST**ノードのカスタム出力として公開します。```Response.status```にはレスポンスのHTTPステータスが含まれ、```Response.content```にはJSONとして解析されたコンテンツが含まれます。リクエストスクリプトが```Inputs```オブジェクトを使用してカスタム入力を作成したように、このスクリプトも```Ouputs```オブジェクトを使用してレスポンスを公開するためのカスタム出力を作成できます。**Airtable** APIを使用する方法を見てみましょう。
 
-This is a brief introduction to how the REST node works. You can read more in the reference documentation for the [REST](/nodes/data/rest) node. Now let's continue with connecting the CRUD example to **Airtable** using the **REST** node.
+これは、RESTノードの動作方法についての簡単な紹介です。[REST](/nodes/data/rest)ノードのリファレンスドキュメントで詳細を読むことができます。さて、**Airtable**を使用してCRUD例を接続する続きに進みましょう。
 
-## Listing all members
+## すべてのメンバーを一覧表示
 
-First we're going to use a **REST** node to list all members from our **Airtable** table and put in the **Array** node we use to store members. To do this we need to perform the following REST API call (you need to replace the **id** of the **Airtable** base with your own, and make sure your table is called **Members**).
+まず、**REST**ノードを使用して、**Airtable**テーブルのすべてのメンバーを一覧表示し、メンバーを保存するために使用する**Array**ノードに入れます。これを行うには、次のREST APIコールを実行する必要があります（**Airtable**ベースの**id**を自分のものに置き換え、テーブルが**Members**と呼ばれていることを確認してください）。
 
 ```javascript
 GET https://api.airtable.com/v0/appGx6whFNzxu54eP/Members
 ```
 
-We will simplye create a **REST** node and change the **Resource** property to the URI above (with your own base id). Then we will connect the **Fetch** input of the **REST** node to the **Did mount** signal output of the root **Group** node. This will make sure that we perform the request as soon as the **Group** node becomes visible. I gave the node a new label "List all members", just to keep track of what it is doing.
+単純に**REST**ノードを作成し、上記のURI（自分のベースIDで）の**Resource**プロパティを変更します。次に、**REST**ノードの**Fetch**入力をルート**Group**ノードの**Did mount**信号出力に接続します。これにより、**Group**ノードが表示されるとすぐにリクエストが実行されるようになります。ノードの新しいラベルを"List all members"として、何をしているのか追跡できるようにしました。
 
 <div className="ndl-image-with-background xl">
 
@@ -103,13 +105,13 @@ We will simplye create a **REST** node and change the **Resource** property to t
 
 </div>
 
-We also need to modify the **Request** script to provide the **Airtable API Token**, otherwise the requrest will not go through. Change the request script of the **REST** node to the following, providing your own **API token**.
+また、**Airtable API Token**を提供するために**Request**スクリプトを変更する必要があります。そうしないと、リクエストは通過しません。**REST**ノードのリクエストスクリプトを以下のように変更し、自分の**API token**を提供してください。
 
 ```
 Request.headers['Authorization'] = 'Bearer your-api-token'
 ```
 
-Now the request should go through if you refresh the viewer in the Noodl editor so that the **Did mount** signal is sent. A sample response from **Airtable** will look something like below. We are going to need to parse this response for it to be useful in our app. 
+これで、Noodlエディターのビューアを更新して**Did mount**信号が送信されるようにすれば、リクエストは通過するはずです。**Airtable**からのサンプルレスポンスは以下のようになります。これをアプリで使用するためには、このレスポンスを解析する必要があります。
 
 ```
 {
@@ -143,7 +145,7 @@ Now the request should go through if you refresh the viewer in the Noodl editor 
 }
 ```
 
-We will do that in the response script of the **REST** node. We will need to create a simple array with objects with the **id** and fields directly as properties, then we will return it as an output of the **REST** node. The following small script will do the trick. This should go into the **Response** script.
+これを**REST**ノードのレスポンススクリプトで行います。**id**とフィールドを直接プロパティとして持つ単純な配列を作成し、それを**REST**ノードの出力として返します。次の小さなスクリプトでそれができます。これは**Response**スクリプトに入れるべきものです。
 
 ```
 Outputs.Members = Response.content.records.map((r) => ({
@@ -154,7 +156,9 @@ Outputs.Members = Response.content.records.map((r) => ({
 }))
 ```
 
-We use the ```Outputs``` object to specify a new custom output on the **REST** node that will contain an array of all member objects. It's important that we keep the **id** (it should be lowercase) as it will become the **id** of our **Object**s and we need to use it later. With that script in place, we will have a new output on our **REST** node that we can connect to the **Array** where we keep our members.
+```Outputs```オブジェクトを使用して、すべてのメンバーオブジェクトの配列を含む**REST**ノード上の新しいカスタム出力を指定します。**id**（小文字である必要があります）を保持するこ
+
+とが重要です。これは、後で編集や削除に使用する**Object**の**id**になります。そのスクリプトがあれば、メンバーを保持する**Array**に**REST**ノードの新しい出力を接続できます。
 
 <div className="ndl-image-with-background xl">
 
@@ -162,17 +166,17 @@ We use the ```Outputs``` object to specify a new custom output on the **REST** n
 
 </div>
 
-That's great, now we can list all members and show in the user interface. With that in place, let's move onto to editing and deleting.
+素晴らしいですね。これでメンバーを一覧表示し、ユーザーインターフェースに表示することができます。これでできたので、次に編集と削除に進みましょう。
 
-## Creating a new member
+## 新しいメンバーを作成
 
-Now we will repeat the same process for doing a REST API call to create a new member in the **Airtable** table. For that we will use a **REST** node and provide the following resources and method.
+次に、**Airtable**テーブルに新しいメンバーを作成するためのREST APIコールを行うために、同じプロセスを繰り返します。そのためには、**REST**ノードを使用し、以下のリソースとメソッドを提供します。
 
 ```javascript
 POST https://api.airtable.com/v0/appGx6whFNzxu54eP/Members
 ```
 
-Here we need to modify the request script to take an **Object Id** as input and put the properties of that object in the ```Request.content``` object. The following script will do the trick:
+ここでは、リクエストスクリプトを変更して、**Object Id**を入力として取り、そのオブジェクトのプロパティを```Request.content```オブジェクトに配置する必要があります。次のスクリプトでそれができます。
 
 ``` 
 Request.headers['Authorization'] = 'Bearer your-api-key'
@@ -191,7 +195,7 @@ Request.content = {
 }
 ``` 
 
-First set the **Authorization** header with the **API token** just as before. Then we use a custom input ```Inputs.ObjectId``` that will contain the **Id** of the Noodl object we want to send as part of the REST API call. We use the ```Noodl.Object.get``` function to get the object from it's **Id**. With the object at hand we can format the content in a way that the **Airtable** API is expecting. With the script above in place, we can hook the **REST** node up as follows.
+まず、**Authorization**ヘッダーを**API token**と共に設定します。次に、REST APIコールの一部として送信するNoodlオブジェクトの**Id**を含むカスタム入力```Inputs.ObjectId```を使用します。```Noodl.Object.get```関数を使用して、その**Id**からオブジェクトを取得します。オブジェクトを手に入れたら、**Airtable** APIが期待する形式でコンテンツをフォーマットします。上記のスクリプトがあれば、**REST**ノードを以下のように接続できます。
 
 <div className="ndl-image-with-background xl">
 
@@ -199,23 +203,23 @@ First set the **Authorization** header with the **API token** just as before. Th
 
 </div>
 
-This is, when the newly created member object have been added to the **Array** we will trigger the **REST** request by connecting the **Done** output signal from the **Insert Object Into Array** node to the **Fetch** input on the **REST** node. We will also make sure to connect the **Id** of the newly created object to the custom **ObjectId** input that we are using in our request script in the **REST** node.
+つまり、新しく作成されたメンバーオブジェクトが**Array**に追加されると、**Insert Object Into Array**ノードの**Done**出力信号を**REST**ノードの**Fetch**入力に接続することで、**REST**リクエストをトリガーします。また、**REST**ノードのリクエストスクリプトで使用しているカスタム**ObjectId**入力に新しく作成されたオブジェクトの**Id**を接続することを忘れないでください。
 
 :::note
-One small caveat, when you create a new object in Noodl using the **Create New Object** node it will be assigned a new random **Id** (you can see it by inspecting the connection). But when we create the member in **Airtable** using the request above it will get a new **Airtable** internal id. We need this to perform edits and deletes. The simplest way to solve this is to issue a new "list all members" request. Simply connect the **Success** signal from the "Create new member" REST node to the **Fetch** input of the "List all members" REST node. 
+小さな注意点があります。Noodlで**Create New Object**ノードを使用して新しいオブジェクトを作成すると、新しいランダムな**Id**が割り当てられます（接続を検査することで確認できます）。しかし、上記のリクエストを使用して**Airtable**でメンバーを作成すると、新しい**Airtable**内部のidが割り当てられます。編集や削除を行うためにはこれが必要です。これを解決する最も簡単な方法は、新しい「すべてのメンバーを一覧表示」リクエストを発行することです。単に「新しいメンバーを作成」RESTノードの**Success**信号を「すべてのメンバーを一覧表示」RESTノードの**Fetch**入力に接続してください。
 :::
 
-Sweet, now we can list members, we can look at the details of a member, and we can even create new members. Give it a try, you should see the new member in the **Airtable** table. Now let's move on to editing a member.
+素晴らしいです、これでメンバーを一覧表示できるようになりましたし、メンバーの詳細を見ることができますし、新しいメンバーを作成することもできます。試してみてください。新しいメンバーが**Airtable**のテーブルに表示されるはずです。さて、次はメンバーの編集に進みましょう。
 
-## Editing a member
+## メンバーを編集
 
-Editing a member is very similair to creating a new member. We need to use a different method but the same resource. We also need to provide the **Object Id** as part of the URI. As this is a very common pattern for REST APIs there is a neat trick. You can specify a custom input directly in the URI using the ```{MyInput}``` notation. So we will use the following resource and method on this **REST** node. This will automatically create the correct URI for us if we provide the **ObjectId** as input.
+メンバーの編集は、新しいメンバーを作成することと非常に似ています。異なるメソッドを使用する必要がありますが、同じリソースを使用します。また、URIの一部として**Object Id**を提供する必要があります。これは、REST APIに非常に一般的なパターンなので、便利なトリックがあります。```{MyInput}```表記を使用して、URIに直接カスタム入力を指定できます。したがって、この**REST**ノードには次のリソースとメソッドを使用します。これにより、**ObjectId**を入力として提供すると、自動的に正しいURIが作成されます。
 
 ```javascript
 PATCH https://api.airtable.com/v0/appGx6whFNzxu54eP/Members/{ObjectId}
 ```
 
-We still need to format the ```Request.content``` object in a way that the **Airtable** API can consume. This is done with the following request script, very similair to the script we used when creating new members.
+まだ**Airtable** APIが消費できる形式で```Request.content```オブジェクトをフォーマットする必要があります。これは、新しいメンバーを作成するときに使用したスクリプトと非常に似ています。
 
 ```
 Request.headers['Authorization'] = 'Bearer your-api-token'
@@ -230,7 +234,7 @@ Request.content = {
 }
 ```
 
-With that in place we can hook it up to the output signal **Save** that we send from the edit form component. We also need the **Object Id** as before, and this we can get from the **Edit** event, that is the **Receive Event** node. That is the same **Object Id** that we pass to the edit form component when it is shown. It will look something like this:
+これで、編集フォームコンポーネントから送信される出力信号**Save**に接続できます。前と同じように、**Object Id**も必要です。これは、**Edit**イベント、すなわち**Receive Event**ノードから取得できます。これは、編集フォームコンポーネントに表示されるときに渡されるのと同じ**Object Id**です。以下のようになるはずです。
 
 <div className="ndl-image-with-background xl">
 
@@ -238,21 +242,21 @@ With that in place we can hook it up to the output signal **Save** that we send 
 
 </div>
 
-## Deleting a member
+## メンバーを削除
 
-And finally, we need to add support for deleting a member. This we will do, very similair to before, but this time in the **Member Item** component. For that we will use the following resource and method.
+最後に、メンバーを削除するサポートを追加する必要があります。これは、前と同じように行いますが、今回は**Member Item**コンポーネントで行います。そのためには、次のリソースとメソッドを使用します。
 
 ```javascript
 DELETE https://api.airtable.com/v0/appGx6whFNzxu54eP/Members/{ObjectId}
 ```
 
-The request script simply needs the API access token.
+リクエストスクリプトは、APIアクセストークンが必要です。
 
 ```
 Request.headers['Authorization'] = 'Bearer your-api-token'
 ```
 
-And then we can hook it up as shown below in the **Member Item** component. 
+それから、以下に示すように**Member Item**コンポーネントで接続できます。
 
 <div className="ndl-image-with-background xl">
 
@@ -260,4 +264,4 @@ And then we can hook it up as shown below in the **Member Item** component.
 
 </div>
 
-That's it. This guide has shown how to use the **REST** node to hook up our CRUD example from the previous [guide](/docs/guides/data/ui-controls-and-data) to and external REST API. With the **REST** node you can connect to most types of APIs that use JSON to send and receive data.
+それでおしまいです。このガイドでは、以前の[ガイド](/docs/guides/data/ui-controls-and-data)でのCRUD例を外部のREST APIに接続する方法を**REST**ノードを使用して示しました。**REST**ノードを使用すると、JSONを使用してデータを送受信するほとんどのタイプのAPIに接続できます。

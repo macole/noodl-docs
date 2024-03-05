@@ -1,13 +1,13 @@
 ---
-title: Deploying and hosting Noodl apps
+title: Noodlアプリのデプロイとホスティング
 hide_title: true
 ---
 
-# Deploying and hosting Noodl apps
+# Noodlアプリのデプロイとホスティング
 
-Noodl allows you to export your frontend and backend so that you can host it on your own servers.
+Noodlでは、フロントエンドとバックエンドをエクスポートして、自分のサーバーでホストすることができます。
 
-- [Learn about deploying the frontend](/docs/guides/deploy/hosting-frontend)
-- [Learn about deploying the backend on AWS](/docs/guides/deploy/setting-up-backend-on-aws)
-- [Learn about deploying the backend on GCP](/docs/guides/deploy/setting-up-backend-on-gcp)
-- [Learn about deploying to iOS and Android](/docs/guides/deploy/deploying-to-ios-and-android)
+- [フロントエンドのデプロイについて学ぶ](/docs/guides/deploy/hosting-frontend)
+- [AWSでバックエンドをデプロイする方法について学ぶ](/docs/guides/deploy/setting-up-backend-on-aws)
+- [GCPでバックエンドをデプロイする方法について学ぶ](/docs/guides/deploy/setting-up-backend-on-gcp)
+- [iOSとAndroidへのデプロイについて学ぶ](/docs/guides/deploy/deploying-to-ios-and-android)

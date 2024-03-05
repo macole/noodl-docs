@@ -1,23 +1,23 @@
 ---
-title: Project Structure
+title: プロジェクト構造
 hide_title: true
 ---
 
-# Project Structure
+# プロジェクト構造
 
-You can find the project folders at this path:
+プロジェクトフォルダは次のパスで見つけることができます：
 
-Windows Path:
+Windowsパス：
 ```
 %AppData%\Roaming\Noodl\projects
 ```
 
-MacOS Path:
+MacOSパス：
 ```
 ~/Library/Application Support/Noodl/projects
 ```
 
-You can also open the project via this Button inside Noodl, in the project settings.
+Noodl内のプロジェクト設定でこのボタンを使用して、プロジェクトを開くこともできます。
 
 <div className="ndl-image-with-background l">
 
@@ -25,23 +25,23 @@ You can also open the project via this Button inside Noodl, in the project setti
 
 </div>
 
-## What is deployed?
+## 何がデプロイされますか？
 
-All files in the project folder is deployed to the frontend with a few exceptions.
+プロジェクトフォルダ内のすべてのファイルは、いくつかの例外を除いてフロントエンドにデプロイされます。
 
-List of a few files that are ignored:
+無視されるいくつかのファイルのリスト：
 ```
 .gitattributes
 .gitignore
 project.json
 ```
 
-List of a few folders that are ignored:
+無視されるいくつかのフォルダのリスト：
 ```
 .git/
 .noodl/
 ```
 
-_These lists might not be complete._
+_これらのリストは完全ではない可能性があります。_
 
-When deploying the app Noodl will also add a few new files for example React library.
+アプリをデプロイする際、NoodlはReactライブラリなどのいくつかの新しいファイルも追加します。

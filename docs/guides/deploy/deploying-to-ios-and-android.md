@@ -1,30 +1,30 @@
 ---
-title: Deploying to iOS and Android
+title: iOSおよびAndroidへのデプロイ
 hide_title: true
 ---
 
-# Deploying to iOS and Android
+# iOSおよびAndroidへのデプロイ
 
 :::note
-**Self Hosting**<br/>Note: To be able to follow this guide you must have "Self Host" feature enabled. This is not available in the free Noodl plan. But you can request a trial [here](https://noodl.net/plans).
+**セルフホスティング**<br/>注意：このガイドに従うためには、「セルフホスティング」機能が有効になっている必要があります。これは無料のNoodlプランでは利用できません。ただし、[こちら](https://noodl.net/plans)からトライアルをリクエストすることができます。
 :::
 
-## What you will learn in this guide
+## このガイドで学べること
 
-This video will take you through the process of deploying a Noodl app as a native app using [Capacitor](https://capacitorjs.com/).
+このビデオでは、Noodlアプリをネイティブアプリとしてデプロイするプロセスを、[Capacitor](https://capacitorjs.com/)を使用して紹介します。
 
-## Overview
+## 概要
 
-The video walks you through the following topics:
+ビデオでは、以下のトピックを取り上げています：
 
-- Introduction to the project
-- Prerequisites
-- Installing Capacitor and initializing a Capacitor project
-- Deploying your Noodl project
-- Building a native Android app
-- Build an iOS app
-- Adding custom app icon
+- プロジェクトへの導入
+- 前提条件
+- CapacitorのインストールとCapacitorプロジェクトの初期化
+- Noodlプロジェクトのデプロイ
+- ネイティブAndroidアプリのビルド
+- iOSアプリのビルド
+- カスタムアプリアイコンの追加
 
-## Video
+## ビデオ
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/W44hTg8vL_g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/W44hTg8vL_g" title="YouTubeビデオプレイヤー" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

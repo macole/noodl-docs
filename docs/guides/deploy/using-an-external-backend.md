@@ -1,42 +1,42 @@
 ---
-title: Using a self hosted backend
+title: セルフホステッドバックエンドの使用
 hide_title: true
 ---
 
-# Using a self hosted backend
+# セルフホステッドバックエンドの使用
 
-## What you will learn in this guide
+## このガイドで学べること
 
-This guide will let you create a self hosted backend with an external database. This is an alternative to using a built on **Noodl Cloud Service**. Some reasons why you might want to do this could be:
+このガイドでは、外部データベースを使用してセルフホステッドバックエンドを作成する方法を説明します。これは、**Noodlクラウドサービス**を使用する代わりの方法です。これを行いたい理由は次のようなものがあります：
 
-- You want to host your own database, maybe to ensure where data is stored or other privacy reasons.
-- You want to host your own backend on a cloud service such as AWS or Google Cloud Platform.
+- データがどこに保存されているか、または他のプライバシー上の理由で、自分のデータベースをホストしたい場合。
+- AWSやGoogle Cloud Platformなどのクラウドサービスで自分のバックエンドをホストしたい場合。
 
-## Overview
+## 概要
 
-We will go through the follwing steps
+次のステップを順に実行します。
 
-- Set up a Database cluster on MongoDB Atlas (any MongoDB or Postgres database is supported)
-- Spin up a container with the Noodl backend docker image.
-- Connect to the self hosted backend from your Noodl project.
+- MongoDB Atlasでデータベースクラスタを設定します（MongoDBまたはPostgresデータベースがサポートされています）。
+- NoodlバックエンドのDockerイメージを使用してコンテナを起動します。
+- Noodlプロジェクトからセルフホステッドバックエンドに接続します。
 
-## The different parts of a Noodl App
+## Noodlアプリの異なる部分
 
-As a background it's good to know that a Noodl App consists of three parts:
+背景として、Noodlアプリが以下の三つの部分から構成されていることを知っておくと良いでしょう：
 
-- **The database** All Noodl applications must be backed by a database, you can use either a MongoDB or Postgres compatible database. This is where users and other records are stored. Nodes like **Query Records** access the database via the backend web service.
+- **データベース** すべてのNoodlアプリケーションはデータベースをバックエンドとして必要とします。MongoDBまたはPostgres互換のデータベースを使用できます。ここにユーザーやその他のレコードが保存されます。**レコードのクエリ**のようなノードは、バックエンドのWebサービスを介してデータベースにアクセスします。
 
-- **The backend service** This is the Noodl backend service that is provided via a Docker image and an instance can be started on most cloud providers. The Noodl backend is based on and compatable with the [Parse Platform](https://parseplatform.org) which is a great choice for a backend service. A solid open source project with an active foundation supporting many of the critical functions needed.
+- **バックエンドサービス** これはDockerイメージを介して提供され、ほとんどのクラウドプロバイダーでインスタンスを起動できるNoodlバックエンドサービスです。Noodlバックエンドは、多くの重要な機能をサポートする活発な基盤を持つソリッドなオープンソースプロジェクトである[Parse Platform](https://parseplatform.org)をベースにしており、バックエンドサービスに適しています。
 
-- **Static frontend hosting** Noodl applications are SPAs (Single Page Applications) and need a place that serves the application frontend created when you deploy your application from Noodl.
+- **静的フロントエンドのホスティング** NoodlアプリケーションはSPA（シングルページアプリケーション）であり、アプリケーションのフロントエンドを提供する場所が必要です。Noodlからアプリケーションをデプロイすると、フロントエンドが作成されます。
 
-This guide will look at setting up your own self hosted **Database** and **Backend**.
+このガイドでは、独自のセルフホステッド**データベース**と**バックエンド**の設定に焦点を当てます。
 
-## The Database
+## データベース
 
-You can choose any MongoDB or Postgres compatible database, for this guide we recommend using [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) as it provides a free tier and you can choose to host it on GCP, AWS or Azure. You should always try to host your database using the same cloud provider as the backend service and preferably in the same region.
+MongoDBまたはPostgres互換の任意のデータベースを選択できます。このガイドでは、無料ティアが提供されており、GCP、AWS、またはAzureでホスティングすることを選択できる[MongoDB Atlas](https://www.mongodb.com/cloud/atlas)の使用をお勧めします。バックエンドサービスと同じクラウドプロバイダーを使用して、できれば同じリージョンでデータベースをホストするようにしてください。
 
-It's also very easy to get stated. Follow the instructions to setup your account. Create a new database.
+開始するのも非常に簡単です。アカウントを設定するための指示に従ってください。新しいデータベースを作成します。
 
 <div className="ndl-image-with-background l">
 
@@ -44,9 +44,9 @@ It's also very easy to get stated. Follow the instructions to setup your account
 
 </div>
 
-You can start by choosing the free plan (you can always upgrade later) and then the cloud providerand region where you would like host your database. Next you will be shown the security section of the setup. This controls who can access your database, you don't need to create a user as there is an admin user by default, you can choose to limit the IP-adresses that can access your database but don't worry about that now (you can always edit this later), just click **Finish and close**.
+無料プランを選択し（後でいつでもアップグレードできます）、データベースをホストしたいクラウドプロバイダーとリージョンを選択できます。次に、セットアップのセキュリティセクションが表示されます。これは、データベースにアクセスできる人を制御します。ユーザーを作成する必要はありません。デフォルトでは管理者ユーザーがありますが、データベースにアクセスできるIPアドレスを制限することを選択できますが、今は心配しないでください（後でいつでも編集できます）。**完了して閉じる**をクリックします。
 
-Once your database is up and running you need to get the connection details for the next step. First you need to obtain the password of the **Admin** user. You will find your database users under the **Database Access** section.
+データベースが稼働し始めたら、次のステップのために接続の詳細を取得する必要があります。まず、**管理者**ユーザーのパスワードを取得する必要があります。データベースユーザーは、**データベースアクセス**セクションで見つけることができます。
 
 <div className="ndl-image-with-background m">
 
@@ -54,9 +54,11 @@ Once your database is up and running you need to get the connection details for 
 
 </div>
 
-Find the **Admin** user and clicked **edit**. Under the **Password** tab click **Edit Password**, generate a new password and copy it. Store it somewhere safe, you will need it for the next step. Don't forget to click **Update user** before moving on.
+**管理者**ユーザーを見つけて**編集**をクリックします。**パスワード**タブで**パスワードの編集**をクリックし、新しいパ
 
-Now you need to find the connection URI. In your cluster dashboard choose _Connect_.
+スワードを生成してコピーします。安全な場所に保管しておいてください。次のステップで必要になります。次に進む前に**ユーザーを更新**をクリックするのを忘れないでください。
+
+次に、接続URIを見つける必要があります。クラスターダッシュボードで、_接続_を選択します。
 
 <div className="ndl-image-with-background l">
 
@@ -64,7 +66,7 @@ Now you need to find the connection URI. In your cluster dashboard choose _Conne
 
 </div>
 
-Followed by **Connect to your application**.
+その後、**アプリケーションに接続**を選択します。
 
 <div className="ndl-image-with-background xl">
 
@@ -72,7 +74,7 @@ Followed by **Connect to your application**.
 
 </div>
 
-Make sure the version is **3.6 or later**.
+バージョンが**3.6以降**であることを確認します。
 
 <div className="ndl-image-with-background l">
 
@@ -80,31 +82,31 @@ Make sure the version is **3.6 or later**.
 
 </div>
 
-Now you need to copy and keep the connection URI shown below. It will look something like this:
+次に、以下に示す接続URIをコピーして保管します。以下のような形になります：
 
 ```bash
 mongodb+srv://Admin:<password>@cluster0.xxxxxxx.mongodb.net/?retryWrites=true&w=majority
 ```
 
-You need to replace the `<password>` with the **Admin** password you generated before. Also, insert the name of your database in the url, you can pick any name, let's call it `noodldb`, your final URL should look something like this:
+`<password>`を前に生成した**管理者**のパスワードに置き換える必要があります。また、URLにデータベースの名前を挿入する必要があります。好きな名前を選べますが、`noodldb`としましょう。最終的なURLは以下のようになります：
 
 ```bash
 mongodb+srv://Admin:<password>@cluster0.xxxxxxx.mongodb.net/noodldb?retryWrites=true&w=majority
 ```
 
-Keep this URI safe as it will have full access to your database.
+このURIを保管しておくと、データベースへのフルアクセスが可能になります。
 
-## The backend service
+## バックエンドサービス
 
-Next up we will deploy an instance of the Noodl backend service that we will point our application to. We provide guides for setting up Noodl on Amazon Web Services or Google Cloud Platform, follow the links below and set up the container. When you are ready you can proceed to the **Connect your application to the self hosted backend** below.
+次に、アプリケーションを指すNoodlバックエンドサービスのインスタンスをデプロイします。Amazon Web ServicesまたはGoogle Cloud PlatformでNoodlを設定するためのガイドを提供しています。以下のリンクをフォローし、コンテナをセットアップしてください。準備ができたら、以下の**アプリケーションをセルフホステッドバックエンドに接続**に進んでください。
 
-- **Setting up a backend on AWS** Make sure you have an AWS account created and then follow [this guide](/docs/guides/deploy/setting-up-backend-on-aws).
+- **AWSでバックエンドを設定する** AWSアカウントを作成していることを確認し、[このガイド](/docs/guides/deploy/setting-up-backend-on-aws)に従ってください。
 
-- **Setting up a backend on GCP** Make sure you have account on Google Cloud Platform created and then follow [this guide](/docs/guides/deploy/setting-up-backend-on-gcp).
+- **GCPでバックエンドを設定する** Google Cloud Platformでアカウントを作成していることを確認し、[このガイド](/docs/guides/deploy/setting-up-backend-on-gcp)に従ってください。
 
-### Connect your application to the self hosted backend
+### アプリケーションをセルフホステッドバックエンドに接続する
 
-You can now connect to your new self hosted backend from your Noodl application. Open your project. Find the "Cloud Services" icon in the sidebar.
+これで、Noodlアプリケーションから新しいセルフホステッドバックエンドに接続できるようになります。プロジェクトを開きます。サイドバーの「クラウドサービス」アイコンを探します。
 
 <div className="ndl-image-with-background l">
 
@@ -112,7 +114,7 @@ You can now connect to your new self hosted backend from your Noodl application.
 
 </div>
 
-Find the plus icon at the top to create a new cloud service.
+新しいクラウドサービスを作成するために、上部のプラスアイコンを探します。
 
 <div className="ndl-image-with-background l">
 
@@ -120,7 +122,7 @@ Find the plus icon at the top to create a new cloud service.
 
 </div>
 
-Create a new cloud service. Make sure the **Self Hosted** checkbox is checked:
+新しいクラウドサービスを作成します。**セルフホステッド**のチェックボックスがオンになっていることを確認してください：
 
 <div className="ndl-image-with-background xl">
 
@@ -128,21 +130,23 @@ Create a new cloud service. Make sure the **Self Hosted** checkbox is checked:
 
 </div>
 
-Fill out the information
+情報を入力します。
 
-- **Name** - Any name you want. This will be the name of the backend in the list of backends.
-- **Description** - Some descriptive text of the backend.
-- **Endpoint** - This is the url to the backend service you have created in the previous step.
-- **Application id** - This is the application id that you provided when setting up the backend service in the previous step. It's simply and identifier of your own choosing.
-- **Masterkey** - This is the master key to the backend service you created in the previous step. It is needed by the editor to access the database for the dashboard, query nodes etc. This is stored locally and encrypted. You need to keep this safe as with it you have full access to your backend and database.
+- **名前** - 任意の名前を付けます。これは、バックエンドのリストでのバックエンドの名前になります。
+- **説明** - バックエンドの説明テキスト。
+- **エンドポイント** - 前のステップで作成したバックエンドサービスのURLです。
+- **アプリケーションID** - 前のステップでバックエンドサービスを設定する際に提供したアプリケーションIDです。これは自分で選んだ単なる識別子です。
+- **マスターキー** - 前のステップで作成したバックエンドサービスのマスターキーです。エディターがダッシュボード、クエリノードなどのためにデータベースにアクセスするために必要です。これはローカルに保存され、暗号化されています。バックエンドとデータベースへのフルアクセスがあるため、これを安全に保管する必要があります。
 
-You can make some quick tests, for example opening the **Dashboard** and create a **Class** to see that it works. That's it, now you have a self hosted Noodl cloud services up and running.
+いくつかの簡単なテストを行うことができます。例えば、**ダッシュボード**を開いて**クラス**を作成して、動作するか確認することができます。それで、セルフホステッドのNoodlクラウドサービスが稼働しています。
 
-## Migrating from a Noodl cloud service
+## Noodlクラウドサービスからの移行
 
-If you are migrating from a Noodl cloud service we can provide you with a database dump that you can use to restore your new database to, [email support to request](mailto:support@noodl.net). Once you have the backup file you need to install the MongoDB database tools, you can find instructions [here](https://www.mongodb.com/docs/database-tools/installation/installation/).
+Noodlクラウドサービスから移行する場合、新しいデータ
 
-Then you will use the following command to migrate your data:
+ベースに復元できるデータベースダンプを提供できます。[サポートにメールを送ってリクエスト](mailto:support@noodl.net)してください。バックアップファイルを手に入れたら、MongoDBデータベースツールをインストールする必要があります。指示は[こちら](https://www.mongodb.com/docs/database-tools/installation/installation/)で見つけることができます。
+
+その後、以下のコマンドを使用してデータを移行します：
 
 ```bash
 $ mongorestore --gzip --archive="path-to-backup-file" --uri="the-uri-to-your-mongodb-from-above"

@@ -1,0 +1,14 @@
+[
+    {
+        "title": "商用VerとオープンソースVer",
+        "description": "商用版からオープンソース版に移行しました。",
+        "href": "/docs/guides/navigation/selver-ossver",
+        "imageUrl": "/img/featured-content-images/navigation.png"
+    },
+    {
+        "title": "レイアウト",
+        "description": "Noodlの強力なレイアウトシステムと、それを使用してレスポンシブUIを作成する方法について学びます。",
+        "href": "/docs/guides/user-interfaces/layout",
+        "imageUrl": "/img/featured-content-images/layout.png"
+    }
+]

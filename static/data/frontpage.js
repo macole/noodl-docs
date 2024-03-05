@@ -1,6 +1,7 @@
 export const FrontpageBlocks = {
     SearchBar: 'searchbar',
     Hero: 'hero', // 必ず1つのHEROブロックを維持してください。SEOを良くするためです！
+    FeaturedJP: 'featuredjp',
     FeaturedModules: 'featuredmodules',
     FeaturedGuides: 'featuredguides',
     FeaturedProjects: 'featuredprojects',
@@ -38,6 +39,7 @@ export const frontpageData = [
             },
         ],
     },
+    //{ type: FrontpageBlocks.FeaturedJP },
     { type: FrontpageBlocks.FeaturedGuides },
     { type: FrontpageBlocks.FeaturedPrefabs,},
     { type: FrontpageBlocks.FeaturedModules,},

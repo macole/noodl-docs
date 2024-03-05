@@ -62,6 +62,15 @@ export default function Home() {
                                     />
                                 )
 
+                            case FrontpageBlocks.FeaturedJP:
+                                return (
+                                    <GuideListing
+                                        key={i}
+                                        title="Featured guides JP"
+                                        isFeaturedOnly
+                                    />
+                                )
+
                             case FrontpageBlocks.FeaturedGuides:
                                 return (
                                     <GuideListing

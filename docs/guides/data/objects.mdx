@@ -1,42 +1,42 @@
 ---
-title: Using Objects
+title: オブジェクトの使用
 hide_title: true
 ---
 import ImportButton from '../../../src/components/importbutton'
 
-# Using Objects
+# オブジェクトの使用
 
-## What you will learn in this guide
+## このガイドで学べること
 
-Objects is a concept of the global application data model in Noodl, an object is a data structure with properties and a string identifier that can be used to access the object globally in your Noodl application. In this guide you will learn how to use the [Object](/nodes/data/object/object-node) node, the [Create New Object](/nodes/data/object/create-new-object) and the [Set Object Properties](/nodes/data/object/set-object-properties) node to create and store **Objects** in your app. Objects are _local_ meaning they will not be stored in a cloud database by default. They are very useful to store data and states that applies to a usage session of an app or a screen. They are also essential when working with **Arrays** in Noodl since only **Objects** and **Records** can be stored in a Noodl Array.
+オブジェクトは、Noodlのグローバルアプリケーションデータモデルの概念で、プロパティと文字列識別子を持つデータ構造であり、Noodlアプリケーション全体でオブジェクトにアクセスするために使用できます。このガイドでは、[Object](/nodes/data/object/object-node)ノード、[Create New Object](/nodes/data/object/create-new-object)、[Set Object Properties](/nodes/data/object/set-object-properties)ノードを使用してアプリ内に**オブジェクト**を作成および保存する方法について学びます。オブジェクトは_ローカル_であり、デフォルトではクラウドデータベースに保存されません。アプリまたは画面の使用セッションに適用されるデータと状態を保存するのに非常に便利です。また、Noodlの**Array**を使用する際にも、**オブジェクト**と**レコード**のみがNoodl配列に保存されるため、不可欠です。
 
-## Overview
+## 概要
 
-The guide covers the following topics
+このガイドでは、次のトピックを取り上げます。
 
--   Objects in Noodl
--   Creating **Objects**
--   Setting Properties in **Objects**
--   Dynamically creating Objects using the **Create New Object** node.
--   **Objects** in **Arrays**
--   Using **Objects** in Lists with the **Repeater** node
+-   Noodl内のオブジェクト
+-   **オブジェクト**の作成
+-   **オブジェクト**内のプロパティの設定
+-   **Create New Object**ノードを使用したオブジェクトの動的作成
+-   **配列**内の**オブジェクト**
+-   **Repeater**ノードを使用したリスト内の**オブジェクト**の使用
 
-**Objects** are very similar to **Variables** in Noodl and it's recommended to go through the [Variable guide](/docs/guides/data/variables) before reading this guide.
+**オブジェクト**はNoodlの**変数**と非常に似ているため、このガイドを読む前に[変数ガイド](/docs/guides/data/variables)を確認することをお勧めします。
 
-## What's an Object in Noodl?
+## Noodlでのオブジェクトとは？
 
-**Objects** in Noodl are used to hold data. **Objects** are _local_ meaning they only exist while the App is running. This is the main difference between **Objects** and [Records](/nodes/data/cloud-data/record) - **Records** are stored in a database.
+Noodlの**オブジェクト**はデータを保持するために使用されます。**オブジェクト**は_ローカル_であり、アプリが実行されている間のみ存在します。これは、**オブジェクト**と[レコード](/nodes/data/cloud-data/record)との主な違いです - **レコード**はデータベースに保存されます。
 
-Another related node in Noodl is the [Variable](/nodes/data/variable/variable-node) node. It's also local, but can only store one value, while an **Object** can store a number of values, each in a _property_. So essentially an **Object** holds a couple of data points (properties) that belong together.
+Noodlの関連ノードには、[変数](/nodes/data/variable/variable-node)ノードがあります。これもローカルですが、一つの値しか保存できませんが、**オブジェクト**は複数の値を_プロパティ_として保存できます。つまり、**オブジェクト**は、一緒に属するいくつかのデータポイント（プロパティ）を保持します。
 
-Some typical cases could be information about a person (for example `First Name`, `Last Name`, `Address`, `Age`), all the information about a football match (`Home Team`, `Away Team`, `Match Date`, `Score`), etc, etc. There is no limitation on how many properties you can have.
+いくつかの典型的なケースとしては、個人情報（例：`First Name`、`Last Name`、`Address`、`Age`）、サッカー試合に関するすべての情報（`Home Team`、`Away Team`、`Match Date`、`Score`）などがあります。プロパティの数に制限はありません。
 
 
-### The `id` of an Object
+### オブジェクトの`id`
 
-All **Objects** in Noodl have an **id**. This is the unique identifyer of the **Object** and if you have two **Object** nodes in your app, and you give them the same **id** they will point to the same data. Changing properties on one of the nodes will immediately change the data any other **Object** node with the same id.
+Noodlのすべての**オブジェクト**には**id**があります。これは**オブジェクト**の一意の識別子で、2つの**オブジェクト**ノードが同じ**id**を持っている場合、それらは同じデータを指します。片方のノードでプロパティを変更すると、同じidを持つ他の**オブジェクト**ノードのデータもすぐに変更されます。
 
-In Noodl, when a **Node** need to refer to an **Object** you use the **id** to identify it. For example, an **Array Filter** have an output called **First Item Id** which will hold the **id** of the first object in the resulting array of object after a filter action have been done. By connecting that **First Item Id** to the **Id** of an **Object** you can access its properties.
+Noodlで**ノード**が**オブジェクト**を参照する必要がある場合、その**id**を使用して識別します。例えば、**Array Filter**には**First Item Id**という出力があり、フィルター操作が行われた後のオブジェクトの配列の最初のオブジェクトの**id**を保持します。その**First Item Id**を**オブジェクト**の**Id**に接続することで、そのプロパティにアクセスできます。
 
 <div className="ndl-image-with-background l">
 
@@ -44,9 +44,9 @@ In Noodl, when a **Node** need to refer to an **Object** you use the **id** to i
 
 </div>
 
-### The properties of an Object
+### オブジェクトのプロパティ
 
-An Object typically have a number of properties. On the **Object** node they have to be explicitly created to be able to access them as outputs and inputs by clicking the `+` in the properties panel.
+オブジェクトには通常、複数のプロパティがあります。**オブジェクト**ノードでは、出力と入力としてアクセスできるように、プロパティを明示的に作成する必要があります。これは、プロパティパネルの`+`をクリックして行います。
 
 <div className="ndl-image-with-background">
 
@@ -54,21 +54,21 @@ An Object typically have a number of properties. On the **Object** node they hav
 
 </div>
 
-Note that just because an **Object** node doesn't have a property added, it doesn't mean that the underlying **Object** don't have it. It's just that this particular node won't have the property available as input and output until you add them.
+**オブジェクト**ノードにプロパティが追加されていないからといって、基礎となる**オブジェクト**にそのプロパティが存在しないというわけではありません。単に、その特定のノードにプロパティが入力と出力として利用可能になるまで、それらを追加しなければならないということです。
 
-## Creating Objects
+## オブジェクトの作成
 
-Let's get started and create some objects!
+オブジェクトを作成してみましょう！
 
-Objects are typically created in two different ways. Either you add in an [Object](/nodes/data/object/object-node) node and give it an **Id** then the object will be created (if it doesn't exists already) when used. The other way is to use the [Create New Object](/nodes/data/object/create-new-object) node and trigger its **Do** signal. That will create a unique new **Object** with a unique **Id**. 
+オブジェクトは通常、2つの異なる方法で作成されます。一つは、[Object](/nodes/data/object/object-node)ノードを追加し、**Id**を設定すると、使用時にオブジェクトが作成されます（まだ存在していない場合）。もう一つの方法は、[Create New Object](/nodes/data/object/create-new-object)ノードの**Do**シグナルをトリガーすることです。これにより、一意の新しい**オブジェクト**が一意の**Id**と共に作成されます。
 
-So to summarize the two main ways of creating **Objects**
+つまり、**オブジェクト**を作成する2つの主な方法は次のとおりです。
 
--   Statically create by adding an **Object** node give it an **Id**, properties and connect to the input properties.
--   Dynamically create by triggering the **Do** signal in a **Create New Object** node.
+-   **オブジェクト**ノードを追加し、**Id**を設定し、入力プロパティに接続することで静的に作成します。
+-   **Create New Object**ノードの**Do**シグナルをトリガーすることで動的に作成します。
 
-Let's start with the former.
-Start a new project using the "Hello World"-template. Then add in two [Buttons](/nodes/ui-controls/button) and a [Text Input](/nodes/ui-controls/text-input) node right under the root node. Remove the **Text** node and fix the layout slightly by adding som margins and padding. Change the text on the **Buttons** to "Toggle" and "Increment".
+最初の方法から始めましょう。
+"Hello World"テンプレートを使用して新しいプロジェクトを開始します。ルートノードの下に2つの[Button](/nodes/ui-controls/button)と[Text Input](/nodes/ui-controls/text-input)ノードを追加します。**Text**ノードを削除し、マージンやパディングを追加することでレイアウトを少し修正します。**Button**のテキストを"Toggle"と"Increment"に変更します。
 
 <div className="ndl-image-with-background">
 
@@ -76,11 +76,11 @@ Start a new project using the "Hello World"-template. Then add in two [Buttons](
 
 </div>
 
-## Setting Properties
+## プロパティの設定
 
-We want the "Toggle" button to toggle a [Switch](/nodes/logic/switch) from `false` to `true`, the "Increment" button to increase a [Counter](/nodes/math/counter), and the **Text Input** to generate a text. This will allow us to generate some data to put in an **Object**
+"Toggle"ボタンで[Switch](/nodes/logic/switch)を`false`から`true`に切り替え、"Increment"ボタンで[Counter](/nodes/math/counter)を増加させ、**Text Input**でテキストを生成させたいと思います。これにより、**オブジェクト**に格納するデータを生成できます。
 
-So add in the **Switch** and the **Counter** and hook them up.
+それでは、**Switch**と**Counter**を追加し、接続しましょう。
 
 <div className="ndl-image-with-background xl">
 
@@ -88,7 +88,7 @@ So add in the **Switch** and the **Counter** and hook them up.
 
 </div>
 
-Now let's save the values in an **Object**. So create an **Object** node, make sure the **Id** is set to `Specify explicitly`. This allows us to set an **Id** of the **Object**. The other option, `From repeater`, is used if the component with this **Object** would be a list item in a [Repeater](/nodes/ui-controls/repeater) node, which we will look at later in this guide.
+さて、これらの値を**オブジェクト**に保存しましょう。**オブジェクト**ノードを作成し、**Id**を`Specify explicitly`に設定します。これにより、**オブジェクト**の**Id**を設定できます。もう一つのオプションである`From repeater`は、この**オブジェクト**を[Repeater](/nodes/ui-controls/repeater)ノードのリストアイテムコンポーネントにする場合に使用されますが、これについてはこのガイドの後半で詳しく見ていきます。
 
 <div className="ndl-image-with-background">
 
@@ -96,7 +96,7 @@ Now let's save the values in an **Object**. So create an **Object** node, make s
 
 </div>
 
-Give it the **Id** `Form Values`. Then add three properties: `toggle_state`, `counter_value` and `input_text`.
+**Id**に`Form Values`を設定します。次に、`toggle_state`、`counter_value`、`input_text`という3つのプロパティを追加します。
 
 <div className="ndl-image-with-background">
 
@@ -104,7 +104,7 @@ Give it the **Id** `Form Values`. Then add three properties: `toggle_state`, `co
 
 </div>
 
-Finally, connect the outputs to the **Object** as below.
+最後に、以下のように出力を**オブジェクト**に接続します。
 
 <div className="ndl-image-with-background l">
 
@@ -112,11 +112,11 @@ Finally, connect the outputs to the **Object** as below.
 
 </div>
 
-Now, whenever any of these outputs are changed, the new value is stored in the **Object**. This might be exactly what you want - or you might want to control much more specifically when the value is store. For example, maybe you only want to store the text from the **Text Input** when the user hits enter.
+これで、これらの出力のいずれかが変更されるたびに、新しい値が**オブジェクト**に保存されます。これが正確にあなたが望むものかもしれませんが、値が保存されるタイミングをもっと具体的に制御することもできます。例えば、ユーザーがEnterキーを押したときにのみ、**Text Input**からのテキストを保存したい場合などです。
 
-To do this more controlled set, we can use the [Set Object Properties](/nodes/data/object/set-object-properties) node. So let's add one in, make sure it's pointing to the same underlying **Object** by giving it the same **Id**, i.e. `Form Values`. You will actually see it suggested when clicking the **Id** input property.
+このようなより制御された設定を行うために、[Set Object Properties](/nodes/data/object/set-object-properties)ノードを使用できます。それでは、そのノードを追加し、同じ基礎となる**オブジェクト**を指すように、同じ**Id**、すなわち`Form Values`を設定しましょう。実際、**Id**入力プロパティをクリックすると、それが提案されることがわかります。
 
-Now you can add in the `input_text` property on the **Set Object Properties** node. You can also see that in the **Set Object Properties** node you can force what type the value should be when setting it. For example, forcing a Number, would store the number `1` rather than the string `"1"` if you type it in the **Input Text** node. However, we want it to always be strings in this case, so pick `String`.
+これで、`input_text`プロパティを**Set Object Properties**ノードに追加できます。また、**Set Object Properties**ノードでは、値を設定する際に、値の型を強制することができます。例えば、Numberを強制すると、**Input Text**ノードに`"1"`と入力しても、数値の`1`として保存されます。しかし、この場合は常に文字列にしたいので、`String`を選択します。
 
 <div className="ndl-image-with-background">
 
@@ -124,7 +124,7 @@ Now you can add in the `input_text` property on the **Set Object Properties** no
 
 </div>
 
-Now connect the **On Enter** signal of the **Text Input** to the **Do** input signal on the **Set Object Properties** and make sure the **Text** output is hooked up to the `input_text` property. The nodes should look like below.
+**Text Input**の**On Enter**シグナルを**Set Object Properties**の**Do**入力シグナルに接続し、**Text**出力を`input_text`プロパティに接続してください。ノードは以下のようになります。
 
 <div className="ndl-image-with-background xl">
 
@@ -132,18 +132,18 @@ Now connect the **On Enter** signal of the **Text Input** to the **Do** input si
 
 </div>
 
-By hovering on the **Object** node and pinning the debug box by clicking on it, you will be able to see that the `input_text` property is only set when hitting enter.
+**オブジェクト**ノードにマウスを合わせ、デバッグボックスをクリックして固定すると、`input_text`プロパティがEnterキーを押したときにのみ設定されることがわかります。
 
-Note the following:
+以下の点に注意してください：
 
--   Not all properties need to be created on the **Object** or **Set Object Properties** node if you are not using them.
--   You can mix and match "lazy" setting directly on the **Object** node and controlled setting using the **Set Object Properties** node depending on need.
+-   すべてのプロパティを**オブジェクト**または**Set Object Properties**ノードに作成する必要はありません。
+-   必要に応じて、**オブジェクト**ノードでの"遅延"設定と**Set Object Properties**ノードを使用した制御された設定を組み合わせることができます。
 
-## Using Objects as global holders of data
+## オブジェクトをグローバルなデータホルダーとして使用する
 
-So let's use our **Object** in another component to show that it's available anywhere, as long as you know the **Id**. Create a new visual component and call it `Data Presentation`.
+それでは、別のコンポーネントで**オブジェクト**を使用して、どこでも使用できることを示しましょう。**Id**さえわかればですが。新しいビジュアルコンポーネントを作成し、`Data Presentation`と名付けます。
 
-Add three [Text](/nodes/basic-elements/text) nodes to the root **Group**.
+ルート**Group**に3つの[Text](/nodes/basic-elements/text)ノードを追加します。
 
 <div className="ndl-image-with-background">
 
@@ -151,7 +151,7 @@ Add three [Text](/nodes/basic-elements/text) nodes to the root **Group**.
 
 </div>
 
-Now add om an **Object** node, give it the **id** `Form Values` and hook it up to the **Text** nodes. Don't forget to add the properties to the **Object**.
+**オブジェクト**ノードを追加し、**id**に`Form Values`を設定して、**Text**ノードに接続します。プロパティを**オブジェクト**に追加することを忘れないでください。
 
 <div className="ndl-image-with-background l">
 
@@ -159,7 +159,7 @@ Now add om an **Object** node, give it the **id** `Form Values` and hook it up t
 
 </div>
 
-Finally we add the new component to our main component.
+最後に、この新しいコンポーネントをメインコンポーネントに追加します。
 
 <div className="ndl-image-with-background l">
 
@@ -167,11 +167,11 @@ Finally we add the new component to our main component.
 
 </div>
 
-Now when changing the values you will see them updating immediately in the `Data Presentation` component.
+値を変更すると、`Data Presentation`コンポーネントで即座に更新されるのがわかります。
 
-## Dynamically creating **Objects**
+## **オブジェクト**を動的に作成する
 
-We will change it up a bit and create more **Objects** - actually we will create one every time the user hits enter. So lets change our nodes. In the `Main` component, remove the **Object** and **Set Object Properties** node. Instead add in a [Create New Object](/nodes/data/object/create-new-object) node. Add our properties to the node, i.e. `toggle_state`, `counter_value` and `input_text`.
+少し変更して、Enterキーを押すたびに新しい**オブジェクト**を作成するようにしましょう。そこで、`Main`コンポーネントで**オブジェクト**と**Set Object Properties**ノードを削除します。代わりに[Create New Object](/nodes/data/object/create-new-object)ノードを追加します。プロパティ`toggle_state`、`counter_value`、`input_text`をノードに追加します。
 
 <div className="ndl-image-with-background">
 
@@ -179,7 +179,7 @@ We will change it up a bit and create more **Objects** - actually we will create
 
 </div>
 
-Then hook up the output values to the properties as before. Also connect **onEnter** to **Do** on the **Create New Object**.
+それから、以前と同じように出力値をプロパティに接続します。**onEnter**を**Create New Object**の**Do**に接続します。
 
 <div className="ndl-image-with-background l">
 
@@ -187,17 +187,17 @@ Then hook up the output values to the properties as before. Also connect **onEnt
 
 </div>
 
-Now whenever we hit enter we create a new **Object** with the properties set according to the **Counter**, **Switch** and **Text Input**. However the **Objects** are left somewhere in memory where we cant reach them. Each new **Object** have a new unique **Id** but we don't save that **Id** anywhere. Let's fix that! Let's put the **Objects** in an **Array**.
+これで、Enterキーを押すたびに、**Counter**、**Switch**、**Text Input**に応じてプロパティが設定された新しい**オブジェクト**が作成されます。しかし、これらの**オブジェクト**はメモリのどこかに残され、私たちはそれらにアクセスできません。各新しい**オブジェクト**には新しい一意の**Id**がありますが、その**Id**をどこにも保存していません。これを修正しましょう！**オブジェクト**を**配列**に入れましょう。
 
-## Storing Objects in an Array
+## 配列にオブジェクトを保存する
 
-Add in an **Array** node. Give the **Array** the **Id** `Form Objects`. Also add a [Insert Object Into Array](/nodes/data/array/insert-into-array) node.
+**配列**ノードを追加します。**配列**に`Form Objects`という**Id**を設定します。また、[Insert Object Into Array](/nodes/data/array/insert-into-array)ノードも追加します。
 
-If you check the documentation of the **Insert Object Into Array** node, it needs the **Id** of the **Object** that should be inserted. Conveniently there is an output from our **Create New Object** that holds the **Id** of the newly created object.
+**Insert Object Into Array**ノードのドキュメントを確認すると、挿入する必要がある**オブジェクト**の**Id**が必要です。便利なことに、**Create New Object**から新しく作成されたオブジェクトの**Id**を保持する出力があります。
 
-To insert the **Object** into the **Array** we need to trigger the **Do** signal on **Insert Object Into Array**. Also, we should not forget to specify the **Id** of the **Array** we want to insert it into, namely the `Form Objects`.
+**オブジェクト**を**配列**に挿入するには、**Insert Object Into Array**の**Do**シグナルをトリガーする必要があります。また、挿入する**配列**の**Id**を指定することを忘れないでください。つまり、`Form Objects`です。
 
-The construct can be seen below.
+以下のような構造になります。
 
 <div className="ndl-image-with-background xl">
 
@@ -205,13 +205,15 @@ The construct can be seen below.
 
 </div>
 
-Now if you bring up the debug info on the **Array** by hovering on it and clicking the debug box, you will see the number of items in the **Array**. Everytime you hit enter in your App it should be growing as we are creating **Objects** and inserting into the **Array**.
+これで、アプリでデータを入力してEnterキーを押すたびに、**配列**内のアイテム数が増えるはずです。**オブジェクト**を作成して**配列**に挿入しているためです。
 
-## Using Objects in list with the Repeater node
+## Repeaterノードを使ったリストでのオブジェクトの使用
 
-To wrap up this guide, let's also show all the **Objects** we are creating. We want to put them in a list, so we are going to need a **Repeater** node and turn our `Data Presentation` component into a list item.
+このガイドを締めくくるために、作成しているすべての**オブジェクト**を表示しましょう。リストに入れたいので、**Repeater**ノードが必要で、`Data Presentation`コンポーネントをリストアイテムに変換する必要があります。
 
-So start with removing the `Data Presentation` node from our main tree. Replace it with a **Repeater** node. Then connect the **Items** output of the **Array** to the **Repeater** input also called **Items**. Now we are feeding the repeater from the **Array**.
+まず、メインツリーから`Data Presentation`ノードを削除します。それを**Repeater**ノードで置き換えます。**配列**の**Items**出力を**Repeater**の同名の入力**Items**に接続します。これで、**
+
+Repeater**が**配列**から供給されます。
 
 <div className="ndl-image-with-background l">
 
@@ -219,7 +221,7 @@ So start with removing the `Data Presentation` node from our main tree. Replace 
 
 </div>
 
-Click on the **Repeater** node and make sure you select the `Data Presentation` node as the List Item template.
+**Repeater**ノードをクリックし、`Data Presentation`ノードをリストアイテムテンプレートとして選択してください。
 
 <div className="ndl-image-with-background">
 
@@ -227,7 +229,7 @@ Click on the **Repeater** node and make sure you select the `Data Presentation` 
 
 </div>
 
-Now if you enter som data in your app and press enter, you will actually see new items pop up in your list, but they will be empty, or contain your old data if you didnt refresh the viewer recently.
+アプリでデータを入力してEnterキーを押すと、新しいアイテムがリストに現れますが、空であるか、最近ビューアを更新していない場合は古いデータが含まれていることがわかります。
 
 <div className="ndl-image-with-background">
 
@@ -235,9 +237,9 @@ Now if you enter som data in your app and press enter, you will actually see new
 
 </div>
 
-The reason is that the `Data Presentation` component is still looking for data in our old object called `Form Values` and we removed that **Object**.
+その理由は、`Data Presentation`コンポーネントがまだ`Form Values`という古いオブジェクトのデータを探しているためですが、その**オブジェクト**を削除しました。
 
-Go into the `Data Presentation` component. We need to change how the **Object** there gets its **Id**.
+`Data Presentation`コンポーネントに移動します。**オブジェクト**が**Id**を取得する方法を変更する必要があります。
 
 <div className="ndl-image-with-background">
 
@@ -245,9 +247,9 @@ Go into the `Data Presentation` component. We need to change how the **Object** 
 
 </div>
 
-Change it to `From repeater` and you should now be able to see the correct values in the list. Clean up the layout of the list items by setting their size to content height and add some margins.
+`From repeater`に変更すると、リストで正しい値が表示されるようになります。リストアイテムのレイアウトを整えるために、サイズをコンテンツの高さに設定し、マージンを追加します。
 
-Now you know how to use **Objects** in Noodl. Import the final project by clicking the "Import" button below.
+これで、Noodlでの**オブジェクト**の使用方法がわかりました。以下の「インポート」ボタンをクリックして、最終的なプロジェクトをインポートしてください。
 
 <div className="ndl-image-with-background">
 
@@ -261,22 +263,22 @@ Now you know how to use **Objects** in Noodl. Import the final project by clicki
 
 </div>
 
-### Noodl Objects and Javascript
+### NoodlオブジェクトとJavascript
 
-Noodl objects can be accessed from Javascript using the [Objects API](/javascript/reference/objects). A Noodl object can be accessed like a normal Javascript object but there are a few important differences. Essentially a Noodl object is like a Javascript object with a string identified, the `id` of the object which can be used to access this object anywhere in your application.
+Noodlのオブジェクトは、[Objects API](/javascript/reference/objects)を使用してJavascriptからアクセスできます。Noodlのオブジェクトは通常のJavascriptオブジェクトのようにアクセスできますが、いくつか重要な違いがあります。基本的にNoodlのオブジェクトは、文字列識別子である`id`を持つJavascriptオブジェクトのようなもので、アプリケーション内のどこからでもこのオブジェクトにアクセスできます。
 
-If you have the **Id** of an object you can access it like this in Javascript, e.g. in a function node:
+オブジェクトの**Id**を持っている場合、Javascriptで次のようにアクセスできます。例えば、関数ノードで：
 
 ```javascript
 const obj = Noodl.Objects["Form Values"];
 
 console.log(obj.input_text);
-console.log(obj.id); // This will output "Form Values"
+console.log(obj.id); // これは "Form Values" を出力します
 
-obj.input_text = "Something"; // This will trigger a change on the object nodes with "Form Values" id
+obj.input_text = "Something"; // これは "Form Values" の id を持つオブジェクトノードで変更をトリガーします
 ```
 
-Sometimes you can end up having properties in a Noodl Object that are references to other Noodl Objects, like this example:
+時には、Noodlオブジェクトが他のNoodlオブジェクトへの参照を持つプロパティを持つことがあります。この例のように：
 
 ```javascript
 const post = Noodl.Objects["Post"];
@@ -286,14 +288,10 @@ post.auhtor = Noodl.Object.create({
 })
 ```
 
-To access nested objects like this you can use this pattern, that is you don't have to first extract the **Id** of the nested object with something like an Expression node you can just connect it directly to the **Id** input of another Object node like this:
+このようなネストされたオブジェクトにアクセスするには、次のパターンを使用できます。つまり、Expressionノードなどでまずネストされたオブジェクトの**Id**を抽出する必要はなく、直接別のObjectノードの**Id**入力に接続できます。
 
 <div className="ndl-image-with-background xl">
 
 ![](/docs/guides/data/objects/object-nested-1.png)
 
 </div>
-
-
-
-

@@ -1,17 +1,17 @@
 ---
-title: Self Hosting your Noodl frontend
+title: Noodlフロントエンドのセルフホスティング
 hide_title: true
 ---
 
-# Self hosting your Noodl frontend
+# Noodlフロントエンドのセルフホスティング
 
-## What you will learn in this guide
+## このガイドで学べること
 
-In this guide you will learn how to **Self Host** by deploying your Noodl App frontend to a local folder and then host it on either Google Cloud Platform or AWS.
+このガイドでは、Noodlアプリのフロントエンドをローカルフォルダにデプロイし、それをGoogle Cloud PlatformまたはAWSでホストすることによって**セルフホスティング**する方法を学びます。
 
-## Deploying to Local Folder
+## ローカルフォルダへのデプロイ
 
-Open up the deployment popup in Noodl to save a version of your frontend to a folder on your local machine, this folder will contain everything needed and you can simply upload the content to your hosting service.
+Noodlのデプロイメントポップアップを開いて、フロントエンドのバージョンをローカルマシンのフォルダに保存します。このフォルダには必要なすべてが含まれており、その内容をホスティングサービスにアップロードするだけです。
 
 <div className="ndl-image-with-background l">
 
@@ -19,10 +19,10 @@ Open up the deployment popup in Noodl to save a version of your frontend to a fo
 
 </div>
 
-Make sure you pick the backend you want to use for the deploy.
+デプロイ用に使用したいバックエンドを選択してください。
 
-## Hosting your Frontend at GCP or AWS
+## GCPまたはAWSでフロントエンドをホストする
 
-- **Google Cloud Platform** If you would like use GCP to host the frontend you can follow this [guide](https://cloud.google.com/storage/docs/hosting-static-website). There you will create a bucket, a load balancer and a CDN.
+- **Google Cloud Platform** GCPを使用してフロントエンドをホストする場合、[このガイド](https://cloud.google.com/storage/docs/hosting-static-website)に従うことができます。ここでは、バケット、ロードバランサー、およびCDNを作成します。
 
-- **Amazon Web Services** If you prefer to use AWS you can watch this [video](https://www.youtube.com/watch?v=BpFKnPae1oY&ab_channel=AmazonWebServices) it will explain how to create an S3 bucket and how to route traffic using the AWS DNS service, Route 53.
+- **Amazon Web Services** AWSを使用することを好む場合は、[このビデオ](https://www.youtube.com/watch?v=BpFKnPae1oY&ab_channel=AmazonWebServices)を視聴することができます。ここでは、S3バケットの作成方法とAWS DNSサービスRoute 53を使用したトラフィックのルーティング方法について説明します。

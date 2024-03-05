@@ -1,48 +1,47 @@
-# Progressive Web App
+# プログレッシブウェブアプリ
 
-A Progressive Web App (PWA) is a type of web application that combines the best features of both web and native mobile applications. It delivers a fast, reliable, and engaging user experience across different devices and platforms, without the need to install an app from an app store. PWAs use modern web technologies to provide app-like functionality, such as offline access, push notifications, and access to device hardware.
+プログレッシブウェブアプリ（PWA）は、ウェブとネイティブモバイルアプリケーションの両方の優れた特徴を組み合わせたタイプのウェブアプリケーションです。PWAは、アプリストアからアプリをインストールする必要なく、異なるデバイスやプラットフォームで迅速かつ信頼性があり、魅力的なユーザー体験を提供します。PWAは最新のウェブ技術を使用して、オフラインアクセス、プッシュ通知、デバイスハードウェアへのアクセスなど、アプリのような機能を提供します。
 
-As of today (Noodl 2.8.3) there are no built-in features to make it **easier** to work with Progressive Web Apps in Noodl.
-If you are interested in hearing more, [contact us](https://www.noodl.net/community).
+現在の時点（Noodl 2.8.3）で、NoodlにはPWAでの作業を**容易**にするための組み込み機能はありません。
+詳細をお聞きになりたい場合は、[お問い合わせください](https://www.noodl.net/community)。
 
-## Key characteristics
+## 主な特徴
 
-Here are some of the key characteristics of Progressive Web Apps.
+PWAの主な特徴は以下の通りです。
 
-### Connectivity independence
+### 接続の独立性
 
-One of the key features of PWAs is their ability to work offline or with poor network conditions. This is achieved through caching strategies implemented using service workers, which store assets and data locally on the user's device.
+PWAの主な特徴の一つは、オフラインまたはネットワーク状況が悪い場合でも動作する能力です。これはサービスワーカーを使用して実装されたキャッシュ戦略を通じて実現され、ユーザーのデバイスにアセットやデータをローカルに保存します。
 
-Service workers are one of the ways to achieve this. JavaScript files that run in the background, separate from the main browser thread. They enable core PWA features like offline functionality, caching, background synchronization, and push notifications. Service workers act as a proxy between the web app and the network, allowing developers to control how network requests are handled and implement efficient caching strategies.
+サービスワーカーは、この目的を達成する方法の一つです。これは、メインのブラウザスレッドとは別にバックグラウンドで動作するJavaScriptファイルです。オフライン機能、キャッシング、バックグラウンド同期、プッシュ通知など、PWAの主要機能を可能にします。サービスワーカーはウェブアプリとネットワーク間のプロキシとして機能し、ネットワークリクエストの処理方法を制御し、効率的なキャッシング戦略を実装することができます。
 
-### Fast and reliable performance
+### 高速で信頼性のあるパフォーマンス
 
-They can work offline or with poor network conditions, using cached data and assets to provide a functional user experience.
-PWAs use caching and background data synchronization to ensure a smooth and fast user experience.
+PWAは、キャッシュされたデータやアセットを使用して、オフラインまたはネットワーク状態が悪い場合でも機能するユーザー体験を提供します。PWAはキャッシングとバックグラウンドデータ同期を使用して、スムーズで高速なユーザー体験を保証します。
 
-Web workers are a powerful tool for enhancing web application performance. They execute JavaScript code in the background, separate from the main browser thread, allowing computationally intensive tasks to be offloaded without affecting the responsiveness of the user interface. Web workers communicate with the main thread using a messaging system, ensuring seamless integration with the rest of the application. By making it possible to run complex operations in parallel, web workers significantly improve the overall user experience, particularly in CPU-demanding applications.
+ウェブワーカーは、ウェブアプリケーションのパフォーマンスを向上させる強力なツールです。これらは、メインブラウザスレッドとは別にバックグラウンドでJavaScriptコードを実行し、計算集約的なタスクをオフロードしてユーザーインターフェイスの応答性に影響を与えることなく実行できます。ウェブワーカーはメッセージシステムを使用してメインスレッドと通信し、アプリケーションの残りの部分とシームレスに統合されます。ウェブワーカーによって複雑な操作を並行して実行することが可能になり、特にCPUを要求するアプリケーションにおいて全体的なユーザー体験が大幅に向上します。
 
-There is a module built to work with Web Workers in Noodl, it is quite technical, and it can be found here [Web Worker Module](https://github.com/noodlapp/modules/tree/main/modules/web-worker).
+Noodlにはウェブワーカーで動作するモジュールがあり、それはかなり技術的であり、[ウェブワーカーモジュール](https://github.com/noodlapp/modules/tree/main/modules/web-worker)で見つけることができます。
 
-### Installable
+### インストール可能
 
-With Progressive Web Apps you can add your Noodl app to a device's home screen, similar to how native apps appear. Installing a PWA creates a shortcut and allows you to access the web app directly without needing to open a browser and navigate to the app's URL.
+PWAでは、ネイティブアプリのように、Noodlアプリをデバイスのホーム画面に追加することができます。PWAをインストールすると、ショートカットが作成され、ブラウザを開いてアプリのURLにアクセスする必要なく、ウェブアプリに直接アクセスすることができます。
 
-The installation process for PWAs is relatively simple and does not require downloading from an app store. Once a PWA meets certain criteria (e.g., having a web app manifest and being served over HTTPS), browsers may prompt users to install the PWA or provide an option to do so manually.
+PWAのインストールプロセスは比較的シンプルで、アプリストアからのダウンロードは必要ありません。PWAが特定の基準（例えば、ウェブアプリマニフェストの存在やHTTPS経由での提供など）を満たすと、ブラウザはユーザーにPWAのインストールを促すか、手動で行うオプションを提供することがあります。
 
-Once installed, the PWA can be launched from the home screen, app drawer, or any other location where native apps can be accessed. The PWA will open in a standalone window, without the typical browser interface elements, making it feel more like a native app.
+インストールされると、PWAはホーム画面、アプリドロワー、またはネイティブアプリにアクセスできる他の場所から起動することができます。PWAはスタンドアロンウィンドウで開き、通常のブラウザインターフェイス要素なしで、よりネイティブアプリのような感覚を提供します。
 
-## How to create a PWA?
+## PWAを作成する方法は？
 
-### Creating the Web App Manifest
+### ウェブアプリマニフェストの作成
 
-The web app manifest is a JSON file that provides metadata about the PWA, such as its name, icons, display settings, and preferred orientation. This information allows the PWA to be installed on a device's home screen with a custom icon and launch experience, making it feel more like a native app.
+ウェブアプリマニフェストは、PWAに関するメタデータを提供するJSONファイルです。例えば、その名前、アイコン、表示設定、好ましい方向性などです。この情報により、PWAはカスタムアイコンと起動体験を備えてデバイスのホーム画面にインストールされ、よりネイティブアプリのように感じられるようになります。
 
-1. Create a manifest.json file and include it in your Noodl apps [project directory](/docs/guides/deploy/project-structure/).
+1. manifest.jsonファイルを作成し、Noodlアプリの[プロジェクトディレクトリ](/docs/guides/deploy/project-structure/)に含めます。
 
-2. Open the manifest.json file and add the basic properties required for your web app.
+2. manifest.jsonファイルを開き、ウェブアプリに必要な基本的なプロパティを追加します。
 
-Here's a simple example:
+以下に簡単な例を示します：
 
 ```json
 {
@@ -56,39 +55,39 @@ Here's a simple example:
 }
 ```
 
-Here's a brief explanation of each property:
+各プロパティの簡単な説明です：
 
-- `name`: The full name of your Progressive Web App.
-- `short_name`: A shorter name for your PWA, used when there's limited space (e.g., on the home screen).
-- `description`: A brief description of your PWA.
-- `start_url`: The URL that the PWA should open when launched.
-- `display`: The preferred display mode for the PWA. "standalone" is the most app-like experience, without browser interface elements.
-- `background_color`: The background color of the
+- `name`: PWAのフルネーム。
+- `short_name`: PWAの短い名前。スペースが限られている場合に使用されます（例：ホーム画面上）。
+- `description`: PWAの簡単な説明。
+- `start_url`: PWAが起動されるときに開かれるURL。
+- `display`: PWAの好ましい表示モード。"standalone"はブラウザのインターフェイス要素がない最もアプリのような体験です。
+- `background_color`: 背景色。
 
-3. Make sure to reference it in your Head Code which can be found under the Project Settings, using a link tag:
+3. プロジェクト設定にあるヘッドコードでリンクタグを使用して参照してください：
 
 ```html
 <link rel="manifest" href="/manifest.json" />
 ```
 
-4. Deploy your application and you are now using the basic functionalities of Progressive Web Apps.
+4. アプリケーションをデプロイすると、PWAの基本機能を使用することができます。
 
-### Verify Web App Manifest on a Phone
+### 電話でウェブアプリマニフェストを確認する
 
-Now when you have installed the manifest file, there are different ways to test it.
-This is one of the ways it can be tested on a phone by following these steps:
+マニフェストファイルをインストールした後、これをテストする方法はいくつかあります。
+これは、電話で以下の手順に従ってテストする方法の一つです：
 
-1. Open the web app on your phone's browser using by going to your Noodl app URL.
+1. 電話のブラウザを使用してNoodlアプリのURLにアクセスし、ウェブアプリを開きます。
 
-2. Add the web app to your phone's home screen:
+2. ウェブアプリを電話のホーム画面に追加します：
 
-   - **Android (Chrome)**: Tap the vertical ellipsis (⋮) in the top-right corner of the browser, then select "Add to Home screen" or "Install App" from the menu. Confirm the action by tapping "Add" or "Install" when prompted.
+   - **Android（Chrome）**：ブラウザの右上隅にある縦の省略記号（⋮）をタップし、メニューから「ホーム画面に追加」または「アプリをインストール」を選択します。プロンプトが表示されたら「追加」または「インストール」をタップして確認します。
 
-   - **iOS (Safari)**: Tap the "Share" icon at the bottom of the browser (a square with an arrow pointing upwards), then scroll down and select "Add to Home Screen." Confirm by tapping "Add" in the top-right corner.
+   - **iOS（Safari）**：ブラウザの下部にある「共有」アイコン（矢印が上を指している正方形）をタップし、下にスクロールして「ホーム画面に追加」を選択します。右上隅にある「追加」をタップして確認します。
 
-3. Close your browser and find the app icon on your phone's home screen.
+3. ブラウザを閉じて、電話のホーム画面でアプリアイコンを探します。
 
-4. Tap the app icon to launch the PWA. It should open in a standalone window without the browser interface elements, providing an app-like experience.
+4. アプリアイコンをタップしてPWAを起動します。これは、ブラウザのインターフェイス要素なしでスタンドアロンウィンドウで開くため、アプリのような体験を提供するはずです。
 
-Please note that this method only checks if your web app can be added to the home screen and launched like a PWA. It doesn't evaluate the full PWA functionality or features such as offline support, push notifications or performance optimizations.
-To thoroughly test your PWA, you should look at using Lighthouse in Chrome Developer Tools.
+この方法では、ウェブアプリがホーム画面に追加され、PWAのように起動できるかどうかを確認するだけです。オフラインサポート、プッシュ通知、パフォーマンスの最適化など、完全なPWA機能や特徴は評価しません。
+PWAを徹底的にテストするには、Chrome Developer ToolsのLighthouseを使用することを検討してください。

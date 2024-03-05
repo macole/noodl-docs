@@ -1,26 +1,26 @@
 ---
-title: How to add a Favicon?
+title: ファビコンを追加する方法
 hide_title: true
 ---
 
-# How to add a Favicon?
+# ファビコンを追加する方法
 
-A favicon is a small image displayed next to the page title in the browser tab.
+ファビコンは、ブラウザタブのページタイトルの隣に表示される小さな画像です。
 
 :::tip
 
-A favicon is a small image, so it should be a simple image with high contrast.
+ファビコンは小さな画像なので、シンプルでコントラストの高い画像であるべきです。
 
 :::
 
-Firstly add your favicon to the project folder,
-for example `favicon.ico` in this example.
+まず、プロジェクトフォルダにファビコンを追加します。
+例えば、この例では`favicon.ico`です。
 
-This can be done by either dragging the favicon into the project or opening the folder where the project is saved.
+これは、ファビコンをプロジェクトにドラッグするか、プロジェクトが保存されているフォルダを開くことで行うことができます。
 
-Next, add this to the **Head Code** in project settings: 
+次に、プロジェクト設定の**ヘッドコード**に以下を追加します：
 ```html
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 ```
 
-Your browser tab should now display your favicon image to the left of the page title.
+これで、ブラウザタブにページタイトルの左側にファビコン画像が表示されるようになります。

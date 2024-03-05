@@ -1,18 +1,18 @@
 ---
-title: Making Connections
+title: 接続の作成
 hide_title: true
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'
 
-# Making Connections
+# 接続の作成
 
-## What you will learn in this guide
+## このガイドで学べること
 
-How to make data connections between nodes to start creating data driven user interfaces.
+データ駆動型のユーザーインターフェースを作成するために、ノード間でデータ接続を行う方法。
 
-## Data connections
+## データ接続
 
-All nodes have inputs and outputs. Most of the properties of a node (that you can edit in the property panel) are also available as inputs. Many nodes also have outputs that provide some sort of data value. The most common example is the **Text Input** node that provides (amonng other things) the typed text as an output value. Using connections you can ensure that an output from one node is written to an input of another node when it is updated. Take a look at the very simple interface below:
+すべてのノードには入力と出力があります。ノードのほとんどのプロパティ（プロパティパネルで編集できるもの）は入力としても利用可能です。多くのノードには、何らかのデータ値を提供する出力もあります。最も一般的な例は、**Text Input**ノードで、入力されたテキストを出力値として提供します。接続を使用することで、あるノードの出力が更新されたときに、別のノードの入力に書き込まれるようにすることができます。以下の非常にシンプルなインターフェースを見てみましょう：
 
 <div className="ndl-image-with-background xl">
 
@@ -20,29 +20,29 @@ All nodes have inputs and outputs. Most of the properties of a node (that you ca
 
 </div>
 
-Here you have a **Text Input** and a **Text** UI Element. Now let's say we want the **Text** element to show whatever we type into the **Text Input**. For that we can connect the two nodes.
+ここでは、**Text Input**と**Text** UIエレメントがあります。**Text**エレメントに**Text Input**に入力されたものを表示させたい場合、2つのノードを接続できます。
 
 <div className="ndl-image-with-background xl">
     <video width="100%" autoPlay muted loop src={useBaseUrl("/docs/guides/data/making-connections/making-connection.mp4")}/>
 </div>
 
-Now when we type something in the **Text Input**, it will output that on the **Text** output. This is connected to the apptly named **Text** input of the **Text** node.
+これで、**Text Input**に何かを入力すると、**Text**出力にそれが表示されます。これは適切に名付けられた**Text**ノードの**Text**入力に接続されています。
 
 <div className="ndl-image-with-background xl">
     <video width="100%" autoPlay muted loop src={useBaseUrl("/docs/guides/data/making-connections/testing-connection.mp4")}/>
 </div>
 
-As you can see above, when you start typing in the **Text Input** you can see the **Text** is also updated. You can also see in the node graph editor that the connection lights up briefly when data is updated on the output and written to the input.
+上記のように、**Text Input**に入力を始めると、**Text**も更新されます。また、ノードグラフエディターでは、データが出力で更新され、入力に書き込まれるときに接続が短時間点灯するのがわかります。
 
-If you hover the connection in the node graph editor you can also view the latest value that have been sent over the connection, and if you click the little inspection popup you can pin it. Click it again to unpin it.
+ノードグラフエディターで接続にマウスを合わせると、接続を介して送信された最新の値を表示することもできます。また、小さな検査ポップアップをクリックすると固定できます。再度クリックすると固定を解除できます。
 
-Making direct connections is fun an all, but using the many utility nodes available you can convert and augment the data on it's way from the output to the final input. First, delete the connection you just made. Deleting a connection is done by clicking it once to reveal the **Delete Icon** and clicking it again to delete.
+直接接続を行うことは楽しいですが、多くのユーティリティノードを使用して、出力から最終的な入力までの途中でデータを変換および拡張することができます。まず、作成したばかりの接続を削除します。接続を削除するには、一度クリックして**削除アイコン**を表示し、もう一度クリックして削除します。
 
 <div className="ndl-image-with-background xl">
     <video width="100%" autoPlay muted loop src={useBaseUrl("/docs/guides/data/making-connections/delete-connection.mp4")}/>
 </div>
 
-Now, here you can see how we use a **String Format** node to make a nice greeting.
+ここでは、**String Format**ノードを使用して素敵な挨拶を作成する方法を示します。
 
 <div className="ndl-image-with-background xl">
 
@@ -50,10 +50,10 @@ Now, here you can see how we use a **String Format** node to make a nice greetin
 
 </div>
 
-Now you when you type in the **Text Input** box you can see how the data is first passed to the **String Format** node that then augments the data and passes it along on it's **Formatted** output. Learn more about how the [String Format](/nodes/string-manipulation/string-format) node work in the node reference documentation.
+これで、**Text Input**ボックスに入力すると、データがまず**String Format**ノードに渡され、そこでデータが拡張され、**Formatted**出力に沿って渡されることがわかります。[String Format](/nodes/string-manipulation/string-format)ノードの動作については、ノードリファレンスドキュメントで詳細を学ぶことができます。
 
 <div className="ndl-image-with-background xl">
     <video width="100%" autoPlay muted loop src={useBaseUrl("/docs/guides/data/making-connections/testing-connection-2.mp4")}/>
 </div>
 
-We have covered a very important concept that is used for making data driven reactive user interfaces. But we won't get far just connecting different UI Controls together, most often we need to present data from a database, or an external API. For that we will introduce the data nodes (the green ones), and we'll start with the **Variable** in the next guide.
+データ駆動型リアクティブユーザーインターフェースを作成するための非常に重要な概念を紹介しました。しかし、異なるUIコントロールを接続するだけでは十分ではありません。ほとんどの場合、データベースや外部APIからのデータを提示する必要があります。そのために、データノード（緑色のもの）を導入し、次のガイドで**Variable**から始めます。

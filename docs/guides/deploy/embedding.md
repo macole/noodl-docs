@@ -1,55 +1,55 @@
 ---
-title: Embedding / iframe / Micro Frontend
+title: 埋め込み / iframe / マイクロフロントエンド
 hide_title: true
 ---
 
-# Embedding / iframe / Micro Frontend
+# 埋め込み / iframe / マイクロフロントエンド
 
-Noodl is a powerful tool for creating iframe and micro frontends.
+Noodlは、iframeやマイクロフロントエンドを作成するための強力なツールです。
 
-Micro Frontend, iframe, and embedding are all techniques used in web development for integrating different components or applications into a single web page. However, they have distinct approaches and use cases.
+マイクロフロントエンド、iframe、埋め込みは、異なるコンポーネントやアプリケーションを単一のウェブページに統合するためにウェブ開発で使用される技術です。しかし、それぞれ異なるアプローチと使用事例があります。
 
-## Embedding
+## 埋め込み
 
-Embedding is a more general term that refers to the process of including one piece of content within another, usually referring to the iframe technique.
+埋め込みは、一般的にiframe技術を指すことが多い、他のコンテンツをあるコンテンツ内に含めるプロセスを指すより一般的な用語です。
 
-### Embedding inside a Noodl app
+### Noodlアプリ内での埋め込み
 
-If you are looking to embed other websites (example youtube) into Noodl, have a look at the [Custom HTML module](https://docs.noodl.net/2.9/library/modules/custom-html/).
+Noodlで他のウェブサイト（例えばYouTube）を埋め込みたい場合は、[Custom HTMLモジュール](https://docs.noodl.net/2.9/library/modules/custom-html/)を参照してください。
 
 ## iframe
 
-An iframe (inline frame) is an HTML element that allows you to embed another HTML document within a parent HTML document. By using an iframe, you can display content from another website or application within your web page without affecting the main page's layout or styling. This is useful for embedding third-party content like maps, videos, or widgets. However, iframes have some limitations, such as security risks, lack of responsiveness, and difficulty in communication between parents and iframe content.
+iframe（インラインフレーム）は、HTMLドキュメント内に別のHTMLドキュメントを埋め込むことができるHTML要素です。iframeを使用することで、メインページのレイアウトやスタイリングに影響を与えることなく、他のウェブサイトやアプリケーションのコンテンツをウェブページ内に表示することができます。これは、地図、動画、ウィジェットなどのサードパーティコンテンツを埋め込むのに便利です。しかし、iframeにはセキュリティリスクや応答性の欠如、親とiframeコンテンツ間の通信の難しさなどの制限があります。
 
-### Add an iframe to a website
+### ウェブサイトにiframeを追加する
 
-To add an iframe to your HTML document, you can use the `<iframe>` tag with the `src` attribute specifying the URL of the content you want to embed. Here's an example:
+HTMLドキュメントにiframeを追加するには、埋め込みたいコンテンツのURLを指定する`src`属性を持つ`<iframe>`タグを使用します。以下に例を示します：
 
 ```html
 <iframe
   width="560"
   height="315"
   src="https://url.to.your.deployed.app/"
-  rameborder="0"
+  frameborder="0"
   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
   allowfullscreen
 ></iframe>
 ```
 
-In this example, the `<iframe>` tag has several attributes:
+この例では、`<iframe>`タグにいくつかの属性があります：
 
-- `width` and `height`: Set the dimensions of the iframe.
-- `src`: The URL of your deployed Noodl app.
-- `frameborder`: Set to "0" to remove the border around the iframe.
-- `allow`: Specifies a list of features that are allowed within the iframe, such as accelerometer, autoplay, clipboard-write, encrypted-media, gyroscope, and picture-in-picture.
-- `allowfullscreen`: Allows the iframe to go full-screen mode when the full-screen API is used.
+- `width`と`height`：iframeの寸法を設定します。
+- `src`：デプロイされたNoodlアプリのURL。
+- `frameborder`：iframeの周りの境界線を削除するために「0」に設定します。
+- `allow`：iframe内で許可されている機能のリストを指定します。例えば、加速度計、自動再生、クリップボードへの書き込み、暗号化メディア、ジャイロスコープ、ピクチャーインピクチャーなど。
+- `allowfullscreen`：フルスクリーンAPIが使用されたときに、iframeをフルスクリーンモードにすることを許可します。
 
-This example demonstrates how to add an iframe to your HTML document to embed a deployed Noodl app. You can customize the attributes as needed to suit your specific use case or other types of content to be embedded using iframes.
+この例は、デプロイされたNoodlアプリを埋め込むためにHTMLドキュメントにiframeを追加する方法を示しています。特定の使用事例や、iframeを使用して埋め込む他のタイプのコンテンツに合わせて属性をカスタマイズすることができます。
 
-## Micro Frontend
+## マイクロフロントエンド
 
-Micro Frontends is an architectural pattern that involves breaking down a frontend application into smaller, more manageable, and independent parts, called micro frontends. Each micro frontend is a self-contained unit of the frontend code that is responsible for a specific set of features or functionality.
+マイクロフロントエンドは、フロントエンドアプリケーションをより小さく、管理しやすく、独立した部分（マイクロフロントエンドと呼ばれる）に分割するアーキテクチャパターンです。各マイクロフロントエンドは、特定の機能や機能のセットに対応するフロントエンドコードの自己完結型ユニットです。
 
-The micro frontend approach allows for greater flexibility and scalability in frontend development, as each micro frontend can be developed and deployed independently, and can be composed to create the overall frontend application. This approach also allows for different teams to work on different parts of the front-end application, using different technologies.
+マイクロフロントエンドアプローチは、各マイクロフロントエンドを独立して開発およびデプロイできるため、フロントエンド開発においてより大きな柔軟性とスケーラビリティを提供します。また、このアプローチにより、異なるチームがフロントエンドアプリケーションの異なる部分を異なるテクノロジーを使用して開発することができます。
 
-If you are interested in hearing more, [reach out to us in the community](https://www.noodl.net/community).
+もっと詳しく知りたい場合は、[コミュニティでお問い合わせください](https://www.noodl.net/community)。

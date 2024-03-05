@@ -1,14 +1,14 @@
 ---
-title: Working with Data in Noodl
+title: Noodlでのデータ操作
 hide_title: true
 ---
 
-# Working with Data in Noodl
+# Noodlでのデータ操作
 
-Noodl contains a number of nodes that help you fill your UI with data and read and process the data that the user enters. This is achieved by connecting the visual nodes to **Variables**, **Objects** and **Arrays**.
+Noodlには、UIにデータを充填し、ユーザーが入力したデータを読み取り処理するのに役立つ多くのノードが含まれています。これは、視覚的なノードを**変数**、**オブジェクト**、**配列**に接続することで実現されます。
 
-* **Variables** are singular values
-* **Objects** are a collection of different values that belong together, for example data about an order or a customer
-* **Arrays** are a list of **Objects** for example a list of orders or customers
+* **変数**は単一の値です
+* **オブジェクト**は、例えば注文や顧客に関するデータなど、一緒に属するさまざまな値の集まりです
+* **配列**は、例えば注文や顧客のリストなど、**オブジェクト**のリストです
 
-These nodes are all _client side_ only, meaning they are not stored in a database in the cloud. They are also only valid during a singular session in an App. For example if the user refresh the browser this data is cleared. Storing this data in the cloud is easy however and you can learn more about that in the [Cloud Data Guides](/docs/guides/cloud-data/overview).
+これらのノードはすべて_クライアントサイド_のみで、つまりクラウドのデータベースには保存されません。また、アプリの単一セッション中にのみ有効です。たとえば、ユーザーがブラウザをリフレッシュすると、このデータはクリアされます。ただし、このデータをクラウドに簡単に保存することも可能で、その方法については[クラウドデータガイド](/docs/guides/cloud-data/overview)で詳しく学ぶことができます。

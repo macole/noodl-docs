@@ -1,31 +1,31 @@
 ---
-title: Visual States
+title: ビジュアルステート
 hide_title: true
 ---
 
-# Working with Visual States
+# ビジュアルステートの扱い方
 
-## What you will learn in this guide
+## このガイドで学ぶこと
 
-This guide will teach you how to style **Visual nodes** differently based on user interaction.
+このガイドでは、ユーザーのインタラクションに基づいて**ビジュアルノード**を異なるスタイルで表示する方法を学びます。
 
-## Overview
+## 概要
 
-We will go through the following steps in this guide:
+このガイドでは、以下のステップを順を追って説明します：
 
--   Create a button
--   Style its `neutral` state
--   Style it differently in its `hover` state
+-   ボタンを作成する
+-   その`ニュートラル`状態をスタイルする
+-   `ホバー`状態で異なるスタイルを適用する
 
-There is also a video walking through the guide.
+このガイドを通してのビデオもあります。
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ATyqeK_deu4" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
 
-## Let's go!
+## さあ、始めましょう！
 
-When working with Visual nodes we often find ourselves in situations where we want to style the node differently based on the user interaction. We might want to have a different background color when hovering a button, or indicating that a checkbox has been checked. This is done using **Visual States** in the nodes settings in the **Property Panel**.
+ビジュアルノードを扱う際、ユーザーのインタラクションに基づいてノードを異なるスタイルで表示したいという状況にしばしば遭遇します。例えば、ボタンにホバーした際に異なる背景色を表示したり、チェックボックスがチェックされたことを示したりする場合です。これは**ビジュアルステート**を使用して、**プロパティパネル**内のノード設定で行われます。
 
-Let’s create a button in our node tree, and give it a quick styling.
+まず、ノードツリーでボタンを作成し、簡単にスタイリングしましょう。
 
 <div className="ndl-image-with-background">
 
@@ -33,7 +33,7 @@ Let’s create a button in our node tree, and give it a quick styling.
 
 </div>
 
-Our brand guidelines tell us that all buttons need to be the Dark color and that they shouldn't have any rounded corners.
+ブランドガイドラインによると、すべてのボタンはダークカラーで、角は丸くないことが指定されています。
 
 <div className="ndl-image-with-background s">
 
@@ -41,9 +41,9 @@ Our brand guidelines tell us that all buttons need to be the Dark color and that
 
 </div>
 
-Ok, so, it looks good now, but when I sent it to my designer friend they told me that while the button looked good in the neutral state, it was all wrong when hovered. The button is supposed to be the Primary Light color, and the text should be Dark. Let’s fix that by modifying the Hover state.
+OK、現在のところ良さそうですが、これをデザイナーの友人に送ったら、ボタンはニュートラル状態では良いが、ホバー時は全く違うと言われました。ボタンはプライマリーライトカラーであり、テキストはダークである必要があります。それを修正しましょう。ホバー状態を変更することで。
 
-With the Button node still selected, let’s move over to the Visual State selector and click the Hover option.
+ボタンノードを選択したまま、ビジュアルステートセレクターに移動してホバーオプションをクリックします。
 
 <div className="ndl-image-with-background">
 
@@ -51,9 +51,9 @@ With the Button node still selected, let’s move over to the Visual State selec
 
 </div>
 
-We will see the Property Panel shift around a bit. Some properties just don't make any sense to change in an interaction state, so Noodl will hide those properties for us.
+プロパティパネルが少し変化します。インタラクション状態で変更する意味がないプロパティは、Noodlが隠してくれます。
 
-Let’s scroll down to the properties for Label and Background Color and update them.
+ラベルと背景色のプロパティまでスクロールダウンして更新しましょう。
 
 <div className="ndl-image-with-background l">
 
@@ -61,7 +61,7 @@ Let’s scroll down to the properties for Label and Background Color and update 
 
 </div>
 
-And voila - we are now following the brand guidelines.
+これで、ブランドガイドラインに従っています。
 
 <div className="ndl-image-with-background s">
 

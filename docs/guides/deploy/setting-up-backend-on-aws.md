@@ -1,11 +1,11 @@
 ---
-title: Setting up a backend on Amazon Web Services
+title: Amazon Web Servicesでバックエンドを設定する
 hide_title: true
 ---
 
-# Setting up a backend on Amazon Web Services
+# Amazon Web Servicesでバックエンドを設定する
 
-This guide will cover how to start up a Noodl backend on AWS using the Noodl backend docker image. You will need an AWS account setup. The service you will be using is called **App Runner**. Start by going to the console for that service.
+このガイドでは、NoodlバックエンドDockerイメージを使用してAWS上でNoodlバックエンドを開始する方法について説明します。AWSアカウントの設定が必要です。使用するサービスは**App Runner**と呼ばれています。そのサービスのコンソールから始めてください。
 
 <div className="ndl-image-with-background xl">
 
@@ -13,7 +13,7 @@ This guide will cover how to start up a Noodl backend on AWS using the Noodl bac
 
 </div>
 
-There you can create a new service.
+そこで新しいサービスを作成できます。
 
 <div className="ndl-image-with-background m">
 
@@ -21,7 +21,7 @@ There you can create a new service.
 
 </div>
 
-When setting up the new service you need to specify that the image is to be fetched from the container registry.
+新しいサービスを設定する際、イメージがコンテナレジストリから取得されることを指定する必要があります。
 
 <div className="ndl-image-with-background xl">
 
@@ -29,19 +29,19 @@ When setting up the new service you need to specify that the image is to be fetc
 
 </div>
 
-The image URL to use is:
+使用するイメージURLは以下の通りです：
 
 ```bash
 public.ecr.aws/noodl/noodl-self-hosted-cloud-services:latest
 ```
 
-You can choose if you want to manually control when you redeploy and instance. This is needed if the Noodl backend image is updated and you want to apply the updates to your service. You can also choose to automatically track changes. When you are done click **Next**.
+インスタンスの再デプロイを手動で制御するかどうかを選択できます。これは、Noodlバックエンドイメージが更新され、サービスに更新を適用したい場合に必要です。自動的に変更を追跡することも選択できます。完了したら**次へ**をクリックします。
 
-On the next screen you provide a **name** for your service and you can change settings for service. For the most part you can keep the standard settings but a few needs to be changed.
+次の画面で、サービスに**名前**を付け、サービスの設定を変更できます。ほとんどの部分では標準の設定をそのまま使用できますが、いくつか変更する必要があります。
 
-- **Port** The port of the application needs to be set to **3000**
+- **ポート** アプリケーションのポートは**3000**に設定する必要があります。
 
-You also need to provide a few environment variables to the instance. You do this using the **Add environment variable** button.
+インスタンスにいくつかの環境変数を提供する必要があります。これは**環境変数を追加**ボタンを使用して行います。
 
 <div className="ndl-image-with-background xl">
 
@@ -49,17 +49,17 @@ You also need to provide a few environment variables to the instance. You do thi
 
 </div>
 
-The following variables are needed:
+次の変数が必要です：
 
-- **APP_ID** You can choose this yourself, you need to provide it in the Noodl editor when connecting to your backend.
-- **MASTER_KEY** This you be a password that you need to keep safe. With this password you get full access to your backend, this is also needed to connect to your backend from Noodl.
-- **DATABASE_URI** This is the database url that you got when setting up the MongoDB database in the previous step. This can also be a Postgres url.
+- **APP_ID** これは自分で選ぶことができ、Noodlエディターでバックエンドに接続する際に提供する必要があります。
+- **MASTER_KEY** これは、安全に保管する必要があるパスワードです。このパスワードでバックエンドに完全なアクセスが可能になり、Noodlからバックエンドに接続する際にも必要です。
+- **DATABASE_URI** これは、前のステップで設定したMongoDBデータベースのURLです。PostgresのURLでも構いません。
 
-- **PUBLIC_SERVER_URL** (Optional) This is needed if you want to support file uploads and downloads, in that case you might need to go back here and update this environment variable after you have received the URL in the next step. This variable should be the public url where your clour services can be reached, starting with `https://`.
+- **PUBLIC_SERVER_URL**（オプション）ファイルのアップロードとダウンロードをサポートしたい場合は、この環境変数が必要です。その場合、次のステップでURLを受け取った後、ここに戻ってこの環境変数を更新する必要があるかもしれません。この変数は、`https://`で始まるクラウドサービスが到達可能な公開URLである必要があります。
 
-With that in place you can move on to reviewing your settings and deploying your service. It might take a few minutes to completely setup you new service.
+これで設定を確認し、サービスをデプロイする準備が整いました。新しいサービスの完全なセットアップには数分かかる場合があります。
 
-Once the service is up and running the last step is to find the URL of the service. You can find it by navigating to the service details page. It will look something like this:
+サービスが稼働し始めたら、最後のステップはサービスのURLを見つけることです。サービスの詳細ページに移動すると、以下のように表示されます：
 
 <div className="ndl-image-with-background l">
 
@@ -67,15 +67,17 @@ Once the service is up and running the last step is to find the URL of the servi
 
 </div>
 
-With that URL, master key and app id in hand, [go back](/docs/guides/deploy/using-an-external-backend#connect-your-application-to-the-self-hosted-backend) to the self hosting guide.
+そのURL、マスターキー、およびアプリIDを手に、[セルフホスティングガイド](/docs/guides/deploy/using-an-external-backend#connect-your-application-to-the-self-hosted-backend)に戻ります。
 
-# File storage
+# ファイルストレージ
 
-If you want to support file upload and download, you need to specify the **PUBLIC_SERVER_URL** environment variable as noted above. By default the files will be stored in the database of your application, but if you instead want to use an S3 bucket for storage you need to create a bucket, and policy, you can find instructions on that [here](http://docs.parseplatform.org/parse-server/guide/#configuring-s3adapter). Then specify these additional environment variables:
+ファイルのアップロードとダウンロードをサポートする場合は、上記で指摘したように**PUBLIC_SERVER_URL**環境変数を指定する必要があります。デフォルトでは、ファイルはアプリケーションのデータベースに保存されますが、代わりにS3バケットをストレージとして使用する場合は、バケットとポリシーを作成する必要があります。その手順は[こちら](http://docs.parseplatform.org/parse-server/guide/#configuring-s3adapter)で見つけることができます。次に、これらの追加の環境変数を指定します：
 
-- **S3_ACCESS_KEY** The AWS access key for a user that has the required permissions. Required.
-- **S3_SECRET_KEY** The AWS secret key for the user. Required.
-- **S3_BUCKET** The name of your S3 bucket. Needs to be globally unique in all of S3. Required.
-- **S3_REGION** (Optional) The AWS region to connect to. Default: ‘us-east-1’
-- **S3_BUCKET_PREFIX** (Optional)Create all the files with the specified prefix added to the filename. Can be used to put all the files for an app in a folder with ‘folder/’.
-- **S3_DIRECT_ACCESS** (Optional)Whether reads are going directly to S3 or proxied through your Parse Server. If set to true, files will be made publicly accessible, and reads will not be proxied. Default: false
+- **S3_ACCESS_KEY** 必要な権限を持つユーザーのAWSアクセスキー。必須。
+- **S3_SECRET_KEY** ユーザーのAWSシークレットキー。必須。
+- **S3_BUCKET** S3バケットの名前。S3全体でグローバルに一意である必要があります。必須。
+- **S3_REGION**（オプション）接続するAWSリージョン。デフォルト：「us-east-1」
+-
+
+ **S3_BUCKET_PREFIX**（オプション）指定された接頭辞をファイル名に追加してすべてのファイルを作成します。'folder/'のようにアプリのすべてのファイルをフォルダに入れるために使用できます。
+- **S3_DIRECT_ACCESS**（オプション）読み取りがS3を直接行うか、Parse Serverを通じてプロキシされるかどうか。trueに設定すると、ファイルは公開アクセス可能になり、読み取りはプロキシされません。デフォルト：false

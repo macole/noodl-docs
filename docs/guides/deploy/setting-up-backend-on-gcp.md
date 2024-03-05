@@ -1,11 +1,11 @@
 ---
-title: Setting up a backend on Google Cloud Platform
+title: Google Cloud Platformでバックエンドを設定する
 hide_title: true
 ---
 
-# Setting up a backend on Google Cloud Platform
+# Google Cloud Platformでバックエンドを設定する
 
-This guide will cover how to start up a Noodl backend on GCP using the Noodl backend docker image. You will need a GCP account setup. The service you will be using is called **Cloud Run**. Start by going to the console for that service.
+このガイドでは、NoodlバックエンドDockerイメージを使用してGCP上でNoodlバックエンドを開始する方法について説明します。GCPアカウントの設定が必要です。使用するサービスは**Cloud Run**と呼ばれています。そのサービスのコンソールから始めてください。
 
 <div className="ndl-image-with-background m">
 
@@ -13,9 +13,9 @@ This guide will cover how to start up a Noodl backend on GCP using the Noodl bac
 
 </div>
 
-There you can create a new service. Find the button **Create Service** at the top.
+そこで新しいサービスを作成できます。「サービスの作成」ボタンを見つけてください。
 
-When setting up the new service you need provide the url to the Noodl backend docker image.
+新しいサービスを設定する際には、NoodlバックエンドDockerイメージへのURLを提供する必要があります。
 
 <div className="ndl-image-with-background xl">
 
@@ -23,13 +23,13 @@ When setting up the new service you need provide the url to the Noodl backend do
 
 </div>
 
-The image URL to use is:
+使用するイメージURLは以下の通りです：
 
 ```bash
 gcr.io/noodlapp/noodl-self-hosted-cloud-services:latest
 ```
 
-Another important setting is making sure that unauthenticated requests can be handled by your new service.
+重要な設定の一つは、新しいサービスが認証されていないリクエストを処理できるようにすることです。
 
 <div className="ndl-image-with-background xl">
 
@@ -37,11 +37,11 @@ Another important setting is making sure that unauthenticated requests can be ha
 
 </div>
 
-For the most part you can keep the standard settings but a few needs to be changed. These can be found by expanding the **Container, Connections, Security** section.
+ほとんどの部分では標準の設定をそのまま使用できますが、いくつか変更する必要があります。これらは**コンテナ、接続、セキュリティ**セクションを展開することで見つけることができます。
 
-* **Continer port** The port of the application needs to be set to **3000**
+* **コンテナポート** アプリケーションのポートは**3000**に設定する必要があります。
 
-You also need to provide a few environment variables to the instance. You do this using the **+ Add Variable** button.
+インスタンスにいくつかの環境変数を提供する必要があります。これは**+ 変数を追加**ボタンを使用して行います。
 
 <div className="ndl-image-with-background xl">
 
@@ -49,17 +49,17 @@ You also need to provide a few environment variables to the instance. You do thi
 
 </div>
 
-The following variables are needed:
+次の変数が必要です：
 
-* **APP_ID** You can choose this yourself, you need to provide it in the Noodl editor when connecting to your backend.
-* **MASTER_KEY** This you be a password that you need to keep safe. With this password you get full access to your backend, this is also needed to connect to your backend from Noodl.
-* **DATABASE_URI** This is the database uri that you got when setting up the MongoDB database in the previous step. This can also be a Postgres uri.
+* **APP_ID** これは自分で選ぶことができ、Noodlエディターでバックエンドに接続する際に提供する必要があります。
+* **MASTER_KEY** これは、安全に保管する必要があるパスワードです。このパスワードでバックエンドに完全なアクセスが可能になり、Noodlからバックエンドに接続する際にも必要です。
+* **DATABASE_URI** これは、前のステップで設定したMongoDBデータベースのURIです。PostgresのURIでも構いません。
 
-* **PUBLIC_SERVER_URL** (Optional) This is needed if you want to support file uploads and downloads, in that case you might need to go back here and update this environment variable after you have received the URL in the next step. This variable should be the public url where your clour services can be reached, starting with `https://`.
+* **PUBLIC_SERVER_URL**（オプション）ファイルのアップロードとダウンロードをサポートしたい場合は、この環境変数が必要です。その場合、次のステップでURLを受け取った後、ここに戻ってこの環境変数を更新する必要があるかもしれません。この変数は、`https://`で始まるクラウドサービスが到達可能な公開URLである必要があります。
 
-With that in place you can create your new service, hit the **Create** button.
+これで新しいサービスを作成する準備が整いました。**作成**ボタンをクリックしてください。
 
-Once the service is up and running the last step is to find the URL of the service. You can find it by navigating to the service details page. 
+サービスが稼働し始めたら、最後のステップはサービスのURLを見つけることです。サービスの詳細ページに移動することで見つけることができます。
 
 <div className="ndl-image-with-background l">
 
@@ -67,18 +67,17 @@ Once the service is up and running the last step is to find the URL of the servi
 
 </div>
 
-With that URL, master key and app id in hand, [go back](/docs/guides/deploy/using-an-external-backend#connect-your-application-to-the-self-hosted-backend) to the self hosting guide.
+そのURL、マスターキー、およびアプリIDを手に、[セルフホスティングガイド](/docs/guides/deploy/using-an-external-backend#connect-your-application-to-the-self-hosted-backend)に戻ります。
 
-# File storage
+# ファイルストレージ
 
-If you want to support file upload and download, you need to specify the **PUBLIC_SERVER_URL** environment variable as noted above. By default the files will be stored in the database of your application, but if you instead want to use a GCS bucket for storage you can provide the following environment variables.
+ファイルのアップロードとダウンロードをサポートする場合は、上記で指摘したように**PUBLIC_SERVER_URL**環境変数を指定する必要があります。デフォルトでは、ファイルはアプリケーションのデータベースに保存されますが、代わりにGCSバケットをストレージとして使用する場合は、以下の環境変数を提供できます。
 
-* **GCP_PROJECT_ID** The project ID from the Google Developer’s Console. Required.
-* **GCS_BUCKET** The name of your GCS bucket. Required.
-* **GCP_CLIENT_EMAIL** The client email of the service account with permissions to the bucket.
-* **GCP_PRIVATE_KEY** The private key associated with the client email for the servive account with permissions to the bucket.
-* **GCS_BUCKET_PREFIX**	(Optional) Create all the files with the specified prefix added to the filename. Can be used to put all the files for an app in a folder with ‘folder/’.
-* **GCS_DIRECT_ACCESS**	(Optional) Whether reads are going directly to GCS or proxied through your Parse Server. Default: false
+* **GCP_PROJECT_ID** Google Developer’s ConsoleのプロジェクトID。必須。
+* **GCS_BUCKET** GCSバケットの名前。必須。
+* **GCP_CLIENT_EMAIL** バケットへのアクセス権を持つサービスアカウントのクライアントメール。
+* **GCP_PRIVATE_KEY** バケットへのアクセス権を持つサービスアカウントのクライアントメールに関連付けられた秘密鍵。
+* **GCS_BUCKET_PREFIX**（オプション）指定された接頭辞をファイル名に追加してすべてのファイルを作成します。'folder/'のようにアプリのすべてのファイルをフォルダに入れるために使用できます。
+* **GCS_DIRECT_ACCESS**（オプション）読み取りがGCSを直接行う
 
-
-
+か、Parse Serverを通じてプロキシされるかどうか。デフォルト：false
