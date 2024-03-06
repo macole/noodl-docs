@@ -1,5 +1,5 @@
 ---
-title: コンポーネントスタック
+title: Component Stack
 hide_title: true
 ---
 
@@ -7,29 +7,29 @@ import ImportButton from '/src/components/importbutton';
 import CopyToClipboardButton from '/src/components/copytoclipboardbutton';
 import ReactPlayer from 'react-player';
 
-# コンポーネントスタックガイド
+# Component Stack Guide
 
-## このガイドで学べること
+## What you will learn in this guide
 
-このガイドでは、[コンポーネントスタック](/nodes/component-stack/component-stack-node)ノードと関連するナビゲーションノード[コンポーネントをスタックにプッシュ](/nodes/component-stack/push-component)および[スタックからコンポーネントをポップ](/nodes/component-stack/pop-component)について見ていきます。
+In this guide we will take a look at the [Component Stack](/nodes/component-stack/component-stack-node) node and the related navigation node [Push Component To Stack](/nodes/component-stack/push-component) and [Pop Component From Stack](/nodes/component-stack/pop-component).
 
-これらは、[ページルーター](/nodes/navigation/page-router)や関連するノードに比べて、別のナビゲーションコンポーネントです。各**ページ**にURLを付与し、ブラウザの戻る履歴を利用するのではなく、**コンポーネントスタック**はアプリ内ですべて完全に処理されます。もちろん、これらのナビゲーションスタイルは組み合わせて使用することができます。このガイドでは、**コンポーネントスタック**と**ポップアップ**を組み合わせています。モーダルウィザードを作成する方法を学びます。
+They are an alternative navigation component compared to the [Page Router](/nodes/navigation/page-router) and related nodes. Instead of giving each **Page** a URL, and making use if the browser back history, **Component Stack** is completely handled from within the App. Both these styles of navigations can of course be combined. In this guide we will combine **Component Stack** with **Popups**. You will learn how to make a little modal wizard.
 
-## 概要
+## Overview
 
-このガイドでは以下のトピックをカバーします。
+The guide will cover the following topics
 
-- コンポーネントスタックの定義
-- スタックにコンポーネントをプッシュおよびポップ
-- スタック内およびスタック外のコンポーネント間でデータを転送
-- スタックの上にあるコンポーネント（およびその数）を追跡
-- コンポーネントをプッシュおよびポップする際のトランジション
+- Defining a component stack
+- Pushing and popping components on the stack
+- Forwarding data between components on the stack and outside the stack
+- Keeping track of which component that is on top of the stack (and how many)
+- Transitions when pushing and popping components
 
-このガイドは[ポップアップガイド](/docs/guides/navigation/popups)の続きであり、最初にそのガイドを見ることをお勧めします。また、Noodlのデータの基本についても知っておくと良いので、[オブジェクト](/docs/guides/data/objects)および[アレイ](/docs/guides/data/arrays)のガイドも見てください。このガイドでは、[イベント](/docs/guides/business-logic/events)も使用します。
+The guide is a continuation of the [Popup Guide](/docs/guides/navigation/popups) and it's recommended that you go through that guide first. It's also good to know the basics on data in Noodl, so also have a look at the [Object](/docs/guides/data/objects) and [Arrays](/docs/guides/data/arrays) guides before starting this guide. We will also use [Events](/docs/guides/business-logic/events) in the guide.
 
-## **コンポーネントスタック**を使用してモーダルウィザードを作成する
+## Creating a modal Wizard using **Component Stack**
 
-このガイドでは、**ポップアップ**内に収められた小さな「ウィザード」タイプのUIを作成する方法を示します。これは[ポップアップガイド](/docs/guides/navigation/popups)の続きです。したがって、そのガイドを完了していない場合は、以下のインポートボタンをクリックしてNoodlにプロジェクトをインポートしてください。
+This guide will show you how to create a little "Wizard" type UI contained in a **Popup**. It's a continuation on the [Popup Guide](/docs/guides/navigation/popups). So start by importing the project below (by clicking the Import Button) into Noodl if you haven't finished that guide.
 
 <div className="ndl-image-with-background l">
 
@@ -37,49 +37,49 @@ import ReactPlayer from 'react-player';
 
 <ImportButton
   zip="/docs/guides/navigation/component-stack/popups.zip"
-  name="ポップアップの例"
+  name="Popup Example"
   thumb="/docs/guides/navigation/component-stack/popup-final.png"
 />
 
 </div>
 
-## ポップアップ内のナビゲーション
+## Navigation within a Popup
 
-ポップアップガイドで達成したことを簡単に振り返ります。人々のリストがあり、リスト内の削除を確認するポップアップを作成しました。また、「ポップアップベース」というコンポーネントも作成しました。
+To quickly recap what we achieved in the Popup Guide. We had a list of People and we created a Popup that had us confirm any deletion in the list. We also created a `Popup Base` component that we can use to make new nice looking Popups.
 
-今回は、人々のリストにさらに人物を追加できるウィザードスタイルの**ポップアップ**を作成します。ウィザードスタイルとは、ユーザーがエントリを作成するために**ポップアップ**内で複数の画面を通過することを意味します。通常、Noodlでは**ページルーター**ノード（[こちらのガイド](/docs/guides/navigation/basic-navigation)を参照）を使用してナビゲーションを行いますが、これはモーダルステートのアプリには通常向いていません。代わりに、[コンポーネントスタック](/nodes/component-stack/component-stack-node)ノードを使用できます。これはURLに影響を与えず、アプリのモーダルステートにより適しています。また、トランジションもサポートしています。
+We now want to do a wizard style **Popup** were the user can add more persons to our list of people. "Wizard style" meaning the user will move through multiple screens within the **Popup** to create the entry. Normally, navigation in Noodl is done using the **Page Router** node (check out the guide [here](/docs/guides/navigation/basic-navigation)), but this it typically not meant for modal states of the app, since each **Page** have a unique URL. Instead you can use the [Component Stack](/nodes/component-stack/component-stack-node) node which doesn't affect the URL and therefore is more fit for a modal state in the app. It also supports transitions which is nice.
 
-「新しい人物を追加」のポップアップには3つの状態があります。
+We want our "Add new Person" popup two have three states.
 
-1. 新しくリストに追加する人物の名、姓、年齢を入力する
-2. 国を選択する
-3. 国に基づいて都市を選択する
+1. Fill out first name, last name and age of the new person to add to the list
+2. Select country
+3. Based on the country, select city
 
-データの側面についても考える必要があります。ポップアップガイドでは、各人物は以下のタイプのオブジェクトに保存されていることを知っています：
+We also need to think about the data aspect. From the Popup guide we know that each person is stored in an object of this type:
 
 ```json
 {
-	"firstname":<人物の名>,
-	"lastname":<人物の姓>,
-	"age":<人物の年齢>,
-	"location":<人物が住んでいる都市と国>
+	"firstname":<first name of the person>,
+	"lastname":<last name of the person>,
+	"age":<The age of the person>,
+	"location":<the city and country where the person lives>
 }
 ```
 
-計画は以下の通りです：
+The plan is the following:
 
-1. ポップアップを開いたときに、新しい人物を表す新しい**オブジェクト**を作成する
-2. 最初の画面で`firstname`、`lastname`、`age`を**オブジェクト**に入力する
-3. 2番目の画面でユーザーが国を選択する
-4. 3番目の画面で、国に基づいて都市のオプションを提示し、**オブジェクト**に`location`を保存する
-5. ポップアップが閉じられると、新しい**オブジェクト**が**アレイ**に追加される
+1. When we open the popup, we create a new **Object** represening the new person
+2. The first screen fills out `firstname`, `lastname` and `age` of the **Object**
+3. The second screen the user selects their country
+4. The third screen presents city options based on the country and then stores location in the **Object**
+5. When the popup is closed, the new **Object** is added to the **Array**
 
-さあ、始めましょう！
+Let's get started!
 
-まず、新しいビジュアルコンポーネントを作成します。それを「新しい人物を追加するポップアップ」と名付けます。それに含まれる**グループ**ノードを「ポップアップベース」に置き換えます。そのタイトルを「新しい人物を追加する」に変更します。
-その**ポップアップ**のコンテンツとしては、まずウィザードの現在のステップを保持する**テキスト**ノード（「ステップxの3」）を一貫して追加します。そこで**文字列フォーマット**ノードを「ステップ{current_step}の3」という文字列で追加します。
+Start by creating a new Visual Component. Call it `Add New Person Popup`. Replace the **Group** node in it with a `Popup Base`. Change the title of it to "Add New Person".
+As content in that **Popup** we are going to start with a **Text** node which will be consistent in the **Popup** that holds the current step of the wizard. ("Step x of 3"). So add a **String Format** node with the string `Step {current_step} of 3`.
 
-次に、ユーザーがウィザードを進むにつれて変更される動的コンテンツを追加します。**コンポーネントスタック**を作成し、**テキスト**ノードの後に追加します。
+Then we want our dynamic content that will change as the user progresses through the wizard. Create a **Component Stack** and add after the **Text** node.
 
 <div className="ndl-image-with-background l">
 
@@ -87,16 +87,16 @@ import ReactPlayer from 'react-player';
 
 </div>
 
-## **コンポーネントスタック**にコンポーネントを追加する
+## Adding components to a **Component Stack**
 
-**コンポーネントスタック**にコンポーネントを作成する準備ができました。
+We are ready to create our components in our **Component Stack**.
 :::note
 
-**コンポーネントスタック**を使用する場合は、**ページ**コンポーネントを使用しないでください。これらは**ページルーター**専用です。
+When using a **Component Stack** we should not use **Page** components, since they are only to be used with **Page Routers**.
 
 :::
 
-**コンポーネントスタック**をクリックします。「コンポーネント」の下の「+」をクリックして、新しいコンポーネントを追加します。
+Click on the **Component Stack**. Click the `+` under "Components" to add new components.
 
 <div className="ndl-image-with-background">
 
@@ -104,7 +104,7 @@ import ReactPlayer from 'react-player';
 
 </div>
 
-3つのコンポーネントが必要です。「ステップ1 - 名前」、「ステップ2 - 国」、「ステップ3 - 都市」と呼びます。
+We want three components, call them `Step 1 - Name`, `Step 2 - Country`, `Step 3 - City`.
 
 <div className="ndl-image-with-background">
 
@@ -112,7 +112,7 @@ import ReactPlayer from 'react-player';
 
 </div>
 
-これらのコンポーネントを作成する必要があります。それらをより良く追跡するために、それらを独自のフォルダーに入れるので、「人物作成ウィザード」という新しいコンポーネントフォルダーを作成します。「ステップ1」、「ステップ2」、「ステップ3」という3つのビジュアルコンポーネントをフォルダー内に作成します。
+We are going to need to create components for each of these components. To keep better track of them we will put them in a folder of its own, so create a new component folder, `Create Person Wizard`. Create three visual components in the folder called `Step 1`, `Step 2` and `Step 3`.
 
 <div className="ndl-image-with-background">
 
@@ -120,7 +120,7 @@ import ReactPlayer from 'react-player';
 
 </div>
 
-「新しい人物を追加するポップアップ」に戻り、**コンポーネントスタック**でコンポーネントを割り当てることができます。それをクリックしてコンポーネントを設定します。
+You can now assign the components in the **Component Stack** in the `Add New Person Popup`. Click on it and set the components.
 
 <div className="ndl-image-with-background">
 
@@ -128,7 +128,7 @@ import ReactPlayer from 'react-player';
 
 </div>
 
-**ポップアップ**を開く**ボタン**を追加する時が来ました。メインアプリに戻り、ラベル「新しい人物を追加する」の水平方向に中央揃えされた**ボタン**を追加します。リストとの間に余白を取って、その上に配置してください。次に、新しい**ポップアップを表示**ノードを追加します。**ボタン**の**クリック**シグナルを**ポップアップを表示**の**表示**シグナルに接続します。また、「新しい人物を追加するポップアップ」が表示されるコンポーネントであることを確認してください。
+It's probably time that we add a **Button** to open the **Popup**. Go back to the main App. Add a horizontally centered **Button** with the label `Add New Person`. Also give it some top margin seperate it from the list. Then add a new **Show Popup** node. Connect the **Click** signal from the **Button** to the **Show Popup** signal **Show**. Also make sure to select the **Add New Person Popup** as the component to show.
 
 <div className="ndl-image-with-background l">
 
@@ -136,11 +136,9 @@ import ReactPlayer from 'react-player';
 
 </div>
 
-**ボタン**が**ポップアップ**を開くことを確認してください。
+Make sure the **Button** opens up the **Popup**.
 
-ウィザードのデータ部分に取り組む時が来ました。ウィザードが進むにつれてデータを入力できるように、新しい**オブジェクト**を作成するところから始めます。「新しい人物を追加するポップアップ」に**新しいオブジェクトを作成**ノードを追加します。**ポップアップ**が作成されたときに**オブジェクト**の作成をトリガーしたいのですが、「ポップアップベース」コンポーネントで**ディドマウント**シグナルは公開していないため、まずそれを行う必要があります。`ポップアップベース`コンポーネントを開き、**コン
-
-ポーネント出力**に「ディドマウント」という新しいプロパティを追加し、ルート**グループ**の**ディドマウント**シグナルに接続します。
+Now let's work on the data part of the Wizard. We want to start by creating a new **Object** that we can fill out with data as the wizard progresses. In the `Add New Person Popup` we add a **Create New Object** node. We want to trigger the creation of the **Object** when the **Popup** is created. However we are not exposing the **Did Mount** signal on our `Popup Base` component, so we need to do that first. Open the `Popup Base` component, add a new property `Did Mount` on the **Component Outputs** and connect it to the **Did Mount** signal of the root **Group**.
 
 <div className="ndl-image-with-background l">
 
@@ -148,7 +146,7 @@ import ReactPlayer from 'react-player';
 
 </div>
 
-これで、「新しい人物を追加するポップアップ」で`ポップアップベース`コンポーネントの`ディドマウント`シグナルを**新しいオブジェクトを作成**ノードの**実行**シグナルに接続し、**ポップアップ**が開いたときに新しい**オブジェクト**が作成されるようにすることができます。
+We can now connect the `Did Mount` signal from the `Popup Base` component to the **Do** signal of the **Create New Object** node in the `Add New Person Popup`, creating a new **Object** once the **Popup** opens.
 
 <div className="ndl-image-with-background l">
 
@@ -156,15 +154,15 @@ import ReactPlayer from 'react-player';
 
 </div>
 
-## **コンポーネントスタック**内のコンポーネント間でデータを共有する
+## Sharing data betweem components in a **Component Stack**
 
-この新しい**オブジェクト**は、ウィザードでデータを入力するために使用されるため、異なるサブコンポーネントである`ステップ1`、`ステップ2`、`ステップ3`でアクセス可能でなければなりません。**オブジェクト**の**ID**を[変数](/nodes/data/variable/variable-node)に保存することができますが、[コンポーネントオブジェクト](/nodes/component-utilities/component-object)を使用する方が、さらにスマートなソリューションです。**変数**はグローバルですが、**コンポーネントオブジェクト**は、それが配置されているコンポーネントの子（およびサブ子）にのみ利用可能であり、誤って変更されるリスクはありません。
+This new **Object** is the one we will fill with data in the Wizard, so we need to be able to access it in our different subcomponents, `Step 1`, `Step 2` and `Step 3`. We could store the **Id** of the **Object** in a [Variable](/nodes/data/variable/variable-node) but an even neater solution is to use a [Component Object](/nodes/component-utilities/component-object). While **Variables** are global, the **Component Object** is only available to the children (and sub children) of the component where it resides, so there is no risk that someone accidently changes it where it shouldn't.
 
 :::tip
-**コンポーネントスタック**上のコンポーネントは、**コンポーネントスタック**の子と見なされるため、**コンポーネントスタック**上のさまざまなコンポーネント間でデータを共有する方法として**コンポーネントオブジェクト**を使用することが多くの場合、良いアイデアです。
+The components on the **Component Stack** are considered children of the **Component Stack**, hence using **Component Objects** as a way to share data between different components on the **Component Stack** is often a good idea.
 :::
 
-したがって、「新しい人物を追加するポップアップ」で**コンポーネントオブジェクト**を作成します。それに「新しい人物オブジェクトID」というプロパティを付けます。その後、**新しいプロジェクトを作成**の**ID**を**コンポーネントオブジェクト**の新しいプロパティに接続します。
+So in the `Add New Person Popup`, create a **Component Object**. Give it a property `New Person Object Id`. Then connect the **Id** of the **Create New Project** to the new property of the **Component Object**.
 
 <div className="ndl-image-with-background l">
 
@@ -172,7 +170,7 @@ import ReactPlayer from 'react-player';
 
 </div>
 
-これで、最初のコンポーネント`ステップ1`で簡単なフォームを作成する準備が整いました。まず、新しく作成した**オブジェクト**をセットアップしましょう。この場合、[親コンポーネントオブジェクト](/nodes/component-utilities/parent-component-object)を使用して取得します。前と同じプロパティ`新しい人物オブジェクトID`を追加してください。次に、**オブジェクト**ノードの**ID**にそれを接続します。
+We can now start creating our simplr form in the first component, `Step 1`. First, lets get our newly created **Object** set up. This time we use the [Parent Component Object](/nodes/component-utilities/parent-component-object) to retrieve it. Make sure to add the same property as before `New Person Object Id`. Then we can connect it to the **Id** of an **Object** node to retrieve the **Object**.
 
 <div className="ndl-image-with-background l">
 
@@ -180,7 +178,7 @@ import ReactPlayer from 'react-player';
 
 </div>
 
-それでは、名前、姓、年齢のための3つの[テキスト入力](/nodes/ui-controls/text-input)フィールドを追加しましょう。（それぞれ`firstname`、`lastname`、`age`に接続します。最後のものは数字のみ入力可能な**テキスト入力**です。）また、「キャンセル」と「次へ」の2つの**ボタン**を水平レイアウトで**グループ**内に追加します。
+So let's add three [Text Input](/nodes/ui-controls/text-input) fields (for first name, last name and age). Hook them up to the **Object** (by adding the properties `firstname`, `lastname` and `age` - the last one being a number input only **Text Input**). Also add two **Buttons** one for "Cancel" and one for "Next" in a horizontal layout in a **Group**.
 
 <div className="ndl-image-with-background l">
 
@@ -188,15 +186,13 @@ import ReactPlayer from 'react-player';
 
 </div>
 
-## **コンポーネントスタック**の外に通信するためにイベントを送信する
+## Sending events to communicate outside the **Component Stack**
 
-この画面で残っているのは、ユーザーが「次へ」をクリックしたときに**テキスト入力**の内容を**オブジェクト**に保存し、次のステップ`ステップ2`に進むことを処理することです。また、「キャンセル」をクリックしたときの処理も必要です。まず後者から始めましょう。
+Left to do on this screen is to store the content of our **Text Inputs** in the **Object** once the user clicks "Next" and then go to the next step, `Step 2`. We also need to handle the "Cancel" click. Let's start with the latter.
 
-ユーザーが「キャンセル」をクリックしたときは、**ポップアップ**を閉じたいのですが、**ポップアップを閉じる**操作は、直接**ポップアップを表示**を使って開かれたコンポーネントで行う必要があります（つまり、「新しい人物を追加するポップアップ」）。そのコンポーネントにユーザーが「キャンセル」をクリックしたことをどのように通知しますか？再び、**コンポーネントスタック**の上部にあるコンポーネントは、スタックの子と見なされるため、[イベントを送信](/nodes/events/send-event)することで親コンポーネントに通知すること
+When the user clicks "Cancel" we want to close the **Popup** but we have to do **Close Popup** in the component that was opened directly using a **Show Popup** (i.e. the `Add New Person Popup`). How do we notify that component that the user clicked "Cancel"? Again, since the component that's on top of the **Component Stack** can be seen as a child to the stack, we can [Send an Event](/nodes/events/send-event) to the parent component (for a dedicated guide on **Events**, see [here](/docs/guides/business-logic/events)).
 
-ができます（**イベント**に関する専用のガイドは[こちら](/docs/guides/business-logic/events)です）。
-
-したがって、**イベントを送信**ノードを追加し、チャネル名を`Cancel Add Person`に設定します。これは親にのみ送信されることを確認します。
+So add a **Send Event** node and give the channel name `Cancel Add Person`. Make sure it's only directed towards the parent.
 
 <div className="ndl-image-with-background">
 
@@ -204,7 +200,7 @@ import ReactPlayer from 'react-player';
 
 </div>
 
-次に、ユーザーが「キャンセル」をクリックしたときに**送信**をトリガーします。
+Then trigger **Send** when the user clicks "Cancel".
 
 <div className="ndl-image-with-background l">
 
@@ -212,7 +208,7 @@ import ReactPlayer from 'react-player';
 
 </div>
 
-「新しい人物を追加するポップアップ」に戻り、ここでイベントを受け取るために[イベントを受け取る](/nodes/events/receive-event)ノードを追加する必要があります。`Cancel Add Person`チャネルを設定してください。また、イベントを常に消費する（`Always`に設定）して、ツリーを伝播するのを避けます。**ポップアップを閉じる**ノードを追加します。次に、`ベースポップアップ`で**閉じるトランジションを開始**シグナルをトリガーし、トランジションが終了したとき（**閉じるトランジション終了**シグナルがトリガーされたとき）、**ポップアップを閉じるノード**の**閉じる**をトリガーします。
+Go back to the `Add New Person Popup`. We need to add a [Receive Event](/nodes/events/receive-event) node here to react to the event. Make sure the `Cancel Add Person` channel is set. Also consume the event (set it to `Always`) to avoid the event propagating the tree - it's not needed beyond this component. Add a **Close Popup** node. Then we trigger the **Start Close Transition** signal on the `Base Popup` (to start the close transition) and then when the transition is done (the **Close Transition Done** signal is triggered), we trigger **Close** on the **Close Popup Node**.
 
 <div className="ndl-image-with-background l">
 
@@ -220,9 +216,9 @@ import ReactPlayer from 'react-player';
 
 </div>
 
-## **コンポーネントスタック**でのコンポーネントのプッシュと置き換え
+## Pushing and replacing components on the **Component Stack**
 
-さて、`ステップ1`コンポーネントに戻って、それを完成させましょう。まず、**テキスト入力**の内容を**オブジェクト**に保存する必要があります。これは、**オブジェクトプロパティを設定**ノードを追加し、3つのプロパティ（`firstname`、`lastname`、`age`）を追加して行います。また、**親コンポーネントオブジェクト**から取得した同じ**ID**を設定することを忘れないでください。次に、"Next"**ボタン**の**クリック**シグナルを**オブジェクトプロパティを設定**の**実行**シグナルに接続します。
+Ok, now let's go back to the `Step 1` component to finish it off. First, we need to save the content of the **Text Inputs** in the **Object**. We do this by adding a **Set Object Properties** node, add our three properties (`firstname`,`lastname`, `age`). Also, don't forget to set the **Id** to the same **Id** we got from our **Parent Component Object**. Then we connect the **Click** signal on the "Next" **Button** to the **Do** signal on the **Set Object Properties**.
 
 <div className="ndl-image-with-background l">
 
@@ -230,7 +226,7 @@ import ReactPlayer from 'react-player';
 
 </div>
 
-保存後は、`ステップ2`コンポーネントに移動する必要があります。**コンポーネントをスタックにプッシュ**ノードを追加します。クリックすると、いくつかのオプションが表示されます。ここでは`Main`を使用しています（プロジェクトに複数の**コンポーネントスタック**がある場合は、ここで正しいものを選択する必要があります）。まず、**ターゲットコンポーネント**を`ステップ2 - 国`に変更しましょう。また、**モード**プロパティを見ると、**プッシュ**または**置き換え**を選択できます。ウィザードの各ステップでユーザーが戻ることができるように、**モード**は**プッシュ**のままにしたいと思います。基本的には、各コンポーネントが重なり合ってスタックになり、**コンポーネントスタックをポップ**を使用してスタックの前のコンポーネントに戻ることができます。
+After saving we need to move to the `Step 2` component. Add a **Push Component To Stack** node. When you click on it, you can see a number of options. We see that it's using our `Main` (if we had more than one **Component Stack** in our project we would have to select the right one here). First let's change the **Target Component** to `Step 2 - Country`. We also see the **Mode** property. Here you can select **Push** or **Replace**. Since we want to be able to let the user go back in the Wizard in the each step, we probably want to keep **Push** as the mode. Essentially each component will be stacked on top of each other, and we can use the **Pop Component Stack** to go back to the previous component on the stack.
 
 <div className="ndl-image-with-background">
 
@@ -238,17 +234,15 @@ import ReactPlayer from 'react-player';
 
 </div>
 
-データが保存されたら、**コンポーネントをスタックにプッシュ**の**ナビゲート**シグナルを**実行完了**シグナルでトリガーする必要があります。
+We should trigger the **Navigate** signal on the **Push Component To Stack** when the data is stored, using the **Done** signal.
 
-## トランジションの微調整
+## Tweaking Transitions
 
-次のステップへのナビゲーションを試してみてください。**コンポーネントをスタックにプッシュ**の**ダークオーバーレイ**オプションにより、見た目がおかしくなるので、そのオプションのチェックを外してください。トランジションの調整にもっと時間をかけてみてください。たとえば、**シフトトランジション**を100％に変更して、適切なトランジションのように見せることができます。トランジションが機能するためには、含まれる**グループ**ノードが子をクリップすることが重要であることがわかります。`ポップアップベース`コンポーネントでは、**コンポーネントチルドレン**を保持する2番目の**グループ**です。
+Try out the navigation to the next step. You will see that the **Dark Overlay** option in the **Push Component To Stack** makes it looks weird so untick that option. Feel free to play around more with the transitions. Maybe change the **Shift Transition** to 100% to make it look more like a proper transition. You will see that it's important the the containing **Group** node clips its children for the transition to work. In the `Popup Base` component, that is the second **Group** that holds the **Component Children**.
 
-## `ステップ2`の編集
+## Editing `Step 2`
 
-これは、国のオプションを含む[ラジオボタングループ](/nodes/ui-controls/radio-button-group)で構成される、よ
-
-りシンプルなフォームになります。それでは、それを追加しましょう。`イングランド`、`スコットランド`、`アイルランド`の3つの[ラジオボタン](/nodes/ui-controls/radio-button)と一緒に追加します。各**ラジオボタン**の**ラベル**と**値**がそれぞれの値に設定されていることを確認してください。また、「国を選ぶ」というサブタイトルを追加します。最後に、`ステップ1`からコピー/貼り付けた「戻る」と「次へ」の2つのボタンを下部に追加します。
+This will be a simpler form, containing a [Radio Button Group](/nodes/ui-controls/radio-button-group) with our country options. So let's add it in, together with three [Radio Buttons](/nodes/ui-controls/radio-button). We only have three options in this case, `England`, `Scotland` and `Ireland`. Make sure both **Label** and **Value** of the **Radio Buttons** are set to the respective value. Also add a sub title that says `Pick Country`. Finally, add two buttons at the bottom `Back` and `Next`. We can copy/paste them from the previous step and just change the title of the first **Button**.
 
 <div className="ndl-image-with-background l">
 
@@ -256,9 +250,9 @@ import ReactPlayer from 'react-player';
 
 </div>
 
-## **コンポーネントスタック**からのポップ
+## Popping from the **Component Stack**
 
-まず、**コンポーネントスタックからポップ**ノードを追加します。ご覧のとおり、**ポップアップを閉じる**と同様に、結果や背面アクションを送信できます。この場合、データを渡す必要はありません。代わりに「戻る」ボタンの**クリック**から**ナビゲート**に接続します。
+We start by adding in a **Pop Component Stack** node. As you can see you can send results back in a similar way as the **Close Popup** (**Results** and **Back Actions**). In this case we don't have any data to pass. Instead just connect **Click** from the "Back" button to **Navigate**.
 
 <div className="ndl-image-with-background l">
 
@@ -266,9 +260,9 @@ import ReactPlayer from 'react-player';
 
 </div>
 
-ご覧のとおり、スタックからポップすると、プッシュトランジションが逆再生されます。コンポーネントのサイズが異なるため、少し厄介ですが、ポップアップが表示および非表示になると、動的にサイズが変更されます。これを修正するために、`ステップ1`、`ステップ2`、`ステップ3`のコンポーネントに固定サイズを設定しましょう。
+As you can see, popping from the stack plays the push transition, but in reverse. We can see that having different sizes of our components is a little bit annoying since the popup changes size dynamically as they are shown and hidden. Let's fix that by having a fixed size on the components `Step 1`, `Step 2` and `Step 3`.
 
-これを行うには、「新しい人物を追加するポップアップ」に戻り、固定サイズ（250px/300px）の新しい**グループ**を**コンポーネントスタック**の親として移動します。
+We do this by going to our `Add New Parson Popup` and move in a new **Group** with a fixed size (250px / 300 px) as a parent to the **Component Stack**.
 
 <div className="ndl-image-with-background l">
 
@@ -276,7 +270,7 @@ import ReactPlayer from 'react-player';
 
 </div>
 
-ボタンの位置が動いたりするなど、まだ少しレイアウトの微調整が必要ですが、それはすぐに修正できます。画面の下部に常にボタンが表示されるようにしたいので、`ステップ1`と`ステップ2`の**ボタン**を含む**グループ**を探します。**グループ**の**マージン**を削除してください。そうしないと、配置と競合します。その後、それを下部に配置します。
+While we see that there is still a little layout-tweaking to be done (the buttons at the bottom moves around, etc). Let's fix that quickly. We want to make sure the buttons are always at the bottom of the screen. So find the **Group** containin the **Buttons** for `Step 1` and `Step 2`. Make sure to remove the **Margin** of the **Group**, or it will compete with the alignment, and then align it at the bottom.
 
 <div className="ndl-image-with-background">
 
@@ -284,11 +278,11 @@ import ReactPlayer from 'react-player';
 
 </div>
 
-素晴らしいです、これでボタンは画面の下部に固定されます！
+Great, now the buttons stay at the bottom!
 
-代わりに、「次へ」をクリックしたときに`ステップ3`を**コンポーネントスタック**に追加したいと思います。また、選択した国を渡す必要があります。もちろん、私たちの**オブジェクト**にそれを保存することができますが、上記のデータモデルで見るように、国は別々に保存されていません。代わりに、`ステップ3`にそれを渡したいと思います。**コンポーネントオブジェクト**に保存することもできますが、この場合はスタック上のコンポーネントに対する**コンポーネント入力**を使用することができます。
+Instead we want to add `Step 3` to the **Component Stack** when the user clicks "Next" in Step 2. We also need to pass on the selected country. We could of course store it in our **Object** but as you can see in the data model above, the country is not stored seperately. Instead we want to pass it on to `Step 3`. We could store it in the **Component Object**, as before, but in this case we can make use of the **Component Inputs** of the component to be opened.
 
-`ステップ3`に行って、**コンポーネント入力**ノードを追加します。ポートに`Country`を追加します。
+Go to `Step 3` and add in a **Component Inputs** node. Add the port `Country`.
 
 <div className="ndl-image-with-background">
 
@@ -302,7 +296,9 @@ import ReactPlayer from 'react-player';
 
 </div>
 
-`ステップ2`に戻ると、**コンポーネントをスタックにプッシュ**を追加し、ターゲットとして`ステップ3`を選択する（前と同様にトランジションを修正する）と、`Country`という新しい入力が表示されるのがわかります。**ラジオボタングループ**の**値**を`Country`入力に接続できます。また、「次へ」ボタンの**クリック**を**コンポーネントをスタックにプッシュ**の**ナビゲート**に接続します。
+## Forwarding data to a component on the stack using **Component Inputs**
+
+Now, if you go back to `Step 2`, and add in a **Push Component To Stack** and select `Step 3` as the target (also fix the transition as before), you will se that there is a new input called `Country`. We can connect the **Value** of the **Radio Button Group** to the `Country` input. Also connect **Click** on the "Next" **Button** to **Navigate** on **Push Component To Stack**.
 
 <div className="ndl-image-with-background l">
 
@@ -310,7 +306,7 @@ import ReactPlayer from 'react-player';
 
 </div>
 
-素晴らしい！では、`ステップ3`に進みましょう。ここでは、前のステップで選択された国に応じて、都市のオプションを表示したいと思います。以下のデータを含む**スタティックアレイ**（JSON形式に設定）を作成しましょう：
+Great! Let's move to `Step 3` then. Here we want to display options of cities depending on which country that was selected. Let's create a **Static Array** (set to JSON format) with the following data:
 
 ```json
 [
@@ -329,9 +325,9 @@ import ReactPlayer from 'react-player';
 ]
 ```
 
-私たちは、前のステップで選択された国に対してのみ有効な都市のオプションを、**ラジオボタングループ**で表示したいと考えています。それでは、[アレイフィルター](/nodes/data/array/array-filter)から始めましょう。
+We want to present a **Radio Button Group** with only the valid cities for the country that was selected in the previous step. So let's start with an [Array Filter](/nodes/data/array/array-filter).
 
-`country`プロパティでフィルターを追加します。
+Add a filter on the property `country`.
 
 <div className="ndl-image-with-background">
 
@@ -339,7 +335,7 @@ import ReactPlayer from 'react-player';
 
 </div>
 
-**イコール**タイプ（文字列）であることを確認してください。
+Make sure it's of the **Equals** type (and a String).
 
 <div className="ndl-image-with-background">
 
@@ -347,7 +343,7 @@ import ReactPlayer from 'react-player';
 
 </div>
 
-次に、**スタティックアレイ**の**アイテム**を**アレイフィルター**の**アイテム**に接続します。次に、**コンポーネント入力**の`country`出力を**アレイフィルター**の国フィルターの**値**に接続します。
+Then connect **Items** of the **Static Array** to the **Items** of the **Array Filter**. Then connect the `country` output of the **Component Inputs** to the **Value** of the country filter.
 
 <div className="ndl-image-with-background l">
 
@@ -355,7 +351,7 @@ import ReactPlayer from 'react-player';
 
 </div>
 
-**アレイ**を追加して結果を確認します。選択された国に一致するアイテムのみがフィルターされているのがわかります。素晴らしいです！
+Add an **Array** to have a look at the results. We can now see that only the items that matches the country is filtered out. Nice!
 
 <div className="ndl-image-with-background l">
 
@@ -363,7 +359,7 @@ import ReactPlayer from 'react-player';
 
 </div>
 
-次に、**ラジオボタングループ**、**リピーター**、**ラジオボタン**を使用してリストにオプションを視覚化する必要があります。まず、リストアイテムを作成しましょう。それを「ステップ3リストアイテム」と名付けます。以下のようになります：
+Now we need to visualize the option in a list, using a **Radio Button Group**, **Repeater** and **Radio Button**. Start by creating the list item. Call it `Step 3 List Item`. It should look like below:
 
 <div className="ndl-image-with-background l">
 
@@ -441,9 +437,9 @@ import ReactPlayer from 'react-player';
 
 </div>
 
-**オブジェクト**には`country`および`city`の2つのプロパティがあり、**ID**は**リピーター**から取得されます。また、**ラジオボタン**の**値**は、データモデルに合わせた最終的な場所の文字列（例：`Dublin, Ireland`）を作成するために**文字列フォーマット**（文字列`{location}, {city}`を使用）を使用して構築されていることに注意してください。
+The **Object** has two properties `country` and `city` and gets its **Id** from the **Repeater**. Also note that the **Value** of the **Radio Button** is using a **String Format** (with the string `{location}, {city}`) to construct the final location string that matches the data model (for example `Dublin, Ireland`).
 
-`ステップ3`コンポーネントに戻って、**ラジオボタングループ**と**リピーター**（新しい`ステップ3リストアイテム`を使用）を追加し、データで供給します。余白の微調整を行うと、以下のようになります。
+Then we go back to `Step 3` component and add in a **Radio Button Group** and a **Repeater** (using our new `Step 3 List Item`) and then feed it with data. With some margin tweaking it will look something like below.
 
 <div className="ndl-image-with-background l">
 
@@ -451,7 +447,7 @@ import ReactPlayer from 'react-player';
 
 </div>
 
-素晴らしいです！前のステップから**ボタン**をコピー/貼り付けてみましょう（これらは再利用可能なコンポーネントにすべきですね！）。また、「戻る」ボタンに接続された**コンポーネントスタックからポップ**ノードも持ってきましょう。
+Ok, we continue by copying and pasting the **Buttons** from the previous step (we should really make these into a re-usable component!). Let's also bring the **Pop Component Stack** node as well (connected to the "Back" button) as we need one in this step as well.
 
 <div className="ndl-image-with-background l">
 
@@ -459,9 +455,9 @@ import ReactPlayer from 'react-player';
 
 </div>
 
-## 作成された**オブジェクト**を保存する
+## Saving the created **Object**
 
-ウィザードをほぼ完成させました。最後のステップで「次へ」をクリックしたときに、新しい人物に関する情報を含む**オブジェクト**を保存する必要があります。これは、`ステップ1`コンポーネントと同じ方法で行います。**ポップアップ**で作成された**オブジェクト**を取得するために**親コンポーネントオブジェクト**を使用します。今回は、**ラジオボタングループ**の**値**を`location`というプロパティに保存します。ユーザーが「次へ」をクリックしたときに値を保存します。
+Ok we are almost done with our wizard. We need to save the location to the **Object** containing the info on the new person. We do it in the same way as in the `Step 1` component, we use a **Parent Component Object** to retrieve the **Object** that was created in the **Popup**. This time we store the **Value** of the **Radio Button Group** in a property called `location` We store the value when the user clicks "Next".
 
 <div className="ndl-image-with-background l">
 
@@ -469,7 +465,7 @@ import ReactPlayer from 'react-player';
 
 </div>
 
-最後に、最終ステージで「次へ」をクリックしたときに**オブジェクト**が入力されていることを「新しい人物を追加するポップアップ」に知らせる必要があります。再び、**イベント**を送信することでこれを行います。今回は**チャネル名**`Confirm Add Person`を使用し、**親**に送信します。これは**オブジェクトプロパティを設定**が完了したときに行います。
+Finally we need to let the `Create New Person Popup` know that the **Object** is filled out when the user clicks "Next" on the last stage. Again, we do that by sending an **Event** this time with the **Channel Name** `Confirm Add Person`, send it to **Parent**. We do that once the **Set Object Properties** is done.
 
 <div className="ndl-image-with-background l">
 
@@ -477,17 +473,17 @@ import ReactPlayer from 'react-player';
 
 </div>
 
-## **ポップアップ**からデータを渡す
+## Passing data from the **Popup**
 
-`新しい人物を追加するポップアップ`に戻って、`Confirm Add Person`チャネルからイベントを受け取るために**イベントを受け取るノード**を追加します。
+We go back to our `Add New Person Popup` to receive the event. Add in a **Receive Event Node** receiving from the channel `Confirm Add Person`.
 
-### イベントロジック
+### Event logic
 
-ここでは、少し複雑なロジックが必要です。`Cancel Add Person`と`Confirm Add Person`の両方が**ポップアップ**の閉じるトランジションをトリガーするため、トランジションが準備完了した場合に2つのケースを区別する必要があります。なぜなら、`Confirm Add Person`の場合は、作成された**オブジェクト**をメインアプリに渡して、人々のリストに追加したいからです。
+We are going to need some extra logic here. Since both the `Cancel Add Person` and `Confirm Add Person` will trigger the close transition of the popup we need to be able to distinguish the two cases one the transition is ready. Because, in the `Confirm Add Person` case we want to pass the created **Object** to the main App, so it can be added to the list of People.
 
-**スイッチ**ノードを追加します。これは、`Confirm Add Person`イベントが受信された場合にのみtrueに設定されます。その後、トランジションが閉じられると、**条件**ノードを使用して**スイッチ**の値をテストします。ケースに応じて（つまり、**条件**ノードの**onTrue**または**onFalse**）、**ポップアップを閉じる**ノードの2つの異なる**クローズアクション**（`Confirm`または`Cancel`）をトリガーします。また、人物を表す**オブジェクト**の**ID**を`New Person Object Id`という結果として**ポップアップを閉じる**ノードに渡すことを忘れないでください。
+We add in a **Switch** node, that's only set to true if the `Confirm Add Person` event is received. The, once the transition is closed, we use a **Condition** node to test the value of the **Switch**. Depending on the case (i.e. **onTrue** or **onFalse** from the **Condition** node) we trigger two different **Close Actions** on the **Close Popup** node (`Confirm` or `Cancel`). We also make sure to pass the **Id** of the **Object** representing the person in a result called `New Person Object Id`.
 
-全体は以下のようになります。
+Here's how the whole thing looks.
 
 <div className="ndl-image-with-background l">
 
@@ -495,9 +491,9 @@ import ReactPlayer from 'react-player';
 
 </div>
 
-## **オブジェクト**を**アレイ**に追加する
+## Adding the **Object** to the **Array**
 
-最後に、メインアプリで**オブジェクト**を受け取ります。それは`New Person Object Id`を通じて取得され、`Confirm Add Person`の信号が**ポップアップ**から送られた場合にリストに追加されます。**アレイにオブジェクトを挿入**ノードを使用して追加します。
+Now we need to receive the **Object** in our main App. We will get it through the `New Person Object Id` and add it if we get the `Confirm Add Person` signal from the **Popup**. We use the **Insert Object into Array** node to add it.
 
 <div className="ndl-image-with-background l">
 
@@ -505,13 +501,11 @@ import ReactPlayer from 'react-player';
 
 </div>
 
-試してみてください。新しいウィザードを使って、新しい人物をリストに追加することができます！
+Try it out, we can now add new persons to our list using our little Wizard in a popup!
 
-## **コンポーネントスタック**上で最上位のコンポーネントを確認する
+## Reading which component is on top of the **Component Stack**
 
-ウィザードではまだ「ステップxの3」というテキストがあります。それを機能させたいと思います。「新しい人物を追加するポップアップ」に戻りましょう。**コンポーネントスタック**には、現在最上位にあるコンポーネントの名前を保持する**トップコンポーネント名**という出力があります。これは**コンポーネントスタック**内のコンポーネントの名前であり、それを表すために使用されるコンポーネントではありません
-
-。したがって、この場合は`ステップ1 - 名前`、`ステップ2 - 国`、`ステップ3 - 場所`になります。これを1、2、3の数字に変換できれば、それを**文字列フォーマット**に供給できます。さらに簡単な解決策は、**スタックの深さ**プロパティを使用することです。**プッシュ**ではなく**置き換え**を使用するため、**コンポーネントスタック**は1から2、3へとサイズが増え、それはまさに私たちが求めるものです。それを**文字列フォーマット**ノードに接続します。
+In our Wizard we still have our text `Step x of 3`. We want to make that work. Go back to the `Add New Person Popup`. The **Component Stack** has an output called **Top Component Name** that will hold the name of the component that's currently on top Note that it's the name of the component in the **Component Stack**, not the component that's used to represent it. So in out case it will be `Step 1 - Name`, `Step 2 - Country`, `Step 3 - Location`. If we somehow could transfor this to the number 1,2 or 3, we can just feed it into our **String Format**. What might be an even easier solution is to use the **Stack Depth** property. Since we use **Push** rather than **Replace** our **Component Stack** will grow in size from 1 to 2 to 3, which is exactly what we want. So we connect it to the **String Format** node.
 
 <div className="ndl-image-with-background">
 
@@ -519,11 +513,11 @@ import ReactPlayer from 'react-player';
 
 </div>
 
-## データが入力されていることを確認する
+## Making sure the data is filled out
 
-完成まであとわずかです。このウィザードを改善する方法はたくさんありますが、ユーザーに次のステップに進む前に何かを選択させる必要があることは明らかです。たとえば、国を選択しないと`ステップ3`がうまく機能しません。
+We are almost done. There are many ways to improve this wizard but one obvious thing is that we want users to be forced to select something before moving to the next step. For example not selecting a country will mess up `Step 3`.
 
-`ステップ1`では、**テキスト入力**ノードから出力される**テキスト**の長さを見ることができます。これは**文字列**ノードで行い、**長さ**出力を使用します。これら3つの長さの値を式に接続し、すべてがゼロより大きいことを確認します（式は`a>0&&b>0&&c>0`を使用）。次に、その式の**結果**を「次へ」ボタンの**有効**入力に接続します。
+In `Step 1` we can look at the length of the **Text** value coming out of the **Text Input** nodes. We use the **String** node which has a **Length** output. We connect these three length values to an expression that makes sure all three of them are greater than zero (using the expression `a>0&&b>0&&c>0`). Then we connect the **Result** of that expression to the **Enabled** input of the "Next" **Button**.
 
 <div className="ndl-image-with-background l">
 
@@ -531,9 +525,9 @@ import ReactPlayer from 'react-player';
 
 </div>
 
-`ステップ2`と`ステップ3`では、基本的に同じことを行いますが、**ラジオボタングループ**の**値**の長さを見ます。
+In `Step 2` and `Step 3` we essentially do the same, but we look at the length of the **Value** of the **Radio Button Group**.
 
-完成です！ポップアップで新しい人物を追加するための小さなウィザードを作成しました！
+We are done! We have a small wizard in a Popup to fill information when adding new persons!
 
 <ReactPlayer
   playing
@@ -543,7 +537,7 @@ import ReactPlayer from 'react-player';
   url="/2.9/docs/guides/navigation/component-stack/component-stack-final.mp4"
 />
 
-以下のインポートボタンをクリックして最終プロジェクトをインポートしてください。
+Click the Import button below to import the final project.
 
 <div className="ndl-image-with-background l">
 
@@ -551,7 +545,7 @@ import ReactPlayer from 'react-player';
 
 <ImportButton
   zip="/docs/guides/navigation/component-stack/component-stack-1.zip"
-  name="ポップアップのウィザード"
+  name="Wizard in Popup"
   thumb="/docs/guides/navigation/component-stack/final-1.png"
 />
 

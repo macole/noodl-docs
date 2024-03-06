@@ -1,32 +1,32 @@
 ---
-title: Encoding Parameters in URLs
+title: URL内のパラメータのエンコーディング
 hide_title: true
 ---
 import ImportButton from '../../../src/components/importbutton'
 
-# Encoding Parameters In URLs
+# URL内のパラメータのエンコーディング
 
-## What you will learn in this guide
+## このガイドで学べること
 
-This guide will teach you how to pass parameters in the URL when you are navigating between pages, either as the final part of a path, e.g. "mysite.com#/path/parameter" or as query strings, "mysite.com#/path?parameter1=val1&parameter2=val2".
-Noodl is handling this through its [Page Inputs](/nodes/navigation/page-inputs) node and [Navigate](/nodes/navigation/navigate) node.
+このガイドでは、ページ間をナビゲートする際にURL内でパラメータを渡す方法を学びます。パスの最後の部分として、例えば"mysite.com#/path/parameter"、またはクエリ文字列として、"mysite.com#/path?parameter1=val1&parameter2=val2"のように使用します。
+Noodlでは、これを[Page Inputs](/nodes/navigation/page-inputs)ノードと[Navigate](/nodes/navigation/navigate)ノードを通じて処理します。
 
-The main reason to encode data needed by a **Page Component** in URLs rather than using regular data nodes is that the data becomes independent of the App state. For example
+**Page Component**に必要なデータをURLにエンコードする主な理由は、データがアプリの状態と独立しているためです。例えば、
 
--   If a user refreshes the browser running the App, the data will still be available to the **Page Component** in the URL.
--   If a user want to be able to share the exact state of an App with another user, you can encode that state in the URL.
+-   アプリを実行しているブラウザをユーザーがリフレッシュしても、URL内の**Page Component**にデータが引き続き利用可能です。
+-   アプリの正確な状態を別のユーザーと共有したい場合、その状態をURLにエンコードできます。
 
-## Overview
+## 概要
 
-The guide will cover the following
+このガイドでは以下の内容を取り扱います。
 
--   Pass data to a **Page Component** as a **Path Parameter**
--   Navigate to a path and set the **Path Parameter**
--   Pass data to a **Page Component** using a **Query Parameter**
+-   **Path Parameter**として**Page Component**にデータを渡す
+-   パスにナビゲートして**Path Parameter**を設定する
+-   **Query Parameter**を使用して**Page Component**にデータを渡す
 
-The guide assumes that you are familiar with basic Web Navigation concepts and it's suggested that you have already gone through the [Basic Navigation](/docs/guides/navigation/basic-navigation) and [Multi Level Navigation](/docs/guides/navigation/multi-level-navigation) guides before you go through this guide.
+このガイドでは、基本的なWebナビゲーションの概念に慣れていることを前提としており、[Basic Navigation](/docs/guides/navigation/basic-navigation)および[Multi Level Navigation](/docs/guides/navigation/multi-level-navigation)のガイドをすでに終えていることを推奨します。
 
-We will also use the example app developed as part of the two guides as a starting point in this guide. If you haven't built it already, you can import it by clicking the button below and follow the instructions in Noodl.
+また、これらのガイドの一部として開発されたサンプルアプリを、このガイドの出発点として使用します。まだ作成していない場合は、以下のボタンをクリックしてインポートし、Noodlの指示に従ってください。
 
 <div className="ndl-image-with-background l">
 
@@ -42,25 +42,25 @@ We will also use the example app developed as part of the two guides as a starti
 
 ## Path Parameters
 
-To demonstrate a typical use of **Path Parameters** we will have to create a list of products to show in our app.
+**Path Parameters**の典型的な使用例を示すために、アプリで表示する製品リストを作成します。
 
-### Listing Products
+### 製品のリスト
 
-The App will focus on Melee weapons.
-In the main App component, create a [Static Array](/nodes/data/array/static-array) node. Make sure its set to `CSV` type. Edit the CSV data and paste in the data from below.
+このアプリでは近接武器に焦点を当てます。
+メインのAppコンポーネントで、`CSV`タイプに設定された[Static Array](/nodes/data/array/static-array)ノードを作成します。以下のデータをCSVデータに貼り付けて編集します。
 
 ```
 name,category,description,price,identifyer
-Katana,steel,A classic japanese weapon used by the samurais,2000,katana
-Broadsword,steel,A favorite among the medieval knights,1800,broadsword
-Morning Star,steel,A scary and heavy weapon that require an expert to handle,1200,morning-star
-Wooden Club,wood,A cheap and easy to use weapon that's popular among the farmers,50,wooden-club
-Bokken,wood,A japanese wooden sword used in Kendo,850,bokken
-Fake two handed sword,plastic,Looks real but so much lighter than the real thing,400,fake-sword
-Mace for practice,plastic,A plastic mace you can use for training,250,plastic-mace
+Katana,steel,サムライが使用した古典的な日本の武器,2000,katana
+Broadsword,steel,中世の騎士に好まれた武器,1800,broadsword
+Morning Star,steel,扱いには専門知識が必要な恐ろしく重い武器,1200,morning-star
+Wooden Club,wood,農民に人気の安価で使いやすい武器,50,wooden-club
+Bokken,wood,剣道で使用される日本の木製の剣,850,bokken
+Fake two handed sword,plastic,本物に見えるが実物よりもずっと軽い,400,fake-sword
+Mace for practice,plastic,トレーニングに使用できるプラスチック製のメイス,250,plastic-mace
 ```
 
-Feel free to add more data to the dataset if you want, as long as the category is one of "steel"/"wood"/"plastic". Also make sure the the "identifyer" value of any new row you add does not contain any whitespaces.
+データセットにさらにデータを追加する場合は、カテゴリが"steel"、"wood"、"plastic"のいずれかである限り、自由に追加してください。また、新しく追加する行の"identifyer"値には空白を含まないようにしてください。
 
 <div className="ndl-image-with-background l">
 
@@ -68,9 +68,9 @@ Feel free to add more data to the dataset if you want, as long as the category i
 
 </div>
 
-Ok, now lets list the products under the Products page with their category, i.e. any "steel" products should be listed on the products/steel page.
+では、製品をProductsページにカテゴリごとにリストしましょう。つまり、"steel"製品はproducts/steelページにリストされます。
 
-First we put the Products in an Array that we can find anywhere in the app. Create an [Array](/nodes/data/array/array-node) node next to the **Static Array**. Give it the **Id** `Products`. Then connect the output **Items** on the **Static Array** to the input **Items** on the **Array**.
+まず、アプリ内のどこからでも見つけられる配列に製品を入れます。**Static Array**の隣に[Array](/nodes/data/array/array-node)ノードを作成します。**Id**を`Products`に設定します。次に、**Static Array**の**Items**出力を**Array**の**Items**入力に接続します。
 
 <div className="ndl-image-with-background l">
 
@@ -78,9 +78,11 @@ First we put the Products in an Array that we can find anywhere in the app. Crea
 
 </div>
 
-Now we will go into the "Steel" Product Page and list the products of the "steel" category. We will use a [Repeater](/nodes/ui-controls/repeater) and create a list item.
+次に、"Steel"製品ページに"steel"カテゴリの製品をリストします。[Repeater](/nodes/ui-controls/repeater)を使用してリストアイテムを作成します。
 
-In the steel page, add a **Repater** node as the second child of the group. Also add an **Array** node. Make sure its **Id** is `Products`, i.e. the same array that we filled with the product data. Then connect the **Items** output of the **Array** connects to the **Items** input of the **Repeater**.
+steelページで、グループの2番目の子として**Repeater**ノードを追加します。また、**Array**ノードも追加します。その**Id**が`Products`であることを確認します。つまり、製品データで満たされた同じ配列です。
+
+次に、**Array**の**Items**出力を**Repeater**の**Items**入力に接続します。
 
 <div className="ndl-image-with-background l">
 
@@ -88,7 +90,7 @@ In the steel page, add a **Repater** node as the second child of the group. Also
 
 </div>
 
-We will still not see anything because we have no list item that the **Repeater** can use to visualize the items. So lets create a new component, we call it "Product Item". In the new component we add a **Text** node as the only child in the **Group**. Now we need to retrieve the individual **Object** that contains the Product entry. Create an [Object](/nodes/data/object/object-node) node and make sure it gets its **Id** from the repeater node. Also add a property "name" to the **Object**.
+まだ何も表示されませんが、これは**Repeater**が項目を視覚化するために使用するリストアイテムがないためです。では、"Product Item"と呼ぶ新しいコンポーネントを作成しましょう。新しいコンポーネントに**Text**ノードを**Group**の唯一の子として追加します。次に、製品エントリを含む個々の**Object**を取得するために、[Object](/nodes/data/object/object-node)ノードを作成します。リピータノードから**Id**が得られるようにして、**Object**に"name"プロパティを追加します。
 
 <div className="ndl-image-with-background m">
 
@@ -102,7 +104,7 @@ We will still not see anything because we have no list item that the **Repeater*
 
 </div>
 
-Finally hook up the **name** output of the **Object** with the **text** property of the **Text** node. We will have something like image below.
+最後に、**Object**の**name**出力を**Text**ノードの**text**プロパティに接続します。下の画像のようになります。
 
 <div className="ndl-image-with-background m">
 
@@ -110,7 +112,7 @@ Finally hook up the **name** output of the **Object** with the **text** property
 
 </div>
 
-Now we are ready to go back to the "Steel" page and select our newly created List Item as the List Item of the repeater.
+これで"Steel"ページに戻って、新しく作成したリストアイテムをリピータのリストアイテムに選択します。
 
 <div className="ndl-image-with-background">
 
@@ -118,7 +120,7 @@ Now we are ready to go back to the "Steel" page and select our newly created Lis
 
 </div>
 
-If you navigate to the "Steel" page, you should now see a bunch of items popping up. It should look something like this:
+"Steel"ページにナビゲートすると、多くのアイテムが表示されるはずです。以下のような感じになります：
 
 <div className="ndl-image-with-background">
 
@@ -126,16 +128,16 @@ If you navigate to the "Steel" page, you should now see a bunch of items popping
 
 </div>
 
-We immediately see two things
+すぐに2つのことが分かります。
 
--   The list items need to be styled
--   We see all products, not only the ones in the "steel" category
+-   リストアイテムにスタイルを適用する必要があります
+-   "steel"カテゴリの製品のみを表示するのではなく、すべての製品が表示されています
 
-To fix the styling we go back into the "Product Item" component, make sure the **Group** node is **Content Height** (so the list gets a bit more compact). We also add a **Hover State** on the **Text** node. There is plenty of more styling that can be done, but lets settle for now.
+スタイリングを修正するには、"Product Item"コンポーネントに戻り、**Group**ノードを**Content Height**に設定します（リストがもう少しコンパクトになるため）。また、**Text**ノードに**Hover State**を追加します。もっと多くのスタイリングができますが、今はこれで十分です。
 
-Secondly, to filter out the products of the "steel" category, we go back to the "Steel Products" Page Component.
+次に、"steel"カテゴリの製品をフィルタリングするために、"Steel Products"ページコンポーネントに戻ります。
 
-We add in a [Array Filter](/nodes/data/array/array-filter) node in between the **Array** and **Repater**.
+**Array**と**Repeater**の間に[Array Filter](/nodes/data/array/array-filter)ノードを追加します。
 
 <div className="ndl-image-with-background l">
 
@@ -143,7 +145,7 @@ We add in a [Array Filter](/nodes/data/array/array-filter) node in between the *
 
 </div>
 
-And finally we configure the **Array Filter** to only show items where `category = "steel"`.
+最後に、**Array Filter**を`category = "steel"`のアイテムのみを表示するように設定します。
 
 <div className="ndl-image-with-background">
 
@@ -157,7 +159,7 @@ And finally we configure the **Array Filter** to only show items where `category
 
 </div>
 
-Now your Steel Page should look something like the one below.
+これで、Steelページは以下のようになるはずです。
 
 <div className="ndl-image-with-background">
 
@@ -165,7 +167,7 @@ Now your Steel Page should look something like the one below.
 
 </div>
 
-Quickly copy-and-paste the **Array**+**Array Filter**+**Repeater** construction to the "Wood" and "Plastic" page, make sure to update the filter, and we are done with listing the products.
+"Wood"および"Plastic"ページに**Array**+**Array Filter**+**Repeater**の構造を素早くコピーして貼り付け、フィルターを更新して、製品のリスト作成が完了します。
 
 <div className="ndl-image-with-background l">
 
@@ -173,9 +175,9 @@ Quickly copy-and-paste the **Array**+**Array Filter**+**Repeater** construction 
 
 </div>
 
-### Adding the Show Product Page
+### Show Productページの追加
 
-Next step is to add a new **Page Component** to the main **Page Router**. We want to have it mapped to the URL `/showproduct`. Click the main **Page Router** (in the App component), the click **Add New Page** and **Create New Page**.
+次のステップは、メインの**Page Router**に新しい**Page Component**を追加することです。`/showproduct`というURLにマップされるようにしたいです。Appコンポーネント内のメイン**Page Router**をクリックし、**Add New Page**をクリックして**Create New Page**を選択します。
 
 <div className="ndl-image-with-background">
 
@@ -189,23 +191,25 @@ Next step is to add a new **Page Component** to the main **Page Router**. We wan
 
 </div>
 
-Lets first go to the new page and make sure the path is "showproduct" by clicking the **Page** node and updating the path.
+まず、新しいページに移動して、**Page**ノードをクリックしてパスを"showproduct"に更新しましょう。
 
-So how do we know which of the Melee Weapon Products to show here? Well, that's where the **Path Parameter** comes in.
+では、どの近接武器製品をここで表示すればよいのでしょうか。ここで**Path Parameter**が登場します。
 
-### Using a Path Parameter
+### Path Parameterの使用
 
-We want to send the `identifyer` value of the a clicked product as a **Path Parameter** and use that to look up the correct product. I.e. we want to Navigate to this page with the path `/showproduct/<identifyer>`.
+クリックされた製品の`identifyer`値を**Path Parameter**として送信し、それを使用して正しい製品を検索したいと考えています。つまり、このページに`/showproduct/<identifyer>`のパスでナビゲートしたいのです。
 
-We achieve that by clicking the **Page Inputs** node and add a **Path Parameter** called "productIdentifyer". The name doesnt matter except that becomes the name of the output of the **Page Inputs** node that will contain whatever is sent in the last part of the path.
+これを達成するには、**Page Inputs**ノードをクリックして"productIdentifyer"という名前の**Path Parameter**を追加します。名前は重要ではありませんが、それが**Page Inputs**ノードの出力の名前になり、パスの最後の部分に送信されるものが含まれます。
 
 <div className="ndl-image-with-background">
 
-![](/docs/guides/navigation/encoding-parameters-in-urls/path-param-1.png)
+![](/docs/guides
+
+/navigation/encoding-parameters-in-urls/path-param-1.png)
 
 </div>
 
-For test purposes, add a **Text** node to the **Page** node and connect the "productIdentifyer" output to the **Text** input of the **Text** node.
+テスト目的で、**Page**ノードに**Text**ノードを追加し、"productIdentifyer"出力を**Text**ノードの**Text**入力に接続します。
 
 <div className="ndl-image-with-background l">
 
@@ -213,13 +217,13 @@ For test purposes, add a **Text** node to the **Page** node and connect the "pro
 
 </div>
 
-## Set the Path Parameter when Navigating
+## ナビゲート時にPath Parameterを設定する
 
-Ok, we are almost ready to try the "showproduct" Page. We just need to do the actual navigation.
+では、"showproduct"ページを試す準備がほぼできました。実際のナビゲーションを行う必要があります。
 
-So lets go back to the "Product Item" component we build earlier. We want to navigate when we click these items.
+では、以前に作成した"Product Item"コンポーネントに戻ります。これらのアイテムをクリックしたときにナビゲートしたいと考えています。
 
-Add a **Navigate** node and make sure the associated **Page Router** is "Main". Then pick the "Show Product Page" as the target.
+**Navigate**ノードを追加し、関連する**Page Router**が"Main"であることを確認します。次に、ターゲットとして"Show Product Page"を選択します。
 
 <div className="ndl-image-with-background">
 
@@ -227,9 +231,9 @@ Add a **Navigate** node and make sure the associated **Page Router** is "Main". 
 
 </div>
 
-As soon as you select it, you will see that there is a new input called "productIdentifyer". This is the one we added on the **Page Inputs** earlier!
+それを選択すると、"productIdentifyer"という新しい入力が表示されます。これは、以前に**Page Inputs**で追加したものです！
 
-We want to set it to the "identifyer" value from our product so lets add the property "identifyer" on our **Object** and connect it to the "productIdentifyer" input of our **Navigate** node. Also, connect the **Click** signal from the **Group** node to the **Navigate** signal on the **Navigate** node.
+製品の"identifyer"値を設定するために、**Object**に"identifyer"プロパティを追加し、**Navigate**ノードの"productIdentifyer"入力に接続します。また、**Group**ノードの**Click**シグナルを**Navigate**ノードの**Navigate**シグナルに接続します。
 
 <div className="ndl-image-with-background l">
 
@@ -237,7 +241,7 @@ We want to set it to the "identifyer" value from our product so lets add the pro
 
 </div>
 
-Now try clicking on different products under the different Products pages. You should see the "Show Product Page" with the corresponding identifyer printed on the screen. Also try it in a regular browser to see how the URL looks.
+さまざまな製品を異なるProductsページでクリックしてみてください。対応するidentifyerが画面に印刷された"Show Product Page"が表示されるはずです。通常のブラウザでも試して、URLがどのように見えるか確認してください。
 
 <div className="ndl-image-with-background l">
 
@@ -245,13 +249,13 @@ Now try clicking on different products under the different Products pages. You s
 
 </div>
 
-### Prettifying the "Show Product Page"
+### "Show Product Page"をきれいにする
 
-To finish up the "Show Product Page" we will extract some real data from the product and present in a sligthly prettier way. Go to the "Show Product Page".
+"Show Product Page"を仕上げるために、製品から実際のデータを抽出し、少し整理された方法で表示します。"Show Product Page"に移動します。
 
-Add a new **Group** under the **Page** node and remove the **Text** node that was previously there. Make the **Group** white and give it some margin to give it some space. Add rounded corners and give it some padding for what's going inside it.
+**Page**ノードの下に新しい**Group**を追加し、以前そこにあった**Text**ノードを削除します。**Group**を白にして、空間を作るためにマージンを追加します。角を丸くして、中に入るもののためにパディングを追加します。
 
-Then add three **Text** nodes, one for "name", one for "description" and one for "price". Make the first **Text** node bold. Also, add some nice margins in-between them.
+次に、"name"、"description"、"price"用に3つの**Text**ノードを追加します。最初の**Text**ノードを太字にします。また、それらの間に良いマージンを追加します。
 
 <div className="ndl-image-with-background l">
 
@@ -259,14 +263,14 @@ Then add three **Text** nodes, one for "name", one for "description" and one for
 
 </div>
 
-Now we need to connect the data. We have the "identifyer" coming in as our **Path Parameter**. We are going to use that to filter out the right **Object** from our "Products Array".
+次に、データを接続する必要があります。"identifyer"は**Path Parameter**として入ってきます。それを使用して"Products Array"から正しい**Object**をフィルタリングします。
 
-So we connect it to an **Array Filter**, which we filter on "identifyer". We should only get one item out, so we can take the **First Item Id** and connect it to the **Id** of an **Object** node.
+したがって、それを**Array Filter**に接続し、"identifyer"でフィルタリングします。1つのアイテムのみが出力されるので、その**First Item Id**を**Object**ノードの**Id**に接続できます。
 
-The **Object** should have three properties, "name", "description" and "price". The "price" need to be formatted. So add a [String Format](/nodes/string-manipulation/string-format) node with the string `Price: {price} EUR`.
-An input "price" should now be available on the **String Format** node. Connect the "price" output from the **Object** to it.
+**Object**には"名前"、"説明"、"価格"の3つのプロパティが必要です。"価格"はフォーマットする必要があります。そのため、`Price: {price} EUR`の文字列を持つ[String Format](/nodes/string-manipulation/string-format)ノードを追加します。
+入力"価格"は**String Format**ノードで利用可能になるはずです。**Object**の"価格"出力をそれに接続します。
 
-The data extraction should look similar to below:
+データの抽出は以下のようになります：
 
 <div className="ndl-image-with-background l">
 
@@ -274,7 +278,7 @@ The data extraction should look similar to below:
 
 </div>
 
-Then connect the data to the **Text** nodes and we are done with this part.
+それからデータを**Text**ノードに接続して、この部分が完了します。
 
 <div className="ndl-image-with-background l">
 
@@ -288,11 +292,11 @@ Then connect the data to the **Text** nodes and we are done with this part.
 
 </div>
 
-## Using Query Parameters
+## クエリパラメータの使用
 
-Another way to send parameters to pages is as _Query Parameters_. While you can only have one **Path Parameter**, you can have as many **Query Parameters** as you want.
+ページにパラメータを送る別の方法は、_クエリパラメータ_としてです。**Path Parameter**は1つしか持てませんが、**クエリパラメータ**は好きなだけ持つことができます。
 
-Lets add a **Query Parameter** to our **Page Inputs** node. We will call it `showVAT` and we will use it to determine whether the price should include VAT or not in the **Show Products Page**.
+**Page Inputs**ノードに**クエリパラメータ**を追加しましょう。それを`showVAT`と呼び、**Show Products Page**で価格にVATを含めるかどうかを決定するために使用します。
 
 <div className="ndl-image-with-background">
 
@@ -300,11 +304,13 @@ Lets add a **Query Parameter** to our **Page Inputs** node. We will call it `sho
 
 </div>
 
-Now lets make use of the parameter. We start by going to the "Settings" page component. We will let the user state its preference here, whether they want to include VAT or not in the displayed price.
+では、このパラメータを使用しましょう。"Settings"ページコンポーネントに移動します。ここで、ユーザーが表示される価格にVATを含めたいかどうかの設定を行います。
 
-### Adding a VAT setting
+### VAT設定の追加
 
-Add a [Radio Button Group](/nodes/ui-controls/radio-button-group) with a **Text** node and two [Radio Buttons](/nodes/ui-controls/radio-button) as children. The text will be the title for the group. Make sure the first **Radio Button** have the value `showVAT` and the second `dontShowVAT`.
+**Text
+
+**ノードと2つの[Radio Buttons](/nodes/ui-controls/radio-button)を子として持つ[Radio Button Group](/nodes/ui-controls/radio-button-group)を追加します。テキストはグループのタイトルになります。最初の**Radio Button**が`showVAT`の値を持つようにして、2番目が`dontShowVAT`になるようにします。
 
 <div className="ndl-image-with-background">
 
@@ -318,7 +324,7 @@ Add a [Radio Button Group](/nodes/ui-controls/radio-button-group) with a **Text*
 
 </div>
 
-So lets save the VAT state, using a bit of logic and a [Variable](/nodes/data/variable/variable-node) / [Set Variable](/nodes/data/variable/set-variable) node. Note that we connect the **Variable** that holds the current value to the **Value** of the **Radio Group** node to make sure it reflects the current setting when navigating to the **Settings** Page. (Remember that the **Page Component** will be re-instanciated every time you navigate to it so we need to set the initial value every time.)
+では、VATの状態を保存しましょう。少しのロジックと[Variable](/nodes/data/variable/variable-node) / [Set Variable](/nodes/data/variable/set-variable)ノードを使用します。現在の値を保持する**Variable**を**Radio Group**ノードの**Value**に接続して、**Settings**ページにナビゲートするたびに現在の設定を反映させることに注意してください。（**Page Component**はナビゲートするたびに再インスタンス化されるため、毎回初期値を設定する必要があります。）
 
 <div className="ndl-image-with-background l">
 
@@ -326,11 +332,11 @@ So lets save the VAT state, using a bit of logic and a [Variable](/nodes/data/va
 
 </div>
 
-Now we need to update our navigation to encode the setting in the URL. But maybe we should revisit why we would want to do that. Why not use our **Variable** `Show VAT` directly in the **Show Products** page component? Well, if we want our users to be able to copy the URL they are on when looking at a product, and we want the receiver to see the exact same view as the sender, we need to encode the setting in the URL.
+では、URLに設定をエンコードするナビゲーションを更新する必要があります。しかし、まず、なぜそれをしたいのかを再考するかもしれません。なぜ**Show Products**ページコンポーネントで直接**Variable** `Show VAT`を使用しないのでしょうか？製品を見ているときに現在のURLをコピーし、受信者が送信者と同じビューを見ることができるようにしたい場合は、設定をURLにエンコードする必要があります。
 
-### Sending the Query Parameter
+### クエリパラメータの送信
 
-Go to the "Product Item" component where we do the navigation to the "Show Product" Page. If you click the **Navigate** node you will now see that the `showVAT` parameter is availabel as an input.
+"Show Product"ページにナビゲーションを行う"Product Item"コンポーネントに戻ります。**Navigate**ノードをクリックすると、`showVAT`パラメータが入力として使用可能になります。
 
 <div className="ndl-image-with-background">
 
@@ -338,7 +344,7 @@ Go to the "Product Item" component where we do the navigation to the "Show Produ
 
 </div>
 
-We simply connect our **Variable** to it and the value will be sent.
+単純に**Variable**をそれに接続すると、値が送信されます。
 
 <div className="ndl-image-with-background l">
 
@@ -346,9 +352,9 @@ We simply connect our **Variable** to it and the value will be sent.
 
 </div>
 
-### Receiving the Query Parameter
+### クエリパラメータの受信
 
-The only thing left is to receive the parameter in the "Show Product" Page and show different prices depending on the parameter. We add a **Variable** that will hold the string to be shown (the price string including the VAT or not). Then we add a [Condition](/nodes/utilities/logic/condition) node to set the correct string to the **Variable**. The nodes look as below:
+残っているのは、"Show Product"ページでパラメータを受け取り、パラメータに応じて異なる価格を表示することです。表示する文字列を保持する**Variable**を追加し、正しい文字列を**Variable**に設定するための[Condition](/nodes/utilities/logic/condition)ノードを追加します。ノードは以下のようになります：
 
 <div className="ndl-image-with-background l">
 
@@ -356,7 +362,7 @@ The only thing left is to receive the parameter in the "Show Product" Page and s
 
 </div>
 
-If you want to download the complete project then press the "Import" button below and follow the instructions in Noodl.
+完全なプロジェクトをダウンロードしたい場合は、以下の"Import"ボタンを押して、Noodlの指示に従ってください。
 
 <div className="ndl-image-with-background l">
 
